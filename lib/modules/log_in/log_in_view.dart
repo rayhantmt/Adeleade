@@ -52,7 +52,7 @@ class LogInView extends StatelessWidget {
                         color: Color(0xff6C7278)
                       ),
                       ),
-                      Commontextfield()
+                      Commontextfield(tittle: 'Rayhantmt@gmail.com',)
                     ],
                   ),
                 ),

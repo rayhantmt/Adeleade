@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Commontextfield extends StatelessWidget {
-  const Commontextfield({super.key});
-
+  const Commontextfield({super.key, required this.tittle});
+final String tittle;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,12 +22,7 @@ borderRadius: BorderRadius.circular(10)
         
         decoration: InputDecoration(
           contentPadding: EdgeInsets.only(left: 10),
-          hint: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              
-            ],
-          ),
+         hintText: tittle,
 border: InputBorder.none
         ),
       ),
