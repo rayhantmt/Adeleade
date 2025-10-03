@@ -77,7 +77,13 @@ class LogInView extends GetView <LogInController>{
                         ) ,
                       ),
                       ),
-                      SizedBox(height: Get.height*0.02,)
+                      SizedBox(height: Get.height*0.02,),
+                      Row(
+                        children: [
+                          Checkbox(value: controller.isChecked.value, onChanged: (a) => controller.toggleCheckbox(a),)
+                        ],
+                      )
+                      
                     ],
                   ),
                 ),
