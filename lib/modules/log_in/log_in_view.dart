@@ -11,13 +11,14 @@ class LogInView extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(AppImages.amination,
-          height: double.infinity,
-          width: double.infinity,
-          fit: BoxFit.cover,
+          Image.asset(
+            AppImages.amination,
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20,right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,26 +28,35 @@ class LogInView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height*0.7,
-                  width: Get.width*0.9,
+                  height: Get.height * 0.7,
+                  width: Get.width * 0.9,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-SizedBox(height: Get.height*0.01,),
-Text('Log In',
-style: TextStyle(
-  fontWeight: FontWeight.w700,
-  fontSize: 26,
-color: AppColors.primarycolor
-),
-)
+                      SizedBox(height: Get.height * 0.01),
+                      Text(
+                        'Log In',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 26,
+                          color: AppColors.primarycolor,
+                        ),
+                      ),
+                      SizedBox(height: Get.height*0.02,),
+                      Text('Create an account or log in to explore our app',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: Color(0xff6C7278)
+                      ),
+                      )
                     ],
                   ),
-                )
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
