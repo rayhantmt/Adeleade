@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class LogInView extends StatelessWidget {
@@ -37,7 +38,7 @@ Text('Log In',
 style: TextStyle(
   fontWeight: FontWeight.w700,
   fontSize: 26,
-
+color: AppColors.primarycolor
 ),
 )
                     ],
