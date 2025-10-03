@@ -20,6 +20,16 @@ borderRadius: BorderRadius.circular(10)
       ),
       child: TextFormField(
         
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 10),
+          hint: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              
+            ],
+          ),
+border: InputBorder.none
+        ),
       ),
     );
   }
