@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mementum/utils/app_images.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -6,7 +7,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset('assets/giphy.gif')
+      body: Image.asset(AppImages.amination)
     );
   }
 }
