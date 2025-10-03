@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:mementum/modules/splash/splash_screen.dart';
-import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/routes/app_routes.dart';
 
 void main() {
