@@ -44,15 +44,34 @@ class LogInView extends StatelessWidget {
                           color: AppColors.primarycolor,
                         ),
                       ),
+                      SizedBox(height: Get.height * 0.02),
+                      Text(
+                        'Create an account or log in to explore our app',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Color(0xff6C7278),
+                        ),
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Email')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Rayhantmt@gmail.com',
+                        obsecuretext: false,
+                      ),
                       SizedBox(height: Get.height*0.02,),
-                      Text('Create an account or log in to explore our app',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: Color(0xff6C7278)
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Password')]),
                       ),
+                      Commontextfield(
+                        tittle: '*******',
+                        obsecuretext: true,
                       ),
-                      Commontextfield(tittle: 'Rayhantmt@gmail.com',icon: Icon(Icons.abc),obsecuretext: false,)
+                      SizedBox(height: Get.height*0.02,),
                     ],
                   ),
                 ),
