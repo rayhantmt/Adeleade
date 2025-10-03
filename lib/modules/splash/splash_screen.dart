@@ -7,7 +7,15 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset(AppImages.amination)
+      body: Stack(
+        children: [
+          Image.asset(AppImages.amination,
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          ),
+        ],
+      )
     );
   }
 }
