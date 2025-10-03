@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/src/simple/list_notifier.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -48,20 +51,23 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30),
-              Container(
-                height: 60,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(99),
-                  color: Colors.white,
-                ),
-                child: Center(
-                  child: Text(
-                    'Log In',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: Colors.black,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.login),
+                child: Container(
+                  height: 60,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(99),
+                    color: Colors.white,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Log In',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
