@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -50,7 +51,8 @@ class LogInView extends StatelessWidget {
                         fontSize: 12,
                         color: Color(0xff6C7278)
                       ),
-                      )
+                      ),
+                      Commontextfield()
                     ],
                   ),
                 ),
