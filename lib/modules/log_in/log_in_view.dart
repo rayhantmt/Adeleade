@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
+import 'package:mementum/modules/log_in/log_in_controller.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class LogInView extends StatelessWidget {
+class LogInView extends GetView <LogInController>{
   const LogInView({super.key});
 
   @override
@@ -67,11 +68,16 @@ class LogInView extends StatelessWidget {
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Password')]),
                       ),
-                      Commontextfield(
+                      Obx(() => Commontextfield(
                         tittle: '*******',
-                        obsecuretext: true,
+                        obsecuretext: controller.isObscured.value,
+                        icon: GestureDetector(
+                          onTap: controller.toggleObscureText,
+                          child: controller.isObscured.value? Icon(Icons.visibility):Icon(Icons.visibility_off),
+                        ) ,
                       ),
-                      SizedBox(height: Get.height*0.02,),
+                      ),
+                      SizedBox(height: Get.height*0.02,)
                     ],
                   ),
                 ),
