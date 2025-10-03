@@ -28,7 +28,20 @@ class LogInView extends StatelessWidget {
                   ),
                   height: Get.height*0.7,
                   width: Get.width*0.9,
-                  
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+SizedBox(height: Get.height*0.01,),
+Text('Log In',
+style: TextStyle(
+  fontWeight: FontWeight.w700,
+  fontSize: 26,
+
+),
+)
+                    ],
+                  ),
                 )
               ],
             ),
