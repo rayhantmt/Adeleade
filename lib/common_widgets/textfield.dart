@@ -7,13 +7,20 @@ class Commontextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height*0.1,
-      width: Get.width*0.8,
+      height: Get.height * 0.05,
+      width: Get.width * 0.7,
       decoration: BoxDecoration(
-color: Colors.red
-      ),
-      child: Text('data'),
-    );
+border: Border.all(
+  width: 1,
+  color: Color(0xffEDF1F3),
+  
+),
+borderRadius: BorderRadius.circular(10)
 
+      ),
+      child: TextFormField(
+        
+      ),
+    );
   }
 }
