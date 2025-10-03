@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:mementum/modules/splash/splash_screen.dart';
+import 'package:mementum/routes/app_pages.dart';
+import 'package:mementum/routes/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
+      getPages: AppRoutes.pages,
     );
   }
 }
