@@ -11,14 +11,12 @@ class OtpPageView extends GetView<OtpController> {
     return Scaffold(
       backgroundColor:  Color(0xffFAF2ED),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.only(left: 20,right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Image.asset(AppImages.otplogo,
-            // height: 77,
-            // width: 81,
-            // ),
+            
             const Text(
               "Verify your email",
               style: TextStyle(
