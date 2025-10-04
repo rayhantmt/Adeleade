@@ -91,7 +91,24 @@ class OtpPageView extends GetView<OtpController> {
                   ),
                 )),
             const SizedBox(height: 32),
-             
+             Container(
+                        height: Get.height * 0.07,
+                        width: Get.width * 0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: AppColors.primarycolor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Verify',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ),
            ],
         ),
       ),
