@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/log_in/log_in_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -182,12 +183,15 @@ class LogInView extends GetView<LogInController> {
                               color: Color(0xff6C7278),
                             ),
                           ),
-                          Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 12,
-                              color: AppColors.primarycolor,
+                          GestureDetector(
+                            onTap: () => Get.toNamed(AppPages.signup),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                color: AppColors.primarycolor,
+                              ),
                             ),
                           ),
                         ],
