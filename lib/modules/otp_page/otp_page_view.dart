@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:mementum/modules/otp_page/otp_page_controller.dart';
+import 'package:mementum/utils/app_colors.dart';
 
 class OtpPageView extends GetView<OtpController> {
   const OtpPageView({super.key});
@@ -16,7 +18,15 @@ class OtpPageView extends GetView<OtpController> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            
+            Text(
+                  "Momentum",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 32,
+                    color: AppColors.primarycolor,
+                  ),
+                ),
+                SizedBox(height: Get.height * 0.033),
             const Text(
               "Verify your email",
               style: TextStyle(
@@ -81,9 +91,7 @@ class OtpPageView extends GetView<OtpController> {
                   ),
                 )),
             const SizedBox(height: 32),
-          //   GestureDetector(
-          //     onTap: () => Get.toNamed(AppRoutes.changepasswotd),
-          //     child: CommonButton(tittle: 'Verify'))
+             
            ],
         ),
       ),
