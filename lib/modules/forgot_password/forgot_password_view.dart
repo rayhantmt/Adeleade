@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 
 class ForgotPasswordView extends StatelessWidget {
@@ -54,24 +55,27 @@ class ForgotPasswordView extends StatelessWidget {
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.033),
-                         Container(
-                          height: Get.height * 0.07,
-                          width: Get.width * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(99),
-                            color: AppColors.primarycolor,
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Forgot password',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: Colors.black,
+                         GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.otppage),
+                           child: Container(
+                            height: Get.height * 0.07,
+                            width: Get.width * 0.8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Send otp',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
-                          ),
-                        ),
+                                                   ),
+                         ),
           ],
         ),
       ),
