@@ -31,20 +31,23 @@ class SplashScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 200),
-              Container(
-                height: 60,
-                width: 350,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(99),
-                  color: Color(0xffDACBA4),
-                ),
-                child: Center(
-                  child: Text(
-                    'Request an invite',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 14,
-                      color: Colors.black,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.signup),
+                child: Container(
+                  height: 60,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(99),
+                    color: Color(0xffDACBA4),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Request an invite',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
