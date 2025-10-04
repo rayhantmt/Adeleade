@@ -96,12 +96,15 @@ class LogInView extends GetView<LogInController> {
                                 onChanged: (a) => controller.toggleCheckbox(a),
                               ),
                             ),
-                            Text(
-                              'Forgot Password',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                color: AppColors.primarycolor,
+                            GestureDetector(
+                              onTap: () => Get.toNamed(AppPages.forgotpassword),
+                              child: Text(
+                                'Forgot Password',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                  color: AppColors.primarycolor,
+                                ),
                               ),
                             ),
                           ],
