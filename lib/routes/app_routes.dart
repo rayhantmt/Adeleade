@@ -8,6 +8,7 @@ import 'package:mementum/modules/request_an_invite/requesst_an_invite_binding.da
 import 'package:mementum/modules/request_an_invite/request_an_invite_view.dart';
 import 'package:mementum/modules/update_password/update_password_binding.dart';
 import 'package:mementum/modules/update_password/update_password_view.dart';
+import 'package:mementum/modules/update_password_successful/update_password_successfull.dart';
 import 'package:mementum/routes/app_pages.dart';
 
 class AppRoutes {
@@ -16,6 +17,7 @@ class AppRoutes {
     GetPage(name: AppPages.signup, page: () => RequestAnInviteView(),binding: RequesstAnInviteBinding()),
     GetPage(name: AppPages.forgotpassword, page: ()=>ForgotPasswordView()),
     GetPage(name: AppPages.otppage, page: () => OtpPageView(),binding: OtpPageBinding()),
-    GetPage(name: AppPages.updatepassword, page: () => UpdatePasswordView(),binding: UpdatePasswordBinding())
+    GetPage(name: AppPages.updatepassword, page: () => UpdatePasswordView(),binding: UpdatePasswordBinding()),
+    GetPage(name: AppPages.updatePasswordSuccessfull, page: () => UpdatePasswordSuccessfull(),)
   ];
 }
