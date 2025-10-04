@@ -111,20 +111,23 @@ class LogInView extends GetView<LogInController> {
                         ),
                       ),
                       SizedBox(height: Get.height * 0.033),
-                      Container(
-                        height: Get.height * 0.07,
-                        width: Get.width * 0.8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.primarycolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Log In',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black,
+                      GestureDetector(
+                        onTap: () => Get.offAllNamed(AppPages.mainscreen),
+                        child: Container(
+                          height: Get.height * 0.07,
+                          width: Get.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: AppColors.primarycolor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Log In',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
