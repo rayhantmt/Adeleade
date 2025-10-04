@@ -40,11 +40,13 @@ class MainScreen extends GetView<MainScreenController> {
             ),
 
             BottomNavigationBarItem(
-              icon: Icon(Icons.pie_chart),
+              icon: SvgPicture.asset(AppImages.cahticon),
               label: 'Chats',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Memories'),
-             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'History'),
+            BottomNavigationBarItem(icon: SvgPicture.asset(AppImages.memories,
+            
+            ), label: 'Memories'),
+             BottomNavigationBarItem(icon: SvgPicture.asset(AppImages.historyicon), label: 'History'),
               BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
           ],
         ),
