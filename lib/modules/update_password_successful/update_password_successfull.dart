@@ -53,7 +53,7 @@ class UpdatePasswordSuccessfull extends StatelessWidget {
                         ),
                         child: Center(
                           child: Text(
-                            'Confirm',
+                            'Log in',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
