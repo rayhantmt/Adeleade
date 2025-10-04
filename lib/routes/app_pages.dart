@@ -5,4 +5,5 @@ class AppPages {
   static const String otppage='/otppage';
   static const String updatepassword='/updatepassword';
   static const String updatePasswordSuccessfull='/updatepasswordsuccessfull';
+  static const String mainscreen='/mainscreen';
 }
