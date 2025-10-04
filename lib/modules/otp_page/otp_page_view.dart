@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:mementum/modules/otp_page/otp_page_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 
 class OtpPageView extends GetView<OtpController> {
@@ -91,24 +92,27 @@ class OtpPageView extends GetView<OtpController> {
                   ),
                 )),
             const SizedBox(height: 32),
-             Container(
-                        height: Get.height * 0.07,
-                        width: Get.width * 0.8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.primarycolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Verify',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black,
+             GestureDetector(
+              onTap: () => Get.toNamed(AppPages.updatepassword),
+               child: Container(
+                          height: Get.height * 0.07,
+                          width: Get.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: AppColors.primarycolor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Verify',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
-                      ),
+             ),
            ],
         ),
       ),
