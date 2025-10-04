@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/log_in/log_in_controller.dart';
@@ -80,15 +81,106 @@ class LogInView extends GetView<LogInController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: Get.height * 0.02),
+                      SizedBox(height: Get.height * 0.01),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width*0.05,right: Get.width*0.05),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                           Obx(() =>  Checkbox(
+                              value: controller.isChecked.value,
+                              onChanged: (a) => controller.toggleCheckbox(a),
+                            ),),
+                            Text('Forgot Password',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                              color: AppColors.primarycolor
+                            ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: Get.height*0.033,),
+                      Container(
+                        height: Get.height*0.07,
+                        width: Get.width*0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: AppColors.primarycolor
+                        ),
+                        child: Center(
+                          child: Text('Log In',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.black
+                          ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: Get.height*0.033,),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                         Obx(() =>  Checkbox(
-                            value: controller.isChecked.value,
-                            onChanged: (a) => controller.toggleCheckbox(a),
-                          ),)
+                          Text('Or',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color: Color(0xff6C7278)
+                          ),
+                          )
                         ],
                       ),
+                      SizedBox(height: Get.height*0.033,),
+                      Container(
+                        height: Get.height*0.07,
+                        width: Get.width*0.8,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 1,
+                            color: Color(0xffEFF0F6)
+                          ),
+                          borderRadius: BorderRadius.circular(10)
+                        ),child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                        Image.asset(AppImages.google,
+                          height: 18,
+                          width: 18,
+                          ),
+                          SizedBox(width: Get.width*0.02,),
+                          Text('Sign in with google',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: Colors.black
+                          ),
+                          )
+                          ],
+                        ),
+                      
+                      ),
+                      SizedBox(height: Get.height*0.033,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Don't heve an account?",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                            color: Color(0xff6C7278)
+                          ),
+                          ),
+                          Text('Sign Up',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                            color: AppColors.primarycolor
+                          ),
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),
