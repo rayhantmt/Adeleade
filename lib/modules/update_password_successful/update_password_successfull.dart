@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 
 class UpdatePasswordSuccessfull extends StatelessWidget {
@@ -44,20 +45,23 @@ class UpdatePasswordSuccessfull extends StatelessWidget {
                       
                      
                       SizedBox(height: Get.height * 0.033),
-                      Container(
-                        height: Get.height * 0.07,
-                        width: Get.width * 0.8,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.primarycolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Log in',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black,
+                      GestureDetector(
+                        onTap: () => Get.offAllNamed(AppPages.login),
+                        child: Container(
+                          height: Get.height * 0.07,
+                          width: Get.width * 0.8,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: AppColors.primarycolor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Log in',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
                         ),
