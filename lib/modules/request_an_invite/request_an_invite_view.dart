@@ -80,7 +80,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: Get.height * 0.001),
+                      
                      
                       SizedBox(height: Get.height * 0.033),
                       Container(
