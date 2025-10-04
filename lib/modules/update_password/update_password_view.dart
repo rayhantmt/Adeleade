@@ -25,6 +25,13 @@ class UpdatePasswordView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: Get.height * 0.033),
+                Text('Update Password',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 26,
+                  color: Colors.black
+                ),
+                )
           ],
         ),
       ),
