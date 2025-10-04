@@ -22,9 +22,10 @@ class ForgotPasswordView extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 32,
-                    color: Color(0xff1E1E1E),
+                    color: AppColors.primarycolor,
                   ),
                 ),
+                SizedBox(height: Get.height * 0.033),
                 Text('Forgot password',
                 style: TextStyle(
                   fontWeight: FontWeight.w700,
@@ -32,6 +33,7 @@ class ForgotPasswordView extends StatelessWidget {
                   color: Colors.black
                 ),
                 ),
+                SizedBox(height: Get.height * 0.033),
                 Text('Enter your email account to reset  your password',
                 maxLines: 6,
                 style: TextStyle(
