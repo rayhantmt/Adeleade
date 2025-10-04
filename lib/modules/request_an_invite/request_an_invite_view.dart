@@ -57,6 +57,15 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Name')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Rayhan',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Email')]),
                       ),
                       Commontextfield(
@@ -88,10 +97,10 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       Obx(
                         () => Commontextfield(
                           tittle: '*******',
-                          obsecuretext: controller.isObscured.value,
+                          obsecuretext: controller.isObscured1.value,
                           icon: GestureDetector(
-                            onTap: controller.toggleObscureText,
-                            child: controller.isObscured.value
+                            onTap: controller.toggleObscureText1,
+                            child: controller.isObscured1.value
                                 ? Icon(Icons.visibility)
                                 : Icon(Icons.visibility_off),
                           ),
@@ -109,7 +118,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         ),
                         child: Center(
                           child: Text(
-                            'Log In',
+                            'Request an invite',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
@@ -119,19 +128,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         ),
                       ),
                       SizedBox(height: Get.height * 0.033),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Or',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              color: Color(0xff6C7278),
-                            ),
-                          ),
-                        ],
-                      ),
+                      
                       SizedBox(height: Get.height * 0.033),
                       
                       //SizedBox(height: Get.height * 0.033),
