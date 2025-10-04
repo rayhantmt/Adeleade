@@ -80,6 +80,23 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           ),
                         ),
                       ),
+                       SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Confirm Password')]),
+                      ),
+                      Obx(
+                        () => Commontextfield(
+                          tittle: '*******',
+                          obsecuretext: controller.isObscured.value,
+                          icon: GestureDetector(
+                            onTap: controller.toggleObscureText,
+                            child: controller.isObscured.value
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
+                          ),
+                        ),
+                      ),
                       
                      
                       SizedBox(height: Get.height * 0.033),
