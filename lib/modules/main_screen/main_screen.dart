@@ -31,10 +31,9 @@ class MainScreen extends GetView<MainScreenController> {
           return BottomNavigationBar(
             onTap: controller.changeTab,
             currentIndex: currentIndex,
-            selectedItemColor: AppColors.primarycolor,
-            unselectedItemColor: Color(0xff010101),
+           
             backgroundColor: Colors.white,
-           selectedLabelStyle: TextStyle(color: Colors.black), // label color when selected
+           selectedLabelStyle: TextStyle(color: AppColors.primarycolor), // label color when selected
             unselectedLabelStyle: TextStyle(color: Colors.black), // label color when unselected
             items: [
               BottomNavigationBarItem(
