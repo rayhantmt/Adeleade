@@ -16,40 +16,65 @@ class MainScreen extends GetView<MainScreenController> {
   @override
   Widget build(BuildContext context) {
     final List<Widget> screens = [
-       HomeView(),
-        ChatView(),
-        MemoriesView(),
-        HistoryView(),
-        ProfileView()
+      HomeView(),
+      ChatView(),
+      MemoriesView(),
+      HistoryView(),
+      ProfileView(),
     ];
     return Scaffold(
       backgroundColor: Colors.red,
       body: Obx(() => screens[controller.currentIndex.value]),
       bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
-          onTap: controller.changeTab,
-          currentIndex: controller.currentIndex.value,
-          selectedItemColor: AppColors.primarycolor,
-          unselectedItemColor: Color(0xff010101),
-          backgroundColor: Colors.white,
-
-          items: [
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.homeicon),
-              label: 'Home',
-            ),
-
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppImages.cahticon),
-              label: 'Chats',
-            ),
-            BottomNavigationBarItem(icon: SvgPicture.asset(AppImages.memories,
-            
-            ), label: 'Memories'),
-             BottomNavigationBarItem(icon: SvgPicture.asset(AppImages.historyicon), label: 'History'),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-        ),
+        () {
+          int currentIndex = controller.currentIndex.value;
+          return BottomNavigationBar(
+            onTap: controller.changeTab,
+            currentIndex: currentIndex,
+            selectedItemColor: AppColors.primarycolor,
+            unselectedItemColor: Color(0xff010101),
+            backgroundColor: Colors.white,
+           selectedLabelStyle: TextStyle(color: Colors.black), // label color when selected
+            unselectedLabelStyle: TextStyle(color: Colors.black), // label color when unselected
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.homeicon,
+                  color: currentIndex == 0 ? AppColors.primarycolor : Color(0xff010101),
+                ),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.cahticon,
+                  color: currentIndex == 1 ? AppColors.primarycolor : Color(0xff010101),
+                ),
+                label: 'Chats',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.memories,
+                  color: currentIndex == 2 ? AppColors.primarycolor : Color(0xff010101),
+                ),
+                label: 'Memories',
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  AppImages.historyicon,
+                  color: currentIndex == 3 ? AppColors.primarycolor : Color(0xff010101),
+                ),
+                label: 'History',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color: currentIndex == 4 ? AppColors.primarycolor : Color(0xff010101),
+                ),
+                label: 'Profile',
+              ),
+            ],
+          );
+        },
       ),
     );
   }
