@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mementum/utils/app_images.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -6,16 +8,21 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Row(
+      body: SafeArea(
+        child: Column(
           children: [
-            Icon(Icons.location_on_outlined),
-            Icon(Icons.add_circle_outline_outlined),
-            Icon(Icons.chat),
-            Icon(Icons.home_filled)
+            Row(
+              children: [
+                Image.asset(AppImages.logo,
+                height: 40,
+                width: 40,
+                color: Colors.black,
+                )
+              ],
+            )
           ],
         ),
-      ),
+      )
     );
   }
 }
