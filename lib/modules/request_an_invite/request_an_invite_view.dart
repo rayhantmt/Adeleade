@@ -78,14 +78,6 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
                           child: Row(children: [Text('Gender')]),
                         ),
                         Commontextfield(
@@ -94,18 +86,26 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('Age')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Enter your age',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('Profession')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Enter your profession',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Nationality')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Enter your nationality',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
