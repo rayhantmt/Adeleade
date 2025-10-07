@@ -10,8 +10,15 @@ class UnlockMomentumView extends StatelessWidget {
       
 ,
 body: Column(
+  mainAxisAlignment: MainAxisAlignment.center,
+  crossAxisAlignment: CrossAxisAlignment.center,
   children: [
-    Text('')
+    Text('Every great journey begins with the right people',
+    style: TextStyle(
+      fontWeight: FontWeight.bold,
+      fontSize: 28,
+    ),
+    )
   ],
 ),
     );
