@@ -78,6 +78,71 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('Email')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Rayhantmt@gmail.com',
+                          obsecuretext: false,
+                        ),
+                        SizedBox(height: Get.height * 0.02),
+                        Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
                           child: Row(children: [Text('Password')]),
                         ),
                         Obx(
