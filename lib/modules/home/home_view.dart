@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:mementum/utils/app_images.dart';
 
 class HomeView extends StatelessWidget {
@@ -13,16 +13,17 @@ class HomeView extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(AppImages.logo,
-                height: 40,
-                width: 40,
-                color: Colors.black,
-                )
+                Image.asset(
+                  AppImages.logo,
+                  height: 40,
+                  width: 40,
+                  color: Colors.black,
+                ),
               ],
-            )
+            ),
           ],
         ),
-      )
+      ),
     );
   }
 }
