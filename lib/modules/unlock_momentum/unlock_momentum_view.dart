@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UnlockMomentumView extends StatelessWidget {
   const UnlockMomentumView({super.key});
@@ -9,17 +10,30 @@ class UnlockMomentumView extends StatelessWidget {
       backgroundColor: Color(0xffECE4D1)  
       
 ,
-body: Column(
-  mainAxisAlignment: MainAxisAlignment.center,
-  crossAxisAlignment: CrossAxisAlignment.center,
-  children: [
-    Text('Every great journey begins with the right people',
-    style: TextStyle(
-      fontWeight: FontWeight.bold,
-      fontSize: 28,
-    ),
-    )
-  ],
+body: Padding(
+  padding: const EdgeInsets.only(left: 20,right: 20),
+  child: Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      SizedBox(height: Get.height*0.2),
+      Text('Every great journey begins with the right people.',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 28,
+      ),
+      ),
+      SizedBox(height: Get.height*0.05,),
+      Text('Invite 3 frinends you would want by your side and unlock your mementum',
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        fontWeight:FontWeight.w400,
+        fontSize: 16
+      ),
+      )
+    ],
+  ),
 ),
     );
   }
