@@ -110,34 +110,34 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('Instagram')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Link of your instagram profile',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('LinkedIn')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Link of your LinkedIn profile',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('Bio')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Describe yourself in a short description',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
+                          child: Row(children: [Text('Upload 5 images')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Upload your 5 images here',
                           obsecuretext: false,
                         ),
                         SizedBox(height: Get.height * 0.02),
