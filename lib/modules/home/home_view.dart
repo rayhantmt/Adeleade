@@ -7,7 +7,14 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text('Home'),
+        child: Row(
+          children: [
+            Icon(Icons.location_on_outlined),
+            Icon(Icons.add_circle_outline_outlined),
+            Icon(Icons.chat),
+            Icon(Icons.home_filled)
+          ],
+        ),
       ),
     );
   }

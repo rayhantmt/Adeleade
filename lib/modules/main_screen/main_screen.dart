@@ -31,44 +31,28 @@ class MainScreen extends GetView<MainScreenController> {
           return BottomNavigationBar(
             onTap: controller.changeTab,
             currentIndex: currentIndex,
-           
+            selectedItemColor: AppColors.primarycolor,
+            unselectedItemColor: Color(0xff65676B),
             backgroundColor: Colors.white,
-           selectedLabelStyle: TextStyle(color: AppColors.primarycolor), // label color when selected
-            unselectedLabelStyle: TextStyle(color: Colors.black), // label color when unselected
             items: [
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppImages.homeicon,
-                  color: currentIndex == 0 ? AppColors.primarycolor : Color(0xff010101),
-                ),
+                icon: Icon(Icons.home_filled,size: 30,),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppImages.cahticon,
-                  color: currentIndex == 1 ? AppColors.primarycolor : Color(0xff010101),
-                ),
-                label: 'Chats',
+                icon: Icon(Icons.location_on_outlined,size: 30,),
+                label: 'Maps',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppImages.memories,
-                  color: currentIndex == 2 ? AppColors.primarycolor : Color(0xff010101),
-                ),
+                icon: Icon(Icons.add_circle_outline_outlined,size: 30,),
                 label: 'Memories',
               ),
               BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  AppImages.historyicon,
-                  color: currentIndex == 3 ? AppColors.primarycolor : Color(0xff010101),
-                ),
-                label: 'History',
+                icon: Icon(Icons.chat,size: 30,),
+                label: 'Chats',
               ),
               BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.person,
-                  color: currentIndex == 4 ? AppColors.primarycolor : Color(0xff010101),
-                ),
+                icon: Icon(Icons.person,size: 30,),
                 label: 'Profile',
               ),
             ],
