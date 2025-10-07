@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/request_an_invite/request_an_invite_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
+import 'package:mementum/routes/app_routes.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -110,20 +112,23 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         
                        
                         SizedBox(height: Get.height * 0.033),
-                        Container(
-                          height: Get.height * 0.07,
-                          width: Get.width * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(99),
-                            color: AppColors.primarycolor,
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Request an invite',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: Colors.black,
+                        GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.unlockmomentum),
+                          child: Container(
+                            height: Get.height * 0.07,
+                            width: Get.width * 0.8,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Request an invite',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ),
