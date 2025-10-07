@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:get/state_manager.dart';
 import 'package:mementum/modules/chat/chat_view.dart';
 import 'package:mementum/modules/history/history_view.dart';
@@ -8,7 +8,6 @@ import 'package:mementum/modules/main_screen/main_screen_controller.dart';
 import 'package:mementum/modules/memories/memories_view.dart';
 import 'package:mementum/modules/profile/profile_view.dart';
 import 'package:mementum/utils/app_colors.dart';
-import 'package:mementum/utils/app_images.dart';
 
 class MainScreen extends GetView<MainScreenController> {
   const MainScreen({super.key});
@@ -25,40 +24,38 @@ class MainScreen extends GetView<MainScreenController> {
     return Scaffold(
       backgroundColor: Colors.red,
       body: Obx(() => screens[controller.currentIndex.value]),
-      bottomNavigationBar: Obx(
-        () {
-          int currentIndex = controller.currentIndex.value;
-          return BottomNavigationBar(
-            onTap: controller.changeTab,
-            currentIndex: currentIndex,
-            selectedItemColor: AppColors.primarycolor,
-            unselectedItemColor: Color(0xff65676B),
-            backgroundColor: Colors.white,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home_filled,size: 30,),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.location_on_outlined,size: 30,),
-                label: 'Maps',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline_outlined,size: 30,),
-                label: 'Memories',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.chat,size: 30,),
-                label: 'Chats',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person,size: 30,),
-                label: 'Profile',
-              ),
-            ],
-          );
-        },
-      ),
+      bottomNavigationBar: Obx(() {
+        int currentIndex = controller.currentIndex.value;
+        return BottomNavigationBar(
+          onTap: controller.changeTab,
+          currentIndex: currentIndex,
+          selectedItemColor: AppColors.primarycolor,
+          unselectedItemColor: Color(0xff65676B),
+          backgroundColor: Colors.white,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_filled, size: 30),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on_outlined, size: 30),
+              label: 'Maps',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_circle_outline_outlined, size: 30),
+              label: 'Memories',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.chat, size: 30),
+              label: 'Chats',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person, size: 30),
+              label: 'Profile',
+            ),
+          ],
+        );
+      }),
     );
   }
 }
