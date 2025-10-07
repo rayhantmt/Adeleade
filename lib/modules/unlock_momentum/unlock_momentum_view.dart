@@ -6,7 +6,14 @@ class UnlockMomentumView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffDACBA4),
+      backgroundColor: Color(0xffECE4D1)  
+      
+,
+body: Column(
+  children: [
+    Text('')
+  ],
+),
     );
   }
 }

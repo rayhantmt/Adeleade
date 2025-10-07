@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/request_an_invite/request_an_invite_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
-import 'package:mementum/routes/app_routes.dart';
+
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
