@@ -95,7 +95,36 @@ class HomeView extends GetView<HomeController> {
                                   fontWeight: FontWeight.w500,
                                   fontSize:14,
                                   color: Colors.black
-                                ),)
+                                ),),
+                                Row(
+                                  children: [
+                                    Icon(Icons.calendar_month_rounded,
+                                    color: Color(0xff898989),
+                                    ),
+                                    Text(data.date_time,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Color(0xff898989)
+                                    ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.location_on_sharp,
+                                    color: Color(0xff898989),
+                                    ),
+                                    Text(data.location,
+                                    
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Color(0xff898989)
+                                    ),
+                                    )
+                                  ],
+                                )
                               ],
                             ),
                           ),
