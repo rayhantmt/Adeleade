@@ -5,4 +5,5 @@ class AppImages {
   static const String cahticon = 'assets/chat_icon.svg';
   static const String memories = 'assets/memories_icon.svg';
   static const String logo = 'assets/logo.png';
+  static const String background='assets/background.png';
 }
