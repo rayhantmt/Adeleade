@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/route_manager.dart';
 import 'package:mementum/common_widgets/textfield.dart';
+import 'package:mementum/modules/home/home_controller.dart';
 
 import 'package:mementum/utils/app_images.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<HomeController> {
   const HomeView({super.key});
 
   @override
@@ -52,7 +54,9 @@ class HomeView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8)
                   ),
                   child: Commontextfield(tittle: "Search", obsecuretext: false,icon: Icon(Icons.search),)
-                )
+                ),
+                SizedBox(height: Get.height*0.01,),
+                Text(controller.events.toList().first.date_time.toString())
               ],
             ),
           ),
