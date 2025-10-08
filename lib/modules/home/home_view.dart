@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/route_manager.dart';
 import 'package:mementum/common_widgets/textfield.dart';
@@ -21,10 +22,10 @@ class HomeView extends GetView<HomeController> {
             fit: BoxFit.cover,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20,right: 20),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               children: [
-                SizedBox(height: Get.height*0.07,),
+                SizedBox(height: Get.height * 0.07),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -34,29 +35,39 @@ class HomeView extends GetView<HomeController> {
                       width: 40,
                       color: Colors.black,
                     ),
-                    Text('Momentum',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                      fontSize: 24
+                    Text(
+                      'Momentum',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                        fontSize: 24,
+                      ),
                     ),
-                    ),
-                    Icon(Icons.circle_notifications_outlined,
-                    size: 40,
-                    )
+                    Icon(Icons.circle_notifications_outlined, size: 40),
                   ],
                 ),
                 Container(
-                  height: Get.height*0.07,
+                  height: Get.height * 0.07,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(8)
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Commontextfield(tittle: "Search", obsecuretext: false,icon: Icon(Icons.search),)
+                  child: Commontextfield(
+                    tittle: "Search",
+                    obsecuretext: false,
+                    icon: Icon(Icons.search),
+                  ),
                 ),
-                SizedBox(height: Get.height*0.01,),
-                Text(controller.events.toList().first.date_time.toString())
+                SizedBox(height: Get.height * 0.01),
+                Obx(
+                  () => GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (context, index) => Container(),
+                  ),
+                ),
               ],
             ),
           ),
