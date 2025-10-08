@@ -10,6 +10,20 @@ Event(tittle: "Hiking Adventure", date_time: "20 Sept 2025, 5:00 PM", location: 
 Event(tittle: "Gala night", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event4),
 Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event5),
 Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: "Dhaka,Bangladesh", maxpeople: '15', joinedpeople: '7',image: AppImages.event6),
+
 
   ].obs;
 }
