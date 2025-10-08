@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
 
 import 'package:mementum/utils/app_images.dart';
 
@@ -9,18 +9,20 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Color(0xffECE4D1),
       body: Expanded(
         child: Stack(
           children: [
-            Image.asset(AppImages.background,
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
+            Image.asset(
+              AppImages.background,
+              height: double.infinity,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
             Column(
               children: [
+                SizedBox(height: Get.height*0.07,),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Image.asset(
                       AppImages.logo,
@@ -28,6 +30,16 @@ class HomeView extends StatelessWidget {
                       width: 40,
                       color: Colors.black,
                     ),
+                    Text('Momentum',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                      fontSize: 24
+                    ),
+                    ),
+                    Icon(Icons.circle_notifications_outlined,
+                    size: 40,
+                    )
                   ],
                 ),
               ],
