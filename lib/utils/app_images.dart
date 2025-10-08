@@ -6,4 +6,10 @@ class AppImages {
   static const String memories = 'assets/memories_icon.svg';
   static const String logo = 'assets/logo.png';
   static const String background='assets/background.png';
+  static const String event1='assets/event1.jpg';
+  static const String event2='assets/event2.jpg';
+  static const String even3='assets/event3.jpg';
+  static const String event4='assets/event4.jpg';
+  static const String event5='assets/event5.jpg';
+  static const String even6='assets/event6.jpg';
 }
