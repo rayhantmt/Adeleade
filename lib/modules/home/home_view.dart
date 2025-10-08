@@ -61,41 +61,43 @@ class HomeView extends GetView<HomeController> {
                   SizedBox(height: Get.height * 0.01),
                   Obx(
                     () => GridView.builder(
-                      gridDelegate:
-                          SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        
                       ),
                       itemCount: controller.events.length,
-                      shrinkWrap: true, 
-                    physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final data = controller.events[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            
                             decoration: BoxDecoration(
                               color: Color(0xffF4EFE3B2).withOpacity(0.7),
-                              borderRadius: BorderRadius.circular(8)
+                              borderRadius: BorderRadius.circular(8),
                             ),
                             child: Column(
                               children: [
-                               ClipRRect(
-                                borderRadius: BorderRadiusGeometry.only(
-                                  topLeft: Radius.circular(8),
-                                  topRight: Radius.circular(8)
+                                ClipRRect(
+                                  borderRadius: BorderRadiusGeometry.only(
+                                    topLeft: Radius.circular(8),
+                                    topRight: Radius.circular(8),
+                                  ),
+                                  child: Image.asset(
+                                    data.image,
+                                    height: Get.height * 0.1,
+                                    width: double.infinity,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                                 child: Image.asset(data.image,
-                                 height: Get.height*0.1,
-                                 width: double.infinity,
-                                 fit: BoxFit.cover,
-                                 
-                                 ),
-                               ),
-                                
+                                Text(data.tittle,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize:14,
+                                  color: Colors.black
+                                ),)
                               ],
-                            )
+                            ),
                           ),
                         );
                       },
