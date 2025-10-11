@@ -73,10 +73,12 @@ class HomeView extends GetView<HomeController> {
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0xffF4EFE3B2).withOpacity(0.7),
+                              color: Color(0xffF4EFE3B2).withOpacity(0.3),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadiusGeometry.only(
@@ -91,6 +93,7 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                 ),
                                 Text(data.tittle,
+                                textAlign: TextAlign.start,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontSize:14,
