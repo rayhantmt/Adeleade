@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/home/home_controller.dart';
@@ -101,8 +102,9 @@ class HomeView extends GetView<HomeController> {
                                 ),),
                                 Row(
                                   children: [
-                                    Icon(Icons.calendar_month_rounded,
-                                    color: Color(0xff898989),
+                                    Image.asset(AppImages.calander_icon,
+                                    height: 10,
+                                    width: 10,
                                     ),
                                     Text(data.date_time,
                                     style: TextStyle(

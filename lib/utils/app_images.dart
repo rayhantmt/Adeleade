@@ -12,4 +12,6 @@ class AppImages {
   static const String event4='assets/event4.jpg';
   static const String event5='assets/event5.jpg';
   static const String event6='assets/event6.jpg';
+  static const String calander_icon='assets/calander_icon.png';
+  static const String location_icon='assets/location_icon.png';
 }
