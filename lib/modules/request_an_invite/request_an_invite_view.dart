@@ -3,18 +3,15 @@ import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/request_an_invite/request_an_invite_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
-
-
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class RequestAnInviteView extends GetView<RequestAnInviteController> {
-  const RequestAnInviteView({super.key});
-
+const RequestAnInviteView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       body: Stack(
+      body: Stack(
         children: [
           Image.asset(
             AppImages.amination,
@@ -36,7 +33,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                   height: Get.height * 0.8,
                   width: Get.width * 0.9,
                   child: Column(
-                   // mainAxisAlignment: MainAxisAlignment.start,
+                    // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: Get.height * 0.02),
@@ -62,10 +59,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Name')]),
                       ),
-                      Commontextfield(
-                        tittle: 'Rayhan',
-                        obsecuretext: false,
-                      ),
+                      Commontextfield(tittle: 'Rayhan', obsecuretext: false),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -84,7 +78,8 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Male/Female',
                         obsecuretext: false,
                       ),
-                      SizedBox(height: Get.height * 0.02),Padding(
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Age')]),
                       ),
@@ -92,7 +87,8 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Enter your age',
                         obsecuretext: false,
                       ),
-                      SizedBox(height: Get.height * 0.02),Padding(
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Profession')]),
                       ),
@@ -100,7 +96,8 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Enter your profession',
                         obsecuretext: false,
                       ),
-                      SizedBox(height: Get.height * 0.02),Padding(
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Nationality')]),
                       ),
@@ -108,7 +105,8 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Enter your nationality',
                         obsecuretext: false,
                       ),
-                      SizedBox(height: Get.height * 0.02),Padding(
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Instagram')]),
                       ),
@@ -116,32 +114,29 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Link of your instagram profile',
                         obsecuretext: false,
                       ),
-                     SizedBox(height: Get.height * 0.015),
-                      
-                     GestureDetector(
-                          onTap: () => Get.toNamed(AppPages.signupsecond),
-                          child: Container(
-                            height: Get.height * 0.03,
-                            width: Get.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(99),
-                              color: AppColors.primarycolor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Next',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
+                      SizedBox(height: Get.height * 0.015),
+
+                      GestureDetector(
+                        onTap: () => Get.toNamed(AppPages.signupsecond),
+                        child: Container(
+                          height: Get.height * 0.03,
+                          width: Get.width * 0.4,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: AppColors.primarycolor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Next',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black,
                               ),
                             ),
                           ),
                         ),
-                     
-                     
-                      
+                      ),
                     ],
                   ),
                 ),
