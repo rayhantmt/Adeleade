@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/request_an_invite/request_an_invite_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 
 
 import 'package:mementum/utils/app_colors.dart';
@@ -115,9 +116,29 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         tittle: 'Link of your instagram profile',
                         obsecuretext: false,
                       ),
-                     
+                     SizedBox(height: Get.height * 0.015),
                       
-                     
+                     GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.signupsecond),
+                          child: Container(
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Next',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                      
                      
                       
