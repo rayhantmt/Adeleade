@@ -80,7 +80,15 @@ class HomeView extends GetView<HomeController> {
                       ),
                     )
                   ),
-                  SizedBox(height: Get.height * 0.01),
+                  SizedBox(height: Get.height * 0.01,
+                  child: ListView.builder(itemBuilder: (context, index) {
+                    return Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red
+                      ),
+                    );
+                  },),
+                  ),
                   Obx(
                     () => GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
