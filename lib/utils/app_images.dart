@@ -16,4 +16,5 @@ class AppImages {
   static const String location_icon='assets/location_icon.png';
   static const String notification_logo='assets/notification_logo.png';
   static const String back_icon='assets/back_icon.png';
+  static const String profilephoto='assets/profile_photo.png';
 }

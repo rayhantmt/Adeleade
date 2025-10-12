@@ -39,6 +39,24 @@ class ProfileView extends StatelessWidget {
                   ],
                 ),
               ),
+
+              Row(
+                children: [
+                  CircleAvatar(
+                    maxRadius: 45,
+                    minRadius: 45,
+                    child: Image.asset(AppImages.profilephoto),),
+                    SizedBox(width: 10,),
+                    Text('Tony Stark',
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Colors.black
+                    ),
+                    
+                    )
+                ],
+              )
             ],
           ),
         ),
