@@ -83,22 +83,37 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                 ),
-                // SizedBox(
-                //   height: Get.height*0.05,
-                //   child: ListView.builder(
-                //     scrollDirection: Axis.horizontal,
-                //     itemCount: 8,
-                //     itemBuilder: (context, index) {
-                //       return Container(
-                //        height: Get.height * 0.02,
-                  
-                //         width: double.infinity,
-                //         decoration: BoxDecoration(color: Colors.red),
-                //         child: Text('data'),
-                //       );
-                //     },
-                //   ),
-                // ),
+                  SizedBox(height: 10),
+              SizedBox(
+                  height: Get.height * 0.05, // This SizedBox now sets the required height
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 8, // Placeholder count
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(right: 10), // Space between items
+                        child: Container(
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200, // Light color for categories
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.black12), // Subtle border
+                          ),
+                          child: Text(
+                            'Category ${index + 1}',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: Colors.black87,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              
                 Expanded(
                  // height: Get.height * 0.6,
                   child: Obx(
