@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/home/home_controller.dart';
 
@@ -94,16 +95,15 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 Text(data.tittle,
                                 textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
+                                style: GoogleFonts.inter(fontWeight: FontWeight.w500,
                                   fontSize:14,
-                                  color: Colors.black
-                                ),),
+                                  color: Colors.black,
+                                  )),
                                 Row(
                                   children: [
                                     Image.asset(AppImages.calander_icon,
-                                    height: 10,
-                                    width: 10,
+                                    height: Get.height*0.03,
+                                    width: Get.width*0.05,
                                     ),
                                     Text(data.date_time,
                                     style: TextStyle(
@@ -116,8 +116,9 @@ class HomeView extends GetView<HomeController> {
                                 ),
                                 Row(
                                   children: [
-                                    Icon(Icons.location_on_sharp,
-                                    color: Color(0xff898989),
+                                    Image.asset(AppImages.location_icon,
+                                    height: Get.height*0.03,
+                                    width: Get.width*0.05,
                                     ),
                                     Text(data.location,
                                     
