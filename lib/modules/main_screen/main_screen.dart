@@ -22,16 +22,19 @@ class MainScreen extends GetView<MainScreenController> {
       ProfileView(),
     ];
     return Scaffold(
-      backgroundColor: Colors.red,
+
+      backgroundColor: Colors.transparent,
       body: Obx(() => screens[controller.currentIndex.value]),
-      bottomNavigationBar: Obx(() {
+      bottomNavigationBar:
+      
+       Obx(() {
         int currentIndex = controller.currentIndex.value;
         return BottomNavigationBar(
           onTap: controller.changeTab,
           currentIndex: currentIndex,
           selectedItemColor: AppColors.primarycolor,
           unselectedItemColor: Color(0xff65676B),
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xffF9F7F1),
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_filled, size: 30),

@@ -97,27 +97,29 @@ class HomeView extends GetView<HomeController> {
                 //     },
                 //   ),
                 // ),
-                Container(
-                  height: Get.height * 0.6,
+                Expanded(
+                 // height: Get.height * 0.6,
                   child: Obx(
                     () => GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
+                      
+                    
                       ),
                       itemCount: controller.events.length,
-                      shrinkWrap: true,
-                      // physics: NeverScrollableScrollPhysics(),
+                     
                       itemBuilder: (context, index) {
                         final data = controller.events[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
+                            height: Get.height*0.2,
                             decoration: BoxDecoration(
                               color: Color(0xffF4EFE3B2).withOpacity(0.3),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
