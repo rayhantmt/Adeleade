@@ -84,9 +84,7 @@ class HomeView extends GetView<HomeController> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  height:
-                      Get.height *
-                      0.06, 
+                  height: Get.height * 0.06,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 8, // Placeholder count
@@ -124,7 +122,6 @@ class HomeView extends GetView<HomeController> {
                 Expanded(
                   child: Obx(
                     () => GridView.builder(
-                     
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
