@@ -122,6 +122,7 @@ class HomeView extends GetView<HomeController> {
                 Expanded(
                   child: Obx(
                     () => GridView.builder(
+                      padding: EdgeInsets.zero,
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
