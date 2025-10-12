@@ -5,10 +5,11 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Column(
-      children: [
-        Center(child: Text('Profile')),
-      ],
-    ));
+    return Scaffold(
+      backgroundColor: Color(0xffF9F7F1),
+      body: SafeArea(child: Column(
+
+      )),
+    );
   }
 }
