@@ -16,7 +16,7 @@ class ProfileView extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                 height: Get.height * 0.07,
+                height: Get.height * 0.07,
                 child: Stack(
                   children: [
                     Align(
@@ -28,35 +28,43 @@ class ProfileView extends StatelessWidget {
                       ),
                     ),
                     Center(
-                      child: Text('My Profile',
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                        color: Colors.black
+                      child: Text(
+                        'My Profile',
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: Colors.black,
+                        ),
                       ),
-                      ),
-                    )
+                    ),
                   ],
                 ),
               ),
 
               Row(
                 children: [
-                  CircleAvatar(
-                    maxRadius: 45,
-                    minRadius: 45,
-                    child: Image.asset(AppImages.profilephoto),),
-                    SizedBox(width: 10,),
-                    Text('Tony Stark',
+                  ClipRRect(
+                    borderRadius: BorderRadiusGeometry.all(
+                      Radius.circular(100),
+                    ),
+                    child: Image.asset(
+                      AppImages.profilephoto,
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Text(
+                    'Tony Stark',
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
-                      color: Colors.black
+                      color: Colors.black,
                     ),
-                    
-                    )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
