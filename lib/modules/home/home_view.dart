@@ -37,27 +37,49 @@ class HomeView extends GetView<HomeController> {
                       ),
                       Text(
                         'Momentum',
-                        style: TextStyle(
+                        style: GoogleFonts.inter(
                           fontWeight: FontWeight.w700,
                           color: Colors.black,
                           fontSize: 24,
-                        ),
+                        )
                       ),
-                      Icon(Icons.circle_notifications_outlined, size: 40),
+                      Image.asset(AppImages.notification_logo,
+                      height: Get.height*0.08,
+                      width: Get.width*0.1,
+                      )
                     ],
                   ),
                   Container(
-                    height: Get.height * 0.07,
+                    height: Get.height * 0.055,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: Commontextfield(
-                      tittle: "Search",
-                      obsecuretext: false,
-                      icon: Icon(Icons.search),
-                    ),
+                    child: TextFormField(
+                      
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hint: Padding(
+                          padding: const EdgeInsets.only(left: 20,),
+                          child: Row(
+                            children: [
+                              Icon(Icons.search,
+                              size: 30,
+                              color: Color(0xff7D848D),
+                              ),
+                              Text('Search',
+                              style:GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: Color(0xff7D848D)
+                              ),
+                              )
+                            ],
+                          ),
+                        )
+                      ),
+                    )
                   ),
                   SizedBox(height: Get.height * 0.01),
                   Obx(
