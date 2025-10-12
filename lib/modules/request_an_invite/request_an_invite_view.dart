@@ -34,96 +34,94 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                   ),
                   height: Get.height * 0.8,
                   width: Get.width * 0.9,
-                  child: SingleChildScrollView(
-                    child: Column(
-                     // mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: Get.height * 0.02),
-                        Text(
-                          'Request an invite',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            fontSize: 26,
-                            color: AppColors.primarycolor,
-                          ),
+                  child: Column(
+                   // mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: Get.height * 0.02),
+                      Text(
+                        'Request an invite',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 26,
+                          color: AppColors.primarycolor,
                         ),
-                        SizedBox(height: Get.height * 0.02),
-                        Text(
-                          'Create an account or log in to explore our app',
-                          style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            color: Color(0xff6C7278),
-                          ),
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Text(
+                        'Create an account or log in to explore our app',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: Color(0xff6C7278),
                         ),
-                        SizedBox(height: Get.height * 0.02),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Name')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Rayhan',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Email')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Gender')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Male/Female',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Age')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Enter your age',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Profession')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Enter your profession',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Nationality')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Enter your nationality',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Instagram')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Link of your instagram profile',
-                          obsecuretext: false,
-                        ),
-                       
-                        
-                       
-                       
-                       
-                        
-                      ],
-                    ),
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Name')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Rayhan',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Email')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Rayhantmt@gmail.com',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Gender')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Male/Female',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Age')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Enter your age',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Profession')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Enter your profession',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Nationality')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Enter your nationality',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Instagram')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Link of your instagram profile',
+                        obsecuretext: false,
+                      ),
+                     
+                      
+                     
+                     
+                     
+                      
+                    ],
                   ),
                 ),
               ],
