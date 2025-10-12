@@ -14,6 +14,7 @@ class ProfileView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: Get.height * 0.07,
@@ -65,6 +66,16 @@ class ProfileView extends StatelessWidget {
                   ),
                 ],
               ),
+              SizedBox(height: Get.height*0.01,),
+              Text('Account',
+              textAlign: TextAlign.start,
+              style: GoogleFonts.inter(
+                fontWeight:FontWeight.w500,
+                fontSize: 18,
+                color: Colors.black
+              ),
+              ),
+              
             ],
           ),
         ),
