@@ -58,7 +58,6 @@ class HomeView extends GetView<HomeController> {
                   ),
                   child: TextFormField(
                     decoration: InputDecoration(
-                     
                       border: InputBorder.none,
                       hint: Padding(
                         padding: const EdgeInsets.only(left: 20),
@@ -83,22 +82,30 @@ class HomeView extends GetView<HomeController> {
                     ),
                   ),
                 ),
-                  SizedBox(height: 10),
-              SizedBox(
-                  height: Get.height * 0.05, // This SizedBox now sets the required height
+                SizedBox(height: 10),
+                SizedBox(
+                  height:
+                      Get.height *
+                      0.06, 
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 8, // Placeholder count
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(right: 10), // Space between items
+                        padding: const EdgeInsets.only(
+                          right: 10,
+                        ), // Space between items
                         child: Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(horizontal: 15),
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade200, // Light color for categories
+                            color: Colors
+                                .grey
+                                .shade200, // Light color for categories
                             borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.black12), // Subtle border
+                            border: Border.all(
+                              color: Colors.black12,
+                            ), // Subtle border
                           ),
                           child: Text(
                             'Category ${index + 1}',
@@ -113,24 +120,22 @@ class HomeView extends GetView<HomeController> {
                     },
                   ),
                 ),
-              
+
                 Expanded(
-                 // height: Get.height * 0.6,
                   child: Obx(
                     () => GridView.builder(
+                     
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                      
-                    
                       ),
                       itemCount: controller.events.length,
-                     
+
                       itemBuilder: (context, index) {
                         final data = controller.events[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Container(
-                            height: Get.height*0.2,
+                            height: Get.height * 0.2,
                             decoration: BoxDecoration(
                               color: Color(0xffF4EFE3B2).withOpacity(0.3),
                               borderRadius: BorderRadius.circular(8),
@@ -151,7 +156,7 @@ class HomeView extends GetView<HomeController> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                SizedBox(height: 5,),
+                                SizedBox(height: 5),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 7),
                                   child: Text(
@@ -195,7 +200,7 @@ class HomeView extends GetView<HomeController> {
                                       ),
                                       Text(
                                         data.location,
-                                  
+
                                         style: TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 12,
