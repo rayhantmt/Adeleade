@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second_controller.dart';
-import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -31,7 +30,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height * 0.8,
+                  height: Get.height * 0.7,
                   width: Get.width * 0.9,
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
@@ -56,69 +55,76 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('LinkedIn')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Link of your LinkedIn profile',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Bio')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Describe yourself in a short description',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Upload 5 images')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Upload your 5 images here',
-                          obsecuretext: false,
-                        ),
-                        SizedBox(height: Get.height * 0.02),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Password')]),
-                        ),
-                        Obx(
-                          () => Commontextfield(
-                            tittle: '*******',
-                            obsecuretext: controller.isObscured.value,
-                            icon: GestureDetector(
-                              onTap: controller.toggleObscureText,
-                              child: controller.isObscured.value
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off),
-                            ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('LinkedIn')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Link of your LinkedIn profile',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Bio')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Describe yourself in a short description',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Upload 5 images')]),
+                      ),
+                      Commontextfield(
+                        tittle: 'Upload your 5 images here',
+                        obsecuretext: false,
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Password')]),
+                      ),
+                      Obx(
+                        () => Commontextfield(
+                          tittle: '*******',
+                          obsecuretext: controller.isObscured.value,
+                          icon: GestureDetector(
+                            onTap: controller.toggleObscureText,
+                            child: controller.isObscured.value
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
                           ),
                         ),
-                         SizedBox(height: Get.height * 0.02),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Confirm Password')]),
-                        ),
-                        Obx(
-                          () => Commontextfield(
-                            tittle: '*******',
-                            obsecuretext: controller.isObscured1.value,
-                            icon: GestureDetector(
-                              onTap: controller.toggleObscureText1,
-                              child: controller.isObscured1.value
-                                  ? Icon(Icons.visibility)
-                                  : Icon(Icons.visibility_off),
-                            ),
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Padding(
+                        padding: EdgeInsets.only(left: Get.width * 0.1),
+                        child: Row(children: [Text('Confirm Password')]),
+                      ),
+                      Obx(
+                        () => Commontextfield(
+                          tittle: '*******',
+                          obsecuretext: controller.isObscured1.value,
+                          icon: GestureDetector(
+                            onTap: controller.toggleObscureText1,
+                            child: controller.isObscured1.value
+                                ? Icon(Icons.visibility)
+                                : Icon(Icons.visibility_off),
                           ),
                         ),
-                        
-    SizedBox(height: Get.height * 0.015),
+                      ),
+
+                      SizedBox(height: Get.height * 0.015),
                       GestureDetector(
-                       // onTap: () => Get.toNamed(AppPages.o),
-                       onTap: () => Get.snackbar('Success', 'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',animationDuration: Duration(seconds: 2)),
+                        // onTap: () => Get.toNamed(AppPages.o),
+                        onTap: () => Get.snackbar(
+                          'Success',
+                          'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',
+                          animationDuration: Duration(seconds: 2),
+                        ),
                         child: Container(
                           height: Get.height * 0.07,
                           width: Get.width * 0.7,
