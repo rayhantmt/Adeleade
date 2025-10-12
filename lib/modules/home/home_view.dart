@@ -21,82 +21,92 @@ class HomeView extends GetView<HomeController> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: Get.height * 0.07),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Image.asset(
-                        AppImages.logo,
-                        height: 40,
-                        width: 40,
-                        color: Colors.black,
-                      ),
-                      Text(
-                        'Momentum',
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black,
-                          fontSize: 24,
-                        )
-                      ),
-                      Image.asset(AppImages.notification_logo,
-                      height: Get.height*0.08,
-                      width: Get.width*0.1,
-                      )
-                    ],
-                  ),
-                  Container(
-                    height: Get.height * 0.055,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
+            child: Column(
+              children: [
+                SizedBox(height: Get.height * 0.07),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Image.asset(
+                      AppImages.logo,
+                      height: 40,
+                      width: 40,
+                      color: Colors.black,
                     ),
-                    child: TextFormField(
-                      
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hint: Padding(
-                          padding: const EdgeInsets.only(left: 20,),
-                          child: Row(
-                            children: [
-                              Icon(Icons.search,
+                    Text(
+                      'Momentum',
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black,
+                        fontSize: 24,
+                      ),
+                    ),
+                    Image.asset(
+                      AppImages.notification_logo,
+                      height: Get.height * 0.08,
+                      width: Get.width * 0.1,
+                    ),
+                  ],
+                ),
+                Container(
+                  height: Get.height * 0.055,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hint: Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.search,
                               size: 30,
                               color: Color(0xff7D848D),
-                              ),
-                              Text('Search',
-                              style:GoogleFonts.inter(
+                            ),
+                            Text(
+                              'Search',
+                              style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16,
-                                color: Color(0xff7D848D)
+                                color: Color(0xff7D848D),
                               ),
-                              )
-                            ],
-                          ),
-                        )
+                            ),
+                          ],
+                        ),
                       ),
-                    )
+                    ),
                   ),
-                  SizedBox(height: Get.height * 0.01,
-                  child: ListView.builder(itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red
-                      ),
-                    );
-                  },),
-                  ),
-                  Obx(
+                ),
+                // SizedBox(
+                //   height: Get.height*0.05,
+                //   child: ListView.builder(
+                //     scrollDirection: Axis.horizontal,
+                //     itemCount: 8,
+                //     itemBuilder: (context, index) {
+                //       return Container(
+                //        height: Get.height * 0.02,
+                  
+                //         width: double.infinity,
+                //         decoration: BoxDecoration(color: Colors.red),
+                //         child: Text('data'),
+                //       );
+                //     },
+                //   ),
+                // ),
+                Container(
+                  height: Get.height * 0.6,
+                  child: Obx(
                     () => GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
                       itemCount: controller.events.length,
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      // physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final data = controller.events[index];
                         return Padding(
@@ -122,43 +132,50 @@ class HomeView extends GetView<HomeController> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                Text(data.tittle,
-                                textAlign: TextAlign.start,
-                                style: GoogleFonts.inter(fontWeight: FontWeight.w500,
-                                  fontSize:14,
-                                  color: Colors.black,
-                                  )),
+                                Text(
+                                  data.tittle,
+                                  textAlign: TextAlign.start,
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                  ),
+                                ),
                                 Row(
                                   children: [
-                                    Image.asset(AppImages.calander_icon,
-                                    height: Get.height*0.03,
-                                    width: Get.width*0.05,
+                                    Image.asset(
+                                      AppImages.calander_icon,
+                                      height: Get.height * 0.03,
+                                      width: Get.width * 0.05,
                                     ),
-                                    Text(data.date_time,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Color(0xff898989)
+                                    Text(
+                                      data.date_time,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Color(0xff898989),
+                                      ),
                                     ),
-                                    )
                                   ],
                                 ),
                                 Row(
                                   children: [
-                                    Image.asset(AppImages.location_icon,
-                                    height: Get.height*0.03,
-                                    width: Get.width*0.05,
+                                    Image.asset(
+                                      AppImages.location_icon,
+                                      height: Get.height * 0.03,
+                                      width: Get.width * 0.05,
                                     ),
-                                    Text(data.location,
-                                    
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12,
-                                      color: Color(0xff898989)
+                                    Text(
+                                      data.location,
+
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        color: Color(0xff898989),
+                                      ),
                                     ),
-                                    )
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -166,8 +183,8 @@ class HomeView extends GetView<HomeController> {
                       },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
