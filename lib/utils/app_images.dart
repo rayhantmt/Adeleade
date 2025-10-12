@@ -17,4 +17,12 @@ class AppImages {
   static const String notification_logo='assets/notification_logo.png';
   static const String back_icon='assets/back_icon.png';
   static const String profilephoto='assets/tony.jpg';
+  static const String profileicon='assets/pi.png';
+  static const String subscriptionicon='assets/s.png';
+  static const String historyicon='assets/h.png';
+  static const String notificationicon='assets/n.png';
+  static const String privacypolicyicon='assets/p.png';
+  static const String resetpasswordicon='assets/r.png';
+  static const String logouticon='assets/log_out.png';
+
 }
