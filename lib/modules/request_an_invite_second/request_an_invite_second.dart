@@ -119,15 +119,15 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                       GestureDetector(
                         onTap: () => Get.toNamed(AppPages.signup),
                         child: Container(
-                          height: Get.height * 0.03,
-                          width: Get.width * 0.4,
+                          height: Get.height * 0.07,
+                          width: Get.width * 0.7,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(99),
                             color: AppColors.primarycolor,
                           ),
                           child: Center(
                             child: Text(
-                              'Next',
+                              'Request an invite',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
