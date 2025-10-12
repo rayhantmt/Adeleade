@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/state_manager.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/chat/chat_view.dart';
 import 'package:mementum/modules/history/history_view.dart';
 import 'package:mementum/modules/home/home_view.dart';
@@ -22,23 +23,27 @@ class MainScreen extends GetView<MainScreenController> {
       ProfileView(),
     ];
     return Scaffold(
-
-      backgroundColor: Colors.transparent,
+      //backgroundColor: Colors.transparent,
       body: Obx(() => screens[controller.currentIndex.value]),
-      bottomNavigationBar:
-      
-       Obx(() {
+      bottomNavigationBar: Obx(() {
         int currentIndex = controller.currentIndex.value;
         return BottomNavigationBar(
           onTap: controller.changeTab,
           currentIndex: currentIndex,
+           unselectedItemColor: Color(0xff65676B),
           selectedItemColor: AppColors.primarycolor,
-          unselectedItemColor: Color(0xff65676B),
-          backgroundColor: Color(0xffF9F7F1),
+         
+          unselectedLabelStyle: GoogleFonts.inter(
+            //color: Color(0xff65676B),
+            fontWeight: FontWeight.w400,
+            fontSize: 12,
+          ),
+        //  backgroundColor: Color(0xffF9F7F1),
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_filled, size: 30),
               label: 'Home',
+              backgroundColor: Color(0xffF9F7F1),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.location_on_outlined, size: 30),
