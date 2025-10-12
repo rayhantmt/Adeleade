@@ -115,9 +115,10 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                           ),
                         ),
                         
-
+    SizedBox(height: Get.height * 0.015),
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppPages.signup),
+                       // onTap: () => Get.toNamed(AppPages.o),
+                       onTap: () => Get.snackbar('Success', 'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',animationDuration: Duration(seconds: 2)),
                         child: Container(
                           height: Get.height * 0.07,
                           width: Get.width * 0.7,
