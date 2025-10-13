@@ -25,7 +25,9 @@ class UpdateInfoField extends StatelessWidget {
             padding: const EdgeInsets.only(left: 15),
             child: TextFormField(
             
-              decoration: InputDecoration(border: InputBorder.none),
+              decoration: InputDecoration(
+                hintText: hint,
+                border: InputBorder.none),
             ),
           ),
         ),
