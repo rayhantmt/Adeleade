@@ -33,6 +33,7 @@ class EditProfileInfo extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(info,
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.inter(
 
               fontWeight: FontWeight.w400,
