@@ -118,6 +118,7 @@ class MemoriesView extends GetView<MemoriesController> {
 Widget _createEvent (){
   return SingleChildScrollView(
     child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
@@ -129,6 +130,37 @@ Widget _createEvent (){
         UpdateInfoField(tittle: "Event Date", hint:'Enter event Date'),
                 SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Event Category", hint:'Enter event category name'),
+        SizedBox(height: Get.height*0.02,),
+        Text('Image',
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+          color: Colors.black
+        ),
+        
+        ),
+        SizedBox(height: Get.height*0.02,),
+        Container(
+          height: Get.height*0.08,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: Color(0xff625B4A)
+            ),
+            borderRadius: BorderRadius.circular(8),
+            color: Colors.white
+          ),
+          child: Center(
+            child: Text('Upload image',
+            style: GoogleFonts.inter(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              color: AppColors.primarycolor
+            ),
+            ),
+          ),
+        ),
       ],
     )
   );
