@@ -117,23 +117,21 @@ class MemoriesView extends GetView<MemoriesController> {
 }
 Widget _createEvent (){
   return SingleChildScrollView(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: Get.height*0.01,),
-        Text('Create event')
-      ],
-    ),
-  );
-}
-
-Widget _plannedevent (){
-  return Padding(
+    child: Padding(
     padding: const EdgeInsets.symmetric(horizontal: 20),
     child: Column(
       children: [
         UpdateInfoField(tittle: "Event Name", hint:'')
       ],
     ),
+  )
+  );
+}
+
+Widget _plannedevent (){
+  return Column(
+    children: [
+      Text('data')
+    ],
   );
 }
