@@ -119,6 +119,7 @@ Widget _createEvent (){
   return SingleChildScrollView(
     child: Column(
       children: [
+        SizedBox(height: Get.height*0.05,),
         UpdateInfoField(tittle: "Event Name", hint:'')
       ],
     )
