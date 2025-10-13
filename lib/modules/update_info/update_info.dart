@@ -7,16 +7,22 @@ class UpdateInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Stack(
+      body: Stack(
         children: [
-          Image.asset(AppImages.background),
-          Column(
-            children: [
-              
-            ],
+          Image.asset(AppImages.background,
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                  
+              ],
+            ),
           )
         ],
-      )),
+      ),
     );
   }
 }
