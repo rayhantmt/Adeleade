@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mementum/utils/app_images.dart';
 
 class MemoriesView extends StatelessWidget {
   const MemoriesView({super.key});
@@ -6,9 +7,15 @@ class MemoriesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Memories'),
-      ),
+      body: Stack(
+        children: [
+          Image.asset(AppImages.background,
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          )
+        ],
+      )
     );
   }
 }
