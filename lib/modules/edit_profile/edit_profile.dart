@@ -112,10 +112,15 @@ class EditProfile extends StatelessWidget {
                       ],
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                       
+                        Image.asset(
+                          AppImages.editprofileicon,
+                          height: Get.height * 0.07,
+                          width: Get.width * 0.07,
+                        ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
