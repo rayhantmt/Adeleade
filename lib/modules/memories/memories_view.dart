@@ -119,8 +119,16 @@ Widget _createEvent (){
   return SingleChildScrollView(
     child: Column(
       children: [
-        SizedBox(height: Get.height*0.05,),
-        UpdateInfoField(tittle: "Event Name", hint:'')
+        SizedBox(height: Get.height*0.02,),
+        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+                SizedBox(height: Get.height*0.02,),
+        UpdateInfoField(tittle: "Participants", hint:'Enter number of participants'),
+                SizedBox(height: Get.height*0.02,),
+        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+                SizedBox(height: Get.height*0.02,),
+        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+                SizedBox(height: Get.height*0.02,),
+        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
       ],
     )
   );
