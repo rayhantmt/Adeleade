@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/memories/memories_controller.dart';
@@ -99,20 +98,34 @@ class MemoriesView extends GetView<MemoriesController> {
                   ],
                 ),
               ),
-              Expanded(child: Obx(() {
-                if(controller.memorytype==0)
-                {
-                  return Text('data');
-                }
-                else{
-                  return Text('planned');
-                }
-
-              },))
+              Expanded(
+                child: Obx(() {
+                  if (controller.memorytype == 0) {
+                    return _createEvent();
+                  } else {
+                    return _plannedevent();
+                  }
+                }),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+}
+Widget _createEvent (){
+  return Column(
+    children: [
+      Text('Create event')
+    ],
+  );
+}
+
+Widget _plannedevent (){
+  return Column(
+    children: [
+      Text('Create event')
+    ],
+  );
 }
