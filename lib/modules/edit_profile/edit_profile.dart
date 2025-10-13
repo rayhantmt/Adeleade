@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/common_widgets/edit_profile_info.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class EditProfile extends StatelessWidget {
@@ -123,9 +124,7 @@ class EditProfile extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: Get.height*0.01,),
-                    Text('Name',
-                    textAlign: TextAlign.start,
-                    )
+                    EditProfileInfo(tittle: 'Name', info: 'Tony Stark')
                   ],
                 ),
               ),
