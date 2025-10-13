@@ -34,6 +34,11 @@ class UpdateInfoField extends StatelessWidget {
             
               decoration: InputDecoration(
                 hintText: hint,
+                hintStyle: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Color(0xffC7C7C7)
+                ),
                 border: InputBorder.none),
             ),
           ),
