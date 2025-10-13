@@ -13,10 +13,11 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(AppImages.background,
-          height: double.infinity,
-          width: double.infinity,
-          fit: BoxFit.cover,
+          Image.asset(
+            AppImages.background,
+            height: double.infinity,
+            width: double.infinity,
+            fit: BoxFit.cover,
           ),
           SafeArea(
             child: Padding(
@@ -135,17 +136,21 @@ class EditProfile extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('Tony Stark',
-                        style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 24
-                        ),
+                        Text(
+                          'Tony Stark',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24,
+                          ),
                         ),
                       ],
                     ),
                     EditProfileInfo(tittle: 'Name', info: 'Tony Stark'),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Email', info: 'Rayhantmt@gmail.com'),
+                    EditProfileInfo(
+                      tittle: 'Email',
+                      info: 'Rayhantmt@gmail.com',
+                    ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(tittle: 'Gender', info: 'Male'),
                     SizedBox(height: Get.height * 0.01),
@@ -153,11 +158,21 @@ class EditProfile extends StatelessWidget {
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(tittle: 'Nationality', info: 'Mars'),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Instagram', info: 'https://www.instagram.com/rayhantmt/'),
+                    EditProfileInfo(
+                      tittle: 'Instagram',
+                      info: 'https://www.instagram.com/rayhantmt/',
+                    ),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Linkedin', info: 'https://www.linkedin.com/in/abu-rayhan-084483254/'),
+                    EditProfileInfo(
+                      tittle: 'Linkedin',
+                      info: 'https://www.linkedin.com/in/abu-rayhan-084483254/',
+                    ),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Bio', info: 'Aspiring Flutter Developer Passionate about crafting modern, responsive mobile apps with a focus on seamless user experiences and performance optimization.'),
+                    EditProfileInfo(
+                      tittle: 'Bio',
+                      info:
+                          'Aspiring Flutter Developer Passionate about crafting modern, responsive mobile apps with a focus on seamless user experiences and performance optimization.',
+                    ),
                   ],
                 ),
               ),

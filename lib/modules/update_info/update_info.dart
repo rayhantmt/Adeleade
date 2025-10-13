@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/common_widgets/update_info_field.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class UpdateInfoView extends StatelessWidget {
@@ -51,6 +52,7 @@ class UpdateInfoView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: Get.height * 0.02),
+                        UpdateInfoField(tittle: 'Name', hint: 'Enter your name')
                   ],
                 ),
               ),
