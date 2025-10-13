@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/utils/app_colors.dart';
+
 class UpdateInfoField extends StatelessWidget {
   final String tittle;
   final String hint;
@@ -9,23 +10,20 @@ class UpdateInfoField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(tittle),
         Container(
-          height: Get.height*0.05,
+          height: Get.height * 0.05,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(
-              width: 1,
-              color: AppColors.primarycolor
-            ),
-            borderRadius: BorderRadius.circular(12)
+            border: Border.all(width: 1, color: AppColors.primarycolor),
+            borderRadius: BorderRadius.circular(12),
           ),
           child: TextFormField(
-            decoration: InputDecoration(
-              border: InputBorder.none
-            ),
+
+            decoration: InputDecoration(border: InputBorder.none),
           ),
         ),
       ],
