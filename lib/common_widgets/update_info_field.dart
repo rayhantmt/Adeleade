@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 class UpdateInfoField extends StatelessWidget {
   final String tittle;
   final String hint;
@@ -8,12 +7,18 @@ class UpdateInfoField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Get.height*0.07,
-      decoration: BoxDecoration(
-        color: Colors.red
-      ),
-      child: Text(tittle),
+    return Column(
+      children: [
+        Text(tittle),
+        Container(
+          height: Get.height*0.05,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.red
+          ),
+          child: Text(hint),
+        ),
+      ],
     );
   }
 }
