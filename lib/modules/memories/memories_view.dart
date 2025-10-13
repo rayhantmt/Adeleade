@@ -124,7 +124,7 @@ Widget _createEvent (){
                 SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Participants", hint:'Enter number of participants'),
                 SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+        UpdateInfoField(tittle: "Event Location", hint:'Enter event Location'),
                 SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
                 SizedBox(height: Get.height*0.02,),
