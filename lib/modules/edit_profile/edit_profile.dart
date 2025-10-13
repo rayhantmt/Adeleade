@@ -18,6 +18,7 @@ class EditProfile extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       height: Get.height * 0.07,
@@ -121,6 +122,10 @@ class EditProfile extends StatelessWidget {
                         ),
                       ],
                     ),
+                    SizedBox(height: Get.height*0.01,),
+                    Text('Name',
+                    textAlign: TextAlign.start,
+                    )
                   ],
                 ),
               ),
