@@ -132,6 +132,12 @@ class EditProfile extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: Get.height * 0.01),
+                    Text('Tony Stark',
+                    style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 24
+                    ),
+                    ),
                     EditProfileInfo(tittle: 'Name', info: 'Tony Stark'),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(tittle: 'Email', info: 'Rayhantmt@gmail.com'),
