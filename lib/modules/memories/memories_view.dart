@@ -125,7 +125,7 @@ Widget _createEvent (){
 Widget _plannedevent (){
   return Column(
     children: [
-      Text('Create event')
+      Text('Planned')
     ],
   );
 }
