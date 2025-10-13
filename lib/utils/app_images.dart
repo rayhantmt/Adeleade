@@ -24,5 +24,6 @@ class AppImages {
   static const String privacypolicyicon='assets/p.png';
   static const String resetpasswordicon='assets/r.png';
   static const String logouticon='assets/log_out.png';
+  static const String editprofileicon='assets/ed.png';
 
 }
