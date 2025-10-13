@@ -128,7 +128,7 @@ Widget _createEvent (){
                 SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Event Date", hint:'Enter event Date'),
                 SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+        UpdateInfoField(tittle: "Event Category", hint:'Enter event category name'),
       ],
     )
   );
