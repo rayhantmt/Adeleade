@@ -31,7 +31,7 @@ class MemoriesView extends StatelessWidget {
                         ),
                         Center(
                           child: Text(
-                            'My Profile',
+                            'Memories',
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 18,
@@ -42,6 +42,10 @@ class MemoriesView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: Get.height*0.01,),
+                  Container(
+                    
+                  )
               ],
             ),
           ),
