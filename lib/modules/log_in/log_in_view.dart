@@ -31,7 +31,7 @@ class LogInView extends GetView<LogInController> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height * 0.7,
+                  height: Get.height * 0.58,
                   width: Get.width * 0.9,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -177,7 +177,7 @@ class LogInView extends GetView<LogInController> {
                       //     ],
                       //   ),
                       // ),
-                      SizedBox(height: Get.height * 0.033),
+                      //SizedBox(height: Get.height * 0.033),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
