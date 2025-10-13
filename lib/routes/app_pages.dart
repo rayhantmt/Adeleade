@@ -1,3 +1,5 @@
+import 'package:mementum/modules/otp_page/otp_page_controller.dart';
+
 class AppPages {
   static const String login='/login';
   static const String signup='/signup';
@@ -9,4 +11,5 @@ class AppPages {
   static const String mainscreen='/mainscreen';
   static const String unlockmomentum='/unlockmomentum';
   static const String editprofile='/editprofile';
+  static const String updateinfo='/updateinfo';
 }
