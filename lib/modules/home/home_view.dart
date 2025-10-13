@@ -176,6 +176,7 @@ class HomeView extends GetView<HomeController> {
                                         height: Get.height * 0.03,
                                         width: Get.width * 0.05,
                                       ),
+                                      SizedBox(width: Get.width*0.01,),
                                       Text(
                                         data.date_time,
                                         style: TextStyle(
@@ -196,6 +197,7 @@ class HomeView extends GetView<HomeController> {
                                         height: Get.height * 0.03,
                                         width: Get.width * 0.05,
                                       ),
+                                       SizedBox(width: Get.width*0.01,),
                                       Text(
                                         data.location,
 

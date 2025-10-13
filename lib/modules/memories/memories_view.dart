@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/common_widgets/update_info_field.dart';
 import 'package:mementum/modules/memories/memories_controller.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
@@ -115,17 +116,24 @@ class MemoriesView extends GetView<MemoriesController> {
   }
 }
 Widget _createEvent (){
-  return Column(
-    children: [
-      Text('Create event')
-    ],
+  return SingleChildScrollView(
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: Get.height*0.01,),
+        Text('Create event')
+      ],
+    ),
   );
 }
 
 Widget _plannedevent (){
-  return Column(
-    children: [
-      Text('Planned')
-    ],
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20),
+    child: Column(
+      children: [
+        UpdateInfoField(tittle: "Event Name", hint:'')
+      ],
+    ),
   );
 }
