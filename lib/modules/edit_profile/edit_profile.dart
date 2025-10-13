@@ -13,7 +13,11 @@ class EditProfile extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Image.asset(AppImages.background),
+          Image.asset(AppImages.background,
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 18),
