@@ -118,6 +118,15 @@ class ProfileView extends StatelessWidget {
                               fontSize: 28,
                               color: Colors.red
                             ),
+                            ),
+                            Container(
+                              height: Get.height*0.1,
+                              width: Get.width*0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.red
+                              ),
+                              child: Text('Log Out'),
                             )
                           ],
                         ),
