@@ -14,96 +14,94 @@ class MemoriesView extends GetView<MemoriesController> {
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              children: [
-                     SizedBox(
-                    height: Get.height * 0.07,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentGeometry.centerLeft,
-                          child: Image.asset(
-                            AppImages.back_icon,
-                            height: Get.height * 0.07,
-                            width: Get.height * 0.07,
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            'Memories',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height*0.01,),
-                  Obx(() => 
-                  Row(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            children: [
+                   SizedBox(
+                  height: Get.height * 0.07,
+                  child: Stack(
                     children: [
-                        Expanded(
-                            child: GestureDetector(
-                              onTap: () => controller.setDepositType(0),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 12),
-                                decoration: BoxDecoration(
-                                  color: controller.memorytype.value == 0
-                                      ? AppColors.primarycolor
-                                      : Color(0xffE7F0EB),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "On-Time",
-                                    style: TextStyle(
-                                      color: controller.memorytype.value == 0
-                                          ? Colors.white
-                                          : Color(0xff126535),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
+                      Align(
+                        alignment: AlignmentGeometry.centerLeft,
+                        child: Image.asset(
+                          AppImages.back_icon,
+                          height: Get.height * 0.07,
+                          width: Get.height * 0.07,
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          'Memories',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: Colors.black,
                           ),
-                          SizedBox(width: 5,),
-                          Expanded(
-                            child: GestureDetector(
-                              onTap: () => controller.setDepositType(1),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 12),
-                                decoration: BoxDecoration(
-                                  color: controller.memorytype.value == 1
-                                      ? AppColors.primarycolor
-                                      : Color(0xffE7F0EB),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "Recurring Deposit",
-                                    style: TextStyle(
-                                      color: controller.memorytype.value == 1
-                                          ? Colors.white
-                                          : Color(0xff126535),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                        ),
+                      ),
                     ],
-                  )
-                  
-                  
-                  ,)
-              ],
-            ),
+                  ),
+                ),
+                SizedBox(height: Get.height*0.01,),
+                Obx(() => 
+                Row(
+                  children: [
+                      Expanded(
+                          child: GestureDetector(
+                            onTap: () => controller.setDepositType(0),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                color: controller.memorytype.value == 0
+                                    ? AppColors.primarycolor
+                                    : Color(0xffC7C7C7),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Create Event",
+                                  style: TextStyle(
+                                    color: controller.memorytype.value == 0
+                                        ? Colors.white
+                                        : Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 5,),
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () => controller.setDepositType(1),
+                            child: Container(
+                              padding: EdgeInsets.symmetric(vertical: 12),
+                              decoration: BoxDecoration(
+                                color: controller.memorytype.value == 1
+                                    ? AppColors.primarycolor
+                                    : Color(0xffC7C7C7),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "Planned",
+                                  style: TextStyle(
+                                    color: controller.memorytype.value == 1
+                                        ? Colors.white
+                                        :Colors.black,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                  ],
+                )
+                
+                
+                ,)
+            ],
           ),
         ),
       )
