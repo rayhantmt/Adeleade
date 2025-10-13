@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/edit_profile_info.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class EditProfile extends StatelessWidget {
@@ -116,10 +117,13 @@ class EditProfile extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Image.asset(
-                          AppImages.editprofileicon,
-                          height: Get.height * 0.07,
-                          width: Get.width * 0.07,
+                        GestureDetector(
+                          onTap: () => Get.toNamed(AppPages.updateinfo),
+                          child: Image.asset(
+                            AppImages.editprofileicon,
+                            height: Get.height * 0.07,
+                            width: Get.width * 0.07,
+                          ),
                         ),
                       ],
                     ),
