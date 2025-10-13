@@ -99,7 +99,31 @@ class ProfileView extends StatelessWidget {
                    SizedBox(height: Get.height*0.015,),
                   ProfileContainer(tittle: "Reset Password", image: AppImages.resetpasswordicon),
                    SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Log Out", image: AppImages.logouticon),
+                  GestureDetector(
+                    onTap: () => showDialog(context: context, builder: (context) => Dialog(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)
+                        ),
+                        
+                        height: Get.height*0.45,
+                        width: double.infinity,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('Are you sure to log out?',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 28,
+                              color: Colors.red
+                            ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),),
+                    child: ProfileContainer(tittle: "Log Out", image: AppImages.logouticon)),
 
             ],
           ),
