@@ -62,11 +62,11 @@ class HomeView extends GetView<HomeController> {
                       hint: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(
-                            Icons.search,
-                            size: 25,
-                            color: Color(0xff7D848D),
+                          Image.asset(AppImages.search_icon,
+                          height:24,
+                          width: 24,
                           ),
+                          SizedBox(width: Get.width*0.01,),
                           Text(
                             'Search',
                             style: GoogleFonts.inter(
