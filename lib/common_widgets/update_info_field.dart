@@ -21,9 +21,12 @@ class UpdateInfoField extends StatelessWidget {
             border: Border.all(width: 1, color: AppColors.primarycolor),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: TextFormField(
-
-            decoration: InputDecoration(border: InputBorder.none),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: TextFormField(
+            
+              decoration: InputDecoration(border: InputBorder.none),
+            ),
           ),
         ),
       ],
