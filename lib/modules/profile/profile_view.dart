@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/profile_container.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class ProfileView extends StatelessWidget {
@@ -52,12 +53,12 @@ class ProfileView extends StatelessWidget {
                     child: Image.asset(
                       AppImages.profilephoto,
                       height: 100,
-                      
+
                       width: 100,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  
+
                   SizedBox(width: 20),
                   Text(
                     'Tony Stark',
@@ -69,71 +70,98 @@ class ProfileView extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: Get.height*0.05,),
-              Text('Account',
-              textAlign: TextAlign.start,
-              style: GoogleFonts.inter(
-                fontWeight:FontWeight.w500,
-                fontSize: 18,
-                color: Colors.black
+              SizedBox(height: Get.height * 0.05),
+              Text(
+                'Account',
+                textAlign: TextAlign.start,
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
               ),
+              SizedBox(height: Get.height * 0.015),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.editprofile),
+                child: ProfileContainer(
+                  tittle: "Personal Information",
+                  image: AppImages.profileicon,
+                ),
               ),
-                  SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Personal Information", image: AppImages.profileicon),
-                   SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Subscription", image: AppImages.subscriptionicon),
-                   SizedBox(height: Get.height*0.01,),
-                  ProfileContainer(tittle: "History", image: AppImages.historyicon),
-                   SizedBox(height: Get.height*0.05,),
-                   Text('Sequrity and Policy',
-                   style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    color: Colors.black
-                   ),
-                   ),
-                    SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Notification", image: AppImages.notificationicon),
-                   SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Privacy and Policy", image: AppImages.privacypolicyicon),
-                   SizedBox(height: Get.height*0.015,),
-                  ProfileContainer(tittle: "Reset Password", image: AppImages.resetpasswordicon),
-                   SizedBox(height: Get.height*0.015,),
-                  GestureDetector(
-                    onTap: () => showDialog(context: context, builder: (context) => Dialog(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20)
-                        ),
-                        
-                        height: Get.height*0.45,
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Are you sure to log out?',
+              SizedBox(height: Get.height * 0.015),
+              ProfileContainer(
+                tittle: "Subscription",
+                image: AppImages.subscriptionicon,
+              ),
+              SizedBox(height: Get.height * 0.01),
+              ProfileContainer(tittle: "History", image: AppImages.historyicon),
+              SizedBox(height: Get.height * 0.05),
+              Text(
+                'Sequrity and Policy',
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: Get.height * 0.015),
+              ProfileContainer(
+                tittle: "Notification",
+                image: AppImages.notificationicon,
+              ),
+              SizedBox(height: Get.height * 0.015),
+              ProfileContainer(
+                tittle: "Privacy and Policy",
+                image: AppImages.privacypolicyicon,
+              ),
+              SizedBox(height: Get.height * 0.015),
+              ProfileContainer(
+                tittle: "Reset Password",
+                image: AppImages.resetpasswordicon,
+              ),
+              SizedBox(height: Get.height * 0.015),
+              GestureDetector(
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) => Dialog(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+
+                      height: Get.height * 0.45,
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Are you sure to log out?',
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 28,
-                              color: Colors.red
+                              color: Colors.red,
                             ),
+                          ),
+                          Container(
+                            height: Get.height * 0.1,
+                            width: Get.width * 0.6,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: Colors.red,
                             ),
-                            Container(
-                              height: Get.height*0.1,
-                              width: Get.width*0.6,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.red
-                              ),
-                              child: Text('Log Out'),
-                            )
-                          ],
-                        ),
+                            child: Text('Log Out'),
+                          ),
+                        ],
                       ),
-                    ),),
-                    child: ProfileContainer(tittle: "Log Out", image: AppImages.logouticon)),
-
+                    ),
+                  ),
+                ),
+                child: ProfileContainer(
+                  tittle: "Log Out",
+                  image: AppImages.logouticon,
+                ),
+              ),
             ],
           ),
         ),
