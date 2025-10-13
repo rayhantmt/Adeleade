@@ -59,25 +59,23 @@ class HomeView extends GetView<HomeController> {
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hint: Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.search,
-                              size: 30,
+                      hint: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.search,
+                            size: 25,
+                            color: Color(0xff7D848D),
+                          ),
+                          Text(
+                            'Search',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
                               color: Color(0xff7D848D),
                             ),
-                            Text(
-                              'Search',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 16,
-                                color: Color(0xff7D848D),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
