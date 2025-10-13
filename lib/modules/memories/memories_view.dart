@@ -161,6 +161,38 @@ Widget _createEvent (){
             ),
           ),
         ),
+        SizedBox(height: Get.height*0.02,),
+        Text('Image',
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+          color: Colors.black
+        ),
+        
+        ),
+        SizedBox(height: Get.height*0.02,),
+        Container(
+          height: Get.height*0.11,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: Color(0xff625B4A)
+            ),
+            borderRadius: BorderRadius.circular(8),
+            color: Colors.white
+          ),
+          child: Center(
+            child: Text('Write a short and detailed description of the event',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              color: AppColors.primarycolor
+            ),
+            ),
+          ),
+        ),
       ],
     )
   );
