@@ -22,7 +22,11 @@ class UpdateInfoField extends StatelessWidget {
             ),
             borderRadius: BorderRadius.circular(12)
           ),
-          child: Text(hint),
+          child: TextFormField(
+            decoration: InputDecoration(
+              border: InputBorder.none
+            ),
+          ),
         ),
       ],
     );
