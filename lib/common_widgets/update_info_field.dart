@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/utils/app_colors.dart';
 
 class UpdateInfoField extends StatelessWidget {
@@ -12,7 +13,13 @@ class UpdateInfoField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(tittle),
+        Text(tittle,
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.w500,
+          fontSize: 16,
+          color: Colors.black
+        ),
+        ),
         Container(
           height: Get.height * 0.05,
           width: double.infinity,
