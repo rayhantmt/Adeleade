@@ -24,7 +24,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 32,
-                    color: AppColors.primarycolor,
+                    color: Colors.black
                   ),
                 ),
                 SizedBox(height: Get.height * 0.033),
