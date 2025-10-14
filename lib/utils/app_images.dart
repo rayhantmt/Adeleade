@@ -31,6 +31,7 @@ class AppImages {
   static const String spiderman='assets/spiderman.png';
   static const notification_img='assets/notificatio_screen_img.png';
   static const mapsimg='assets/maps.png';
+  static const subscription_screen_img='assets/subscriptions_screen_img.png';
 
 
 }
