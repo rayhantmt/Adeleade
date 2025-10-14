@@ -163,7 +163,7 @@ Widget _createEvent (){
           ),
         ),
         SizedBox(height: Get.height*0.02,),
-        Text('Image',
+        Text('Details',
         style: GoogleFonts.inter(
           fontWeight: FontWeight.w500,
           fontSize: 16,
