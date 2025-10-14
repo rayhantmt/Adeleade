@@ -73,7 +73,9 @@ class HistoryView extends GetView<ChatController> {
                                 borderRadius: BorderRadiusGeometry.circular(100),
                                 child: Image.asset(controller.conversations[index].image),
                               ),
+                              SizedBox(width: Get.width*0.01,),
                               Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     controller.conversations[index].name,
