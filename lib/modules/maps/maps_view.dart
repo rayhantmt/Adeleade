@@ -15,10 +15,13 @@ class MapsView extends StatelessWidget {
           fit: BoxFit.cover,
           ),
           SafeArea(
-            child: Column(
-              children: [
-                Text('Events Happening Near you')
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Text('Events Happening Near you',textAlign: TextAlign.center,)
+                ],
+              ),
             ),
           )
         ],
