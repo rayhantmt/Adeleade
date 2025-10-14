@@ -29,5 +29,7 @@ class AppImages {
   static const String logoutprofile='assets/log_out_profile.png';
   static const String captain='assets/captain.png';
   static const String spiderman='assets/spiderman.png';
+  static const notification_img='assets/notificatio_screen_img.png';
+
 
 }
