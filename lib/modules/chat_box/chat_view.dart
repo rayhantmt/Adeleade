@@ -55,10 +55,11 @@ class HistoryView extends GetView<ChatController> {
                
                 Expanded(
                   child: ListView.builder(
+                    padding: EdgeInsets.zero,
                     itemCount: controller.conversations.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
                          height: Get.height*0.05,
                           decoration: BoxDecoration(
