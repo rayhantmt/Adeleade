@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/chat_box/chat_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class HistoryView extends GetView<ChatController> {
-  const HistoryView({super.key});
+class ChatView extends GetView<ChatController> {
+  const ChatView({super.key});
 
   @override
   Widget build(BuildContext context) {

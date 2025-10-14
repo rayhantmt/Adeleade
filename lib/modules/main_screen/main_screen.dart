@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mementum/modules/chat/chat_view.dart';
+import 'package:mementum/modules/maps/maps_view.dart';
 import 'package:mementum/modules/chat_box/chat_view.dart';
 import 'package:mementum/modules/home/home_view.dart';
 import 'package:mementum/modules/main_screen/main_screen_controller.dart';
@@ -17,9 +17,9 @@ class MainScreen extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       HomeView(),
-      ChatView(),
+      MapsView(),
       MemoriesView(),
-      HistoryView(),
+      ChatView(),
       ProfileView(),
     ];
     return Scaffold(
