@@ -13,6 +13,13 @@ class MapsView extends StatelessWidget {
           height: double.infinity,
           width: double.infinity,
           fit: BoxFit.cover,
+          ),
+          SafeArea(
+            child: Column(
+              children: [
+                Text('Events Happening Near you')
+              ],
+            ),
           )
         ],
       ),
