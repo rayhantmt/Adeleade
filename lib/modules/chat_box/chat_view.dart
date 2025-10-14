@@ -26,6 +26,7 @@ class HistoryView extends GetView<ChatController> {
                   child: SizedBox(
                     height: Get.height * 0.07,
                     child: Stack(
+                      
                       children: [
                         Align(
                           alignment: AlignmentGeometry.centerLeft,
@@ -54,6 +55,7 @@ class HistoryView extends GetView<ChatController> {
                 ),
                
                 Expanded(
+
                   child: ListView.builder(
                     padding: EdgeInsets.zero,
                     itemCount: controller.conversations.length,
@@ -63,7 +65,7 @@ class HistoryView extends GetView<ChatController> {
                         child: Container(
                          height: Get.height*0.05,
                           decoration: BoxDecoration(
-                            color: Colors.red
+                            color: Colors.white
                           ),
                           child: Text(controller.conversations[index].name,
                           style: GoogleFonts.inter(
