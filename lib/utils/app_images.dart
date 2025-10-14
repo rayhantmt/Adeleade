@@ -27,5 +27,7 @@ class AppImages {
   static const String editprofileicon='assets/ed.png';
   static const String search_icon='assets/search_icon.png';
   static const String logoutprofile='assets/log_out_profile.png';
+  static const String captain='assets/captain.png';
+  static const String spiderman='assets/spiderman.png';
 
 }
