@@ -50,7 +50,12 @@ class HistoryView extends StatelessWidget {
                           ),
                         ),
                 ),
-                SizedBox(height: Get.height*0.05,)
+                SizedBox(height: Get.height*0.05,),
+                ListView.builder(itemBuilder: (context, index) {
+                  return Container(
+child: Text('data'),
+                  );
+                },)
               ],
             ),
           )
