@@ -26,7 +26,6 @@ class HistoryView extends GetView<ChatController> {
                   child: SizedBox(
                     height: Get.height * 0.07,
                     child: Stack(
-                      
                       children: [
                         Align(
                           alignment: AlignmentGeometry.centerLeft,
@@ -53,30 +52,32 @@ class HistoryView extends GetView<ChatController> {
                     ),
                   ),
                 ),
-               
-                Expanded(
 
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: controller.conversations.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: Container(
-                         height: Get.height*0.05,
-                          decoration: BoxDecoration(
-                            color: Colors.white
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    height: double.infinity,
+                    child: ListView.builder(
+                      padding: EdgeInsets.zero,
+                      itemCount: controller.conversations.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Container(
+                            height: Get.height * 0.05,
+                            decoration: BoxDecoration(color: Colors.white),
+                            child: Text(
+                              controller.conversations[index].name,
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
-                          child: Text(controller.conversations[index].name,
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14,
-                            color: Colors.black
-                          ),
-                          ),
-                        ),
-                      );
-                    },
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],
