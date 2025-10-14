@@ -59,7 +59,7 @@ class HistoryView extends GetView<ChatController> {
                   color: Colors.white,
                   height: double.infinity,
                   child: ListView.builder(
-                    padding: EdgeInsets.zero,
+                    padding: EdgeInsets.only(top: 0,bottom: 0,left: 20,right: 20),
                     itemCount: controller.conversations.length,
                     itemBuilder: (context, index) {
                       return Padding(
