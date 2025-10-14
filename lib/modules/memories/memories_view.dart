@@ -183,7 +183,22 @@ Widget _createEvent (){
             borderRadius: BorderRadius.circular(8),
             color: Colors.white
           ),
-          child: TextFormField()
+          child: TextFormField(
+            decoration: InputDecoration(
+              
+              border: InputBorder.none,
+              hint: Center(
+            child: Text('Write a short and detailed description of the event',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.inter(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              color: AppColors.primarycolor
+            ),
+            ),
+          ),
+            ),
+          )
         ),
         SizedBox(height: Get.height*0.05,),
         Padding(
