@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mementum/utils/app_images.dart';
 
 class MapsView extends StatelessWidget {
   const MapsView({super.key});
@@ -6,7 +7,15 @@ class MapsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red,
+      body: Stack(
+        children: [
+          Image.asset(AppImages.background,
+          height: double.infinity,
+          width: double.infinity,
+          fit: BoxFit.cover,
+          )
+        ],
+      ),
     );
   }
 }
