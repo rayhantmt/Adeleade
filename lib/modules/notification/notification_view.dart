@@ -27,10 +27,13 @@ class NotificationView extends StatelessWidget {
                     children: [
                       Align(
                         alignment: AlignmentGeometry.centerLeft,
-                        child: Image.asset(
-                          AppImages.back_icon,
-                          height: Get.height * 0.07,
-                          width: Get.height * 0.07,
+                        child: GestureDetector(
+                          onTap: () => Get.back(),
+                          child: Image.asset(
+                            AppImages.back_icon,
+                            height: Get.height * 0.07,
+                            width: Get.height * 0.07,
+                          ),
                         ),
                       ),
                       Center(
