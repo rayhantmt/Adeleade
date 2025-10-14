@@ -80,7 +80,7 @@ class HistoryView extends GetView<ChatController> {
                                   Text(
                                     controller.conversations[index].name,
                                     style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w400,
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 14,
                                       color: Colors.black,
                                     ),
@@ -88,6 +88,8 @@ class HistoryView extends GetView<ChatController> {
                                   Text(controller.conversations[index].msg)
                                 ],
                               ),
+                              Spacer(),
+                              Text(controller.conversations[index].time)
                             ],
                           ),
                         ),
