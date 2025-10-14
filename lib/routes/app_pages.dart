@@ -10,4 +10,5 @@ class AppPages {
   static const String unlockmomentum='/unlockmomentum';
   static const String editprofile='/editprofile';
   static const String updateinfo='/updateinfo';
+  static const String notification='/notification';
 }
