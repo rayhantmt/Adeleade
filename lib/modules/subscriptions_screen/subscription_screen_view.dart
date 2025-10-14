@@ -35,7 +35,7 @@ class SubscriptionScreenView extends StatelessWidget {
                             ),
                             Center(
                               child: Text(
-                                'My Profile',
+                                'Subscription',
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
@@ -46,6 +46,8 @@ class SubscriptionScreenView extends StatelessWidget {
                           ],
                         ),
                       ),
+
+
                   ],
                 ),
               ),
