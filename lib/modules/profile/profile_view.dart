@@ -130,10 +130,10 @@ class ProfileView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
 
-                      height: Get.height * 0.45,
+                      height: Get.height * 0.35,
                       width: double.infinity,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.asset(AppImages.logoutprofile,
@@ -148,20 +148,41 @@ class ProfileView extends StatelessWidget {
                             color: Color(0xff6B7280)
                           ),
                           ),
-                          Container(
-                            height: Get.height*0.05,
-                            width: Get.width*0.6,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Color(0xffDC143C)
+                          GestureDetector(
+                            onTap: () => Get.offAllNamed(AppPages.login),
+                            child: Container(
+                              height: Get.height*0.05,
+                              width: Get.width*0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xffDC143C)
+                              ),
+                              child: Center(child: Text('Confirm Log Out',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                color: Colors.white
+                              ),
+                              )),
                             ),
-                            child: Center(child: Text('Confirm Log Out',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                              color: Colors.white
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Container(
+                              height: Get.height*0.05,
+                              width: Get.width*0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xffF3F4F6)
+                              ),
+                              child: Center(child: Text('Cancel',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                                color: Color(0xff727272)
+                              ),
+                              )),
                             ),
-                            )),
                           )
                         ],
                       ),
