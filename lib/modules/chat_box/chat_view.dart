@@ -52,13 +52,26 @@ class HistoryView extends GetView<ChatController> {
                     ),
                   ),
                 ),
-                SizedBox(height: Get.height * 0.05),
+               
                 Expanded(
                   child: ListView.builder(
                     itemCount: controller.conversations.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        child: Text(controller.conversations[index].name),
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 20),
+                        child: Container(
+                         height: Get.height*0.05,
+                          decoration: BoxDecoration(
+                            color: Colors.red
+                          ),
+                          child: Text(controller.conversations[index].name,
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                            color: Colors.black
+                          ),
+                          ),
+                        ),
                       );
                     },
                   ),
