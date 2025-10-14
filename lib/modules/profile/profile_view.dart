@@ -89,9 +89,12 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.015),
-              ProfileContainer(
-                tittle: "Subscription",
-                image: AppImages.subscriptionicon,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.subscriptionicon),
+                child: ProfileContainer(
+                  tittle: "Subscription",
+                  image: AppImages.subscriptionicon,
+                ),
               ),
               SizedBox(height: Get.height * 0.01),
               ProfileContainer(tittle: "History", image: AppImages.historyicon),
