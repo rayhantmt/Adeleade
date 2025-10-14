@@ -69,7 +69,10 @@ class HistoryView extends GetView<ChatController> {
                           decoration: BoxDecoration(color: Colors.white),
                           child: Row(
                             children: [
-                              
+                              ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(100),
+                                child: Image.asset(controller.conversations[index].image),
+                              ),
                               Text(
                                 controller.conversations[index].name,
                                 style: GoogleFonts.inter(
