@@ -14,10 +14,12 @@ class NotificationView extends StatelessWidget {
           height: double.infinity,
           fit: BoxFit.cover,
           ),
-          Column(
-            children: [
-              
-            ],
+          SafeArea(
+            child: Column(
+              children: [
+                
+              ],
+            ),
           )
         ],
       ),
