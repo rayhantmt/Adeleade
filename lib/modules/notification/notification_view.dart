@@ -60,6 +60,13 @@ class NotificationView extends StatelessWidget {
                   fontSize: 16,
                   color: Colors.black
                 ),
+                ),
+                Text("We’ll let you know when there will be something to update you.",
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  color: Color(0xff797979)
+                ),
                 )
                 ],
               ),
