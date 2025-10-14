@@ -50,6 +50,7 @@ class HistoryView extends StatelessWidget {
                           ),
                         ),
                 ),
+                SizedBox(height: Get.height*0.05,)
               ],
             ),
           )
