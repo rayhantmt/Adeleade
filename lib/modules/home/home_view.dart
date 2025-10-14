@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/home/home_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class HomeView extends GetView<HomeController> {
@@ -40,10 +41,13 @@ class HomeView extends GetView<HomeController> {
                         fontSize: 24,
                       ),
                     ),
-                    Image.asset(
-                      AppImages.notification_logo,
-                      height: Get.height * 0.08,
-                      width: Get.width * 0.1,
+                    GestureDetector(
+                      onTap: () => Get.toNamed(AppPages.notification),
+                      child: Image.asset(
+                        AppImages.notification_logo,
+                        height: Get.height * 0.08,
+                        width: Get.width * 0.1,
+                      ),
                     ),
                   ],
                 ),
