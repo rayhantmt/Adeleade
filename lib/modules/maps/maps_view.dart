@@ -32,7 +32,11 @@ class MapsView extends StatelessWidget {
                   ),
                   ),
                   Text('Events Happening Near you',textAlign: TextAlign.center,),
-                  //Expanded(child: )
+                  Expanded(child:Image.asset(AppImages.mapsimg,
+                  fit: BoxFit.cover,
+                  height: double.infinity,
+                  width: double.infinity,
+                  ) )
                 ],
               ),
             ),
