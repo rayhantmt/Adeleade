@@ -134,24 +134,35 @@ class ProfileView extends StatelessWidget {
                       width: double.infinity,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(
-                            'Are you sure to log out?',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 28,
-                              color: Colors.red,
-                            ),
+                          Image.asset(AppImages.logoutprofile,
+                          height: 60,
+                          width: 60,
+                          ),
+                          Text('Are you sure you want to log out of your account?',
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                            color: Color(0xff6B7280)
+                          ),
                           ),
                           Container(
-                            height: Get.height * 0.1,
-                            width: Get.width * 0.6,
+                            height: Get.height*0.05,
+                            width: Get.width*0.6,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(12),
+                              color: Color(0xffDC143C)
                             ),
-                            child: Text('Log Out'),
-                          ),
+                            child: Center(child: Text('Confirm Log Out',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Colors.white
+                            ),
+                            )),
+                          )
                         ],
                       ),
                     ),
@@ -161,6 +172,7 @@ class ProfileView extends StatelessWidget {
                   tittle: "Log Out",
                   image: AppImages.logouticon,
                 ),
+                
               ),
             ],
           ),

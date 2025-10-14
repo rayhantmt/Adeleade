@@ -26,5 +26,6 @@ class AppImages {
   static const String logouticon='assets/log_out.png';
   static const String editprofileicon='assets/ed.png';
   static const String search_icon='assets/search_icon.png';
+  static const String logoutprofile='assets/log_out_profile.png';
 
 }
