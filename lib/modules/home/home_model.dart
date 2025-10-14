@@ -8,3 +8,8 @@ class Event{
 
   Event({required this.image, required this.tittle, required this.date_time, required this.location, required this.maxpeople, required this.joinedpeople});
 }
+class Category{
+  final String categories;
+
+  Category({required this.categories});
+}

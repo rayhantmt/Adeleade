@@ -26,4 +26,14 @@ Event(tittle: "Gril's Night out", date_time: "20 Sept 2025, 5:00 PM", location: 
 
 
   ].obs;
+
+  var ctgry=[
+Category(categories: 'All',),
+Category(categories: 'Teavelling'),
+Category(categories: 'Music'),
+Category(categories: 'Mountain'),
+Category(categories: 'Sea'),
+Category(categories: 'Lake'),
+Category(categories: 'Spritual')
+  ];
 }

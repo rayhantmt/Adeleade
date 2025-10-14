@@ -85,7 +85,7 @@ class HomeView extends GetView<HomeController> {
                   height: Get.height * 0.06,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 8, // Placeholder count
+                    itemCount: controller.ctgry.length, // Placeholder count
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(
@@ -104,7 +104,7 @@ class HomeView extends GetView<HomeController> {
                             ), // Subtle border
                           ),
                           child: Text(
-                            'Category ${index + 1}',
+                            controller.ctgry[index].categories,
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
