@@ -30,6 +30,7 @@ class AppImages {
   static const String captain='assets/captain.png';
   static const String spiderman='assets/spiderman.png';
   static const notification_img='assets/notificatio_screen_img.png';
+  static const mapsimg='assets/maps.png';
 
 
 }

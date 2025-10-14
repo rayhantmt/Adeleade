@@ -31,7 +31,8 @@ class MapsView extends StatelessWidget {
                     color: Colors.black
                   ),
                   ),
-                  Text('Events Happening Near you',textAlign: TextAlign.center,)
+                  Text('Events Happening Near you',textAlign: TextAlign.center,),
+                  //Expanded(child: )
                 ],
               ),
             ),
