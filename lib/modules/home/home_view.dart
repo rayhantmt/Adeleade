@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/home/home_controller.dart';
+import 'package:mementum/utils/app_colors.dart';
 
 import 'package:mementum/utils/app_images.dart';
 
@@ -62,11 +63,12 @@ class HomeView extends GetView<HomeController> {
                       hint: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(AppImages.search_icon,
-                          height:24,
-                          width: 24,
+                          Image.asset(
+                            AppImages.search_icon,
+                            height: 24,
+                            width: 24,
                           ),
-                          SizedBox(width: Get.width*0.01,),
+                          SizedBox(width: Get.width * 0.01),
                           Text(
                             'Search',
                             style: GoogleFonts.inter(
@@ -85,32 +87,31 @@ class HomeView extends GetView<HomeController> {
                   height: Get.height * 0.06,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: controller.ctgry.length, // Placeholder count
+                    itemCount: controller.ctgry.length,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(
-                          right: 10,
-                        ), // Space between items
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          decoration: BoxDecoration(
-                            color: Colors
-                                .grey
-                                .shade200, // Light color for categories
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: Colors.black12,
-                            ), // Subtle border
-                          ),
-                          child: Text(
-                            controller.ctgry[index].categories,
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 14,
-                              color: Colors.black87,
+                        padding: const EdgeInsets.only(right: 10),
+                        child: GestureDetector(
+                          onTap: () => controller.selectCategory(index),
+                          child: Obx(() => Container(  // Wrap Container with Obx
+                            alignment: Alignment.center,
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            decoration: BoxDecoration(
+                              color: controller.selectedCategoryIndex.value == index 
+                                ? Color(0xffDACBA4) 
+                                : Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.black12),
                             ),
-                          ),
+                            child: Text(
+                              controller.ctgry[index].categories,
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                                color: Colors.black87,
+                              ),
+                            ),
+                          )),
                         ),
                       );
                     },
@@ -174,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                                         height: Get.height * 0.03,
                                         width: Get.width * 0.05,
                                       ),
-                                      SizedBox(width: Get.width*0.01,),
+                                      SizedBox(width: Get.width * 0.01),
                                       Text(
                                         data.date_time,
                                         style: TextStyle(
@@ -195,7 +196,7 @@ class HomeView extends GetView<HomeController> {
                                         height: Get.height * 0.03,
                                         width: Get.width * 0.05,
                                       ),
-                                       SizedBox(width: Get.width*0.01,),
+                                      SizedBox(width: Get.width * 0.01),
                                       Text(
                                         data.location,
 

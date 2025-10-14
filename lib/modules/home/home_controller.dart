@@ -35,5 +35,12 @@ Category(categories: 'Mountain'),
 Category(categories: 'Sea'),
 Category(categories: 'Lake'),
 Category(categories: 'Spritual')
-  ];
+  ].obs;
+  // Add this variable
+var selectedCategoryIndex = 0.obs;
+
+// Add this function
+void selectCategory(int index) {
+  selectedCategoryIndex.value = index;
+}
 }
