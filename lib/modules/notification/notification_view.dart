@@ -54,6 +54,13 @@ class NotificationView extends StatelessWidget {
                 height: Get.height*0.25,
                 width: Get.width*0.25,
                 ),
+                Text('No Notifications',
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Colors.black
+                ),
+                )
                 ],
               ),
             ),
