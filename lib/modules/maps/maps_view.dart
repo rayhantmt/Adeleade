@@ -20,8 +20,10 @@ class MapsView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+               
                 children: [
-                  SizedBox(height: Get.height*0.02,),
+                  SizedBox(height: Get.height*0.02,width: double.infinity,),
                   Text('Maps Events',
                   style: GoogleFonts.inter(
                     fontWeight: FontWeight.w500,
