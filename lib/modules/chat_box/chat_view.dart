@@ -67,13 +67,18 @@ class HistoryView extends GetView<ChatController> {
                         child: Container(
                           height: Get.height * 0.05,
                           decoration: BoxDecoration(color: Colors.white),
-                          child: Text(
-                            controller.conversations[index].name,
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14,
-                              color: Colors.black,
-                            ),
+                          child: Row(
+                            children: [
+                              
+                              Text(
+                                controller.conversations[index].name,
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       );
