@@ -73,13 +73,18 @@ class HistoryView extends GetView<ChatController> {
                                 borderRadius: BorderRadiusGeometry.circular(100),
                                 child: Image.asset(controller.conversations[index].image),
                               ),
-                              Text(
-                                controller.conversations[index].name,
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
+                              Column(
+                                children: [
+                                  Text(
+                                    controller.conversations[index].name,
+                                    style: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(controller.conversations[index].msg)
+                                ],
                               ),
                             ],
                           ),
