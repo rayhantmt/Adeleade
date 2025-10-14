@@ -115,9 +115,12 @@ class ProfileView extends StatelessWidget {
                 image: AppImages.privacypolicyicon,
               ),
               SizedBox(height: Get.height * 0.015),
-              ProfileContainer(
-                tittle: "Reset Password",
-                image: AppImages.resetpasswordicon,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.forgotpassword),
+                child: ProfileContainer(
+                  tittle: "Reset Password",
+                  image: AppImages.resetpasswordicon,
+                ),
               ),
               SizedBox(height: Get.height * 0.015),
               GestureDetector(
