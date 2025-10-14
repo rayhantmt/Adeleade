@@ -46,7 +46,8 @@ class SubscriptionScreenView extends StatelessWidget {
                           ],
                         ),
                       ),
-
+SizedBox(height: Get.height*0.07,),
+Text('Upgrade To Premium'),
 
                   ],
                 ),
