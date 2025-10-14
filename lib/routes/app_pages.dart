@@ -11,4 +11,5 @@ class AppPages {
   static const String editprofile='/editprofile';
   static const String updateinfo='/updateinfo';
   static const String notification='/notification';
+  static const String subscriptionicon='/subscription';
 }
