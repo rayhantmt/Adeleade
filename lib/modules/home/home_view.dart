@@ -84,7 +84,7 @@ class HomeView extends GetView<HomeController> {
                 ),
                 SizedBox(height: 10),
                 SizedBox(
-                  height: Get.height * 0.06,
+                  height: Get.height * 0.045,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: controller.ctgry.length,
@@ -93,7 +93,8 @@ class HomeView extends GetView<HomeController> {
                         padding: const EdgeInsets.only(right: 10),
                         child: GestureDetector(
                           onTap: () => controller.selectCategory(index),
-                          child: Obx(() => Container(  // Wrap Container with Obx
+                          child: Obx(() => Container(  
+                            height: Get.height*0.05,
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             decoration: BoxDecoration(
