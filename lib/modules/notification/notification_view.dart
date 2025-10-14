@@ -38,7 +38,7 @@ class NotificationView extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          'My Profile',
+                          'Notifications',
                           style: GoogleFonts.inter(
                             fontWeight: FontWeight.w500,
                             fontSize: 18,
