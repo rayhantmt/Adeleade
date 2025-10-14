@@ -17,28 +17,25 @@ class MapsView extends StatelessWidget {
           fit: BoxFit.cover,
           ),
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-               
-                children: [
-                  SizedBox(height: Get.height*0.02,width: double.infinity,),
-                  Text('Maps Events',
-                  style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    color: Colors.black
-                  ),
-                  ),
-                  Text('Events Happening Near you',textAlign: TextAlign.center,),
-                  Expanded(child:Image.asset(AppImages.mapsimg,
-                  fit: BoxFit.cover,
-                  height: double.infinity,
-                  width: double.infinity,
-                  ) )
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+             
+              children: [
+                SizedBox(height: Get.height*0.02,width: double.infinity,),
+                Text('Maps Events',
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: Colors.black
+                ),
+                ),
+                Text('Events Happening Near you',textAlign: TextAlign.center,),
+                Expanded(child:Image.asset(AppImages.mapsimg,
+                fit: BoxFit.cover,
+                height: double.infinity,
+                width: double.infinity,
+                ) )
+              ],
             ),
           )
         ],
