@@ -8,6 +8,7 @@ import 'package:mementum/modules/main_screen/main_screen_binding.dart';
 import 'package:mementum/modules/notification/notification_view.dart';
 import 'package:mementum/modules/otp_page/otp_page_binding.dart';
 import 'package:mementum/modules/otp_page/otp_page_view.dart';
+import 'package:mementum/modules/privacy_and_policy/privacy_and_policy_view.dart';
 import 'package:mementum/modules/request_an_invite/requesst_an_invite_binding.dart';
 import 'package:mementum/modules/request_an_invite/request_an_invite_view.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second.dart';
@@ -34,6 +35,7 @@ class AppRoutes {
     GetPage(name: AppPages.editprofile, page: () => EditProfile(),),
     GetPage(name: AppPages.updateinfo, page: () => UpdateInfoView(),),
     GetPage(name: AppPages.notification, page: () => NotificationView(),),
-    GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),)
+    GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),),
+    GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),)
   ];
 }
