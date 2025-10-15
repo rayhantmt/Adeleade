@@ -15,14 +15,18 @@ class ForgotPasswordView extends StatelessWidget {
       body: Stack(
         children: [
           SafeArea(
-            child: Row(
-              children: [
-                Image.asset(
-                  AppImages.back_icon,
-                  height: Get.height * 0.07,
-                  width: Get.height * 0.07,
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(
+              
+                children: [
+                  Image.asset(
+                    AppImages.back_icon,
+                    height: Get.height * 0.07,
+                    width: Get.height * 0.07,
+                  ),
+                ],
+              ),
             ),
           ),
           Padding(
