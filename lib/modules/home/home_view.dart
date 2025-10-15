@@ -156,7 +156,7 @@ class HomeView extends GetView<HomeController> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                                SizedBox(height: 5),
+                               // SizedBox(height: 5),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 7),
                                   child: Text(
@@ -178,7 +178,7 @@ class HomeView extends GetView<HomeController> {
                                         height: Get.height * 0.03,
                                         width: Get.width * 0.05,
                                       ),
-                                      SizedBox(width: Get.width * 0.01),
+                                     // SizedBox(width: Get.width * 0.01),
                                       Text(
                                         data.date_time,
                                         style: TextStyle(
