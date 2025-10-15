@@ -97,7 +97,9 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.01),
-              ProfileContainer(tittle: "History", image: AppImages.historyicon),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.eventhistory),
+                child: ProfileContainer(tittle: "History", image: AppImages.historyicon)),
               SizedBox(height: Get.height * 0.05),
               Text(
                 'Sequrity and Policy',
