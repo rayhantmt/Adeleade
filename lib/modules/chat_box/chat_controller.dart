@@ -73,7 +73,7 @@ class ChatController extends GetxController {
     ChatModel(
       image: AppImages.captain,
       name: 'Captain',
-      msg: "What's the update about tonight's event",
+      msg: "What's the update about tonight's event? Is everyone coming?",
       time: '1 day ago',
     ),
   ].obs;

@@ -66,6 +66,7 @@ class ChatView extends GetView<ChatController> {
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: Container(
                           height: Get.height * 0.05,
+                          width: double.infinity,
                           decoration: BoxDecoration(color: Colors.white),
                           child: Row(
                             children: [
@@ -74,22 +75,32 @@ class ChatView extends GetView<ChatController> {
                                 child: Image.asset(controller.conversations[index].image),
                               ),
                               SizedBox(width: Get.width*0.01,),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    controller.conversations[index].name,
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 14,
-                                      color: Colors.black,
+                              Container(
+                                width: Get.width*0.6,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      controller.conversations[index].name,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: Colors.black,
+                                      ),
                                     ),
-                                  ),
-                                  Text(controller.conversations[index].msg)
-                                ],
+                                    Text(controller.conversations[index].msg,
+                                    overflow: TextOverflow.ellipsis,
+                                    )
+                                  ],
+                                ),
                               ),
-                              Spacer(),
-                              Text(controller.conversations[index].time)
+                             // Spacer(),
+                              Expanded(
+                                child: Text(controller.conversations[index].time,
+                                textAlign: TextAlign.end,
+                                maxLines: 1,
+                                ),
+                              )
                             ],
                           ),
                         ),
