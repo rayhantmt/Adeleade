@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
@@ -14,9 +13,18 @@ class ForgotPasswordView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xffFAF2ED),
       body: Stack(
-        
         children: [
-          
+          SafeArea(
+            child: Row(
+              children: [
+                Image.asset(
+                  AppImages.back_icon,
+                  height: Get.height * 0.07,
+                  width: Get.height * 0.07,
+                ),
+              ],
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
@@ -52,13 +60,16 @@ class ForgotPasswordView extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: Get.height * 0.033),
-          
+
                 Padding(
                   padding: EdgeInsets.only(left: Get.width * 0.1),
                   child: Row(children: [Text('Email')]),
                 ),
                 SizedBox(height: Get.height * 0.01),
-                Commontextfield(tittle: 'Rayhantmt@gmail.com', obsecuretext: false),
+                Commontextfield(
+                  tittle: 'Rayhantmt@gmail.com',
+                  obsecuretext: false,
+                ),
                 SizedBox(height: Get.height * 0.033),
                 GestureDetector(
                   onTap: () => Get.toNamed(AppPages.otppage),
