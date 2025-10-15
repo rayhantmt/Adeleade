@@ -116,9 +116,12 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.015),
-              ProfileContainer(
-                tittle: "Privacy and Policy",
-                image: AppImages.privacypolicyicon,
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.privacypolicy),
+                child: ProfileContainer(
+                  tittle: "Privacy and Policy",
+                  image: AppImages.privacypolicyicon,
+                ),
               ),
               SizedBox(height: Get.height * 0.015),
               GestureDetector(
