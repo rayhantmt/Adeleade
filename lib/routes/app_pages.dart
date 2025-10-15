@@ -1,3 +1,5 @@
+
+
 class AppPages {
   static const String login='/login';
   static const String signup='/signup';
@@ -13,4 +15,5 @@ class AppPages {
   static const String notification='/notification';
   static const String subscriptionicon='/subscription';
   static const String privacypolicy='/privacypolicy';
+  static const String eventhistory='/eventhistory';
 }
