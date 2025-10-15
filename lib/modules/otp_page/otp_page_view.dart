@@ -5,6 +5,7 @@ import 'package:get/state_manager.dart';
 import 'package:mementum/modules/otp_page/otp_page_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
+import 'package:mementum/utils/app_images.dart';
 
 class OtpPageView extends GetView<OtpController> {
   const OtpPageView({super.key});
@@ -14,7 +15,25 @@ class OtpPageView extends GetView<OtpController> {
     return Scaffold(
       backgroundColor:  Color(0xffFAF2ED),
       body: Stack(
+        
         children: [
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Image.asset(
+                      AppImages.back_icon,
+                      height: Get.height * 0.07,
+                      width: Get.height * 0.07,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 20,right: 20),
             child: Column(
