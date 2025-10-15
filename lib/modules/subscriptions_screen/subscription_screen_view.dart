@@ -73,10 +73,21 @@ class SubscriptionScreenView extends StatelessWidget {
                               Text('Unlimited Memories Created'),
                             ],
                           ),
+                          Row(
+                            children: [
+                              Image.asset(
+                                AppImages.subscription_screen_img,
+                                height: Get.height * 0.03,
+                                width: Get.height * 0.03,
+                              ),
+                              Text('Unlimited Memories Created'),
+                            ],
+                          ),
                         ],
                       ),
                     ],
                   ),
+                  
                 ],
               ),
             ),
