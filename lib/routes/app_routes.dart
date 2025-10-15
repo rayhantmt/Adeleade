@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:mementum/modules/edit_profile/edit_profile.dart';
+import 'package:mementum/modules/event_history/event_history.dart';
 import 'package:mementum/modules/forgot_password/forgot_password_view.dart';
 import 'package:mementum/modules/log_in/log_in_binding.dart';
 import 'package:mementum/modules/log_in/log_in_view.dart';
@@ -36,6 +37,7 @@ class AppRoutes {
     GetPage(name: AppPages.updateinfo, page: () => UpdateInfoView(),),
     GetPage(name: AppPages.notification, page: () => NotificationView(),),
     GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),),
-    GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),)
+    GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),),
+    GetPage(name: AppPages.eventhistory, page: () => EventHistory())
   ];
 }
