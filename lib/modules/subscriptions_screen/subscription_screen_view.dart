@@ -50,7 +50,7 @@ class SubscriptionScreenView extends StatelessWidget {
                   SizedBox(height: Get.height * 0.07),
                   Row(
                     children: [
-                      SizedBox(width: Get.width*0.15,),
+                      SizedBox(width: Get.width * 0.15),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,13 +65,14 @@ class SubscriptionScreenView extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Image.asset(AppImages.subscription_screen_img,
-                              height: Get.height*0.03,
-                              width: Get.height*0.03,
+                              Image.asset(
+                                AppImages.subscription_screen_img,
+                                height: Get.height * 0.03,
+                                width: Get.height * 0.03,
                               ),
-                              Text('Unlimited Memories Created')
+                              Text('Unlimited Memories Created'),
                             ],
-                          )
+                          ),
                         ],
                       ),
                     ],
