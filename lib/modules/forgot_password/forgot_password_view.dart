@@ -20,10 +20,13 @@ class ForgotPasswordView extends StatelessWidget {
               child: Row(
               
                 children: [
-                  Image.asset(
-                    AppImages.back_icon,
-                    height: Get.height * 0.07,
-                    width: Get.height * 0.07,
+                  GestureDetector(
+                    onTap: () => Get.back(),
+                    child: Image.asset(
+                      AppImages.back_icon,
+                      height: Get.height * 0.07,
+                      width: Get.height * 0.07,
+                    ),
                   ),
                 ],
               ),
