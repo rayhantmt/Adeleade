@@ -113,7 +113,7 @@ class EditProfile extends StatelessWidget {
                             child: CircleAvatar(
                               radius: Get.height * 0.07,
                               backgroundColor: Colors.white,
-                              backgroundImage: AssetImage(AppImages.back_icon),
+                              backgroundImage: AssetImage(AppImages.profilephoto),
                             ),
                           ),
                         ),
