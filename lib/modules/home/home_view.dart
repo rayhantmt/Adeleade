@@ -95,26 +95,32 @@ class HomeView extends GetView<HomeController> {
                         padding: const EdgeInsets.only(right: 10),
                         child: GestureDetector(
                           onTap: () => controller.selectCategory(index),
-                          child: Obx(() => Container(  
-                            height: Get.height*0.05,
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            decoration: BoxDecoration(
-                              color: controller.selectedCategoryIndex.value == index 
-                                ? Color(0xffDACBA4) 
-                                : Colors.white,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(color: Colors.black12),
-                            ),
-                            child: Text(
-                              controller.ctgry[index].categories,
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Colors.black87,
+                          child: Obx(
+                            () => Container(
+                              height: Get.height * 0.05,
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                              ),
+                              decoration: BoxDecoration(
+                                color:
+                                    controller.selectedCategoryIndex.value ==
+                                        index
+                                    ? Color(0xffDACBA4)
+                                    : Colors.white,
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.black12),
+                              ),
+                              child: Text(
+                                controller.ctgry[index].categories,
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Colors.black87,
+                                ),
                               ),
                             ),
-                          )),
+                          ),
                         ),
                       );
                     },
@@ -134,16 +140,31 @@ class HomeView extends GetView<HomeController> {
                         final data = controller.events[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Stack(
-                            children: [
-                              Container(
-                                
-                                height: Get.height * 0.2,
-                                decoration: BoxDecoration(
-                                  color: Color(0xffF4EFE3B2).withOpacity(0.3),
+                          child: Container(
+                            height: Get.height * 0.2,
+                            decoration: BoxDecoration(
+                              color: Color(0xffF4EFE3B2).withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Stack(
+                              children: [
+                                Positioned(
+                                top: 50,
+                                right: 50,
+                                child: Container(
+                                  height: 20,
+                                  width: 20,
+                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
-                                ),
-                                child: Column(
+                                  color: Color(0xffF4EFE3),
+                                 ),
+                                  child: Text(data.maxpeople,
+                                  style: TextStyle(
+                                    color: Colors.blue
+                                  ),
+                                  ),
+                                )),
+                                Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -159,7 +180,8 @@ class HomeView extends GetView<HomeController> {
                                         fit: BoxFit.cover,
                                       ),
                                     ),
-                                   // SizedBox(height: 5),
+                                
+                                    // SizedBox(height: 5),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 7),
                                       child: Text(
@@ -181,7 +203,7 @@ class HomeView extends GetView<HomeController> {
                                             height: Get.height * 0.03,
                                             width: Get.width * 0.05,
                                           ),
-                                         // SizedBox(width: Get.width * 0.01),
+                                          // SizedBox(width: Get.width * 0.01),
                                           Text(
                                             data.date_time,
                                             style: TextStyle(
@@ -205,7 +227,7 @@ class HomeView extends GetView<HomeController> {
                                           SizedBox(width: Get.width * 0.01),
                                           Text(
                                             data.location,
-                              
+                                
                                             style: TextStyle(
                                               fontWeight: FontWeight.w400,
                                               fontSize: 12,
@@ -217,8 +239,8 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                   ],
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         );
                       },
