@@ -17,4 +17,5 @@ class AppPages {
   static const String privacypolicy='/privacypolicy';
   static const String eventhistory='/eventhistory';
   static const String eventdetails='/eventdetails';
+  static const String chatdetails='/chatdetails';
 }

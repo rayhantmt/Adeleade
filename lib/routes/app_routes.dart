@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mementum/modules/chat_details/chat_details_view.dart';
 import 'package:mementum/modules/edit_profile/edit_profile.dart';
 import 'package:mementum/modules/event_details/event_details.dart';
 import 'package:mementum/modules/event_history/event_history.dart';
@@ -40,6 +41,7 @@ class AppRoutes {
     GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),),
     GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),),
     GetPage(name: AppPages.eventhistory, page: () => EventHistory()),
-    GetPage(name: AppPages.eventdetails, page: () => EventDetails(),)
+    GetPage(name: AppPages.eventdetails, page: () => EventDetails(),),
+    GetPage(name: AppPages.chatdetails, page: () => ChatDetailsView(),)
   ];
 }
