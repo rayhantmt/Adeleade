@@ -10,6 +10,9 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
   Widget build(BuildContext context) {
     
     return Scaffold(
+      appBar: AppBar(
+        title: Text(controller.name),
+      ),
       body: Stack(
         children: [
           Image.asset(
