@@ -7,5 +7,9 @@ class ChatDetailsController extends GetxController{
   void onInit() {
     
     super.onInit();
+    var arg=Get.arguments;
+    img=arg['image'];
+    name=arg['name'];
+
   }
 }
