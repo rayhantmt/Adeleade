@@ -8,10 +8,20 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
-        title: Text(controller.name),
+        title: Row(children: [
+          ClipRRect
+          
+          (
+            borderRadius: BorderRadiusGeometry.circular(99),
+            child: Image.asset(controller.img,
+            height: Get.height*0.1,
+            width: Get.width*0.1,
+            )),
+          Text(controller.name),
+         
+        ]),
         centerTitle: true,
       ),
       body: Stack(
@@ -23,12 +33,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
 
             fit: BoxFit.cover,
           ),
-          Center(
-            child: Image.asset(controller.img,
-            height: 200,
-            width: 200,
-            ),
-          )
+         
         ],
       ),
     );
