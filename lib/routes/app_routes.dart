@@ -43,6 +43,6 @@ class AppRoutes {
     GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),),
     GetPage(name: AppPages.eventhistory, page: () => EventHistory()),
     GetPage(name: AppPages.eventdetails, page: () => EventDetails(),),
-    GetPage(name: AppPages.chatdetails, page: () => ChatDetailsView(),arguments: Get.arguments,binding: ChatDetailsBinding())
+    GetPage(name: AppPages.chatdetails, page: () => ChatDetailsView(),binding: ChatDetailsBinding())
   ];
 }

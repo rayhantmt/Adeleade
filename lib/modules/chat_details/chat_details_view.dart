@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mementum/modules/chat_details/chat_details_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class ChatDetailsView extends StatelessWidget {
+class ChatDetailsView extends GetView<ChatDetailsController> {
   const ChatDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var arguments = Get.arguments;
-    String image = arguments['imgae'];
+    
     return Scaffold(
       body: Stack(
         children: [
@@ -20,7 +20,7 @@ class ChatDetailsView extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Center(
-            child: Image.asset(image,
+            child: Image.asset(controller.img,
             height: 200,
             width: 200,
             ),
