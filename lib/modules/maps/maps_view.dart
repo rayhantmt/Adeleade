@@ -22,14 +22,14 @@ class MapsView extends StatelessWidget {
              
               children: [
                 SizedBox(height: Get.height*0.02,width: double.infinity,),
-                Text('Maps Events',
+                Text('Memories Happening near you',
                 style: GoogleFonts.inter(
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
                   color: Colors.black
                 ),
                 ),
-                Text('Events Happening Near you',textAlign: TextAlign.center,),
+                // Text('Events Happening Near you',textAlign: TextAlign.center,),
                 Expanded(child:Image.asset(AppImages.mapsimg,
                 fit: BoxFit.cover,
                 height: double.infinity,

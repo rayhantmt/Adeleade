@@ -61,10 +61,10 @@ class MemoriesView extends GetView<MemoriesController> {
                           ),
                           child: Center(
                             child: Text(
-                              "Create Event",
+                              "Event",
                               style: TextStyle(
                                 color: controller.memorytype.value == 0
-                                    ? Colors.white
+                                    ? Colors.black
                                     : Colors.black,
                               ),
                             ),
@@ -122,15 +122,15 @@ Widget _createEvent (){
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Name", hint:'Enter event name'),
+        UpdateInfoField(tittle: "Activity Name", hint:'Enter Activity name'),
                 SizedBox(height: Get.height*0.02,),
         UpdateInfoField(tittle: "Participants", hint:'Enter number of participants'),
                 SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Location", hint:'Enter event Location'),
+        UpdateInfoField(tittle: "Activity Location", hint:'Enter Activity Location'),
                 SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Date", hint:'Enter event Date'),
+        UpdateInfoField(tittle: "Activity Date", hint:'Enter Activity Date'),
                 SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Event Category", hint:'Enter event category name'),
+        UpdateInfoField(tittle: "Activity Category", hint:'Enter Activity category name'),
         SizedBox(height: Get.height*0.02,),
         Text('Image',
         style: GoogleFonts.inter(
