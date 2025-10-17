@@ -12,6 +12,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(controller.name),
+        centerTitle: true,
       ),
       body: Stack(
         children: [
