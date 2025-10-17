@@ -66,7 +66,7 @@ class ChatView extends GetView<ChatController> {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         child: GestureDetector(
-                          onTap: () => Get.toNamed(AppPages.chatdetails),
+                          onTap: () => Get.toNamed(AppPages.chatdetails,arguments: {'image':controller.conversations[index].image,'name':controller.conversations[index].name}),
                           child: Container(
                             height: Get.height * 0.05,
                             width: double.infinity,
