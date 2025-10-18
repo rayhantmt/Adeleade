@@ -29,8 +29,8 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
         children: [
           Image.asset(
             AppImages.background,
-            height: double.infinity,
-            width: double.infinity,
+            height: Get.height*0.2,
+            width: Get.width*1,
 
             fit: BoxFit.cover,
           ),
