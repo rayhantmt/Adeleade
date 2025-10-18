@@ -45,7 +45,10 @@ class EventDetails extends GetView<EventDetailsController> {
                                 color: Colors.white
                               ),
                               child: Row(children: [
-
+Image.asset(AppImages.personlogo,
+height: Get.height*0.03,
+width: Get.width*0.1,
+)
                               ],),
                             ),
                           )
