@@ -76,13 +76,7 @@ class SplashScreen extends StatelessWidget {
               ),
             ],
           ),
-          // Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: [
-          //
-          //   ],
-          // )
+          
         ],
       ),
     );
