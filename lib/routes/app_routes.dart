@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:mementum/modules/chat_details/chat_details_binding.dart';
 import 'package:mementum/modules/chat_details/chat_details_view.dart';
 import 'package:mementum/modules/edit_profile/edit_profile.dart';
-import 'package:mementum/modules/event_details/event_details.dart';
+import 'package:mementum/modules/event_details/event_details_view.dart';
 import 'package:mementum/modules/event_details/event_details_binding.dart';
 import 'package:mementum/modules/event_history/event_history.dart';
 import 'package:mementum/modules/forgot_password/forgot_password_view.dart';
