@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mementum/modules/event_details/event_details_controller.dart';
 import 'package:mementum/utils/app_images.dart';
@@ -20,10 +21,27 @@ class EventDetails extends GetView<EventDetailsController> {
         SingleChildScrollView(
           child: Column(
             children: [
-              Image.asset(controller.image,
-              height: Get.height*0.35,
-              width: double.infinity,
-              fit: BoxFit.cover,
+              Stack(
+                children: [
+                  Image.asset(controller.image,
+                  height: Get.height*0.35,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(height: Get.height*0.32,),
+                      Text(controller.tittle,
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),
+                      )
+                    ],
+                  )
+                ],
               )
             ],
           ),
