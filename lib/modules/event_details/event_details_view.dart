@@ -29,10 +29,26 @@ class EventDetails extends GetView<EventDetailsController> {
                   fit: BoxFit.cover,
                   ),
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height*0.32,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 20,top: 40),
+                            child: Container(
+                              height: Get.height*0.04,
+                              width: Get.width*0.2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(80),
+                                color: Colors.white
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: Get.height*0.28,),
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(controller.tittle,
