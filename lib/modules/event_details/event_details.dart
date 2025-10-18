@@ -15,6 +15,16 @@ class EventDetails extends GetView<EventDetailsController> {
         height: double.infinity,
         width: double.infinity,
         fit: BoxFit.cover,
+        ),
+        SingleChildScrollView(
+          child: Column(
+            children: [
+              Image.asset(controller.image,
+              height: 200,
+              width: 200,
+              )
+            ],
+          ),
         )
       ],
      ),
