@@ -41,14 +41,17 @@ class EventDetails extends GetView<EventDetailsController> {
                               height: Get.height*0.04,
                               width: Get.width*0.2,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(80),
+                                borderRadius: BorderRadius.circular(100),
                                 color: Colors.white
                               ),
+                              child: Row(children: [
+
+                              ],),
                             ),
                           )
                         ],
                       ),
-                      SizedBox(height: Get.height*0.28,),
+                      SizedBox(height: Get.height*0.22,),
                       Padding(
                         padding: const EdgeInsets.only(left: 20),
                         child: Text(controller.tittle,
