@@ -33,11 +33,14 @@ class EventDetails extends GetView<EventDetailsController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       SizedBox(height: Get.height*0.32,),
-                      Text(controller.tittle,
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text(controller.tittle,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white
+                        ),
+                        ),
                       )
                     ],
                   )
