@@ -141,7 +141,9 @@ class HomeView extends GetView<HomeController> {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: () => Get.toNamed(AppPages.eventdetails),
+                            onTap: () => Get.toNamed(AppPages.eventdetails,
+                            arguments: {'image':data.image,'tittle':data.tittle,'location':data.location,'time':data.date_time,'joinedpeople':data.joinedpeople}
+                            ),
                             child: Container(
                               height: Get.height * 0.2,
                               decoration: BoxDecoration(
