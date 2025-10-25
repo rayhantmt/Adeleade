@@ -87,13 +87,20 @@ class EventDetails extends GetView<EventDetailsController> {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            'Date and time',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff898989),
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                textAlign: TextAlign.start,
+                                'Date and time',
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: Color(0xff898989),
+                                  
+                                ),
+                              ),
+                            ],
                           ),
                           Text(
                             controller.time,
@@ -227,7 +234,7 @@ class EventDetails extends GetView<EventDetailsController> {
                     ],
                   ),
                 ),
-                SizedBox(height: Get.height * 0.1),
+               // SizedBox(height: Get.height * 0.1),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
