@@ -98,6 +98,17 @@ class MemoriesView extends GetView<MemoriesController> {
                         ),
                       ),
                     ),
+                    SizedBox(width: 5,),
+                    Expanded(child: GestureDetector(
+                      onTap: () => controller.setDepositType(2),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: controller.memorytype.value==2? AppColors.primarycolor:Color(0xffC7C7C7)
+                        ),
+                        child: Center(child: Text('Connection')),
+                      ),
+                    ))
                   ],
                 ),
               ),
@@ -105,10 +116,14 @@ class MemoriesView extends GetView<MemoriesController> {
                 child: Obx(() {
                   if (controller.memorytype == 0) {
                     return _createEvent();
-                  } else {
+                  } else if(controller.memorytype==1){
                     return _plannedevent();
                   }
-                }),
+                    else 
+                    return _memories();
+                  }
+                  
+                ),
               ),
             ],
           ),
@@ -117,239 +132,259 @@ class MemoriesView extends GetView<MemoriesController> {
     );
   }
 }
-Widget _createEvent (){
+
+Widget _createEvent() {
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Activity Name", hint:'Enter Activity name'),
-                SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Participants", hint:'Enter number of participants'),
-                SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Activity Location", hint:'Enter Activity Location'),
-                SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Activity Date", hint:'Enter Activity Date'),
-                SizedBox(height: Get.height*0.02,),
-        UpdateInfoField(tittle: "Activity Category", hint:'Enter Activity category name'),
-        SizedBox(height: Get.height*0.02,),
-        Text('Image',
-        style: GoogleFonts.inter(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          color: Colors.black
+        SizedBox(height: Get.height * 0.02),
+        UpdateInfoField(tittle: "Activity Name", hint: 'Enter Activity name'),
+        SizedBox(height: Get.height * 0.02),
+        UpdateInfoField(
+          tittle: "Participants",
+          hint: 'Enter number of participants',
         ),
-        
+        SizedBox(height: Get.height * 0.02),
+        UpdateInfoField(
+          tittle: "Activity Location",
+          hint: 'Enter Activity Location',
         ),
-        SizedBox(height: Get.height*0.02,),
+        SizedBox(height: Get.height * 0.02),
+        UpdateInfoField(tittle: "Activity Date", hint: 'Enter Activity Date'),
+        SizedBox(height: Get.height * 0.02),
+        UpdateInfoField(
+          tittle: "Activity Category",
+          hint: 'Enter Activity category name',
+        ),
+        SizedBox(height: Get.height * 0.02),
+        Text(
+          'Image',
+          style: GoogleFonts.inter(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            color: Colors.black,
+          ),
+        ),
+        SizedBox(height: Get.height * 0.02),
         Container(
-          height: Get.height*0.08,
+          height: Get.height * 0.08,
           width: double.infinity,
           decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: Color(0xff625B4A)
-            ),
+            border: Border.all(width: 1, color: Color(0xff625B4A)),
             borderRadius: BorderRadius.circular(8),
-            color: Colors.white
+            color: Colors.white,
           ),
           child: Center(
-            child: Text('Upload image',
-            style: GoogleFonts.inter(
-              fontWeight: FontWeight.w500,
-              fontSize: 16,
-              color: AppColors.primarycolor
-            ),
+            child: Text(
+              'Upload image',
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+                color: AppColors.primarycolor,
+              ),
             ),
           ),
         ),
-        SizedBox(height: Get.height*0.02,),
-        Text('Details',
-        style: GoogleFonts.inter(
-          fontWeight: FontWeight.w500,
-          fontSize: 16,
-          color: Colors.black
+        SizedBox(height: Get.height * 0.02),
+        Text(
+          'Details',
+          style: GoogleFonts.inter(
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+            color: Colors.black,
+          ),
         ),
-        
-        ),
-        SizedBox(height: Get.height*0.02,),
+        SizedBox(height: Get.height * 0.02),
         Container(
-          height: Get.height*0.11,
+          height: Get.height * 0.11,
           width: double.infinity,
           decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: Color(0xff625B4A)
-            ),
+            border: Border.all(width: 1, color: Color(0xff625B4A)),
             borderRadius: BorderRadius.circular(8),
-            color: Colors.white
+            color: Colors.white,
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
               decoration: InputDecoration(
-                
                 border: InputBorder.none,
                 hint: Center(
-              child: Text('Write a short and detailed description of the event',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: AppColors.primarycolor
-              ),
+                  child: Text(
+                    'Write a short and detailed description of the event',
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16,
+                      color: AppColors.primarycolor,
+                    ),
+                  ),
+                ),
               ),
             ),
-              ),
-            ),
-          )
+          ),
         ),
-        SizedBox(height: Get.height*0.05,),
+        SizedBox(height: Get.height * 0.05),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Container(
-            height: Get.height*0.07,
+            height: Get.height * 0.07,
             width: double.infinity,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(99),
-              color: Color(0xffDACBA4)
+              color: Color(0xffDACBA4),
             ),
-            child: Center(child: Text('Create'))),
-        )
+            child: Center(child: Text('Create')),
+          ),
+        ),
       ],
-    )
+    ),
   );
 }
 
-Widget _plannedevent (){
-  final controller=Get.find<HomeController>();
+Widget _plannedevent() {
+  final controller = Get.find<HomeController>();
   return Column(
     children: [
-        Expanded(
-                  child: Obx(
-                    () => GridView.builder(
-                      padding: EdgeInsets.zero,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
-                      itemCount: controller.events.length,
+      Expanded(
+        child: Obx(
+          () => GridView.builder(
+            padding: EdgeInsets.zero,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: controller.events.length,
 
-                      itemBuilder: (context, index) {
-                        final data = controller.events[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: GestureDetector(
-                            onTap: () => Get.toNamed(AppPages.eventdetails,
-                            arguments: {'image':data.image,'tittle':data.tittle,'location':data.location,'time':data.date_time,'joinedpeople':data.joinedpeople}
+            itemBuilder: (context, index) {
+              final data = controller.events[index];
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(
+                    AppPages.eventdetails,
+                    arguments: {
+                      'image': data.image,
+                      'tittle': data.tittle,
+                      'location': data.location,
+                      'time': data.date_time,
+                      'joinedpeople': data.joinedpeople,
+                    },
+                  ),
+                  child: Container(
+                    height: Get.height * 0.2,
+                    decoration: BoxDecoration(
+                      color: Color(0xffF4EFE3B2).withOpacity(0.3),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 50,
+                          right: 50,
+                          child: Container(
+                            height: 20,
+                            width: 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Color(0xffF4EFE3),
                             ),
-                            child: Container(
-                              height: Get.height * 0.2,
-                              decoration: BoxDecoration(
-                                color: Color(0xffF4EFE3B2).withOpacity(0.3),
-                                borderRadius: BorderRadius.circular(8),
+                            child: Text(
+                              data.maxpeople,
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadiusGeometry.only(
+                                topLeft: Radius.circular(8),
+                                topRight: Radius.circular(8),
                               ),
-                              child: Stack(
+                              child: Image.asset(
+                                data.image,
+                                height: Get.height * 0.1,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+
+                            // SizedBox(height: 5),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 7),
+                              child: Text(
+                                data.tittle,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.inter(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 7),
+                              child: Row(
                                 children: [
-                                  Positioned(
-                                    top: 50,
-                                    right: 50,
-                                    child: Container(
-                                      height: 20,
-                                      width: 20,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Color(0xffF4EFE3),
-                                      ),
-                                      child: Text(
-                                        data.maxpeople,
-                                        style: TextStyle(color: Colors.blue),
-                                      ),
-                                    ),
+                                  Image.asset(
+                                    AppImages.calander_icon,
+                                    height: Get.height * 0.03,
+                                    width: Get.width * 0.05,
                                   ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadiusGeometry.only(
-                                          topLeft: Radius.circular(8),
-                                          topRight: Radius.circular(8),
-                                        ),
-                                        child: Image.asset(
-                                          data.image,
-                                          height: Get.height * 0.1,
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                            
-                                      // SizedBox(height: 5),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Text(
-                                          data.tittle,
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              AppImages.calander_icon,
-                                              height: Get.height * 0.03,
-                                              width: Get.width * 0.05,
-                                            ),
-                                            // SizedBox(width: Get.width * 0.01),
-                                            Text(
-                                              data.date_time,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: Color(0xff898989),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              AppImages.location_icon,
-                                              height: Get.height * 0.03,
-                                              width: Get.width * 0.05,
-                                            ),
-                                            SizedBox(width: Get.width * 0.01),
-                                            Text(
-                                              data.location,
-                            
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: Color(0xff898989),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
+                                  // SizedBox(width: Get.width * 0.01),
+                                  Text(
+                                    data.date_time,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Color(0xff898989),
+                                    ),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                        );
-                      },
+                            Padding(
+                              padding: const EdgeInsets.only(left: 7),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    AppImages.location_icon,
+                                    height: Get.height * 0.03,
+                                    width: Get.width * 0.05,
+                                  ),
+                                  SizedBox(width: Get.width * 0.01),
+                                  Text(
+                                    data.location,
+
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 12,
+                                      color: Color(0xff898989),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                 ),
+              );
+            },
+          ),
+        ),
+      ),
     ],
   );
+}
+Widget _memories (){
+return Column(
+  children: [
+    Text('Your All connections')
+  ],
+);
 }
