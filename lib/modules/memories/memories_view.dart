@@ -396,23 +396,26 @@ Widget _memories() {
         ),
       ),
       SizedBox(height: Get.height * 0.2),
-      Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadiusGeometry.circular(99),
-            child: Image.asset(
-              AppImages.profilephoto,
-              height: Get.height * 0.1,
-              width: Get.width * 0.25,
-              fit: BoxFit.cover,
+      GestureDetector(
+        onTap: () => Get.toNamed(AppPages.profile_details),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadiusGeometry.circular(99),
+              child: Image.asset(
+                AppImages.profilephoto,
+                height: Get.height * 0.1,
+                width: Get.width * 0.25,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          SizedBox(width: Get.width * 0.05),
-          Text(
-            'Tony Stark',
-            style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 22),
-          ),
-        ],
+            SizedBox(width: Get.width * 0.05),
+            Text(
+              'Tony Stark',
+              style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 22),
+            ),
+          ],
+        ),
       ),
     ],
   );
