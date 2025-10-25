@@ -179,7 +179,17 @@ class ProfileDetails extends StatelessWidget {
                             color: Color(0xff898989)
 
                           ),
-                          )
+                          ),
+                          SizedBox(height: Get.height*0.02,),
+                          Text('Galley',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
+                            color: Color(0xff1E1E1E)
+                          ),
+                          ),
+                          SizedBox(height: Get.height*0.02,),
+                          Text('')
                         ],
                       )
                 ],
