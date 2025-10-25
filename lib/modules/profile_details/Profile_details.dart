@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class ProfileDetails extends StatelessWidget {
@@ -117,6 +118,46 @@ class ProfileDetails extends StatelessWidget {
                               ),
                               )
                             ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: Get.height*0.01,),
+                      Row(
+                        children: [
+                          Container(
+                            height: Get.height*0.05,
+                            width: Get.width*0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor
+                            ),
+                            child: Center(
+                              child: Text('Connect',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black
+                              ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: Get.width*0.1,),
+                          Container(
+                            height: Get.height*0.05,
+                            width: Get.width*0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor
+                            ),
+                            child: Center(
+                              child: Text('Chat',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 14,
+                                color: Colors.black
+                              ),
+                              ),
+                            ),
                           )
                         ],
                       )
