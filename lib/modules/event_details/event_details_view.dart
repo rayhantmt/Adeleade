@@ -69,15 +69,48 @@ class EventDetails extends GetView<EventDetailsController> {
                             controller.tittle,
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ),
                       ],
                     ),
                   ],
+               
+               
+                
+                
                 ),
+                SizedBox(height: Get.height*0.02,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20,right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          
+                          Text('Date and time',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Color(0xff898989)
+                          ),
+                          ),
+                          Text(controller.time,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                          color: Color(0xff1E1E1E)
+                          ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                )
               ],
+            
             ),
           ),
         ],
