@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/home/home_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class EventHistory extends StatelessWidget {
@@ -52,7 +53,7 @@ class EventHistory extends StatelessWidget {
                         ),
                       ),
 
-                       Expanded(
+             Expanded(
                   child: Obx(
                     () => GridView.builder(
                       padding: EdgeInsets.zero,
@@ -65,85 +66,111 @@ class EventHistory extends StatelessWidget {
                         final data = controller.events[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: Get.height * 0.2,
-                            decoration: BoxDecoration(
-                              color: Color(0xffF4EFE3B2).withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(8),
+                          child: GestureDetector(
+                            onTap: () => Get.toNamed(AppPages.eventdetails,
+                            arguments: {'image':data.image,'tittle':data.tittle,'location':data.location,'time':data.date_time,'joinedpeople':data.joinedpeople}
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: BorderRadiusGeometry.only(
-                                    topLeft: Radius.circular(8),
-                                    topRight: Radius.circular(8),
-                                  ),
-                                  child: Image.asset(
-                                    data.image,
-                                    height: Get.height * 0.1,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                               // SizedBox(height: 5),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 7),
-                                  child: Text(
-                                    data.tittle,
-                                    textAlign: TextAlign.start,
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Colors.black,
+                            child: Container(
+                              height: Get.height * 0.2,
+                              decoration: BoxDecoration(
+                                color: Color(0xffF4EFE3B2).withOpacity(0.3),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    top: 50,
+                                    right: 50,
+                                    child: Container(
+                                      height: 20,
+                                      width: 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Color(0xffF4EFE3),
+                                      ),
+                                      child: Text(
+                                        data.maxpeople,
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
                                     ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 7),
-                                  child: Row(
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Image.asset(
-                                        AppImages.calander_icon,
-                                        height: Get.height * 0.03,
-                                        width: Get.width * 0.05,
+                                      ClipRRect(
+                                        borderRadius: BorderRadiusGeometry.only(
+                                          topLeft: Radius.circular(8),
+                                          topRight: Radius.circular(8),
+                                        ),
+                                        child: Image.asset(
+                                          data.image,
+                                          height: Get.height * 0.1,
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                     // SizedBox(width: Get.width * 0.01),
-                                      Text(
-                                        data.date_time,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xff898989),
+                            
+                                      // SizedBox(height: 5),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 7),
+                                        child: Text(
+                                          data.tittle,
+                                          textAlign: TextAlign.start,
+                                          style: GoogleFonts.inter(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 7),
+                                        child: Row(
+                                          children: [
+                                            Image.asset(
+                                              AppImages.calander_icon,
+                                              height: Get.height * 0.03,
+                                              width: Get.width * 0.05,
+                                            ),
+                                            // SizedBox(width: Get.width * 0.01),
+                                            Text(
+                                              data.date_time,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: Color(0xff898989),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 7),
+                                        child: Row(
+                                          children: [
+                                            Image.asset(
+                                              AppImages.location_icon,
+                                              height: Get.height * 0.03,
+                                              width: Get.width * 0.05,
+                                            ),
+                                            SizedBox(width: Get.width * 0.01),
+                                            Text(
+                                              data.location,
+                            
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 12,
+                                                color: Color(0xff898989),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 7),
-                                  child: Row(
-                                    children: [
-                                      Image.asset(
-                                        AppImages.location_icon,
-                                        height: Get.height * 0.03,
-                                        width: Get.width * 0.05,
-                                      ),
-                                      SizedBox(width: Get.width * 0.01),
-                                      Text(
-                                        data.location,
-
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12,
-                                          color: Color(0xff898989),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         );
