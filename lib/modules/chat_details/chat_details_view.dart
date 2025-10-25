@@ -65,6 +65,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hint: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
                                     Text('Write your message'),
                                     Image.asset(
