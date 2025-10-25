@@ -36,7 +36,7 @@ class AppImages {
   static const attachfile_logo='assets/attach_file_logo.png';
   static const cameralogo='assets/camera_logo_cahting.png';
   static const microphone_logo='assets/microphone_logo.png';
-  
+  static const message_input_logo='assets/message_input_logo.png';
 
 
 }
