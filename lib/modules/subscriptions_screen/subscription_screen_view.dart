@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class SubscriptionScreenView extends StatelessWidget {
@@ -66,6 +67,7 @@ class SubscriptionScreenView extends StatelessWidget {
                               color: Colors.black,
                             ),
                           ),
+                          SizedBox(height: Get.height*0.012,),
                           Row(
                             children: [
                               Image.asset(
@@ -77,6 +79,7 @@ class SubscriptionScreenView extends StatelessWidget {
                               Text('Unlimited Memories Created'),
                             ],
                           ),
+                          SizedBox(height: Get.height*0.008,),
                           Row(
                             children: [
                               Image.asset(
@@ -89,20 +92,112 @@ class SubscriptionScreenView extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: Get.height * 0.02),
-                        
                         ],
                       ),
                     ],
                   ),
                   Container(
-                    height: Get.height*0.1,
+                    height: Get.height * 0.1,
                     width: double.infinity,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        width: 1,
-                        color: Color(0xffDACBA4)
-                      )
+                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'Monthly',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22,
+                            color: Color(0xff1E1E1E),
+                          ),
+                        ),
+                        Text(
+                          '49/Month',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: Get.height*0.02,),
+                  Container(
+                    height: Get.height * 0.1,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          '6 Months',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22,
+                            color: Color(0xff1E1E1E),
+                          ),
+                        ),
+                        Text(
+                          '32/Month',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: Get.height*0.02,),
+                  Container(
+                    height: Get.height * 0.1,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          'Yearly',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 22,
+                            color: Color(0xff1E1E1E),
+                          ),
+                        ),
+                        Text(
+                          '28/Month',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: Get.height*0.07,),
+                  Container(
+                    height: Get.height*0.07,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(99),
+                      color: AppColors.primarycolor,
+                    ),
+                    child: Center(
+                      child: Text('Contine',
+                      style: GoogleFonts.inter(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                        color: Color(0xff1E1E1E)
+                      ),
+                      ),
                     ),
                   )
                 ],
