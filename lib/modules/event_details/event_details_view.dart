@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mementum/modules/event_details/event_details_controller.dart';
+import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class EventDetails extends GetView<EventDetailsController> {
@@ -226,6 +227,109 @@ class EventDetails extends GetView<EventDetailsController> {
                     ],
                   ),
                 ),
+                SizedBox(height: Get.height * 0.1),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Who's Going (1)",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff1E1E1E),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: Get.height * 0.1,
+                              width: Get.width * 0.2,
+                              child: ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(
+                                  200,
+                                ),
+                                child: Image.asset(
+                                  AppImages.profilephoto,
+                                  fit: BoxFit.cover,
+                                  height: Get.height * 0.1,
+                                  width: Get.width * 0.2,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: Get.height * 0.1,
+                              width: Get.width * 0.2,
+                              child: ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(
+                                  200,
+                                ),
+                                child: Image.asset(
+                                  AppImages.profilephoto,
+                                  fit: BoxFit.cover,
+                                  height: Get.height * 0.1,
+                                  width: Get.width * 0.2,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: Get.height * 0.1,
+                              width: Get.width * 0.2,
+                              child: ClipRRect(
+                                borderRadius: BorderRadiusGeometry.circular(
+                                  200,
+                                ),
+                                child: Image.asset(
+                                  AppImages.profilephoto,
+                                  fit: BoxFit.cover,
+                                  height: Get.height * 0.1,
+                                  width: Get.width * 0.2,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: Get.height * 0.02),
+                      Container(
+                        height: Get.height * 0.1,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: AppColors.primarycolor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Join',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Color(0xff1E1E1E),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: Get.height * 0.2),
               ],
             ),
           ),
