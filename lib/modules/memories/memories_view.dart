@@ -102,6 +102,7 @@ class MemoriesView extends GetView<MemoriesController> {
                     Expanded(child: GestureDetector(
                       onTap: () => controller.setDepositType(2),
                       child: Container(
+                        height: 40,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(99),
                           color: controller.memorytype.value==2? AppColors.primarycolor:Color(0xffC7C7C7)
