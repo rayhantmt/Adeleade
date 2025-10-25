@@ -25,17 +25,41 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
         ),
         centerTitle: true,
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Image.asset(
-            AppImages.background,
-            height: double.infinity,
-            width: double.infinity,
-
-            fit: BoxFit.cover,
+          Stack(
+            children: [
+             
+              Image.asset(
+                AppImages.background,
+                height: double.infinity,
+                width: double.infinity,
+          
+                fit: BoxFit.cover,
+              ),
+              Column(
+                children: [
+                  Container(
+                    height: Get.height*0.9,
+                    width: double.infinity,
+                    color: Colors.blue,
+                    child: Text('Messages'),
+                  ),
+                  Container(
+                    height: Get.height*0.1,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white
+                    ),
+                  )
+                ],
+              )
+            
+            ],
           ),
         ],
       ),
+      
     );
   }
 }
