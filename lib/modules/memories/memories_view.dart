@@ -98,18 +98,22 @@ class MemoriesView extends GetView<MemoriesController> {
                         ),
                       ),
                     ),
-                    SizedBox(width: 5,),
-                    Expanded(child: GestureDetector(
-                      onTap: () => controller.setDepositType(2),
-                      child: Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: controller.memorytype.value==2? AppColors.primarycolor:Color(0xffC7C7C7)
+                    SizedBox(width: 5),
+                    Expanded(
+                      child: GestureDetector(
+                        onTap: () => controller.setDepositType(2),
+                        child: Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: controller.memorytype.value == 2
+                                ? AppColors.primarycolor
+                                : Color(0xffC7C7C7),
+                          ),
+                          child: Center(child: Text('Connection')),
                         ),
-                        child: Center(child: Text('Connection')),
                       ),
-                    ))
+                    ),
                   ],
                 ),
               ),
@@ -117,14 +121,11 @@ class MemoriesView extends GetView<MemoriesController> {
                 child: Obx(() {
                   if (controller.memorytype == 0) {
                     return _createEvent();
-                  } else if(controller.memorytype==1){
+                  } else if (controller.memorytype == 1) {
                     return _plannedevent();
-                  }
-                    else 
+                  } else
                     return _memories();
-                  }
-                  
-                ),
+                }),
               ),
             ],
           ),
@@ -382,17 +383,37 @@ Widget _plannedevent() {
     ],
   );
 }
-Widget _memories (){
-return Column(
-  children: [
-    Text('Your All connections',
-    style: GoogleFonts.inter(
-      fontWeight: FontWeight.bold,
-      fontSize: 20,
-      color: Colors.black
-    ),),
-    SizedBox(height: Get.height*0.2,),
-    
-  ],
-);
+
+Widget _memories() {
+  return Column(
+    children: [
+      Text(
+        'Your All connections',
+        style: GoogleFonts.inter(
+          fontWeight: FontWeight.bold,
+          fontSize: 20,
+          color: Colors.black,
+        ),
+      ),
+      SizedBox(height: Get.height * 0.2),
+      Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(99),
+            child: Image.asset(
+              AppImages.profilephoto,
+              height: Get.height * 0.1,
+              width: Get.width * 0.25,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(width: Get.width * 0.05),
+          Text(
+            'Tony Stark',
+            style: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 22),
+          ),
+        ],
+      ),
+    ],
+  );
 }
