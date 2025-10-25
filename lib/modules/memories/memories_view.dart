@@ -90,7 +90,7 @@ class MemoriesView extends GetView<MemoriesController> {
                               "Planned",
                               style: TextStyle(
                                 color: controller.memorytype.value == 1
-                                    ? Colors.white
+                                    ? Colors.black
                                     : Colors.black,
                               ),
                             ),
@@ -385,7 +385,14 @@ Widget _plannedevent() {
 Widget _memories (){
 return Column(
   children: [
-    Text('Your All connections')
+    Text('Your All connections',
+    style: GoogleFonts.inter(
+      fontWeight: FontWeight.bold,
+      fontSize: 20,
+      color: Colors.black
+    ),),
+    SizedBox(height: Get.height*0.2,),
+    
   ],
 );
 }
