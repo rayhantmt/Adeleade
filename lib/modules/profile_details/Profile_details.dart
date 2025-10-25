@@ -47,7 +47,21 @@ class ProfileDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-                      
+                      SizedBox(height: Get.height*0.25,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(AppImages.instagram_logo,
+                          height: Get.height*0.1,
+                          width: Get.width*0.1,
+                          ),
+                          SizedBox(width: Get.width*0.05,),
+                          Image.asset(AppImages.linked_in_logo,
+                          height: Get.height*0.1,
+                          width: Get.width*0.1,
+                          )
+                        ],
+                      )
                 ],
               ),
             ),

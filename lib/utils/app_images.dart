@@ -37,6 +37,11 @@ class AppImages {
   static const cameralogo='assets/camera_logo_cahting.png';
   static const microphone_logo='assets/microphone_logo.png';
   static const message_input_logo='assets/message_input_logo.png';
+  static const gallery1='assets/gallery_1.png';
+  static const gallery2='assets/gallery_2.png';
+  static const gallery3='assets/gallery_2.png';
+  static const instagram_logo='assets/instagram_logo.png';
+  static const linked_in_logo='assets/linked_in_logo.png';
   
 
 
