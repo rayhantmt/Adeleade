@@ -61,6 +61,64 @@ class ProfileDetails extends StatelessWidget {
                           width: Get.width*0.1,
                           )
                         ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Column(
+                            children: [
+                              Text('Age',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff898989)
+                              ),
+                              ),
+                              Text('25',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff1E1E1E)
+                              ),
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text('gender',
+                               style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff898989)
+                              ),
+                              ),
+                              Text('Male',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff1E1E1E)
+                              ),
+                              )
+                            ],
+                          ),Column(
+                            children: [
+                              Text('Nationality',
+                               style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff898989)
+                              ),
+                              ),
+                              Text('Bangladeshi',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff1E1E1E)
+                              ),
+                              )
+                            ],
+                          )
+                        ],
                       )
                 ],
               ),
