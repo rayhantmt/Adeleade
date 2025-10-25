@@ -51,6 +51,43 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                     decoration: BoxDecoration(
                       color: Colors.white
                     ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20,right: 20),
+                      child: Row(
+                        children: [
+                          Image.asset(AppImages.attachfile_logo,
+                          height: Get.height*0.05,
+                          width: Get.width*0.1,
+                          ),
+                         Container(
+                          height: Get.height*0.1,
+                          width: Get.width*0.6,
+                          decoration: BoxDecoration(
+                            
+                          ),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hint: Row(
+                                children: [
+                                Text('Write your message'),
+                               
+                                ],
+                              )
+                            ),
+                          ),
+                         ),
+                          Image.asset(AppImages.cameralogo,
+                          height: Get.height*0.05,
+                          width: Get.width*0.1,
+                          ), 
+                          Image.asset(AppImages.microphone_logo,
+                          height: Get.height*0.05,
+                          width: Get.width*0.1,
+                          )
+                        ],
+                      ),
+                    ),
                   )
                 ],
               )

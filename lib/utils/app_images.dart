@@ -33,6 +33,10 @@ class AppImages {
   static const mapsimg='assets/maps.png';
   static const subscription_screen_img='assets/subscriptions_screen_img.png';
   static const personlogo='assets/person_logo.png';
+  static const attachfile_logo='assets/attach_file_logo.png';
+  static const cameralogo='assets/camera_logo_cahting.png';
+  static const microphone_logo='assets/microphone_logo.png';
+  
 
 
 }
