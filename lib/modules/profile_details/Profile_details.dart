@@ -160,6 +160,27 @@ class ProfileDetails extends StatelessWidget {
                             ),
                           )
                         ],
+                      ),
+                      SizedBox(height: Get.height*0.02,),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Bio',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                            color: Color(0xff1E1E1E)
+                          ),
+                          ),
+                          Text('Join us for an afternoon of golf combined with meaningful business networking. Perfect for professionals looking to expand',
+                          style: GoogleFonts.inter(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 16,
+                            color: Color(0xff898989)
+
+                          ),
+                          )
+                        ],
                       )
                 ],
               ),
