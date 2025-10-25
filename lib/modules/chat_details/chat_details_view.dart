@@ -10,6 +10,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        
         title: Row(
           children: [
             ClipRRect(
@@ -27,74 +28,59 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
       ),
       body: Column(
         children: [
-          Stack(
-            children: [
-              Image.asset(
-                AppImages.background,
-                height: double.infinity,
-                width: double.infinity,
-
-                fit: BoxFit.cover,
-              ),
-              Column(
+          Container(
+            height: Get.height * 0.75,
+            width: double.infinity,
+            //color: Colors.blue,
+            child: Text('Messages'),
+          ),
+          Container(
+            height: Get.height * 0.1,
+            width: double.infinity,
+            decoration: BoxDecoration(color: Colors.white),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
                 children: [
-                  Container(
-                    height: Get.height * 0.9,
-                    width: double.infinity,
-                    color: Colors.blue,
-                    child: Text('Messages'),
+                  Image.asset(
+                    AppImages.attachfile_logo,
+                    height: Get.height * 0.05,
+                    width: Get.width * 0.1,
                   ),
                   Container(
                     height: Get.height * 0.1,
-                    width: double.infinity,
-                    decoration: BoxDecoration(color: Colors.white),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                            AppImages.attachfile_logo,
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.1,
-                          ),
-                          Container(
-                            height: Get.height * 0.1,
-                            width: Get.width * 0.6,
-                            decoration: BoxDecoration(),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hint: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text('Write your message'),
-                                    Image.asset(
-                                      AppImages.message_input_logo,
-                                      height: Get.height * 0.05,
-                                      width: Get.width * 0.1,
-                                    ),
-                                  ],
-                                ),
-                              ),
+                    width: Get.width * 0.6,
+                    decoration: BoxDecoration(),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hint: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Text('Write your message'),
+                            Image.asset(
+                              AppImages.message_input_logo,
+                              height: Get.height * 0.04,
+                              width: Get.width * 0.1,
                             ),
-                          ),
-                          Image.asset(
-                            AppImages.cameralogo,
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.1,
-                          ),
-                          Image.asset(
-                            AppImages.microphone_logo,
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.1,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
+                  Image.asset(
+                    AppImages.cameralogo,
+                    height: Get.height * 0.05,
+                    width: Get.width * 0.08,
+                  ),
+                  Image.asset(
+                    AppImages.microphone_logo,
+                    height: Get.height * 0.05,
+                    width: Get.width * 0.1,
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
         ],
       ),
