@@ -18,4 +18,5 @@ class AppPages {
   static const String eventhistory='/eventhistory';
   static const String eventdetails='/eventdetails';
   static const String chatdetails='/chatdetails';
+  static const String profile_details='/profile_details';
 }
