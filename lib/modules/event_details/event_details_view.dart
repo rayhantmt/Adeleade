@@ -85,22 +85,17 @@ class EventDetails extends GetView<EventDetailsController> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                textAlign: TextAlign.start,
-                                'Date and time',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff898989),
-                                  
-                                ),
-                              ),
-                            ],
+                          Text(
+                            
+                            'Date and time                                         ',
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 16,
+                              color: Color(0xff898989),
+                              
+                            ),
                           ),
                           Text(
                             controller.time,
