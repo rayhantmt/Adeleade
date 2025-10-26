@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/modules/profile_details/profile_controller.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class ProfileDetails extends StatelessWidget {
+class ProfileDetails extends GetView<ProfileController> {
   const ProfileDetails({super.key});
 
   @override
