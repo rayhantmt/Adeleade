@@ -11,7 +11,6 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
         title: Row(
           children: [
             ClipRRect(
@@ -33,28 +32,34 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
             height: Get.height * 0.75,
             width: double.infinity,
             child: ListView.builder(
-              
               itemCount: controller.msgs.length,
               itemBuilder: (context, index) {
-            
-              return Column(
-                crossAxisAlignment: controller.msgs[index].isme==false ? CrossAxisAlignment.start:CrossAxisAlignment.end,
-                children: [
-                  Text(controller.msgs[index].name,
-                  style: GoogleFonts.cardo(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
-                    color: Color(0xff000E08)
+                return Padding(
+                  padding: const EdgeInsets.only(left: 20,
+                  right: 20
                   ),
+                  child: Column(
+                    crossAxisAlignment: controller.msgs[index].isme == false
+                        ? CrossAxisAlignment.start
+                        : CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        controller.msgs[index].name,
+                        style: GoogleFonts.cardo(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Color(0xff000E08),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, bottom: 10),
+                        child: Text(controller.msgs[index].msg),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 10),
-                    child: Text(controller.msgs[index].msg),
-                  ),
-                  
-                ],
-              );
-            },),
+                );
+              },
+            ),
           ),
           Container(
             height: Get.height * 0.1,
