@@ -207,16 +207,19 @@ class ProfileDetails extends GetView<ProfileController> {
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: controller.gallery.length,
-                        itemBuilder: (context, index) {
-                          final data = controller.gallery[index];
-                          return Container(
-                            height: Get.height*0.2,
-                            width: Get.width*0.2,
-                            child: Image.asset(data.image));
-                        },
+                      SizedBox(
+                        height: Get.height*0.2,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: controller.gallery.length,
+                          itemBuilder: (context, index) {
+                            final data = controller.gallery[index];
+                            return Container(
+                              height: Get.height*0.2,
+                              width: Get.width*0.2,
+                              child: Image.asset(data.image));
+                          },
+                        ),
                       ),
                     ],
                   ),
