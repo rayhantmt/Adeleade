@@ -110,6 +110,7 @@ class EventDetails extends GetView<EventDetailsController> {
                     ],
                   ),
                 ),
+                SizedBox(height: Get.height*0.02,),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
