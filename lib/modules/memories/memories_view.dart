@@ -62,7 +62,7 @@ class MemoriesView extends GetView<MemoriesController> {
                           ),
                           child: Center(
                             child: Text(
-                              "Event",
+                              "New Activity",
                               style: TextStyle(
                                 color: controller.memorytype.value == 0
                                     ? Colors.black
@@ -110,7 +110,7 @@ class MemoriesView extends GetView<MemoriesController> {
                                 ? AppColors.primarycolor
                                 : Color(0xffC7C7C7),
                           ),
-                          child: Center(child: Text('Connection')),
+                          child: Center(child: Text('Connections')),
                         ),
                       ),
                     ),
