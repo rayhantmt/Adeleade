@@ -31,14 +31,21 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
           Container(
             height: Get.height * 0.75,
             width: double.infinity,
-            child: SingleChildScrollView(
-              child: Column(
-                
+            child: ListView.builder(
+              
+              itemCount: controller.msgs.length,
+              itemBuilder: (context, index) {
+            
+              return Column(
+                crossAxisAlignment: controller.msgs[index].isme ? CrossAxisAlignment.start:CrossAxisAlignment.end,
                 children: [
-
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10,bottom: 10),
+                    child: Text(controller.msgs[index].msg),
+                  )
                 ],
-              ),
-            ),
+              );
+            },),
           ),
           Container(
             height: Get.height * 0.1,
