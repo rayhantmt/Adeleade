@@ -192,7 +192,7 @@ class ProfileDetails extends StatelessWidget {
                           ),
                           ),
                           SizedBox(height: Get.height*0.02,),
-                          Text('')
+                          
                         ],
                       )
                 ],
