@@ -253,7 +253,7 @@ class EventDetails extends GetView<EventDetailsController> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -311,7 +311,7 @@ class EventDetails extends GetView<EventDetailsController> {
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Container(
-                        height: Get.height * 0.1,
+                        height: Get.height * 0.07,
                         width: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(99),
