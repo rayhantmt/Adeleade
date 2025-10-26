@@ -32,6 +32,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
             height: Get.height * 0.75,
             width: double.infinity,
             child: ListView.builder(
+              reverse: true,
               itemCount: controller.msgs.length,
               itemBuilder: (context, index) {
                 return Padding(
