@@ -35,7 +35,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                     Text(
                       'Momentum',
-                      style: GoogleFonts.inter(
+                      style: GoogleFonts.robotoSlab(
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                         fontSize: 24,
