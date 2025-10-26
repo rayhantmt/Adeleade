@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/chat_details/chat_details_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -39,7 +40,13 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
               return Column(
                 crossAxisAlignment: controller.msgs[index].isme==false ? CrossAxisAlignment.start:CrossAxisAlignment.end,
                 children: [
-                  Text(controller.msgs[index].name),
+                  Text(controller.msgs[index].name,
+                  style: GoogleFonts.cardo(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: Color(0xff000E08)
+                  ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10,bottom: 10),
                     child: Text(controller.msgs[index].msg),
