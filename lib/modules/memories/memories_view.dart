@@ -330,11 +330,11 @@ Widget _plannedevent() {
                               padding: const EdgeInsets.only(left: 7),
                               child: Row(
                                 children: [
-                                  Image.asset(
-                                    AppImages.calander_icon,
-                                    height: Get.height * 0.03,
-                                    width: Get.width * 0.05,
-                                  ),
+                                  // Image.asset(
+                                  //   AppImages.calander_icon,
+                                  //   height: Get.height * 0.03,
+                                  //   width: Get.width * 0.05,
+                                  // ),
                                   // SizedBox(width: Get.width * 0.01),
                                   Text(
                                     data.date_time,
