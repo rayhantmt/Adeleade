@@ -15,13 +15,13 @@ class ChatDetailsController extends GetxController {
 
   var msgs = [
     ChatModel(msg: "Hi", time: '2:30 AM', isme: true, img: '',name: ''),
-    ChatModel(msg: "Hello", time: '2:30 AM', img: '', isme: false,name: 'Alex'),
+    ChatModel(msg: "Hello", time: '2:30 AM', img: '', isme: false,name: 'Spidy'),
     ChatModel(msg: "How are you", time: '2:30 AM', img: '', isme: true,name: ''),
     ChatModel(
       msg: "How is it been going ",
       time: '2:30 AM',
       img: '',
-      isme: false,name: 'Alex'
+      isme: false,name: 'Spidy'
     ),
     ChatModel(
       msg: "Everything is fine.What about you?",
@@ -35,7 +35,7 @@ class ChatDetailsController extends GetxController {
       time: '2:30 AM',
       img: '',
       isme: false
-      ,name: 'Alex'
+      ,name: 'Spidy'
     ),
     ChatModel(msg: "Why not ?", time: '2:30 AM', img: '', isme: true,name: '',),
     ChatModel(
@@ -43,7 +43,7 @@ class ChatDetailsController extends GetxController {
       time: '2:30 AM',
       img: '',
       isme: false
-      ,name: 'Alex'
+      ,name: 'Spidy'
     ),
     ChatModel(
       msg: "Sure.I will be there.Can't wait to catch up with you.",
@@ -57,7 +57,7 @@ class ChatDetailsController extends GetxController {
       time: '2:30 AM',
       img: '',
       isme: false
-      ,name: 'Alex'
+      ,name: 'Spidy'
     ),
     ChatModel(
       msg: "Of course.It's gonna be the best.",
@@ -71,7 +71,7 @@ class ChatDetailsController extends GetxController {
       time: '2:30 AM',
       img: '',
       isme: false
-      ,name: 'Alex'
+      ,name: 'Spidy'
     ),
   ];
 }
