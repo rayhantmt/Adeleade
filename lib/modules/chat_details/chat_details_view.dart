@@ -56,11 +56,12 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                         border: InputBorder.none,
                         hint: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text('Write your message'),
                             Image.asset(
                               AppImages.message_input_logo,
-                              height: Get.height * 0.04,
+                              height: Get.height * 0.03,
                               width: Get.width * 0.1,
                             ),
                           ],
@@ -75,7 +76,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                   ),
                   Image.asset(
                     AppImages.microphone_logo,
-                    height: Get.height * 0.05,
+                    height: Get.height * 0.035,
                     width: Get.width * 0.1,
                   ),
                 ],
