@@ -37,12 +37,14 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
               itemBuilder: (context, index) {
             
               return Column(
-                crossAxisAlignment: controller.msgs[index].isme ? CrossAxisAlignment.start:CrossAxisAlignment.end,
+                crossAxisAlignment: controller.msgs[index].isme==false ? CrossAxisAlignment.start:CrossAxisAlignment.end,
                 children: [
+                  Text(controller.msgs[index].name),
                   Padding(
                     padding: const EdgeInsets.only(top: 10,bottom: 10),
                     child: Text(controller.msgs[index].msg),
-                  )
+                  ),
+                  
                 ],
               );
             },),
