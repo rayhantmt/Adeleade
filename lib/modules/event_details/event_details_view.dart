@@ -64,28 +64,26 @@ class EventDetails extends GetView<EventDetailsController> {
                           ],
                         ),
                         SizedBox(height: Get.height * 0.22),
-                        
                       ],
                     ),
                   ],
                 ),
                 SizedBox(height: Get.height * 0.02),
                 Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Row(
-                            children: [
-                              Text(
-                               
-                                controller.tittle,
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ],
-                          ),
+                  padding: const EdgeInsets.only(left: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        controller.tittle,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
-                         SizedBox(height: Get.height * 0.02),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: Get.height * 0.02),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
@@ -95,13 +93,11 @@ class EventDetails extends GetView<EventDetailsController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            
                             'Date and time                                         ',
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
                               color: Color(0xff898989),
-                              
                             ),
                           ),
                           Text(
@@ -117,7 +113,7 @@ class EventDetails extends GetView<EventDetailsController> {
                     ],
                   ),
                 ),
-                SizedBox(height: Get.height*0.02,),
+                SizedBox(height: Get.height * 0.02),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
@@ -237,7 +233,7 @@ class EventDetails extends GetView<EventDetailsController> {
                     ],
                   ),
                 ),
-               // SizedBox(height: Get.height * 0.1),
+                // SizedBox(height: Get.height * 0.1),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Column(
