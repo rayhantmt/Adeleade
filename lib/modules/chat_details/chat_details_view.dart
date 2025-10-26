@@ -31,8 +31,14 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
           Container(
             height: Get.height * 0.75,
             width: double.infinity,
-            //color: Colors.blue,
-            child: Text('Messages'),
+            child: SingleChildScrollView(
+              child: Column(
+                
+                children: [
+
+                ],
+              ),
+            ),
           ),
           Container(
             height: Get.height * 0.1,
