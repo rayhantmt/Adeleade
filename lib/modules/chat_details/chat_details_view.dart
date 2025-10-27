@@ -46,7 +46,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                     children: [
                       Text(
                         controller.msgs[index].name,
-                        style: GoogleFonts.cardo(
+                        style: GoogleFonts.inter(
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                           color: Color(0xff000E08),
@@ -54,7 +54,12 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10, bottom: 10),
-                        child: Text(controller.msgs[index].msg),
+                        child: Text(controller.msgs[index].msg,
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12
+                        ),
+                        ),
                       ),
                     ],
                   ),
