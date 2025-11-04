@@ -30,7 +30,7 @@ const RequestAnInviteView({super.key});
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height * 0.8,
+                  height: Get.height * 0.81,
                   width: Get.width * 0.9,
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
