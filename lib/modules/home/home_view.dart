@@ -154,28 +154,11 @@ class HomeView extends GetView<HomeController> {
                             child: Container(
                               height: Get.height * 0.2,
                               decoration: BoxDecoration(
-                                color: Colors
-                                    .white, //Color(0xffF4EFE3B2).withOpacity(0.3),
+                                color: Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Stack(
                                 children: [
-                                  Positioned(
-                                    top: 50,
-                                    right: 50,
-                                    child: Container(
-                                      height: 20,
-                                      width: 20,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Color(0xffF4EFE3),
-                                      ),
-                                      child: Text(
-                                        data.maxpeople,
-                                        style: TextStyle(color: Colors.blue),
-                                      ),
-                                    ),
-                                  ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
