@@ -157,76 +157,72 @@ class HomeView extends GetView<HomeController> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: Stack(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadiusGeometry.only(
-                                          topLeft: Radius.circular(8),
-                                          topRight: Radius.circular(8),
-                                        ),
-                                        child: Image.asset(
-                                          data.image,
-                                          height: Get.height * 0.1,
-                                          width: double.infinity,
-                                          fit: BoxFit.cover,
-                                        ),
+                                  ClipRRect(
+                                    borderRadius: BorderRadiusGeometry.only(
+                                      topLeft: Radius.circular(8),
+                                      topRight: Radius.circular(8),
+                                    ),
+                                    child: Image.asset(
+                                      data.image,
+                                      height: Get.height * 0.1,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                              
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 7),
+                                    child: Text(
+                                      data.tittle,
+                                      textAlign: TextAlign.start,
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: Colors.black,
                                       ),
-
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Text(
-                                          data.tittle,
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            color: Colors.black,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 7),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          data.date_time,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xff898989),
                                           ),
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              data.date_time,
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: Color(0xff898989),
-                                              ),
-                                            ),
-                                          ],
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 7),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          AppImages.location_icon,
+                                          height: Get.height * 0.03,
+                                          width: Get.width * 0.05,
                                         ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 7),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                              AppImages.location_icon,
-                                              height: Get.height * 0.03,
-                                              width: Get.width * 0.05,
-                                            ),
-                                            SizedBox(width: Get.width * 0.01),
-                                            Text(
-                                              data.location,
-
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 12,
-                                                color: Color(0xff898989),
-                                              ),
-                                            ),
-                                          ],
+                                        SizedBox(width: Get.width * 0.01),
+                                        Text(
+                                          data.location,
+                              
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 12,
+                                            color: Color(0xff898989),
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ],
                               ),
