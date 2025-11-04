@@ -141,13 +141,21 @@ class HomeView extends GetView<HomeController> {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
-                            onTap: () => Get.toNamed(AppPages.eventdetails,
-                            arguments: {'image':data.image,'tittle':data.tittle,'location':data.location,'time':data.date_time,'joinedpeople':data.joinedpeople}
+                            onTap: () => Get.toNamed(
+                              AppPages.eventdetails,
+                              arguments: {
+                                'image': data.image,
+                                'tittle': data.tittle,
+                                'location': data.location,
+                                'time': data.date_time,
+                                'joinedpeople': data.joinedpeople,
+                              },
                             ),
                             child: Container(
                               height: Get.height * 0.2,
                               decoration: BoxDecoration(
-                                color: Colors.white,//Color(0xffF4EFE3B2).withOpacity(0.3),
+                                color: Colors
+                                    .white, //Color(0xffF4EFE3B2).withOpacity(0.3),
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Stack(
@@ -170,7 +178,8 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       ClipRRect(
                                         borderRadius: BorderRadiusGeometry.only(
@@ -184,8 +193,7 @@ class HomeView extends GetView<HomeController> {
                                           fit: BoxFit.cover,
                                         ),
                                       ),
-                            
-                                      // SizedBox(height: 5),
+
                                       Padding(
                                         padding: const EdgeInsets.only(left: 7),
                                         child: Text(
@@ -231,7 +239,7 @@ class HomeView extends GetView<HomeController> {
                                             SizedBox(width: Get.width * 0.01),
                                             Text(
                                               data.location,
-                            
+
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 12,
