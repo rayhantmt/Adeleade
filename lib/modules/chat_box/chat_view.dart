@@ -68,7 +68,7 @@ class ChatView extends GetView<ChatController> {
                         child: GestureDetector(
                           onTap: () => Get.toNamed(AppPages.chatdetails,arguments: {'image':controller.conversations[index].image,'name':controller.conversations[index].name}),
                           child: Container(
-                            height: Get.height * 0.05,
+                            height: Get.height * 0.06,
                             width: double.infinity,
                             decoration: BoxDecoration(color: Colors.white),
                             child: Row(

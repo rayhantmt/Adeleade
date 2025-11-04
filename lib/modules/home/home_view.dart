@@ -192,25 +192,33 @@ class HomeView extends GetView<HomeController> {
                                                   child: Container(
                                                     height: Get.height * 0.025,
                                                     width: Get.width * 0.14,
-                                                   decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(99),
-                                                     color: Colors.white,
-                                                   ),
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            99,
+                                                          ),
+                                                      color: Colors.white,
+                                                    ),
                                                     child: Row(
                                                       children: [
-                                                         Image.asset(
-                                      AppImages.personlogo,
-                                      height: Get.height * 0.02,
-                                      width: Get.width * 0.04,
-                                    ),
+                                                        Image.asset(
+                                                          AppImages.personlogo,
+                                                          height:
+                                                              Get.height * 0.02,
+                                                          width:
+                                                              Get.width * 0.04,
+                                                        ),
                                                         Text(
                                                           '4/20',
-                                                          style: GoogleFonts.inter(
-                                                            color: Colors.black,
-                                                            fontWeight: FontWeight.w500,
-                                                            fontSize: 14
-                                                            
-                                                          ),
+                                                          style:
+                                                              GoogleFonts.inter(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                fontSize: 14,
+                                                              ),
                                                         ),
                                                       ],
                                                     ),
