@@ -198,6 +198,11 @@ class HomeView extends GetView<HomeController> {
                                                    ),
                                                     child: Row(
                                                       children: [
+                                                         Image.asset(
+                                      AppImages.personlogo,
+                                      height: Get.height * 0.02,
+                                      width: Get.width * 0.04,
+                                    ),
                                                         Text(
                                                           '4/20',
                                                           style: GoogleFonts.inter(
