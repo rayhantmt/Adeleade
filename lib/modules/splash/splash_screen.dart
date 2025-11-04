@@ -23,6 +23,7 @@ class SplashScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(width: double.infinity),
+              Image.asset(AppImages.logo),
               Text(
                 "Momentum",
                 style: GoogleFonts.robotoSlab(
