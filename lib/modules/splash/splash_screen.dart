@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -24,7 +25,7 @@ class SplashScreen extends StatelessWidget {
               SizedBox(width: double.infinity),
               Text(
                 "Momentum",
-                style: TextStyle(
+                style: GoogleFonts.robotoSlab(
                   fontWeight: FontWeight.w700,
                   fontSize: 32,
                   color: Color(0xff1E1E1E),
