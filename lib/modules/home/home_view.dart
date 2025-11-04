@@ -159,22 +159,57 @@ class HomeView extends GetView<HomeController> {
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment:
-                                    CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadiusGeometry.only(
                                       topLeft: Radius.circular(8),
                                       topRight: Radius.circular(8),
                                     ),
-                                    child: Image.asset(
-                                      data.image,
-                                      height: Get.height * 0.1,
-                                      width: double.infinity,
-                                      fit: BoxFit.cover,
+                                    child: Stack(
+                                      children: [
+                                        Image.asset(
+                                          data.image,
+                                          height: Get.height * 0.1,
+                                          width: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                        right: 5,
+
+                                                        top: 5,
+                                                      ),
+                                                  child: Container(
+                                                    height: Get.height * 0.025,
+                                                    width: Get.width * 0.12,
+                                                    color: Colors.white,
+                                                    child: Text(
+                                                      'data',
+                                                      style: GoogleFonts.inter(
+                                                        color: Colors.blue,
+                                                        fontSize: 30,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
                                   ),
-                              
+
                                   Padding(
                                     padding: const EdgeInsets.only(left: 7),
                                     child: Text(
@@ -214,7 +249,7 @@ class HomeView extends GetView<HomeController> {
                                         SizedBox(width: Get.width * 0.01),
                                         Text(
                                           data.location,
-                              
+
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12,
