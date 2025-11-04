@@ -138,6 +138,7 @@ class ProfileDetails extends GetView<ProfileController> {
                     ),
                     SizedBox(height: Get.height * 0.01),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
                           height: Get.height * 0.05,
@@ -157,7 +158,7 @@ class ProfileDetails extends GetView<ProfileController> {
                             ),
                           ),
                         ),
-                        SizedBox(width: Get.width * 0.1),
+                        // SizedBox(width: Get.width * 0.1),
                         Container(
                           height: Get.height * 0.05,
                           width: Get.width * 0.4,
