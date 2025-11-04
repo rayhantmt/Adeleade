@@ -31,7 +31,7 @@ class LogInView extends GetView<LogInController> {
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height * 0.58,
+                  height: Get.height * 0.54,
                   width: Get.width * 0.9,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -81,21 +81,16 @@ class LogInView extends GetView<LogInController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: Get.height * 0.001),
+                      SizedBox(height: Get.height * 0.006),
                       Padding(
                         padding: EdgeInsets.only(
                           left: Get.width * 0.05,
                           right: Get.width * 0.05,
                         ),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Obx(
-                              () => Checkbox(
-                                value: controller.isChecked.value,
-                                onChanged: (a) => controller.toggleCheckbox(a),
-                              ),
-                            ),
+                        
                             GestureDetector(
                               onTap: () => Get.toNamed(AppPages.forgotpassword),
                               child: Text(
@@ -110,7 +105,7 @@ class LogInView extends GetView<LogInController> {
                           ],
                         ),
                       ),
-                      SizedBox(height: Get.height * 0.033),
+                      SizedBox(height: Get.height * 0.006),
                       GestureDetector(
                         onTap: () => Get.offAllNamed(AppPages.mainscreen),
                         child: Container(
@@ -132,7 +127,7 @@ class LogInView extends GetView<LogInController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: Get.height * 0.033),
+                      SizedBox(height: Get.height * 0.015),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -146,38 +141,8 @@ class LogInView extends GetView<LogInController> {
                           ),
                         ],
                       ),
-                      SizedBox(height: Get.height * 0.033),
-                      // Container(
-                      //   height: Get.height * 0.07,
-                      //   width: Get.width * 0.8,
-                      //   decoration: BoxDecoration(
-                      //     border: Border.all(
-                      //       width: 1,
-                      //       color: Color(0xffEFF0F6),
-                      //     ),
-                      //     borderRadius: BorderRadius.circular(10),
-                      //   ),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Image.asset(
-                      //         AppImages.google,
-                      //         height: 18,
-                      //         width: 18,
-                      //       ),
-                      //       SizedBox(width: Get.width * 0.02),
-                      //       Text(
-                      //         'Sign in with google',
-                      //         style: TextStyle(
-                      //           fontWeight: FontWeight.w600,
-                      //           fontSize: 14,
-                      //           color: Colors.black,
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      //SizedBox(height: Get.height * 0.033),
+                      SizedBox(height: Get.height * 0.015),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
