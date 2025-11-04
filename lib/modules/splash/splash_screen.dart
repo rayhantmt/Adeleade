@@ -31,12 +31,12 @@ class SplashScreen extends StatelessWidget {
                   color: Color(0xff1E1E1E),
                 ),
               ),
-              SizedBox(height: 200),
+              SizedBox(height: Get.height*0.2),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.signup),
                 child: Container(
                   height: 60,
-                  width: 350,
+                  width: Get.width*0.85,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(99),
                     color: Color(0xffDACBA4),
@@ -53,12 +53,12 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: Get.height*0.03),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.login),
                 child: Container(
                   height: 60,
-                  width: 350,
+                  width: Get.width*0.85,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(99),
                     color: Colors.white,
