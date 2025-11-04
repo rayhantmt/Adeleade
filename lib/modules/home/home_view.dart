@@ -191,7 +191,7 @@ class HomeView extends GetView<HomeController> {
                                                       ),
                                                   child: Container(
                                                     height: Get.height * 0.025,
-                                                    width: Get.width * 0.12,
+                                                    width: Get.width * 0.14,
                                                    decoration: BoxDecoration(
                                                     borderRadius: BorderRadius.circular(99),
                                                      color: Colors.white,
@@ -199,10 +199,12 @@ class HomeView extends GetView<HomeController> {
                                                     child: Row(
                                                       children: [
                                                         Text(
-                                                          'data',
+                                                          '4/20',
                                                           style: GoogleFonts.inter(
-                                                            color: Colors.blue,
-                                                            fontSize: 30,
+                                                            color: Colors.black,
+                                                            fontWeight: FontWeight.w500,
+                                                            fontSize: 14
+                                                            
                                                           ),
                                                         ),
                                                       ],
