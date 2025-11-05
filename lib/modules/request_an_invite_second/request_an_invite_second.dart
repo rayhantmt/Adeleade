@@ -78,9 +78,19 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Upload 5 images')]),
                       ),
-                      Commontextfield(
-                        tittle: 'Upload your 5 images here',
-                        obsecuretext: false,
+                      GestureDetector(
+                        onTap: controller.pickImages,
+                        child: Container(
+                          height: Get.height*0.05,
+                          width: Get.width*0.7,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                              color: Colors.red,
+                            ),
+                            borderRadius: BorderRadius.circular(12)
+                          ),
+                        ),
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -120,11 +130,11 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                       SizedBox(height: Get.height * 0.015),
                       GestureDetector(
                         // onTap: () => Get.toNamed(AppPages.o),
-                        onTap: () => Get.snackbar(
+                        onTap: controller.submitInviteRequest,/* () => Get.snackbar(
                           'Success',
                           'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',
                           animationDuration: Duration(seconds: 2),
-                        ),
+                        ),*/
                         child: Container(
                           height: Get.height * 0.07,
                           width: Get.width * 0.7,
