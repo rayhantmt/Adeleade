@@ -126,7 +126,17 @@ const RequestAnInviteView({super.key});
                       SizedBox(height: Get.height * 0.015),
 
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppPages.signupsecond),
+                        onTap: () => Get.toNamed(AppPages.signupsecond,
+                        arguments: {
+  'name': controller.namecontroller.text,
+  'email': controller.emailcontroller.text,
+  'gender': controller.gendercontroller.text,
+  'age': controller.agecontroller.text,
+  'profession': controller.professioncontroller.text,
+  'nationality': controller.nationalitycontroller.text,
+  'instagram': controller.instagramcontroller.text,
+}
+                        ),
                         child: Container(
                           height: Get.height * 0.03,
                           width: Get.width * 0.4,
