@@ -9,6 +9,13 @@ class RequestAnInviteSecondController extends GetxController {
 
   final passwordcontroller =TextEditingController();
 late String? name='';
+late String? email='';
+late String? gender='';
+late String? age='';
+late String? profession='';
+late String? nationality='';
+late String? instagram='';
+
  
   final biocontroller =TextEditingController();
 
