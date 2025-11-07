@@ -47,13 +47,14 @@ print(controller.instagram);
                     borderRadius: BorderRadius.circular(10),
                     color: Colors.white,
                   ),
-                  height: Get.height * 0.7,
+                  height: Get.height * 0.8,
                   width: Get.width * 0.9,
                   child: Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: Get.height * 0.02),
+                      
                       Text(
                         'Request an invite',
                         style: TextStyle(
@@ -72,7 +73,21 @@ print(controller.instagram);
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      SizedBox(height: Get.height * 0.02),
+                      GestureDetector(
+                        onTap: controller.pickImages,
+                        child: Container(
+                          height: Get.height*0.1,
+                          width: Get.width*0.7,
+                          decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.black,
+                          
+                        )
+                        
+                          ),
+                        ),
+                      ),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('LinkedIn')]),
