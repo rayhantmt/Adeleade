@@ -59,7 +59,10 @@ const RequestAnInviteView({super.key});
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Name')]),
                       ),
-                      Commontextfield(tittle: 'Rayhan', obsecuretext: false),
+                      Commontextfield(tittle: 'Rayhan', obsecuretext: false,textcontroller: controller.namecontroller,),
+                      
+                      
+                    
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -68,6 +71,7 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Rayhantmt@gmail.com',
                         obsecuretext: false,
+                        textcontroller: controller.emailcontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -77,6 +81,7 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Male/Female',
                         obsecuretext: false,
+                        textcontroller: controller.gendercontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -86,6 +91,7 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Enter your age',
                         obsecuretext: false,
+                        textcontroller: controller.agecontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -95,7 +101,8 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Enter your profession',
                         obsecuretext: false,
-                      ),
+                        textcontroller: controller.professioncontroller,
+                                              ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -104,6 +111,7 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Enter your nationality',
                         obsecuretext: false,
+                        textcontroller: controller.nationalitycontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -113,6 +121,7 @@ const RequestAnInviteView({super.key});
                       Commontextfield(
                         tittle: 'Link of your instagram profile',
                         obsecuretext: false,
+                        textcontroller: controller.instagramcontroller,
                       ),
                       SizedBox(height: Get.height * 0.015),
 
