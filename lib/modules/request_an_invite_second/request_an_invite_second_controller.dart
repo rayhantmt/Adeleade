@@ -1,10 +1,21 @@
 //import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 class RequestAnInviteSecondController extends GetxController {
   RxBool isObscured = false.obs;
   RxBool isObscured1 = false.obs;
+
+  final passwordcontroller =TextEditingController();
+
+ 
+  final biocontroller =TextEditingController();
+
+  
+  final linkedincontroller =TextEditingController();
+
+
 
   // Store picked images (like TextEditingController for text)
   RxList<XFile> selectedImages = <XFile>[].obs;

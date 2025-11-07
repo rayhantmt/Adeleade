@@ -80,7 +80,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                       ),
                       GestureDetector(
                         onTap: controller.pickImages,
-                        child: Obx(() => Container(
+                        child: Container(
                           height: Get.height*0.05,
                           width: Get.width*0.7,
                           decoration: BoxDecoration(
@@ -90,7 +90,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                             ),
                             borderRadius: BorderRadius.circular(12)
                           ),
-                        ),)
+                        ),
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
