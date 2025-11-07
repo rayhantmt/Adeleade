@@ -148,7 +148,7 @@ print(controller.instagram);
                       GestureDetector(
                         // onTap: () => Get.toNamed(AppPages.o),
                         onTap: controller.submitInviteRequest,
-                      onDoubleTap: () => print(controller.age),
+                     
                         
                         /* () => Get.snackbar(
                           'Success',
