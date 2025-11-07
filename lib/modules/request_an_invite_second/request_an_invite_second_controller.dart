@@ -8,7 +8,7 @@ class RequestAnInviteSecondController extends GetxController {
   RxBool isObscured1 = false.obs;
 
   final passwordcontroller =TextEditingController();
-
+late String? name='';
  
   final biocontroller =TextEditingController();
 

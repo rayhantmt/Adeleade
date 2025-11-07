@@ -11,9 +11,8 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
   @override
   Widget build(BuildContext context) {
 final args=Get.arguments;
-print(args['name']);
-print(args['email']);
-
+controller.name=args['name'];
+print(controller.name);
     return Scaffold(
       body: Stack(
         children: [
