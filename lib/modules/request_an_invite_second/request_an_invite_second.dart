@@ -12,7 +12,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
   Widget build(BuildContext context) {
 final args=Get.arguments;
 controller.name=args['name'];
-print(controller.name);
+
     return Scaffold(
       body: Stack(
         children: [
