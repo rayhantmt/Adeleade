@@ -12,6 +12,20 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
   Widget build(BuildContext context) {
 final args=Get.arguments;
 controller.name=args['name'];
+controller.email=args['email'];
+controller.gender=args['gender'];
+controller.age=args['age'];
+controller.profession=args['profession'];
+controller.nationality=args['nationality'];
+controller.instagram=args['instagram'];
+print(controller.name);
+print(controller.email);
+print(controller.gender);
+print(controller.age);
+
+print(controller.profession);
+print(controller.nationality);
+print(controller.instagram);
 
     return Scaffold(
       body: Stack(
@@ -133,7 +147,10 @@ controller.name=args['name'];
                       SizedBox(height: Get.height * 0.015),
                       GestureDetector(
                         // onTap: () => Get.toNamed(AppPages.o),
-                        onTap: controller.submitInviteRequest,/* () => Get.snackbar(
+                        onTap: controller.submitInviteRequest,
+                      onDoubleTap: () => print(controller.age),
+                        
+                        /* () => Get.snackbar(
                           'Success',
                           'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',
                           animationDuration: Duration(seconds: 2),
