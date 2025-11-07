@@ -34,13 +34,12 @@ class RequestAnInviteSecondController extends GetxController {
       return;
     }
 
-    // Replace this with your actual API call logic
-    // Example:
-    // await ApiService.uploadImages(selectedImages);
+    
 
     Get.snackbar(
       'Success',
-      'Your account creation request has been submitted!',
+      selectedImages.map((file) => file.path).toList().toString()
+,
       animationDuration: const Duration(seconds: 2),
     );
   }
