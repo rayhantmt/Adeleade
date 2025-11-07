@@ -80,6 +80,7 @@ print(controller.instagram);
                       Commontextfield(
                         tittle: 'Link of your LinkedIn profile',
                         obsecuretext: false,
+                        textcontroller: controller.linkedincontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -89,6 +90,7 @@ print(controller.instagram);
                       Commontextfield(
                         tittle: 'Describe yourself in a short description',
                         obsecuretext: false,
+                        textcontroller: controller.biocontroller,
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
@@ -118,6 +120,7 @@ print(controller.instagram);
                         () => Commontextfield(
                           tittle: '*******',
                           obsecuretext: controller.isObscured.value,
+                          textcontroller: controller.passwordcontroller,
                           icon: GestureDetector(
                             onTap: controller.toggleObscureText,
                             child: controller.isObscured.value
