@@ -7,7 +7,7 @@ import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class RequestAnInviteView extends GetView<RequestAnInviteController> {
-const RequestAnInviteView({super.key});
+  const RequestAnInviteView({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,10 +59,12 @@ const RequestAnInviteView({super.key});
                         padding: EdgeInsets.only(left: Get.width * 0.1),
                         child: Row(children: [Text('Name')]),
                       ),
-                      Commontextfield(tittle: 'Rayhan', obsecuretext: false,textcontroller: controller.namecontroller,),
-                      
-                      
-                    
+                      Commontextfield(
+                        tittle: 'Rayhan',
+                        obsecuretext: false,
+                        textcontroller: controller.namecontroller,
+                      ),
+
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -102,7 +104,7 @@ const RequestAnInviteView({super.key});
                         tittle: 'Enter your profession',
                         obsecuretext: false,
                         textcontroller: controller.professioncontroller,
-                                              ),
+                      ),
                       SizedBox(height: Get.height * 0.02),
                       Padding(
                         padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -126,16 +128,18 @@ const RequestAnInviteView({super.key});
                       SizedBox(height: Get.height * 0.015),
 
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppPages.signupsecond,
-                        arguments: {
-  'name': controller.namecontroller.text,
-  'email': controller.emailcontroller.text,
-  'gender': controller.gendercontroller.text,
-  'age': controller.agecontroller.text,
-  'profession': controller.professioncontroller.text,
-  'nationality': controller.nationalitycontroller.text,
-  'instagram': controller.instagramcontroller.text,
-}
+                        onTap: () => Get.toNamed(
+                          AppPages.signupsecond,
+                          arguments: {
+                            'name': controller.namecontroller.text,
+                            'email': controller.emailcontroller.text,
+                            'gender': controller.gendercontroller.text,
+                            'age': controller.agecontroller.text,
+                            'profession': controller.professioncontroller.text,
+                            'nationality':
+                                controller.nationalitycontroller.text,
+                            'instagram': controller.instagramcontroller.text,
+                          },
                         ),
                         child: Container(
                           height: Get.height * 0.03,
