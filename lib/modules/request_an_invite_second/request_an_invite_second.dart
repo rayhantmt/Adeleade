@@ -87,6 +87,7 @@ print(controller.instagram);
                         borderRadius: BorderRadius.circular(12)
                         
                           ),
+                          child: Text('Select Cover Image'),
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
