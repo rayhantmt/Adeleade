@@ -83,11 +83,13 @@ print(controller.instagram);
                           width: 1,
                           color: Colors.black,
                           
-                        )
+                        ),
+                        borderRadius: BorderRadius.circular(12)
                         
                           ),
                         ),
                       ),
+                      SizedBox(height: Get.height * 0.02),
                        GestureDetector(
                         onTap: controller.pickProfileImage,
                         child: Container(
@@ -98,7 +100,8 @@ print(controller.instagram);
                           width: 1,
                           color: Colors.black,
                           
-                        )
+                        ),
+                        borderRadius: BorderRadius.circular(12)
                         
                           ),
                         ),
