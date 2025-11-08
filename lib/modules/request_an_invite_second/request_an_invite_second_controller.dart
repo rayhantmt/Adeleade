@@ -27,6 +27,7 @@ late String? instagram='';
   // Store picked images (like TextEditingController for text)
   RxList<XFile> selectedImages = <XFile>[].obs;
 Rxn<XFile> profileImage = Rxn<XFile>();
+Rxn<XFile> coverImage = Rxn<XFile>();
   final ImagePicker _picker = ImagePicker();
 
   void toggleObscureText() {
@@ -49,6 +50,13 @@ Future<void> pickProfileImage() async {
   final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
   if (image != null) {
     profileImage.value = image;
+  }
+}
+
+Future<void> pickCoverImage() async {
+  final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  if (image != null) {
+    coverImage.value = image;
   }
 }
   // Trigger API call with selected images
