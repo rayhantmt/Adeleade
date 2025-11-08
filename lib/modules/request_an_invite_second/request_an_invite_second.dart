@@ -105,6 +105,7 @@ print(controller.instagram);
                         borderRadius: BorderRadius.circular(12)
                         
                           ),
+                          child: Text('Select profile image'),
                         ),
                       ),
                       Padding(
