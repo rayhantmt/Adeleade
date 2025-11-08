@@ -185,7 +185,7 @@ print(controller.instagram);
                       SizedBox(height: Get.height * 0.015),
                       GestureDetector(
                         // onTap: () => Get.toNamed(AppPages.o),
-                        onTap: controller.submitInviteRequest,
+                        onTap: controller.createUser,
                      
                         
                         /* () => Get.snackbar(

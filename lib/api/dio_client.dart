@@ -5,8 +5,7 @@ import 'package:mementum/core/exceptions.dart';
 class DioClient {
   final Dio _dio = Dio(
     BaseOptions(
-      connectTimeout: const Duration(seconds: 30),
-      receiveTimeout: const Duration(seconds: 30),
+     
       responseType: ResponseType.json,
     ),
   );
@@ -18,7 +17,7 @@ class DioClient {
     try {
       final response = await _dio.post(url, data: data);
       return response;
-    } on DioException catch (e) {
+    } on DioError catch (e) {
       if (e.response != null) {
         switch (e.response?.statusCode) {
           case 400:
