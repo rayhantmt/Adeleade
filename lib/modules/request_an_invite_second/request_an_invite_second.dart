@@ -76,7 +76,22 @@ print(controller.instagram);
                       GestureDetector(
                         onTap: controller.pickProfileImage,
                         child: Container(
-                          height: Get.height*0.1,
+                          height: Get.height*0.03,
+                          width: Get.width*0.7,
+                          decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 1,
+                          color: Colors.black,
+                          
+                        )
+                        
+                          ),
+                        ),
+                      ),
+                       GestureDetector(
+                        onTap: controller.pickProfileImage,
+                        child: Container(
+                          height: Get.height*0.03,
                           width: Get.width*0.7,
                           decoration: BoxDecoration(
                         border: Border.all(
