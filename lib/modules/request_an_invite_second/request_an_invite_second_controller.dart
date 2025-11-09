@@ -25,8 +25,11 @@ class RequestAnInviteSecondController extends GetxController {
 
   // Store picked images
   RxList<XFile> selectedImages = <XFile>[].obs;
-  Rx<XFile?> profileImage = Rx<XFile?>(null);
-  Rx<XFile?> coverImage = Rx<XFile?>(null);
+
+  // Use nullable Rx (Rxn) instead of XFile('') to avoid empty-path files
+  Rxn<XFile> profileImage = Rxn<XFile>();
+  Rxn<XFile> coverImage = Rxn<XFile>();
+
   final ImagePicker _picker = ImagePicker();
 
   void toggleObscureText() {
@@ -39,24 +42,48 @@ class RequestAnInviteSecondController extends GetxController {
 
   // Pick multiple images (max 5)
   Future<void> pickImages() async {
-    final List<XFile>? images = await _picker.pickMultiImage();
-    if (images != null && images.isNotEmpty) {
-      selectedImages.assignAll(images.take(5).toList());
+    try {
+      final List<XFile>? images = await _picker.pickMultiImage();
+      if (images != null && images.isNotEmpty) {
+        selectedImages.assignAll(images.take(5).toList());
+        Get.snackbar('Images selected', selectedImages.map((e) => e.path).toList().toString());
+      }
+    } catch (e) {
+      print('Error picking images: $e');
+      Get.snackbar('Error', 'Failed to pick images: $e');
     }
   }
 
   // Pick single profile image
   Future<void> pickProfileImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      profileImage.value = image;
+    try {
+      final XFile? picked = await _picker.pickImage(source: ImageSource.gallery);
+      if (picked != null) {
+        profileImage.value = picked;
+        print('Profile picked: ${picked.path}');
+        Get.snackbar('Profile image', picked.path);
+      } else {
+        print('Profile pick cancelled');
+      }
+    } catch (e) {
+      print('Error picking profile image: $e');
+      Get.snackbar('Error', 'Failed to pick profile image: $e');
     }
   }
 
   Future<void> pickCoverImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      coverImage.value = image;
+    try {
+      final XFile? picked = await _picker.pickImage(source: ImageSource.gallery);
+      if (picked != null) {
+        coverImage.value = picked;
+        print('Cover picked: ${picked.path}');
+        Get.snackbar('Cover image', picked.path);
+      } else {
+        print('Cover pick cancelled');
+      }
+    } catch (e) {
+      print('Error picking cover image: $e');
+      Get.snackbar('Error', 'Failed to pick cover image: $e');
     }
   }
 
@@ -77,15 +104,27 @@ class RequestAnInviteSecondController extends GetxController {
   // ✅ Modified createUser with dynamic galleryPhotos from selectedImages
   Future<void> createUser() async {
     try {
-      // Convert selectedImages RxList to MultipartFile list
+      // Validate required files using null checks (Rxn)
+      if (profileImage.value == null) {
+        Get.snackbar('Error', 'Please select a profile image');
+        return;
+      }
+      if (coverImage.value == null) {
+        Get.snackbar('Error', 'Please select a cover image');
+        return;
+      }
+
+      // Convert selectedImages RxList to MultipartFile list (skip empty paths)
       List<MultipartFile> galleryFiles = [];
       for (var image in selectedImages) {
-        galleryFiles.add(
-          await MultipartFile.fromFile(
-            image.path,
-            filename: image.name,
-          ),
-        );
+        if (image.path.isNotEmpty) {
+          galleryFiles.add(
+            await MultipartFile.fromFile(
+              image.path,
+              filename: image.name,
+            ),
+          );
+        }
       }
 
       final formData = FormData.fromMap({
@@ -106,7 +145,7 @@ class RequestAnInviteSecondController extends GetxController {
           coverImage.value!.path,
           filename: coverImage.value!.name,
         ),
-        'galleryPhotos': galleryFiles, // 👈 dynamic list now
+        'galleryPhotos': galleryFiles,
       });
 
       final response = await _client.postFormData(
@@ -119,7 +158,6 @@ class RequestAnInviteSecondController extends GetxController {
     } catch (e) {
       print('❌ Error creating user: $e');
       Get.snackbar('Error','❌ Error creating user: $e' );
-      print(FormData);
     }
   }
 }
