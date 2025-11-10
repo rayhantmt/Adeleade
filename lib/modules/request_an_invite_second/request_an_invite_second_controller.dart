@@ -1,4 +1,4 @@
-//import 'dart:io';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:image_picker/image_picker.dart';
@@ -76,6 +76,7 @@ class RequestAnInviteSecondController extends GetxController {
       final XFile? picked = await _picker.pickImage(source: ImageSource.gallery);
       if (picked != null) {
         coverImage.value = picked;
+        coverImage.refresh();  
         print('Cover picked: ${picked.path}');
         Get.snackbar('Cover image', picked.path);
       } else {

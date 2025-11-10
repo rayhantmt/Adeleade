@@ -76,7 +76,7 @@ print(controller.instagram);
                         ),
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
-                          onTap: controller.pickProfileImage,
+                          onTap: controller.pickCoverImage,
                           child: Container(
                             height: Get.height*0.03,
                             width: Get.width*0.7,
