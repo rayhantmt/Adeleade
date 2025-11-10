@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:image_picker/image_picker.dart';
@@ -46,7 +45,10 @@ class RequestAnInviteSecondController extends GetxController {
       final List<XFile>? images = await _picker.pickMultiImage();
       if (images != null && images.isNotEmpty) {
         selectedImages.assignAll(images.take(5).toList());
-        Get.snackbar('Images selected', selectedImages.map((e) => e.path).toList().toString());
+        Get.snackbar(
+          'Images selected',
+          selectedImages.map((e) => e.path).toList().toString(),
+        );
       }
     } catch (e) {
       print('Error picking images: $e');
@@ -57,7 +59,9 @@ class RequestAnInviteSecondController extends GetxController {
   // Pick single profile image
   Future<void> pickProfileImage() async {
     try {
-      final XFile? picked = await _picker.pickImage(source: ImageSource.gallery);
+      final XFile? picked = await _picker.pickImage(
+        source: ImageSource.gallery,
+      );
       if (picked != null) {
         profileImage.value = picked;
         print('Profile picked: ${picked.path}');
@@ -73,10 +77,12 @@ class RequestAnInviteSecondController extends GetxController {
 
   Future<void> pickCoverImage() async {
     try {
-      final XFile? picked = await _picker.pickImage(source: ImageSource.gallery);
+      final XFile? picked = await _picker.pickImage(
+        source: ImageSource.gallery,
+      );
       if (picked != null) {
         coverImage.value = picked;
-        coverImage.refresh();  
+        coverImage.refresh();
         print('Cover picked: ${picked.path}');
         Get.snackbar('Cover image', picked.path);
       } else {
@@ -120,10 +126,7 @@ class RequestAnInviteSecondController extends GetxController {
       for (var image in selectedImages) {
         if (image.path.isNotEmpty) {
           galleryFiles.add(
-            await MultipartFile.fromFile(
-              image.path,
-              filename: image.name,
-            ),
+            await MultipartFile.fromFile(image.path, filename: image.name),
           );
         }
       }
@@ -158,7 +161,7 @@ class RequestAnInviteSecondController extends GetxController {
       Get.snackbar('success', '✅ User Created: ${response.data}');
     } catch (e) {
       print('❌ Error creating user: $e');
-      Get.snackbar('Error','❌ Error creating user: $e' );
+      Get.snackbar('Error', '❌ Error creating user: $e');
     }
   }
 }
