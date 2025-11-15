@@ -38,12 +38,12 @@ class LogInController extends GetxController {
       );
       final storage = GetStorage();
       final accessToken =
-          response['data']['accessToken']; // <- from your response
+          response['data']['token']; // <- from your response
 
       storage.write('token', accessToken);
       Get.offAllNamed(AppPages.mainscreen);
       // Handle success (e.g., token saving, navigating)
-      //print("Login success: $response");
+      print("Login success: $response");
     } on AppException catch (e) {
       Get.snackbar("Login Failed", e.message);
     } finally {

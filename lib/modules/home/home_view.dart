@@ -27,11 +27,14 @@ class HomeView extends GetView<HomeController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Image.asset(
-                      AppImages.logo,
-                      height: 40,
-                      width: 40,
-                      color: Colors.black,
+                    GestureDetector(
+                      onTap: () => controller.printToken(),
+                      child: Image.asset(
+                        AppImages.logo,
+                        height: 40,
+                        width: 40,
+                        color: Colors.black,
+                      ),
                     ),
                     Text(
                       'Momentum',

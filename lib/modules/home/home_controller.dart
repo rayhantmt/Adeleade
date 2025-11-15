@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mementum/modules/home/home_model.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -42,5 +43,10 @@ var selectedCategoryIndex = 0.obs;
 // Add this function
 void selectCategory(int index) {
   selectedCategoryIndex.value = index;
+}
+void printToken() {
+  final storage = GetStorage();
+  final token = storage.read('token'); // read the saved token
+  print('Saved Token: $token'); // prints it
 }
 }
