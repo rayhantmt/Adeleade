@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/routes/app_pages.dart';
 RxBool isLoading= false.obs;
 final emailController=TextEditingController();
 class ForgotPasswordController extends GetxController{
@@ -27,7 +28,7 @@ class ForgotPasswordController extends GetxController{
       Get.snackbar('Success', 'Email submitted successfully',
         backgroundColor: Colors.green, colorText: Colors.white);
 
-       Get.toNamed('/otp',arguments: emailController.text.trim());
+       Get.toNamed(AppPages.otppage,arguments: emailController.text.trim());
       
     } on AppException catch (e) {
       // ❌ Error from API
