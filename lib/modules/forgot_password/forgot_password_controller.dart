@@ -5,16 +5,15 @@ import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/routes/app_pages.dart';
-RxBool isLoading= false.obs;
-final emailController=TextEditingController();
+
 class ForgotPasswordController extends GetxController{
+  RxBool isLoading= false.obs;
+final emailController=TextEditingController();
   Future<void> submitEmail() async {
     isLoading.value = true;
 
     final body = {
-      "data": {
-        "email": emailController.text.trim(),
-      }
+      "email": emailController.text.trim()
     };
 
     try {
