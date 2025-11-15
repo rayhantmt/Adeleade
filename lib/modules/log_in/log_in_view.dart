@@ -61,6 +61,7 @@ class LogInView extends GetView<LogInController> {
                         child: Row(children: [Text('Email')]),
                       ),
                       Commontextfield(
+                        textcontroller: controller.emailcontroller,
                         tittle: 'Rayhantmt@gmail.com',
                         obsecuretext: false,
                       ),
@@ -71,6 +72,7 @@ class LogInView extends GetView<LogInController> {
                       ),
                       Obx(
                         () => Commontextfield(
+                          textcontroller: controller.passwordcontroller,
                           tittle: '*******',
                           obsecuretext: controller.isObscured.value,
                           icon: GestureDetector(
