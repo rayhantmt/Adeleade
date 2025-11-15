@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
+import 'package:mementum/modules/forgot_password/forgot_password_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class ForgotPasswordView extends StatelessWidget {
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
   const ForgotPasswordView({super.key});
 
   @override
@@ -73,6 +74,7 @@ class ForgotPasswordView extends StatelessWidget {
                 ),
                 SizedBox(height: Get.height * 0.01),
                 Commontextfield(
+                  
                   tittle: 'Rayhantmt@gmail.com',
                   obsecuretext: false,
                 ),
