@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mementum/modules/splash/splash_screen.dart';
 import 'package:mementum/routes/app_routes.dart';
 
-void main() {
+void main() async{
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
