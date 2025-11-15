@@ -95,6 +95,7 @@ class LogInView extends GetView<LogInController> {
                         
                             GestureDetector(
                               onTap: () => Get.toNamed(AppPages.forgotpassword),
+                             
                               child: Text(
                                 'Forgot Password',
                                 style: TextStyle(
@@ -109,7 +110,8 @@ class LogInView extends GetView<LogInController> {
                       ),
                       SizedBox(height: Get.height * 0.006),
                       GestureDetector(
-                        onTap: () => Get.offAllNamed(AppPages.mainscreen),
+                        //onTap: () => Get.offAllNamed(AppPages.mainscreen),
+                        onTap: () => controller.login(),
                         child: Container(
                           height: Get.height * 0.07,
                           width: Get.width * 0.8,
