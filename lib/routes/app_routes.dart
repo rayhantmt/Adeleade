@@ -5,6 +5,7 @@ import 'package:mementum/modules/edit_profile/edit_profile.dart';
 import 'package:mementum/modules/event_details/event_details_view.dart';
 import 'package:mementum/modules/event_details/event_details_binding.dart';
 import 'package:mementum/modules/event_history/event_history.dart';
+import 'package:mementum/modules/forgot_password/forgot_password_binding.dart';
 import 'package:mementum/modules/forgot_password/forgot_password_view.dart';
 import 'package:mementum/modules/log_in/log_in_binding.dart';
 import 'package:mementum/modules/log_in/log_in_view.dart';
@@ -33,7 +34,7 @@ class AppRoutes {
     GetPage(name: AppPages.login, page: () => LogInView(),binding: LogInBinding()),
     GetPage(name: AppPages.signup, page: () => RequestAnInviteView(),binding: RequesstAnInviteBinding()),
     GetPage(name: AppPages.signupsecond, page: () => RequestAnInviteSecond(),binding: RequestAnInviteSecondBinding()),
-    GetPage(name: AppPages.forgotpassword, page: ()=>ForgotPasswordView()),
+    GetPage(name: AppPages.forgotpassword, page: ()=>ForgotPasswordView(),binding: ForgotPasswordBinding()),
     GetPage(name: AppPages.otppage, page: () => OtpPageView(),binding: OtpPageBinding()),
     GetPage(name: AppPages.updatepassword, page: () => UpdatePasswordView(),binding: UpdatePasswordBinding()),
     GetPage(name: AppPages.updatePasswordSuccessfull, page: () => UpdatePasswordSuccessfull(),),
