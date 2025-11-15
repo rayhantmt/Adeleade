@@ -2,6 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mementum/api/api_config.dart';
+import 'package:mementum/api/api_services.dart';
+import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/routes/app_pages.dart';
 
 class OtpController extends GetxController {
   final otpController = TextEditingController();
@@ -50,12 +54,12 @@ class OtpController extends GetxController {
     }
   }
 
-  void verifyOtp() {
-    if (otp.value.length == 6) {
-      // Simulate API call
-      Get.snackbar("OTP Verified", "Proceeding to next step...");
-    }
-  }
+  // void verifyOtp() {
+  //   if (otp.value.length == 6) {
+  //     // Simulate API call
+  //     Get.snackbar("OTP Verified", "Proceeding to next step...");
+  //   }
+  // }
 
   void onOtpFieldChanged(String value, int index) {
     if (value.isNotEmpty && index < 5) {
@@ -66,4 +70,83 @@ class OtpController extends GetxController {
     otp.value = otpControllers.map((c) => c.text).join();
     isButtonEnabled.value = otp.value.length == 6;
   }
+  final email=Get.arguments;
+Future<void> verifyOtp() async {
+  final body = {
+    "email": email,
+    "otp": otp.value
+  };
+
+  isLoading.value = true; // Start loading
+  try {
+    final response = await ApiService.post(
+      endpoint: ApiConfig.verifyOtpendpoint,
+      body: body,
+    );
+ //final userId = response['data']['user']['id'];
+ 
+    print("OTP Verification Success: $response");
+    Get.toNamed(AppPages.updatepassword, );//arguments: {'userId': userId});
+  } on AppException catch (e) {
+    Get.snackbar(
+      'Verification Failed',
+      e.message,
+      backgroundColor: Colors.redAccent,
+      colorText: Colors.white,
+    );
+  } finally {
+    isLoading.value = false; // Stop loading
+  }
+}
+
+  @override
+  void onClose() {
+    timer?.cancel();
+    for (final c in otpControllers) {
+      c.dispose();
+    }
+    for (final f in otpFocusNodes) {
+      f.dispose();
+    }
+    super.onClose();
+//   }Future<void> verifyOtp() async {
+//   final body = {
+//     "data": {"email": email, "otp": otp.value},
+//   };
+
+//   isLoading.value = true; // Start loading
+//   try {
+//     final response = await ApiService.post(
+//       endpoint: ApiConfig.otpendpoint,
+//       body: body,
+//     );
+//  final userId = response['data']['user']['id'];
+ 
+//     print("OTP Verification Success: $response");
+//     Get.toNamed(Approutes.changepassword, arguments: {'userId': userId});
+//   } on AppException catch (e) {
+//     Get.snackbar(
+//       'Verification Failed',
+//       e.message,
+//       backgroundColor: Colors.redAccent,
+//       colorText: Colors.white,
+//     );
+//   } finally {
+//     isLoading.value = false; // Stop loading
+//   }
+// }
+
+//   @override
+//   void onClose() {
+//     timer?.cancel();
+//     for (final c in otpControllers) {
+//       c.dispose();
+//     }
+//     for (final f in otpFocusNodes) {
+//       f.dispose();
+//     }
+//     super.onClose();
+//   }
+
+}
 }

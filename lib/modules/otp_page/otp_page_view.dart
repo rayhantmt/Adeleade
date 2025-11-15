@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:mementum/modules/otp_page/otp_page_controller.dart';
-import 'package:mementum/routes/app_pages.dart';
+
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -113,7 +113,8 @@ class OtpPageView extends GetView<OtpController> {
                     )),
                 const SizedBox(height: 32),
                  GestureDetector(
-                  onTap: () => Get.toNamed(AppPages.updatepassword),
+                 // onTap: () => Get.toNamed(AppPages.updatepassword),
+                 onTap: () => controller.verifyOtp(),
                    child: Container(
                               height: Get.height * 0.07,
                               width: Get.width * 0.8,
