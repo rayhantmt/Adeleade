@@ -3,6 +3,6 @@ class ApiConfig {
 
   // Auth Endpoints
   static const String loginEndpoint = '/api/v1/user/login';
-  static const String signupEndpoint = '/auth/signup';
+  static const String forgotpasswordendpoint='/api/v1/admin/forgot-password';
 
 }
