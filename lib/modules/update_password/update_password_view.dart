@@ -82,7 +82,8 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
                      
                       SizedBox(height: Get.height * 0.033),
                       GestureDetector(
-                        onTap: () => Get.toNamed(AppPages.updatePasswordSuccessfull),
+                       // onTap: () => Get.toNamed(AppPages.updatePasswordSuccessfull),
+                       onTap: () => controller.updatepassword(),
                         child: Container(
                           height: Get.height * 0.07,
                           width: Get.width * 0.8,
