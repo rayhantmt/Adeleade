@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
 import 'package:mementum/modules/update_password/update_password_controller.dart';
-import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 
 class UpdatePasswordView extends GetView<UpdatePasswordController> {
