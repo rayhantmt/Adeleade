@@ -86,7 +86,7 @@ Future<void> verifyOtp() async {
  //final userId = response['data']['user']['id'];
  
     print("OTP Verification Success: $response");
-    Get.toNamed(AppPages.updatepassword, );//arguments: {'userId': userId});
+    Get.toNamed(AppPages.updatepassword,arguments: email );//arguments: {'userId': userId});
   } on AppException catch (e) {
     Get.snackbar(
       'Verification Failed',

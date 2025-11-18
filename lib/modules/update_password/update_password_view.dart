@@ -50,6 +50,7 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
                       ),
                       Obx(
                         () => Commontextfield(
+                          textcontroller: controller.passwordcontroller,
                           tittle: '*******',
                           obsecuretext: controller.isObscured.value,
                           icon: GestureDetector(
