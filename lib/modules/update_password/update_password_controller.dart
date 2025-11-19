@@ -27,7 +27,7 @@ final passwordcontroller=TextEditingController();
 
     final body = {
       "email": eamil,
-      "password": passwordcontroller.text.trim(),
+      "newPassword": passwordcontroller.text.trim(),
     };
 
     try {
