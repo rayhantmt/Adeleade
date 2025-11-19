@@ -37,8 +37,7 @@ class LogInController extends GetxController {
         body: body,
       );
       final storage = GetStorage();
-      final accessToken =
-          response['data']['token']; // <- from your response
+      final accessToken = response['data']['token']; // <- from your response
 
       storage.write('token', accessToken);
       Get.offAllNamed(AppPages.mainscreen);
