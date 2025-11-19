@@ -44,6 +44,7 @@ class LogInController extends GetxController {
       Get.offAllNamed(AppPages.mainscreen);
       // Handle success (e.g., token saving, navigating)
       print("Login success: $response");
+      print(accessToken);
     } on AppException catch (e) {
       Get.snackbar("Login Failed", e.message);
     } finally {
