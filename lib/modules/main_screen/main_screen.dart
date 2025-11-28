@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mementum/modules/maps/maps_view.dart';
 import 'package:mementum/modules/chat_box/chat_view.dart';
 import 'package:mementum/modules/home/home_view.dart';
 import 'package:mementum/modules/main_screen/main_screen_controller.dart';
@@ -30,18 +28,19 @@ class MainScreen extends GetView<MainScreenController> {
           type: BottomNavigationBarType.fixed,
           onTap: controller.changeTab,
           currentIndex: currentIndex,
-           unselectedItemColor: Color(0xff65676B),
+          unselectedItemColor: Color(0xff65676B),
           selectedItemColor: AppColors.primarycolor,
-         selectedLabelStyle: GoogleFonts.inter(
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-          color: AppColors.primarycolor,),
+          selectedLabelStyle: GoogleFonts.inter(
+            fontWeight: FontWeight.w400,
+            fontSize: 12,
+            color: AppColors.primarycolor,
+          ),
           unselectedLabelStyle: GoogleFonts.inter(
             color: Color(0xff65676B),
             fontWeight: FontWeight.w400,
             fontSize: 12,
           ),
-         backgroundColor: Color(0xffF9F7F1),
+          backgroundColor: Color(0xffF9F7F1),
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_filled, size: 30),
