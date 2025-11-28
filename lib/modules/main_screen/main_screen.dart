@@ -17,7 +17,7 @@ class MainScreen extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       HomeView(),
-      MapsView(),
+      //MapsView(),
       MemoriesView(),
       ChatView(),
       ProfileView(),
@@ -48,10 +48,10 @@ class MainScreen extends GetView<MainScreenController> {
               label: 'Home',
               backgroundColor: Color(0xffF9F7F1),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.location_on_outlined, size: 30),
-              label: 'Maps',
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.location_on_outlined, size: 30),
+            //   label: 'Maps',
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline_outlined, size: 30),
               label: 'Memories',
