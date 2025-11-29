@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/profile_container.dart';
 import 'package:mementum/routes/app_pages.dart';
@@ -163,7 +164,12 @@ class ProfileView extends StatelessWidget {
                           ),
                           ),
                           GestureDetector(
-                            onTap: () => Get.offAllNamed(AppPages.login),
+                            //onTap: () => Get.offAllNamed(AppPages.login),
+                            onTap: () {
+                              final storage=GetStorage();
+                              storage.erase();
+                              Get.offAllNamed(AppPages.login);
+                            },
                             child: Container(
                               height: Get.height*0.05,
                               width: Get.width*0.6,
