@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/home/home_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
@@ -10,6 +11,9 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final storage=GetStorage();
+    final token=storage.read('token');
+    print('This is the token $token');
     return Scaffold(
       body: Stack(
         children: [
