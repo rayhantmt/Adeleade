@@ -114,70 +114,72 @@ class RequestAnInviteSecondController extends GetxController {
 
   // ✅ Modified createUser with dynamic galleryPhotos from selectedImages
   Future<void> createUser() async {
-  try {
-    // Convert selectedImages RxList to MultipartFile list (skip empty paths)
-    List<MultipartFile> galleryFiles = [];
-    for (var image in selectedImages) {
-  final ext = image.path.split('.').last.toLowerCase();
-  if (allowedExtensions.contains(ext)) {
-    galleryFiles.add(
-      await MultipartFile.fromFile(
-        image.path,
-        filename: image.name,
-        contentType: ext == 'png'
-            ? MediaType('image', 'png')
-            : MediaType('image', 'jpeg'),
-      ),
-    );
-  }
-}
+    try {
+      // Convert selectedImages RxList to MultipartFile list (skip empty paths)
+      List<MultipartFile> galleryFiles = [];
+      for (var image in selectedImages) {
+        final ext = image.path.split('.').last.toLowerCase();
+        if (allowedExtensions.contains(ext)) {
+          galleryFiles.add(
+            await MultipartFile.fromFile(
+              image.path,
+              filename: image.name,
+              contentType: ext == 'png'
+                  ? MediaType('image', 'png')
+                  : MediaType('image', 'jpeg'),
+            ),
+          );
+        }
+      }
 
-    final formData = FormData.fromMap({
-      'email': email,
-      'password': passwordcontroller.text,
-      'name': name,
-      'gender': gender,
-      'bio': biocontroller.text,
-      'nationality': nationality,
-      'profession': profession,
-      'linkedIn': linkedincontroller.text,
-      'instagram': instagram,
-      'avatar': await MultipartFile.fromFile(
-        profileImage.value!.path,
-        filename: profileImage.value!.name,
-        contentType: MediaType('image', 'png'),
-      ),
-      'cover': await MultipartFile.fromFile(
-        coverImage.value!.path,
-        filename: coverImage.value!.name,
-        contentType: MediaType('image', 'png'),
-      ),
-      'galleryPhotos': galleryFiles,
-    });
+      final formData = FormData.fromMap({
+        'email': email,
+        'password': passwordcontroller.text,
+        'name': name,
+        'gender': gender,
+        'bio': biocontroller.text,
+        'nationality': nationality,
+        'profession': profession,
+        'linkedIn': linkedincontroller.text,
+        'instagram': instagram,
+        'avatar': await MultipartFile.fromFile(
+          profileImage.value!.path,
+          filename: profileImage.value!.name,
+          contentType: MediaType('image', 'png'),
+        ),
+        'cover': await MultipartFile.fromFile(
+          coverImage.value!.path,
+          filename: coverImage.value!.name,
+          contentType: MediaType('image', 'png'),
+        ),
+        'galleryPhotos': galleryFiles,
+      });
 
-    final response = await _client.postFormData(
-      url: '${ApiConfig.baseUrl}/api/v1/user/sign-up',
-      data: formData,
-    );
+      final response = await _client.postFormData(
+        url: '${ApiConfig.baseUrl}/api/v1/user/sign-up',
+        data: formData,
+      );
 
-    print('✅ User Created: ${response.data}');
-    Get.snackbar('Success', '✅ User Created: ${response.data}');
-  } on DioError catch (e) {
-    // Dio-specific errors
-    if (e.response != null) {
-      print(
-          '❌ DioError Response: Status Code ${e.response?.statusCode}, Data: ${e.response?.data}');
-      Get.snackbar('Error',
-          'Status: ${e.response?.statusCode}, ${e.response?.data}');
-    } else {
-      print('❌ DioError (No Response): ${e.message}');
-      Get.snackbar('Error', 'Network Error: ${e.message}');
+      print('✅ User Created: ${response.data}');
+      Get.snackbar('Success', '✅ User Created: ${response.data}');
+    } on DioError catch (e) {
+      // Dio-specific errors
+      if (e.response != null) {
+        print(
+          '❌ DioError Response: Status Code ${e.response?.statusCode}, Data: ${e.response?.data}',
+        );
+        Get.snackbar(
+          'Error',
+          'Status: ${e.response?.statusCode}, ${e.response?.data}',
+        );
+      } else {
+        print('❌ DioError (No Response): ${e.message}');
+        Get.snackbar('Error', 'Network Error: ${e.message}');
+      }
+    } catch (e) {
+      // Any other unexpected errors
+      print('❌ Unexpected Error: $e');
+      Get.snackbar('Error', '❌ Unexpected Error: $e');
     }
-  } catch (e) {
-    // Any other unexpected errors
-    print('❌ Unexpected Error: $e');
-    Get.snackbar('Error', '❌ Unexpected Error: $e');
   }
-}
-
 }

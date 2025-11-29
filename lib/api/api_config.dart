@@ -1,5 +1,5 @@
 class ApiConfig {
-  static const String baseUrl = 'https://overcontritely-epagogic-vicky.ngrok-free.dev';
+  static const String baseUrl = 'https://server.momentumactivity.com';
 
   // Auth Endpoints
   static const String loginEndpoint = '/api/v1/user/login';
