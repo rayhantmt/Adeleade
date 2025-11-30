@@ -16,10 +16,10 @@ class DioClient {
   Future<Response> postFormData({
     required String url,
     required FormData data,
-    Map<String, String>? headers
+    Map<String, dynamic>? headers
   }) async {
     try {
-      final response = await _dio.post(url, data: data);
+      final response = await _dio.post(url, data: data,options:Options(headers:headers));
       return response;
     } on DioException catch (e) { // Note: Use DioException instead of DioError for Dio v5+
       if (e.response != null) {
