@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
+import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/dio_client.dart';
@@ -8,7 +9,7 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:http_parser/http_parser.dart';
 
 class MemoriesController extends GetxController {
-  var memorytype = 0.obs; 
+  var memorytype = 0.obs;
   Rxn<XFile> eventImage = Rxn<XFile>();
   void setDepositType(int type) {
     memorytype.value = type;
@@ -36,13 +37,15 @@ class MemoriesController extends GetxController {
 
   RxBool isLoading = false.obs;
   final DioClient _client = DioClient();
-  final namecontroller=TextEditingController();
-  final eventdatecontroller=TextEditingController();
-  final locationcontroller=TextEditingController();
-  final cetegorycontroller=TextEditingController();
-  final detailscontroller=TextEditingController();
-  final maxParticipantscontroller=TextEditingController();
+  final namecontroller = TextEditingController();
+  final eventdatecontroller = TextEditingController();
+  final locationcontroller = TextEditingController();
+  final cetegorycontroller = TextEditingController();
+  final detailscontroller = TextEditingController();
+  final maxParticipantscontroller = TextEditingController();
   Future<void> createEvent() async {
+    final storage = GetStorage();
+    final token = storage.read('token');
     isLoading.value = true;
     if (eventImage.value == null) {
       Get.snackbar('Error', 'Please select a profile image');
@@ -54,12 +57,12 @@ class MemoriesController extends GetxController {
 
       // 3. Create FormData
       final formData = FormData.fromMap({
-        'name': '',
-        'eventDate': '',
-        'location': '',
-        'category': '',
-        'details': '',
-        'maxParticipants': '',
+        'name': namecontroller.text.toString(),
+        'eventDate': eventdatecontroller.text.toString(),
+        'location': locationcontroller.text.toString(),
+        'category': cetegorycontroller.text.toString(),
+        'details': detailscontroller.text.toString(),
+        'maxParticipants': maxParticipantscontroller.text.toString(),
         'eventImage': await MultipartFile.fromFile(
           eventImage.value!.path,
           filename: eventImage.value!.name,
@@ -69,8 +72,12 @@ class MemoriesController extends GetxController {
 
       // 4. API Call
       final response = await _client.postFormData(
-        url: '${ApiConfig.baseUrl}/api/v1/user/sign-up',
+        url: '${ApiConfig.baseUrl}/api/v1/event/create',
         data: formData,
+        headers: {
+          'Authorization': 'Bearer ${token}',
+          'Content-type': 'multipart/form-data',
+        },
       );
 
       print('✅ User Created: ${response.data}');

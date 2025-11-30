@@ -16,6 +16,7 @@ class DioClient {
   Future<Response> postFormData({
     required String url,
     required FormData data,
+    Map<String, String>? headers
   }) async {
     try {
       final response = await _dio.post(url, data: data);
