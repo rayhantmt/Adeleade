@@ -144,21 +144,24 @@ Widget _createEvent() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(tittle: "Activity Name", hint: 'Enter Activity name',),
+        UpdateInfoField(tittle: "Activity Name", hint: 'Enter Activity name',textcontroller: controller.namecontroller,),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(
+          textcontroller: controller.maxParticipantscontroller,
           tittle: "Participants",
           hint: 'Enter number of participants',
         ),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(
+          textcontroller: controller.locationcontroller,
           tittle: "Activity Location",
           hint: 'Enter Activity Location',
         ),
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(tittle: "Activity Date", hint: 'Enter Activity Date'),
+        UpdateInfoField(tittle: "Activity Date", hint: 'Enter Activity Date',textcontroller: controller.eventdatecontroller,),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(
+          textcontroller: controller.cetegorycontroller,
           tittle: "Activity Category",
           hint: 'Enter Activity category name',
         ),
@@ -215,6 +218,7 @@ Widget _createEvent() {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextFormField(
+              controller: controller.detailscontroller,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hint: Center(
