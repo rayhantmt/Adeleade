@@ -26,14 +26,14 @@ class MemoriesView extends GetView<MemoriesController> {
                 height: Get.height * 0.07,
                 child: Stack(
                   children: [
-                    Align(
-                      alignment: AlignmentGeometry.centerLeft,
-                      child: Image.asset(
-                        AppImages.back_icon,
-                        height: Get.height * 0.07,
-                        width: Get.height * 0.07,
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: AlignmentGeometry.centerLeft,
+                    //   child: Image.asset(
+                    //     AppImages.back_icon,
+                    //     height: Get.height * 0.07,
+                    //     width: Get.height * 0.07,
+                    //   ),
+                    // ),
                     Center(
                       child: Text(
                         'Memories',
