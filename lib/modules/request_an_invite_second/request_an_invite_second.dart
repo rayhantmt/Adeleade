@@ -197,14 +197,14 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                             ),
                           ),
                         ),
-                        GestureDetector(
-                          onTap: () => print(controller.coverImage.value),
-                          child: Container(
-                            height: 20,
-                            width: 20,
-                            color: Colors.red,
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () => print(controller.coverImage.value),
+                        //   child: Container(
+                        //     height: 20,
+                        //     width: 20,
+                        //     color: Colors.red,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
