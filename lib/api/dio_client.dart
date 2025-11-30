@@ -1,12 +1,15 @@
+// mementum/api/dio_client.dart
+
 import 'package:dio/dio.dart';
 import 'package:mementum/core/exceptions.dart';
-
 
 class DioClient {
   final Dio _dio = Dio(
     BaseOptions(
-     
       responseType: ResponseType.json,
+      // Increase timeout in case image upload takes time
+      connectTimeout: const Duration(seconds: 30), 
+      receiveTimeout: const Duration(seconds: 30),
     ),
   );
 
@@ -17,23 +20,47 @@ class DioClient {
     try {
       final response = await _dio.post(url, data: data);
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) { // Note: Use DioException instead of DioError for Dio v5+
       if (e.response != null) {
-        switch (e.response?.statusCode) {
+        final statusCode = e.response?.statusCode;
+        // helper function to extract error message safely
+        final errorMessage = _getErrorMessage(e.response?.data);
+
+        switch (statusCode) {
           case 400:
-            throw BadRequestException(e.response?.data['message'] ?? 'Bad Request');
+            throw BadRequestException(errorMessage);
           case 401:
-            throw UnauthorizedException(e.response?.data['message'] ?? 'Unauthorized');
+            throw UnauthorizedException(errorMessage);
           case 404:
-            throw NotFoundException(e.response?.data['message'] ?? 'Not Found');
+            throw NotFoundException(errorMessage);
           case 500:
-            throw InternalServerException(e.response?.data['message'] ?? 'Server Error');
+            throw InternalServerException(errorMessage);
           default:
-            throw AppException(e.response?.data['message'] ?? 'Unknown Error');
+            throw AppException(errorMessage);
         }
       } else {
-        throw FetchDataException('No Internet Connection');
+        throw FetchDataException('No Internet Connection or Server Unreachable');
       }
     }
+  }
+
+  // ✅ Helper to safely extract message regardless of format
+  String _getErrorMessage(dynamic data) {
+    if (data == null) return 'Unknown Error';
+
+    // If data is a Map (JSON Object), look for 'message' or 'error'
+    if (data is Map<String, dynamic>) {
+      if (data.containsKey('message')) return data['message'].toString();
+      if (data.containsKey('error')) return data['error'].toString();
+      return data.toString(); // Fallback
+    }
+
+    // If data is a List (JSON Array), join them
+    if (data is List) {
+      return data.join('\n');
+    }
+
+    // If data is just a String
+    return data.toString();
   }
 }

@@ -203,14 +203,14 @@ print(controller.instagram);
                               color: AppColors.primarycolor,
                             ),
                             child: Center(
-                              child: Text(
+                              child: Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.white,):Text(
                                 'Request an invite',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
                                   color: Colors.black,
                                 ),
-                              ),
+                              ),)
                             ),
                           ),
                         ),

@@ -5,11 +5,13 @@ import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:mementum/core/exceptions.dart';
 
 class RequestAnInviteSecondController extends GetxController {
   RxBool isObscured = false.obs;
   RxBool isObscured1 = false.obs;
 
+RxBool isLoading=false.obs;
   final passwordcontroller = TextEditingController();
   late String? name = '';
   late String? email = '';
@@ -113,73 +115,90 @@ class RequestAnInviteSecondController extends GetxController {
   }
 
   // ✅ Modified createUser with dynamic galleryPhotos from selectedImages
-  Future<void> createUser() async {
-    try {
-      // Convert selectedImages RxList to MultipartFile list (skip empty paths)
-      List<MultipartFile> galleryFiles = [];
-      for (var image in selectedImages) {
-        final ext = image.path.split('.').last.toLowerCase();
-        if (allowedExtensions.contains(ext)) {
-          galleryFiles.add(
-            await MultipartFile.fromFile(
-              image.path,
-              filename: image.name,
-              contentType: ext == 'png'
-                  ? MediaType('image', 'png')
-                  : MediaType('image', 'jpeg'),
-            ),
-          );
-        }
-      }
+  // In request_an_invite_second_controller.dart
 
-      final formData = FormData.fromMap({
-        'email': email,
-        'password': passwordcontroller.text,
-        'name': name,
-        'gender': gender,
-        'bio': biocontroller.text,
-        'nationality': nationality,
-        'profession': profession,
-        'linkedIn': linkedincontroller.text,
-        'instagram': instagram,
-        'avatar': await MultipartFile.fromFile(
-          profileImage.value!.path,
-          filename: profileImage.value!.name,
-          contentType: MediaType('image', 'png'),
-        ),
-        'cover': await MultipartFile.fromFile(
-          coverImage.value!.path,
-          filename: coverImage.value!.name,
-          contentType: MediaType('image', 'png'),
-        ),
-        'galleryPhotos': galleryFiles,
-      });
-
-      final response = await _client.postFormData(
-        url: '${ApiConfig.baseUrl}/api/v1/user/sign-up',
-        data: formData,
-      );
-
-      print('✅ User Created: ${response.data}');
-      Get.snackbar('Success', '✅ User Created: ${response.data}');
-    } on DioError catch (e) {
-      // Dio-specific errors
-      if (e.response != null) {
-        print(
-          '❌ DioError Response: Status Code ${e.response?.statusCode}, Data: ${e.response?.data}',
-        );
-        Get.snackbar(
-          'Error',
-          'Status: ${e.response?.statusCode}, ${e.response?.data}',
-        );
-      } else {
-        print('❌ DioError (No Response): ${e.message}');
-        Get.snackbar('Error', 'Network Error: ${e.message}');
-      }
-    } catch (e) {
-      // Any other unexpected errors
-      print('❌ Unexpected Error: $e');
-      Get.snackbar('Error', '❌ Unexpected Error: $e');
-    }
+Future<void> createUser() async {
+  isLoading.value=true;
+  if (profileImage.value == null) {
+    Get.snackbar('Error', 'Please select a profile image');
+    return;
   }
+  if (coverImage.value == null) {
+    Get.snackbar('Error', 'Please select a cover image');
+    return;
+  }
+  if (selectedImages.isEmpty) {
+    Get.snackbar('Error', 'Please select at least one gallery image');
+    return;
+  }
+
+  try {
+    // 2. Prepare Gallery Files
+    List<MultipartFile> galleryFiles = [];
+    for (var image in selectedImages) {
+      final ext = image.path.split('.').last.toLowerCase();
+      if (allowedExtensions.contains(ext)) {
+        galleryFiles.add(
+          await MultipartFile.fromFile(
+            image.path,
+            filename: image.name,
+            // Simple logic: if not png, assume jpeg for safety
+            contentType: ext == 'png'
+                ? MediaType('image', 'png')
+                : MediaType('image', 'jpeg'),
+          ),
+        );
+      }
+    }
+
+    // 3. Create FormData
+    final formData = FormData.fromMap({
+      'email': email,
+      'password': passwordcontroller.text,
+      'name': name,
+      'gender': gender,
+      'bio': biocontroller.text,
+      'nationality': nationality,
+      'profession': profession,
+      'linkedIn': linkedincontroller.text,
+      'instagram': instagram,
+      // Safe access using ! because we checked for nulls at the top
+      'avatar': await MultipartFile.fromFile(
+        profileImage.value!.path,
+        filename: profileImage.value!.name,
+        contentType: MediaType('image', 'png'),
+      ),
+      'cover': await MultipartFile.fromFile(
+        coverImage.value!.path,
+        filename: coverImage.value!.name,
+        contentType: MediaType('image', 'png'),
+      ),
+      'galleryPhotos': galleryFiles, // Pass the List directly
+    });
+
+    // 4. API Call
+    final response = await _client.postFormData(
+      url: '${ApiConfig.baseUrl}/api/v1/user/sign-up',
+      data: formData,
+    );
+
+    print('✅ User Created: ${response.data}');
+    Get.snackbar('Success', 'User Created Successfully');
+    
+  } on BadRequestException catch (e) {
+    // Caught by our custom DioClient logic
+    Get.snackbar('Registration Failed', e.toString());
+    print('❌ API Error: $e');
+  } on DioException catch (e) {
+    // Catch generic Dio errors that might slip through
+    Get.snackbar('Error', 'Network error: ${e.message}');
+  } catch (e) {
+    // Catch logic errors (like the one you were seeing)
+    print('❌ Unexpected Error: $e');
+    Get.snackbar('Error', 'Something went wrong: $e');
+  }
+  finally{
+    isLoading.value=false;
+  }
+}
 }
