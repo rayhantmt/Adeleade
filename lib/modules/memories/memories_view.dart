@@ -144,7 +144,7 @@ Widget _createEvent() {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(tittle: "Activity Name", hint: 'Enter Activity name'),
+        UpdateInfoField(tittle: "Activity Name", hint: 'Enter Activity name',),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(
           tittle: "Participants",

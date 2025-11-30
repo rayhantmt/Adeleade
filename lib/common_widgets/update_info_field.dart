@@ -6,7 +6,8 @@ import 'package:mementum/utils/app_colors.dart';
 class UpdateInfoField extends StatelessWidget {
   final String tittle;
   final String hint;
-  const UpdateInfoField({super.key, required this.tittle, required this.hint});
+  final TextEditingController? textcontroller;
+  const UpdateInfoField({super.key, required this.tittle, required this.hint, this.textcontroller});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class UpdateInfoField extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 15),
             child: TextFormField(
-            
+            controller: textcontroller,
               decoration: InputDecoration(
                 hintText: hint,
                 hintStyle: GoogleFonts.inter(

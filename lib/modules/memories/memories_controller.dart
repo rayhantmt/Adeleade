@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:image_picker/image_picker.dart';
 import 'package:mementum/api/api_config.dart';
@@ -7,7 +8,7 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:http_parser/http_parser.dart';
 
 class MemoriesController extends GetxController {
-  var memorytype = 0.obs; // 0 = On-Time, 1 = Recurring Deposit
+  var memorytype = 0.obs; 
   Rxn<XFile> eventImage = Rxn<XFile>();
   void setDepositType(int type) {
     memorytype.value = type;
@@ -35,6 +36,12 @@ class MemoriesController extends GetxController {
 
   RxBool isLoading = false.obs;
   final DioClient _client = DioClient();
+  final namecontroller=TextEditingController();
+  final eventdatecontroller=TextEditingController();
+  final locationcontroller=TextEditingController();
+  final cetegorycontroller=TextEditingController();
+  final detailscontroller=TextEditingController();
+  final maxParticipantscontroller=TextEditingController();
   Future<void> createEvent() async {
     isLoading.value = true;
     if (eventImage.value == null) {
