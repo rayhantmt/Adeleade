@@ -239,14 +239,19 @@ Widget _createEvent() {
         SizedBox(height: Get.height * 0.05),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            height: Get.height * 0.07,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(99),
-              color: Color(0xffDACBA4),
+          child: GestureDetector(
+            onTap: controller.createEvent,
+            child: Container(
+              height: Get.height * 0.07,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(99),
+                color: Color(0xffDACBA4),
+              ),
+              child: Center(child: Obx(() => controller.isLoading.value?CircularProgressIndicator(
+                color: Colors.white,
+              ):Text('Create'))),
             ),
-            child: Center(child: Text('Create')),
           ),
         ),
       ],
