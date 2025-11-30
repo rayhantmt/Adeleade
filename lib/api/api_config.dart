@@ -1,7 +1,7 @@
 class ApiConfig {
   static const String baseUrl = 'https://server.momentumactivity.com';
 
-  // Auth Endpoints
+  // Auth Endpoints$
   static const String loginEndpoint = '/api/v1/user/login';
   static const String forgotpasswordendpoint='/api/v1/user/forgot-password';
   static const String verifyOtpendpoint='/api/v1/user/verify-reset-otp';
