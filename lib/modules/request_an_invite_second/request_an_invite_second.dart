@@ -10,22 +10,21 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
 
   @override
   Widget build(BuildContext context) {
-final args=Get.arguments;
-controller.name=args['name'];
-controller.email=args['email'];
-controller.gender=args['gender'];
-controller.age=args['age'];
-controller.profession=args['profession'];
-controller.nationality=args['nationality'];
-controller.instagram=args['instagram'];
-print(controller.name);
-print(controller.email);
-print(controller.gender);
-print(controller.age);
-
-print(controller.profession);
-print(controller.nationality);
-print(controller.instagram);
+    final args = Get.arguments;
+    controller.name = args['name'];
+    controller.email = args['email'];
+    controller.gender = args['gender'];
+    controller.age = args['age'];
+    controller.profession = args['profession'];
+    controller.nationality = args['nationality'];
+    controller.instagram = args['instagram'];
+    print(controller.name);
+    print(controller.email);
+    print(controller.gender);
+    print(controller.age);
+    print(controller.profession);
+    print(controller.nationality);
+    print(controller.instagram);
 
     return Scaffold(
       body: Stack(
@@ -43,7 +42,7 @@ print(controller.instagram);
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: Get.height*0.1,),
+                  SizedBox(height: Get.height * 0.1),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -56,7 +55,7 @@ print(controller.instagram);
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: Get.height * 0.02),
-                        
+
                         Text(
                           'Request an invite',
                           style: TextStyle(
@@ -78,34 +77,24 @@ print(controller.instagram);
                         GestureDetector(
                           onTap: controller.pickCoverImage,
                           child: Container(
-                            height: Get.height*0.03,
-                            width: Get.width*0.7,
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.7,
                             decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black,
-                            
-                          ),
-                          borderRadius: BorderRadius.circular(12)
-                          
+                              border: Border.all(width: 1, color: Colors.black),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text('Select Cover Image'),
                           ),
                         ),
                         SizedBox(height: Get.height * 0.02),
-                         GestureDetector(
+                        GestureDetector(
                           onTap: controller.pickProfileImage,
                           child: Container(
-                            height: Get.height*0.03,
-                            width: Get.width*0.7,
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.7,
                             decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
-                            color: Colors.black,
-                            
-                          ),
-                          borderRadius: BorderRadius.circular(12)
-                          
+                              border: Border.all(width: 1, color: Colors.black),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text('Select profile image'),
                           ),
@@ -137,14 +126,11 @@ print(controller.instagram);
                         GestureDetector(
                           onTap: controller.pickImages,
                           child: Container(
-                            height: Get.height*0.05,
-                            width: Get.width*0.7,
+                            height: Get.height * 0.05,
+                            width: Get.width * 0.7,
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                                color: Colors.red,
-                              ),
-                              borderRadius: BorderRadius.circular(12)
+                              border: Border.all(width: 1, color: Colors.red),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                           ),
                         ),
@@ -183,18 +169,9 @@ print(controller.instagram);
                             ),
                           ),
                         ),
-                    
                         SizedBox(height: Get.height * 0.015),
                         GestureDetector(
-                          // onTap: () => Get.toNamed(AppPages.o),
                           onTap: controller.createUser,
-                       
-                          
-                          /* () => Get.snackbar(
-                            'Success',
-                            'Congratulations you have succesfully posted the account creation request.Once created we will inforom you through email!',
-                            animationDuration: Duration(seconds: 2),
-                          ),*/
                           child: Container(
                             height: Get.height * 0.07,
                             width: Get.width * 0.7,
@@ -203,14 +180,20 @@ print(controller.instagram);
                               color: AppColors.primarycolor,
                             ),
                             child: Center(
-                              child: Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.white,):Text(
-                                'Request an invite',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
-                              ),)
+                              child: Obx(
+                                () => controller.isLoading.value
+                                    ? CircularProgressIndicator(
+                                        color: Colors.white,
+                                      )
+                                    : Text(
+                                        'Request an invite',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                              ),
                             ),
                           ),
                         ),
@@ -221,7 +204,7 @@ print(controller.instagram);
                             width: 20,
                             color: Colors.red,
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
