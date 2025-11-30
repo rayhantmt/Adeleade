@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mementum/common_widgets/textfield.dart';
@@ -76,7 +78,10 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: controller.pickCoverImage,
-                          child: Container(
+                          child: Obx(() => controller.coverImage.value!=null?Image.file(
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.7,
+                            File(controller.coverImage.value!.path)):Container(
                             height: Get.height * 0.03,
                             width: Get.width * 0.7,
                             decoration: BoxDecoration(
@@ -84,7 +89,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text('Select Cover Image'),
-                          ),
+                          ),)
                         ),
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
