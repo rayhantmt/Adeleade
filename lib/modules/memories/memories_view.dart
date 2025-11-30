@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -136,6 +138,7 @@ class MemoriesView extends GetView<MemoriesController> {
 }
 
 Widget _createEvent() {
+  final controller=MemoriesController();
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,24 +172,27 @@ Widget _createEvent() {
           ),
         ),
         SizedBox(height: Get.height * 0.02),
-        Container(
-          height: Get.height * 0.08,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            border: Border.all(width: 1, color: Color(0xff625B4A)),
-            borderRadius: BorderRadius.circular(8),
-            color: Colors.white,
-          ),
-          child: Center(
-            child: Text(
-              'Upload image',
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: AppColors.primarycolor,
+        GestureDetector(
+          onTap: controller.pickEventImage,
+          child: Obx(() => controller.eventImage.value!=null?Image.file(File(controller.eventImage.value!.path)):Container(
+            height: Get.height * 0.08,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              border: Border.all(width: 1, color: Color(0xff625B4A)),
+              borderRadius: BorderRadius.circular(8),
+              color: Colors.white,
+            ),
+            child: Center(
+              child: Text(
+                'Upload image',
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: AppColors.primarycolor,
+                ),
               ),
             ),
-          ),
+          ),)
         ),
         SizedBox(height: Get.height * 0.02),
         Text(
