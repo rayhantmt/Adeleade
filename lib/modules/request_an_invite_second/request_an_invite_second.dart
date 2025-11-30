@@ -94,7 +94,8 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: controller.pickProfileImage,
-                          child: Container(
+                          child: Obx(() => controller.profileImage.value!= null?Image.file(height: Get.height * 0.03,
+                            width: Get.width * 0.7,File(controller.profileImage.value!.path)):Container(
                             height: Get.height * 0.03,
                             width: Get.width * 0.7,
                             decoration: BoxDecoration(
@@ -102,7 +103,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text('Select profile image'),
-                          ),
+                          ),)
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
