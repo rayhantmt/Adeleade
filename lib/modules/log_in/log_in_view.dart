@@ -120,14 +120,14 @@ class LogInView extends GetView<LogInController> {
                             color: AppColors.primarycolor,
                           ),
                           child: Center(
-                            child: Text(
+                            child:Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.white,): Text(
                               'Log In',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14,
                                 color: Colors.black,
                               ),
-                            ),
+                            ),)
                           ),
                         ),
                       ),
