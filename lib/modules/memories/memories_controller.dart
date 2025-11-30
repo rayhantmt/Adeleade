@@ -53,9 +53,7 @@ class MemoriesController extends GetxController {
     }
 
     try {
-      // 2. Prepare Gallery Files
-
-      // 3. Create FormData
+      
       final formData = FormData.fromMap({
         'name': namecontroller.text.toString(),
         'eventDate': eventdatecontroller.text.toString(),
@@ -69,13 +67,13 @@ class MemoriesController extends GetxController {
           contentType: MediaType('image', 'png'),
         ),
       });
-
+print('Bearer${token}');
       // 4. API Call
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/v1/event/create',
         data: formData,
         headers: {
-          'Authorization': 'Bearer ${token}',
+          'Authorization': 'Bearer    ${token}',
           'Content-type': 'multipart/form-data',
         },
       );
