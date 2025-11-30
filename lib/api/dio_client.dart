@@ -1,5 +1,3 @@
-// mementum/api/dio_client.dart
-
 import 'package:dio/dio.dart';
 import 'package:mementum/core/exceptions.dart';
 
@@ -7,8 +5,7 @@ class DioClient {
   final Dio _dio = Dio(
     BaseOptions(
       responseType: ResponseType.json,
-      // Increase timeout in case image upload takes time
-      connectTimeout: const Duration(seconds: 30), 
+      connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
     ),
   );
@@ -16,15 +13,19 @@ class DioClient {
   Future<Response> postFormData({
     required String url,
     required FormData data,
-    Map<String, dynamic>? headers
+    Map<String, dynamic>? headers,
   }) async {
     try {
-      final response = await _dio.post(url, data: data,options:Options(headers:headers));
+      final response = await _dio.post(
+        url,
+        data: data,
+        options: Options(headers: headers),
+      );
       return response;
-    } on DioException catch (e) { // Note: Use DioException instead of DioError for Dio v5+
+    } on DioException catch (e) {
       if (e.response != null) {
         final statusCode = e.response?.statusCode;
-        // helper function to extract error message safely
+
         final errorMessage = _getErrorMessage(e.response?.data);
 
         switch (statusCode) {
@@ -40,7 +41,9 @@ class DioClient {
             throw AppException(errorMessage);
         }
       } else {
-        throw FetchDataException('No Internet Connection or Server Unreachable');
+        throw FetchDataException(
+          'No Internet Connection or Server Unreachable',
+        );
       }
     }
   }
