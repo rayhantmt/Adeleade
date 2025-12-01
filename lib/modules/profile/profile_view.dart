@@ -12,6 +12,7 @@ class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final storage=GetStorage();
+    final profilename=storage.read('name');//.toString().toUpperCase();
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -52,8 +53,8 @@ class ProfileView extends StatelessWidget {
                     borderRadius: BorderRadiusGeometry.all(
                       Radius.circular(100),
                     ),
-                    child: Image.asset(
-                      AppImages.profilephoto,
+                    child: Image.network(
+                      storage.read('photoURL'),
                       height: 100,
 
                       width: 100,
@@ -63,7 +64,7 @@ class ProfileView extends StatelessWidget {
 
                   SizedBox(width: 20),
                   Text(
-                   storage.read('name')??'Error loading name' ,
+                   (profilename ??'Error loading name' ).toString().toUpperCase(),
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
