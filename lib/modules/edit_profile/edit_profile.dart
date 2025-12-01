@@ -150,7 +150,7 @@ class EditProfile extends StatelessWidget {
                         ),
                       ],
                     ),
-                    EditProfileInfo(tittle: 'Name', info: 'Tony Stark'),
+                    EditProfileInfo(tittle: 'Name', info: (profilename??'Error loading name').toString().toUpperCase()),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Email',
