@@ -46,6 +46,11 @@ storage.write('bio', user['bio']);
 storage.write('photoURL', user['photoURL']);
 storage.write('coverPhotoURL', user['coverPhotoURL']);
 storage.write('gallery', user['galleryPhotos']);
+storage.write('gender', user['gender']);
+storage.write('age', user['age']);
+storage.write('nationality', user['nationality']);
+storage.write('linkedIn', user['linkedIn']);
+storage.write('instagram', user['instagram']);
       storage.write('token', accessToken);
       Get.offAllNamed(AppPages.mainscreen);
       // Handle success (e.g., token saving, navigating)

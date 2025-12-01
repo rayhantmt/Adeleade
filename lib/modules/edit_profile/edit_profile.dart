@@ -15,6 +15,8 @@ class EditProfile extends StatelessWidget {
     final profilename=storage.read('name');//.toString().toUpperCase();
     final profilephoto=storage.read('photoURL');
     final coverphoto =storage.read('coverPhotoURL');
+    final email=storage.read('email');
+    final gender=storage.read('gender');
     return Scaffold(
       body: Stack(
         children: [
@@ -154,10 +156,10 @@ class EditProfile extends StatelessWidget {
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Email',
-                      info: 'Rayhantmt@gmail.com',
+                      info: (email??"Error loading email").toString().toLowerCase(),
                     ),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Gender', info: 'Male'),
+                    EditProfileInfo(tittle: 'Gender', info: (gender??"Error loading gender").toString().toUpperCase()),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(tittle: 'Age', info: '22'),
                     SizedBox(height: Get.height * 0.01),
