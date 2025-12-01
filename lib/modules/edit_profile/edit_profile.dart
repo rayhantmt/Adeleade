@@ -18,6 +18,7 @@ class EditProfile extends StatelessWidget {
     final email=storage.read('email');
     final gender=storage.read('gender');
     final nationality=storage.read('nationality');
+    final instagram=storage.read('instagram');
     return Scaffold(
       body: Stack(
         children: [
@@ -168,7 +169,7 @@ class EditProfile extends StatelessWidget {
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Instagram',
-                      info: 'https://www.instagram.com/rayhantmt/',
+                      info: (instagram?? "Error loading instagram link").toString(),
                     ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
