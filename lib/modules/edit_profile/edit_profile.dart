@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,6 +21,7 @@ class EditProfile extends StatelessWidget {
     final nationality=storage.read('nationality');
     final instagram=storage.read('instagram');
     final linkedin=storage.read('linkedIn');
+    final bio=storage.read('bio');
     return Scaffold(
       body: Stack(
         children: [
@@ -181,7 +183,7 @@ class EditProfile extends StatelessWidget {
                     EditProfileInfo(
                       tittle: 'Bio',
                       info:
-                          'Aspiring Flutter Developer Passionate about crafting modern, responsive mobile apps with a focus on seamless user experiences and performance optimization.',
+                          (bio?? "Error loading bio").toString().toUpperCase(),
                     ),
                   ],
                 ),
