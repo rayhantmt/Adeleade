@@ -17,7 +17,7 @@ class EditProfile extends StatelessWidget {
     final coverphoto =storage.read('coverPhotoURL');
     final email=storage.read('email');
     final gender=storage.read('gender');
-    final age=storage.read('age');
+    final nationality=storage.read('nationality');
     return Scaffold(
       body: Stack(
         children: [
@@ -164,7 +164,7 @@ class EditProfile extends StatelessWidget {
                     // SizedBox(height: Get.height * 0.01),
                     // EditProfileInfo(tittle: 'Age', info: (age??"Error loading age")),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Nationality', info: 'Mars'),
+                    EditProfileInfo(tittle: 'Nationality', info: (nationality?? "Error loading nationality").toString().toUpperCase()),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Instagram',
