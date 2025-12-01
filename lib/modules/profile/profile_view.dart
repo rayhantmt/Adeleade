@@ -11,6 +11,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storage=GetStorage();
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -62,7 +63,7 @@ class ProfileView extends StatelessWidget {
 
                   SizedBox(width: 20),
                   Text(
-                    'Tony Stark',
+                   storage.read('name')??'Error loading name' ,
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
