@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/edit_profile_info.dart';
 import 'package:mementum/routes/app_pages.dart';
@@ -10,6 +11,10 @@ class EditProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storage=GetStorage();
+    final profilename=storage.read('name');//.toString().toUpperCase();
+    final profilephoto=storage.read('photoURL');
+    final coverphoto =storage.read('coverPhotoURL');
     return Scaffold(
       body: Stack(
         children: [
@@ -64,8 +69,8 @@ class EditProfile extends StatelessWidget {
                           aspectRatio: 16 / 9,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(6),
-                            child: Image.asset(
-                              AppImages.profilephoto,
+                            child: Image.network(
+                              coverphoto,
                               fit: BoxFit.cover,
                               width: double.infinity,
                             ),
@@ -113,7 +118,7 @@ class EditProfile extends StatelessWidget {
                             child: CircleAvatar(
                               radius: Get.height * 0.07,
                               backgroundColor: Colors.white,
-                              backgroundImage: AssetImage(AppImages.profilephoto),
+                              backgroundImage: NetworkImage(profilephoto?? "https://via.placeholder.com/150"),
                             ),
                           ),
                         ),

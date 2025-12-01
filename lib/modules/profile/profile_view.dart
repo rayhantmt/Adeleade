@@ -13,6 +13,7 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     final storage=GetStorage();
     final profilename=storage.read('name');//.toString().toUpperCase();
+    final profilephoto=storage.read('photoURL');
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -54,7 +55,7 @@ class ProfileView extends StatelessWidget {
                       Radius.circular(100),
                     ),
                     child: Image.network(
-                      storage.read('photoURL'),
+                      profilephoto??"https://via.placeholder.com/150",
                       height: 100,
 
                       width: 100,
