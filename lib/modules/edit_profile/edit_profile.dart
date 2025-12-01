@@ -142,7 +142,7 @@ class EditProfile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Tony Stark',
+                          (profilename??"Error loading name").toString().toUpperCase(),
                           style: GoogleFonts.inter(
                             fontWeight: FontWeight.w600,
                             fontSize: 24,
