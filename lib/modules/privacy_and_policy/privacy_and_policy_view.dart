@@ -7,6 +7,13 @@ class PrivacyAndPolicyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      body: Center(
+        child: Text('Privacy and policy ',
+        style: TextStyle(
+          fontSize: 30
+        ),
+        ),
+      ),
     );
   }
 }
