@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/update_info_field.dart';
+import 'package:mementum/modules/update_info/update_info_controller.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class UpdateInfoView extends StatelessWidget {
+class UpdateInfoView extends GetView<UpdateInfoController> {
   const UpdateInfoView({super.key});
 
   @override
