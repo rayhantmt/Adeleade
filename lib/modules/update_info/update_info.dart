@@ -108,14 +108,16 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                           color: AppColors.primarycolor,
                         ),
                         child: Center(
-                          child: Text(
+                          child: Obx(() => controller.isloadin.value?CircularProgressIndicator(
+                            color: Colors.white,
+                          ):Text(
                             'Update your profile info',
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 14,
                               color: Colors.black,
                             ),
-                          ),
+                          ),)
                         ),
                       ),
                     ),
