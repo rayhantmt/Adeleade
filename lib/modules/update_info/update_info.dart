@@ -66,21 +66,21 @@ class UpdateInfoView extends StatelessWidget {
                     UpdateInfoField(tittle: 'Nationality', hint: 'Enter your new nationality'),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
-                      tittle: 'Nationality',
-                      hint: 'Enter your Nationality',
-                    ),
-                    SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(
-                      tittle: 'Instagam',
-                      hint: 'Enter your instagram link',
+                      tittle: 'Instagram',
+                      hint: 'Enter your new instagram link',
                     ),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Linkedin',
-                      hint: 'Enter your Linkedin link',
+                      hint: 'Enter your linkedin link',
                     ),
-                    SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Bio', hint: 'Enter your bio'),
+                    // SizedBox(height: Get.height * 0.02),
+                    // UpdateInfoField(
+                    //   tittle: 'Linkedin',
+                    //   hint: 'Enter your Linkedin link',
+                    // ),
+                    // SizedBox(height: Get.height * 0.02),
+                    // UpdateInfoField(tittle: 'Bio', hint: 'Enter your bio'),
                     SizedBox(height: Get.height * 0.02),
                     GestureDetector(
                         onTap: () => print('Balchal'),
