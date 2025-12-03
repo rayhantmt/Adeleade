@@ -99,7 +99,7 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                     // UpdateInfoField(tittle: 'Bio', hint: 'Enter your bio'),
                     SizedBox(height: Get.height * 0.02),
                     GestureDetector(
-                      onTap: () => print('Balchal'),
+                      onTap: controller.updateprofile,
                       child: Container(
                         height: Get.height * 0.07,
                         width: Get.width * 0.8,
@@ -108,16 +108,18 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                           color: AppColors.primarycolor,
                         ),
                         child: Center(
-                          child: Obx(() => controller.isloadin.value?CircularProgressIndicator(
-                            color: Colors.white,
-                          ):Text(
-                            'Update your profile info',
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: Colors.black,
-                            ),
-                          ),)
+                          child: Obx(
+                            () => controller.isloadin.value
+                                ? CircularProgressIndicator(color: Colors.white)
+                                : Text(
+                                    'Update your profile info',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                          ),
                         ),
                       ),
                     ),

@@ -13,18 +13,18 @@ class UpdateInfoController extends GetxController {
   final linkedincontroller=TextEditingController();
 
   RxBool isloadin = false.obs;
-  Future updateprofile() async {
+  Future<void> updateprofile() async {
     isloadin.value = true;
     try {
-      final response = ApiService.patch(
+      final response = await ApiService.patch(
         endpoint: ApiConfig.updateprofile,
         body: {
-          "name": "Test",
-          "bio": "bla bla bla",
-          "profession": "xyz",
-          "nationality": "Indian",
-          "instagram": "instagram-link",
-          "linkedIn": "linkedIn-link",
+          "name": namecontroller.text,
+          "bio": biocontroller.text,
+          "profession": professioncontroller.text,
+          "nationality": nationalitycontroller.text,
+          "instagram": instagramcontroller.text,
+          "linkedIn": linkedincontroller.text,
         },
       );
       print('response $response');
