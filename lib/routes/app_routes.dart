@@ -24,6 +24,7 @@ import 'package:mementum/modules/request_an_invite_second/request_an_invite_seco
 import 'package:mementum/modules/subscriptions_screen/subscription_screen_view.dart';
 import 'package:mementum/modules/unlock_momentum/unlock_momentum_view.dart';
 import 'package:mementum/modules/update_info/update_info.dart';
+import 'package:mementum/modules/update_info/update_info_binding.dart';
 import 'package:mementum/modules/update_password/update_password_binding.dart';
 import 'package:mementum/modules/update_password/update_password_view.dart';
 import 'package:mementum/modules/update_password_successful/update_password_successfull.dart';
@@ -41,7 +42,7 @@ class AppRoutes {
     GetPage(name: AppPages.mainscreen, page: () => MainScreen(),binding: MainScreenBinding()),
     GetPage(name: AppPages.unlockmomentum, page: () => UnlockMomentumView(),),
     GetPage(name: AppPages.editprofile, page: () => EditProfile(),),
-    GetPage(name: AppPages.updateinfo, page: () => UpdateInfoView(),),
+    GetPage(name: AppPages.updateinfo, page: () => UpdateInfoView(),binding: UpdateInfoBinding()),
     GetPage(name: AppPages.notification, page: () => NotificationView(),),
     GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),),
     GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),),
