@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
@@ -13,7 +14,10 @@ class UpdateInfoController extends GetxController {
   final linkedincontroller=TextEditingController();
 
   RxBool isloadin = false.obs;
+  
   Future<void> updateprofile() async {
+    final storage = GetStorage();
+  final token= storage.read('token');
     isloadin.value = true;
     try {
       final response = await ApiService.patch(
@@ -26,6 +30,9 @@ class UpdateInfoController extends GetxController {
           "instagram": instagramcontroller.text,
           "linkedIn": linkedincontroller.text,
         },
+        headers: {
+          'Authorization':'Bearer $token'
+        }
       );
       print('response $response');
       Get.snackbar('Success', 'Congratulations profile updated successfully');
