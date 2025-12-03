@@ -1,3 +1,5 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -55,25 +57,27 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                       ),
                     ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Name', hint: 'Enter your new name'),
+                    UpdateInfoField(tittle: 'Name', hint: 'Enter your new name',textcontroller: controller.namecontroller,),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Bio', hint: 'Enter your new bio'),
+                    UpdateInfoField(tittle: 'Bio', hint: 'Enter your new bio',textcontroller: controller.biocontroller,),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Profession',
-                      hint: 'Enter your new profession',
+                      hint: 'Enter your new profession',textcontroller: controller.professioncontroller,
                     ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Nationality', hint: 'Enter your new nationality'),
+                    UpdateInfoField(tittle: 'Nationality', hint: 'Enter your new nationality',textcontroller: controller.nationalitycontroller,),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Instagram',
                       hint: 'Enter your new instagram link',
+                      textcontroller: controller.instagramcontroller,
                     ),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Linkedin',
                       hint: 'Enter your linkedin link',
+                      textcontroller: controller.linkedincontroller,
                     ),
                     // SizedBox(height: Get.height * 0.02),
                     // UpdateInfoField(
