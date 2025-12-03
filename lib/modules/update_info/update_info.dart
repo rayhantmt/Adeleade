@@ -54,9 +54,9 @@ class UpdateInfoView extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Name', hint: 'Enter your name'),
+                    UpdateInfoField(tittle: 'Name', hint: 'Enter your new name'),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Email', hint: 'Enter your email'),
+                    UpdateInfoField(tittle: 'Bio', hint: 'Enter your new bio'),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Gender',
