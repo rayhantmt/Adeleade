@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -57,16 +55,29 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                       ),
                     ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Name', hint: 'Enter your new name',textcontroller: controller.namecontroller,),
+                    UpdateInfoField(
+                      tittle: 'Name',
+                      hint: 'Enter your new name',
+                      textcontroller: controller.namecontroller,
+                    ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Bio', hint: 'Enter your new bio',textcontroller: controller.biocontroller,),
+                    UpdateInfoField(
+                      tittle: 'Bio',
+                      hint: 'Enter your new bio',
+                      textcontroller: controller.biocontroller,
+                    ),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Profession',
-                      hint: 'Enter your new profession',textcontroller: controller.professioncontroller,
+                      hint: 'Enter your new profession',
+                      textcontroller: controller.professioncontroller,
                     ),
                     SizedBox(height: Get.height * 0.02),
-                    UpdateInfoField(tittle: 'Nationality', hint: 'Enter your new nationality',textcontroller: controller.nationalitycontroller,),
+                    UpdateInfoField(
+                      tittle: 'Nationality',
+                      hint: 'Enter your new nationality',
+                      textcontroller: controller.nationalitycontroller,
+                    ),
                     SizedBox(height: Get.height * 0.02),
                     UpdateInfoField(
                       tittle: 'Instagram',
@@ -88,27 +99,26 @@ class UpdateInfoView extends GetView<UpdateInfoController> {
                     // UpdateInfoField(tittle: 'Bio', hint: 'Enter your bio'),
                     SizedBox(height: Get.height * 0.02),
                     GestureDetector(
-                        onTap: () => print('Balchal'),
-                        child: Container(
-                          height: Get.height * 0.07,
-                          width: Get.width * 0.8,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(99),
-                            color: AppColors.primarycolor,
-                          ),
-                          child: Center(
-                            child: Text(
-                              'Update your profile info',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14,
-                                color: Colors.black,
-                              ),
+                      onTap: () => print('Balchal'),
+                      child: Container(
+                        height: Get.height * 0.07,
+                        width: Get.width * 0.8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: AppColors.primarycolor,
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Update your profile info',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: Colors.black,
                             ),
                           ),
                         ),
                       ),
-                     
+                    ),
                   ],
                 ),
               ),
