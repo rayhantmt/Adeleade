@@ -20,20 +20,23 @@ class UpdateInfoController extends GetxController {
   final token= storage.read('token');
     isloadin.value = true;
     try {
-      final response = await ApiService.patch(
-        endpoint: ApiConfig.updateprofile,
-        body: {
+      final body={
           "name": namecontroller.text,
           "bio": biocontroller.text,
           "profession": professioncontroller.text,
           "nationality": nationalitycontroller.text,
           "instagram": instagramcontroller.text,
           "linkedIn": linkedincontroller.text,
-        },
+        };
+      final response = await ApiService.patch(
+        endpoint: ApiConfig.updateprofile,
+        body: body,
+        
         headers: {
           'Authorization':'Bearer $token'
         }
       );
+      print(body);
       print('response $response');
       Get.snackbar('Success', 'Congratulations profile updated successfully');
     } on AppException catch (e) {
