@@ -33,12 +33,13 @@ class UpdateInfoController extends GetxController {
         body: body,
         
         headers: {
-          'Authorization':'Bearer $token'
+          'Authorization':'Bearer $token',
+          'Content-Type':'application/json'
         }
       );
       print(body);
       print('response $response');
-      Get.snackbar('Success', 'Congratulations profile updated successfully');
+      Get.snackbar('Success', 'Congratulations profile updated successfully\n Log out from the app and log in again to see the profile changes');
     } on AppException catch (e) {
       Get.snackbar('Updating profile failed ', e.toString());
     }
