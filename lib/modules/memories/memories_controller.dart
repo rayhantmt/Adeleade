@@ -78,8 +78,8 @@ class MemoriesController extends GetxController {
         },
       );
 
-      print('✅ User Created: ${response.data}');
-      Get.snackbar('Success', 'User Created Successfully');
+      print('✅ event Created: ${response.data}');
+      Get.snackbar('Success', 'Event Created Successfully');
     } on BadRequestException catch (e) {
       // Caught by our custom DioClient logic
       Get.snackbar('Registration Failed', e.toString());
