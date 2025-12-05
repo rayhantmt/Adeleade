@@ -216,7 +216,7 @@ class HomeView extends GetView<HomeController> {
                                                               Get.width * 0.04,
                                                         ),
                                                         Text(
-                                                          '4/20',
+                                                          '${data.joinedpeople}/${data.maxpeople}',
                                                           style:
                                                               GoogleFonts.inter(
                                                                 color: Colors
