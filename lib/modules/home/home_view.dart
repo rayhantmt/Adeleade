@@ -11,8 +11,8 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    final storage=GetStorage();
-    final token=storage.read('token');
+    final storage = GetStorage();
+    final token = storage.read('token');
     print('This is the token $token');
     return Scaffold(
       body: Stack(
