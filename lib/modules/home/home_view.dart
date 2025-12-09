@@ -156,6 +156,7 @@ class HomeView extends GetView<HomeController> {
                                 'location': data.location,
                                 'time': data.formattedDate,
                                 'joinedpeople': data.joinedPeople,
+                                'eventDeatils':data.details
                               },
                             ),
                             child: Container(
@@ -278,8 +279,8 @@ class HomeView extends GetView<HomeController> {
                                         SizedBox(width: Get.width * 0.01),
                                         Text(
                                           data.location,
-overflow: TextOverflow.ellipsis,
-maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12,
