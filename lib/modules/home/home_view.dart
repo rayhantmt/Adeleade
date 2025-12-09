@@ -278,7 +278,8 @@ class HomeView extends GetView<HomeController> {
                                         SizedBox(width: Get.width * 0.01),
                                         Text(
                                           data.location,
-
+overflow: TextOverflow.ellipsis,
+maxLines: 1,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12,
