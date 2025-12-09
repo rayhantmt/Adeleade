@@ -175,7 +175,7 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                     child: Stack(
                                       children: [
-                                        Image.asset(
+                                        Image.network(
                                           data.image,
                                           height: Get.height * 0.1,
                                           width: double.infinity,

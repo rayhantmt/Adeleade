@@ -55,17 +55,22 @@ void printToken() {
 var isLoading = false.obs;
   var events = <Event>[].obs;
 
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   fetchEvents();
-  // }
+  @override
+  void onInit() {
+    super.onInit();
+    fetchEvents();
+  }
 
   Future<void> fetchEvents() async {
+    final storage = GetStorage();
+  final token = storage.read('token'); 
     isLoading.value = true;
     try {
       final response = await ApiService.get(
         endpoint: ApiConfig.eventsEndpoint,
+        headers: {
+          'Authorization':token
+        }
       );
 
       if (response['success'] == true) {
