@@ -7,5 +7,6 @@ class ApiConfig {
   static const String verifyOtpendpoint='/api/v1/user/verify-reset-otp';
   static const String updatepassword='/api/v1/user/reset-password';
   static const String updateprofile='/api/v1/user/update-profile';
+  static const String eventsEndpoint='/api/v1/event?page=1&limit=10000';
 
 }

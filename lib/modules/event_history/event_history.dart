@@ -68,7 +68,7 @@ class EventHistory extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(
                             onTap: () => Get.toNamed(AppPages.eventdetails,
-                            arguments: {'image':data.image,'tittle':data.tittle,'location':data.location,'time':data.date_time,'joinedpeople':data.joinedpeople}
+                            arguments: {'image':data.image,'tittle':data.title,'location':data.location,'time':data.formattedDate,'joinedpeople':data.joinedPeople}
                             ),
                             child: Container(
                               height: Get.height * 0.2,
@@ -89,7 +89,7 @@ class EventHistory extends StatelessWidget {
                                         color: Color(0xffF4EFE3),
                                       ),
                                       child: Text(
-                                        data.maxpeople,
+                                        data.maxPeople,
                                         style: TextStyle(color: Colors.blue),
                                       ),
                                     ),
@@ -115,7 +115,7 @@ class EventHistory extends StatelessWidget {
                                       Padding(
                                         padding: const EdgeInsets.only(left: 7),
                                         child: Text(
-                                          data.tittle,
+                                          data.title,
                                           textAlign: TextAlign.start,
                                           style: GoogleFonts.inter(
                                             fontWeight: FontWeight.w500,
@@ -135,7 +135,7 @@ class EventHistory extends StatelessWidget {
                                             ),
                                             // SizedBox(width: Get.width * 0.01),
                                             Text(
-                                              data.date_time,
+                                              data.formattedDate,
                                               style: TextStyle(
                                                 fontWeight: FontWeight.w400,
                                                 fontSize: 12,

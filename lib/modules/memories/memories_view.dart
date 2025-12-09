@@ -281,10 +281,10 @@ Widget _plannedevent() {
                     AppPages.eventdetails,
                     arguments: {
                       'image': data.image,
-                      'tittle': data.tittle,
+                      'tittle': data.title,
                       'location': data.location,
-                      'time': data.date_time,
-                      'joinedpeople': data.joinedpeople,
+                      'time': data.formattedDate,
+                      'joinedpeople': data.joinedPeople,
                     },
                   ),
                   child: Container(
@@ -306,7 +306,7 @@ Widget _plannedevent() {
                               color: Color(0xffF4EFE3),
                             ),
                             child: Text(
-                              data.maxpeople,
+                              data.maxPeople,
                               style: TextStyle(color: Colors.blue),
                             ),
                           ),
@@ -332,7 +332,7 @@ Widget _plannedevent() {
                             Padding(
                               padding: const EdgeInsets.only(left: 7),
                               child: Text(
-                                data.tittle,
+                                data.title,
                                 textAlign: TextAlign.start,
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
@@ -347,7 +347,7 @@ Widget _plannedevent() {
                                 children: [
                                 
                                   Text(
-                                    data.date_time,
+                                    data.formattedDate,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 12,

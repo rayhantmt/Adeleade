@@ -152,10 +152,10 @@ class HomeView extends GetView<HomeController> {
                               AppPages.eventdetails,
                               arguments: {
                                 'image': data.image,
-                                'tittle': data.tittle,
+                                'tittle': data.title,
                                 'location': data.location,
-                                'time': data.date_time,
-                                'joinedpeople': data.joinedpeople,
+                                'time': data.formattedDate,
+                                'joinedpeople': data.joinedPeople,
                               },
                             ),
                             child: Container(
@@ -216,7 +216,7 @@ class HomeView extends GetView<HomeController> {
                                                               Get.width * 0.04,
                                                         ),
                                                         Text(
-                                                          '${data.joinedpeople}/${data.maxpeople}',
+                                                          '${data.joinedPeople}/${data.maxPeople}',
                                                           style:
                                                               GoogleFonts.inter(
                                                                 color: Colors
@@ -242,7 +242,7 @@ class HomeView extends GetView<HomeController> {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 7),
                                     child: Text(
-                                      data.tittle,
+                                      data.title,
                                       textAlign: TextAlign.start,
                                       style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w500,
@@ -256,7 +256,7 @@ class HomeView extends GetView<HomeController> {
                                     child: Row(
                                       children: [
                                         Text(
-                                          data.date_time,
+                                          data.title,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
                                             fontSize: 12,
