@@ -25,7 +25,7 @@ class EventDetails extends GetView<EventDetailsController> {
               children: [
                 Stack(
                   children: [
-                    Image.asset(
+                    Image.network(
                       controller.image,
                       height: Get.height * 0.35,
                       width: double.infinity,
