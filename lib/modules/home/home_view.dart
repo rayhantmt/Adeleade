@@ -156,7 +156,9 @@ class HomeView extends GetView<HomeController> {
                                 'location': data.location,
                                 'time': data.formattedDate,
                                 'joinedpeople': data.joinedPeople,
-                                'eventDeatils':data.details
+                                'eventDeatils':data.details,
+                                'hostedby':data.organizerName,
+                                'hostphotourl':data.organizerPhoto,
                               },
                             ),
                             child: Container(

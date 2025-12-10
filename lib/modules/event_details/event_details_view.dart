@@ -130,7 +130,7 @@ class EventDetails extends GetView<EventDetailsController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "Location",
+                            controller.location,
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
@@ -143,7 +143,7 @@ class EventDetails extends GetView<EventDetailsController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            'Dhaka,Bangladesh',
+                            controller.location.toString(),
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
                               fontSize: 16,
@@ -175,7 +175,7 @@ class EventDetails extends GetView<EventDetailsController> {
                         ],
                       ),
                       Text(
-                        'Join us for an afternoon of golf combined with meaningful business networking. Perfect for professionals looking to expand',
+                        controller.details.toString(),
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.w400,
                           fontSize: 16,
@@ -218,8 +218,8 @@ class EventDetails extends GetView<EventDetailsController> {
                             width: Get.width * 0.2,
                             child: ClipRRect(
                               borderRadius: BorderRadiusGeometry.circular(200),
-                              child: Image.asset(
-                                AppImages.profilephoto,
+                              child: Image.network(
+                                controller.hostphoto.toString(),
                                 fit: BoxFit.cover,
                                 height: Get.height * 0.1,
                                 width: Get.width * 0.2,
@@ -228,7 +228,7 @@ class EventDetails extends GetView<EventDetailsController> {
                           ),
                           SizedBox(width: Get.width * 0.05),
                           Text(
-                            'Mostafa Rahma',
+                            controller.host.toString(),
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
