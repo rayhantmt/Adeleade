@@ -57,7 +57,7 @@ class EventDetails extends GetView<EventDetailsController> {
                                       height: Get.height * 0.03,
                                       width: Get.width * 0.1,
                                     ),
-                                    Text('4/16',
+                                    Text('${controller.joinedPeople}/${controller.maxpeople}',
                                     style: GoogleFonts.inter(
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14,
