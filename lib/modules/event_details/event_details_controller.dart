@@ -8,6 +8,8 @@ class EventDetailsController extends GetxController{
   late String details;
   late String host;
   late String hostphoto;
+  late String maxpeople;
+  late String joinedPeople;
   @override
   void onInit() {
     super.onInit();
@@ -19,6 +21,8 @@ class EventDetailsController extends GetxController{
      details=arg['eventDeatils'];
      host=arg['hostedby'];
      hostphoto=arg['hostphotourl'];
+     joinedPeople=arg['joinedpeople'];
+     maxpeople=arg['maxpeople'];
      
   }
 }
