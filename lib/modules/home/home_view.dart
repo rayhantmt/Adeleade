@@ -159,7 +159,8 @@ class HomeView extends GetView<HomeController> {
                                 'eventDeatils':data.details,
                                 'hostedby':data.organizerName,
                                 'hostphotourl':data.organizerPhoto,
-                                'maxpeople':data.maxPeople
+                                'maxpeople':data.maxPeople,
+                                'id':data.id
                               },
                             ),
                             child: Container(

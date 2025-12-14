@@ -10,6 +10,7 @@ class EventDetailsController extends GetxController{
   late String hostphoto;
   late String maxpeople;
   late String joinedPeople;
+  late String id;
   @override
   void onInit() {
     super.onInit();
@@ -23,6 +24,10 @@ class EventDetailsController extends GetxController{
      hostphoto=arg['hostphotourl'];
      joinedPeople=arg['joinedpeople'];
      maxpeople=arg['maxpeople'];
+     id=arg['id'];
      
+  }
+  Future<void> joinevent ()async{
+    
   }
 }
