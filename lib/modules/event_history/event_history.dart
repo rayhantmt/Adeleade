@@ -103,7 +103,7 @@ class EventHistory extends StatelessWidget {
                                           topLeft: Radius.circular(8),
                                           topRight: Radius.circular(8),
                                         ),
-                                        child: Image.asset(
+                                        child: Image.network(
                                           data.image,
                                           height: Get.height * 0.1,
                                           width: double.infinity,
