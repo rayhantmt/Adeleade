@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mementum/core/exceptions.dart';
 
 class EventDetailsController extends GetxController {
   late String image;
@@ -30,5 +31,11 @@ class EventDetailsController extends GetxController {
   var isLoading = false.obs;
   Future<void> joinevent() async {
     isLoading.value = true;
+    try{
+      
+    }
+    on AppException catch (e){
+      Get.snackbar('Error', e.toString());
+    } 
   }
 }
