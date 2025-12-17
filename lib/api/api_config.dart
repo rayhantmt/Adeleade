@@ -8,5 +8,6 @@ class ApiConfig {
   static const String updatepassword='/api/v1/user/reset-password';
   static const String updateprofile='/api/v1/user/update-profile';
   static const String eventsEndpoint='/api/v1/event?page=1&limit=10000';
+  static const String getmyevents='/api/v1/event/my/events';
 
 }
