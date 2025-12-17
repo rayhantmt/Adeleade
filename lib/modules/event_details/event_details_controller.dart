@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/modules/home/home_model.dart';
 
 class EventDetailsController extends GetxController {
   late String image;
@@ -12,6 +12,7 @@ class EventDetailsController extends GetxController {
   late String maxpeople;
   late String joinedPeople;
   late String id;
+  late List<Participant> ppl;
   @override
   void onInit() {
     super.onInit();
@@ -26,16 +27,17 @@ class EventDetailsController extends GetxController {
     joinedPeople = arg['joinedpeople'];
     maxpeople = arg['maxpeople'];
     id = arg['id'];
+    ppl=arg['perticanpants'];
   }
 
-  var isLoading = false.obs;
-  Future<void> joinevent() async {
-    isLoading.value = true;
-    try{
+  // var isLoading = false.obs;
+  // Future<void> joinevent() async {
+  //   isLoading.value = true;
+  //   try{
       
-    }
-    on AppException catch (e){
-      Get.snackbar('Error', e.toString());
-    } 
-  }
+  //   }
+  //   on AppException catch (e){
+  //     Get.snackbar('Error', e.toString());
+  //   } 
+  // }
 }

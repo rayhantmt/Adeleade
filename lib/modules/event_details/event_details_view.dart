@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,7 @@ class EventDetails extends GetView<EventDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    final data=controller.ppl;
     return Scaffold(
       body: Stack(
         children: [
@@ -57,13 +59,14 @@ class EventDetails extends GetView<EventDetailsController> {
                                       height: Get.height * 0.03,
                                       width: Get.width * 0.1,
                                     ),
-                                    Text('${controller.joinedPeople}/${controller.maxpeople}',
-                                    style: GoogleFonts.inter(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Color(0xff1E1E1E)
+                                    Text(
+                                      '${controller.joinedPeople}/${controller.maxpeople}',
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14,
+                                        color: Color(0xff1E1E1E),
+                                      ),
                                     ),
-                                    )
                                   ],
                                 ),
                               ),
@@ -266,59 +269,26 @@ class EventDetails extends GetView<EventDetailsController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
-                              child: ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  200,
+                      Container(
+                        height: Get.height*0.1,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: data.length,
+                          itemBuilder: (context, index) => Container(
+                                height: Get.height * 0.1,
+                                width: Get.width * 0.2,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadiusGeometry.circular(
+                                    200,
+                                  ),
+                                  child: Image.network(
+                                    data[index].photoURL,
+                                    fit: BoxFit.cover,
+                                    height: Get.height * 0.1,
+                                    width: Get.width * 0.2,
+                                  ),
                                 ),
-                                child: Image.asset(
-                                  AppImages.profilephoto,
-                                  fit: BoxFit.cover,
-                                  height: Get.height * 0.1,
-                                  width: Get.width * 0.2,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
-                              child: ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  200,
-                                ),
-                                child: Image.asset(
-                                  AppImages.profilephoto,
-                                  fit: BoxFit.cover,
-                                  height: Get.height * 0.1,
-                                  width: Get.width * 0.2,
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.2,
-                              child: ClipRRect(
-                                borderRadius: BorderRadiusGeometry.circular(
-                                  200,
-                                ),
-                                child: Image.asset(
-                                  AppImages.profilephoto,
-                                  fit: BoxFit.cover,
-                                  height: Get.height * 0.1,
-                                  width: Get.width * 0.2,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                              ),),
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Container(
