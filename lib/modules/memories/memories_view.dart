@@ -260,7 +260,8 @@ Widget _createEvent() {
 }
 
 Widget _plannedevent() {
-  final controller = Get.find<HomeController>();
+  final controller = Get.find<MemoriesController>();
+  // controller.fetchmmyEvents();
   return Column(
     children: [
       Expanded(
@@ -270,10 +271,10 @@ Widget _plannedevent() {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                       ),
-                      itemCount: controller.events.length,
+                      itemCount: controller.myevents.length,
 
                       itemBuilder: (context, index) {
-                        final data = controller.events[index];
+                        final data = controller.myevents[index];
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: GestureDetector(

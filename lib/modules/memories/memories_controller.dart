@@ -4,9 +4,11 @@ import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mementum/api/api_config.dart';
+import 'package:mementum/api/api_services.dart';
 import 'package:mementum/api/dio_client.dart';
 import 'package:mementum/core/exceptions.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:mementum/modules/home/home_model.dart';
 
 class MemoriesController extends GetxController {
   var memorytype = 0.obs;
@@ -67,7 +69,7 @@ class MemoriesController extends GetxController {
           contentType: MediaType('image', 'png'),
         ),
       });
-      print('Bearer ${token}');
+     // print('Bearer ${token}');
       // 4. API Call
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/v1/event/create',
@@ -95,4 +97,79 @@ class MemoriesController extends GetxController {
       isLoading.value = false;
     }
   }
+
+  var myevents = <Event>[].obs;
+  //my events fetching block
+
+  Future<void> fetchmmyEvents() async {
+    final storage = GetStorage();
+  final token = storage.read('token'); 
+    isLoading.value = true;
+    try {
+      final response = await ApiService.get(
+        endpoint: ApiConfig.getmyevents,
+        headers: {
+          'Authorization':token
+        }
+      );
+
+      if (response['success'] == true) {
+        final List<dynamic> eventsJson = response['data']['joinedEvents'];
+        myevents.value = eventsJson.map((json) => Event.fromJson(json)).toList();
+        
+        Get.snackbar(
+          'Success',
+          response['message'] ?? 'Events loaded successfully',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      } else {
+        throw Exception('Failed to load events');
+      }
+    } on BadRequestException catch (e) {
+      Get.snackbar(
+        'Error',
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on UnauthorizedException catch (e) {
+      Get.snackbar(
+        'Unauthorized',
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on NotFoundException catch (e) {
+      Get.snackbar(
+        'Not Found',
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on InternalServerException catch (e) {
+      Get.snackbar(
+        'Server Error',
+        'Something went wrong. $e Please try again later.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on FetchDataException catch (e) {
+      Get.snackbar(
+        'Network Error',
+        'Please check your internet connection $e',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } catch (e) {
+      Get.snackbar(
+        'Error',
+        e.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+      );
+      print(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+  @override
+  void onInit() {
+    fetchmmyEvents();
+    super.onInit();
+  }
+
 }
