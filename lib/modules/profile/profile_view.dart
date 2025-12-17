@@ -101,9 +101,9 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.01),
-              GestureDetector(
-                onTap: () => Get.toNamed(AppPages.eventhistory),
-                child: ProfileContainer(tittle: "History", image: AppImages.historyicon)),
+              // GestureDetector(
+              //   onTap: () => Get.toNamed(AppPages.eventhistory),
+              //   child: ProfileContainer(tittle: "History", image: AppImages.historyicon)),
               SizedBox(height: Get.height * 0.05),
               Text(
                 'Sequrity and Policy',
@@ -114,13 +114,13 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.015),
-              GestureDetector(
-                onTap: () => Get.toNamed(AppPages.notification),
-                child: ProfileContainer(
-                  tittle: "Notification",
-                  image: AppImages.notificationicon,
-                ),
-              ),
+              // GestureDetector(
+              //   onTap: () => Get.toNamed(AppPages.notification),
+              //   child: ProfileContainer(
+              //     tittle: "Notification",
+              //     image: AppImages.notificationicon,
+              //   ),
+              // ),
               SizedBox(height: Get.height * 0.015),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.privacypolicy),
