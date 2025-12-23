@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:mementum/modules/event_details/event_details_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
