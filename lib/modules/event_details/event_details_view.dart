@@ -13,7 +13,7 @@ class EventDetails extends GetView<EventDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    final data=controller.ppl;
+    final data = controller.ppl;
     return Scaffold(
       body: Stack(
         children: [
@@ -271,28 +271,28 @@ class EventDetails extends GetView<EventDetailsController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: Get.height*0.1,
+                        height: Get.height * 0.1,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: data.length,
                           itemBuilder: (context, index) => Container(
-                                height: Get.height * 0.1,
-                                width: Get.width * 0.2,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadiusGeometry.circular(
-                                    200,
-                                  ),
-                                  child: GestureDetector(
-                                    onTap: () => Get.toNamed(AppPages.profile_details),
-                                    child: Image.network(
-                                      data[index].photoURL,
-                                      fit: BoxFit.cover,
-                                      height: Get.height * 0.1,
-                                      width: Get.width * 0.2,
-                                    ),
-                                  ),
+                            height: Get.height * 0.1,
+                            width: Get.width * 0.2,
+                            child: ClipRRect(
+                              borderRadius: BorderRadiusGeometry.circular(200),
+                              child: GestureDetector(
+                                onTap: () =>
+                                    Get.toNamed(AppPages.profile_details),
+                                child: Image.network(
+                                  data[index].photoURL,
+                                  fit: BoxFit.cover,
+                                  height: Get.height * 0.1,
+                                  width: Get.width * 0.2,
                                 ),
-                              ),),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(height: Get.height * 0.02),
                       Container(
