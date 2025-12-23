@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:mementum/modules/event_details/event_details_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -281,11 +282,14 @@ class EventDetails extends GetView<EventDetailsController> {
                                   borderRadius: BorderRadiusGeometry.circular(
                                     200,
                                   ),
-                                  child: Image.network(
-                                    data[index].photoURL,
-                                    fit: BoxFit.cover,
-                                    height: Get.height * 0.1,
-                                    width: Get.width * 0.2,
+                                  child: GestureDetector(
+                                    onTap: () => Get.toNamed(AppPages.profile_details),
+                                    child: Image.network(
+                                      data[index].photoURL,
+                                      fit: BoxFit.cover,
+                                      height: Get.height * 0.1,
+                                      width: Get.width * 0.2,
+                                    ),
                                   ),
                                 ),
                               ),),
