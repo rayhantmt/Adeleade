@@ -54,7 +54,9 @@ class ProfileDetails extends GetView<ProfileController> {
                         ],
                       ),
                     ),
-                    SizedBox(height: Get.height * 0.25),
+                    SizedBox(height: Get.height * 0.25,
+                    child: Image.asset(AppImages.profilephoto),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
