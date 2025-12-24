@@ -281,7 +281,9 @@ class EventDetails extends GetView<EventDetailsController> {
                               borderRadius: BorderRadiusGeometry.circular(200),
                               child: GestureDetector(
                                 onTap: () =>
-                                    Get.toNamed(AppPages.profile_details),
+                                    Get.toNamed(AppPages.profile_details,arguments: {
+                                      'id':data[index].id
+                                    }),
                                 child: Image.network(
                                   data[index].photoURL,
                                   fit: BoxFit.cover,
