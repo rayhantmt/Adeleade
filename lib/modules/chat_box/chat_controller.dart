@@ -4,43 +4,76 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:mementum/modules/chat_room/chat_room_model.dart';
 import 'package:mementum/routes/app_pages.dart';
+import 'package:mementum/services/socket_service.dart';  // ADD THIS
 
 class ChatController extends GetxController {
   var chatRooms = <ChatRoom>[].obs;
   var isLoading = false.obs;
   var currentUserId = ''.obs;
-  
-void printToken() {
-  
-  final id = GetStorage().read('id'); // read the saved token
-  print('Saved id: $id'); // prints it
-}
+
   @override
   void onInit() {
     super.onInit();
-    // TODO: Get current user ID from your auth service
-    // Example: currentUserId.value = Get.find<AuthController>().userId.value;
-    currentUserId.value = GetStorage().read('id'); // Replace with actual user ID
-    fetchChatRooms();
+    currentUserId.value = GetStorage().read('id');
+    
+    // Initialize socket and fetch chats
+    _initializeChat();
+  }
+
+  @override
+  void onClose() {
+    // Clean up socket listeners
+    socketService.off('new_message');
+    socketService.off('chat_room_updated');
+    super.onClose();
+  }
+
+  // NEW: Initialize chat with socket
+  Future<void> _initializeChat() async {
+    // Connect socket if not connected
+    if (!socketService.isConnected) {
+      await socketService.connect();
+    }
+    
+    // Setup socket listeners for real-time updates
+    _setupSocketListeners();
+    
+    // Fetch chat rooms
+    await fetchChatRooms();
+  }
+
+  // NEW: Setup socket event listeners
+  void _setupSocketListeners() {
+    // Listen for new messages to update chat list
+    socketService.on('new_message', (data) {
+      print('📨 New message in chat list: $data');
+      // Refresh chat rooms to update last message
+      fetchChatRooms();
+    });
+    
+    // Listen for chat room updates
+    socketService.on('chat_room_updated', (data) {
+      print('🔄 Chat room updated: $data');
+      fetchChatRooms();
+    });
   }
 
   Future<void> fetchChatRooms() async {
     final storage = GetStorage();
-  final token = storage.read('token'); 
+    final token = storage.read('token'); 
+    
     try {
       isLoading.value = true;
       
-      // Replace with your actual API endpoint and add auth token
       final response = await http.get(
         Uri.parse('https://server.momentumactivity.com/api/v1/chat/my-chats'),
         headers: {
           'Content-Type': 'application/json',
-           'Authorization': token,
+          'Authorization': token,
         },
       );
 
       print('Response Status: ${response.statusCode}');
-      print('Response Body: ${response.body}');
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
@@ -75,7 +108,6 @@ void printToken() {
     }
   }
 
-  // Navigate to chat details
   void openChatDetails(ChatRoom chatRoom) {
     final chatName = chatRoom.getChatName(currentUserId.value);
     final chatImage = chatRoom.getChatImage(currentUserId.value);
@@ -93,12 +125,10 @@ void printToken() {
     );
   }
 
-  // Refresh chat rooms (for pull-to-refresh)
   Future<void> refreshChatRooms() async {
     await fetchChatRooms();
   }
 
-  // Optional: Search functionality
   var searchQuery = ''.obs;
   
   List<ChatRoom> get filteredChatRooms {

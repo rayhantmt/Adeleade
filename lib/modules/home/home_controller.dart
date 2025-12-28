@@ -4,6 +4,7 @@ import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/modules/home/home_model.dart';
+import 'package:mementum/services/socket_service.dart';
 
 class HomeController extends GetxController{
 
@@ -39,6 +40,9 @@ var isLoading = false.obs;
   }
 
   Future<void> fetchEvents() async {
+    await socketService.connect();
+final userId = GetStorage().read('id');
+socketService.joinUserRoom(userId);
     final storage = GetStorage();
   final token = storage.read('token'); 
     isLoading.value = true;
