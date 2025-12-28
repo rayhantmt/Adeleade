@@ -28,17 +28,7 @@ class ChatView extends GetView<ChatController> {
                     height: Get.height * 0.07,
                     child: Stack(
                       children: [
-                        // Align(
-                        //   alignment: AlignmentGeometry.centerLeft,
-                        //   child: GestureDetector(
-                        //     onTap: () => Get.back(),
-                        //     child: Image.asset(
-                        //       AppImages.back_icon,
-                        //       height: Get.height * 0.07,
-                        //       width: Get.height * 0.07,
-                        //     ),
-                        //   ),
-                        // ),
+                      
                         Center(
                           child: Text(
                             'Chatbox',
