@@ -51,6 +51,7 @@ class LogInController extends GetxController {
       storage.write('nationality', user['nationality']);
       storage.write('linkedIn', user['linkedIn']);
       storage.write('instagram', user['instagram']);
+      storage.write('id', user['id']);
       storage.write('token', accessToken);
       Get.offAllNamed(AppPages.mainscreen);
       // Handle success (e.g., token saving, navigating)

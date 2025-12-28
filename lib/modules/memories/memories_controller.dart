@@ -120,7 +120,7 @@ class MemoriesController extends GetxController {
         Get.snackbar(
           'Success',
           response['message'] ?? 'Events loaded successfully',
-          snackPosition: SnackPosition.BOTTOM,
+          snackPosition: SnackPosition.TOP,
         );
       } else {
         throw Exception('Failed to load events');

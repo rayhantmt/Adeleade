@@ -14,14 +14,16 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
         title: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(99),
-              child: Image.asset(
+              borderRadius: BorderRadiusGeometry.circular(999),
+              child: Image.network(
                 controller.img,
                 height: Get.height * 0.1,
                 width: Get.width * 0.1,
+                fit: BoxFit.cover,
               ),
             ),
-            Text(controller.name),
+            SizedBox(width: Get.width*0.04,),
+            Text(controller.name.toUpperCase()),
           ],
         ),
         centerTitle: true,
