@@ -776,7 +776,7 @@ class ChatDetailsController extends GetxController {
     
     try {
       isSending.value = true;
-      messageController.clear();
+      //messageController.clear();
       
       if (isTyping.value) {
         socketService.sendTyping(roomId, false);
@@ -784,7 +784,7 @@ class ChatDetailsController extends GetxController {
       }
       
       final response = await http.post(
-        Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+        Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token,
@@ -792,7 +792,7 @@ class ChatDetailsController extends GetxController {
         body: json.encode({
           'chatRoomId': roomId,
           'messageType': 'text',
-          'content': content,
+          'contentType': content,
         }),
       );
 
@@ -803,7 +803,7 @@ class ChatDetailsController extends GetxController {
       }
     } catch (e) {
       print('❌ Error sending message: $e');
-      Get.snackbar('Error', 'Failed to send message', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', 'Failed to send message $e', snackPosition: SnackPosition.TOP,duration: Duration(seconds: 5));
       messageController.text = content;
     } finally {
       isSending.value = false;
