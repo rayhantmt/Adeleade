@@ -791,8 +791,9 @@ class ChatDetailsController extends GetxController {
         },
         body: json.encode({
           'chatRoomId': roomId,
-          'messageType': 'text',
-          'contentType': content,
+          'contentType': 'text',
+          'content': content,
+
         }),
       );
 
