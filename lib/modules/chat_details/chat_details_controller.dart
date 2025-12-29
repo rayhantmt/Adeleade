@@ -1,30 +1,976 @@
-import 'package:get/get.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:get_storage/get_storage.dart';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
+// import 'dart:async';
+// import 'dart:io';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:mementum/modules/chat_details/chat_details_model.dart';
+// import 'package:record/record.dart';
+// import 'package:permission_handler/permission_handler.dart';
+// import 'package:path_provider/path_provider.dart';
+// import 'package:mementum/modules/chat_details/chat_model.dart';
+// import 'package:mementum/services/socket_service.dart';
 
+// class ChatDetailsController extends GetxController {
+//   late String img;
+//   late String name;
+//   late String roomId;
+//   late String roomType;
+  
+//   var msgs = <ChatModel>[].obs;
+//   var messages = <Message>[].obs;
+//   var isLoading = false.obs;
+//   var isSending = false.obs;
+//   var isRecording = false.obs;
+//   var isTyping = false.obs;
+//   var otherUserTyping = false.obs;
+//   var currentUserId = ''.obs;
+  
+//   final TextEditingController messageController = TextEditingController();
+//   final ScrollController scrollController = ScrollController();
+//   final ImagePicker _imagePicker = ImagePicker();
+//   final AudioRecorder _audioRecorder = AudioRecorder();
+  
+//   Timer? _typingTimer;
+//   String? _audioPath;
+
+//   @override
+//   void onInit() {
+//     super.onInit();
+//     var args = Get.arguments;
+//     img = args['image'] ?? '';
+//     name = args['name'] ?? '';
+//     roomId = args['roomId'] ?? '';
+//     roomType = args['roomType'] ?? 'direct';
+    
+//     currentUserId.value = GetStorage().read('id');
+    
+//     _initializeChat();
+//   }
+
+//   @override
+//   void onClose() {
+//     messageController.dispose();
+//     scrollController.dispose();
+//     _typingTimer?.cancel();
+//     _audioRecorder.dispose();
+//     _cleanupSocketListeners();
+//     socketService.leaveChatRoom(roomId);
+//     super.onClose();
+//   }
+
+//   // Initialize chat with socket and load messages
+//   Future<void> _initializeChat() async {
+//     try {
+//       if (!socketService.isConnected) {
+//         await socketService.connect();
+//       }
+      
+//       socketService.joinChatRoom(roomId);
+//       _setupSocketListeners();
+//       await fetchMessages();
+      
+//     } catch (e) {
+//       print('❌ Error initializing chat: $e');
+//       Get.snackbar('Error', 'Failed to initialize chat', snackPosition: SnackPosition.BOTTOM);
+//     }
+//   }
+
+//   // Setup socket event listeners
+//   void _setupSocketListeners() {
+//     socketService.on('new_message', _handleNewMessage);
+//     socketService.on('message_edited', _handleMessageEdited);
+//     socketService.on('message_deleted', _handleMessageDeleted);
+//     socketService.on('user_typing', _handleUserTyping);
+//     socketService.on('message_read', _handleMessageRead);
+//   }
+
+//   void _cleanupSocketListeners() {
+//     socketService.off('new_message');
+//     socketService.off('message_edited');
+//     socketService.off('message_deleted');
+//     socketService.off('user_typing');
+//     socketService.off('message_read');
+//   }
+
+//   // Handle incoming message via WebSocket
+//   void _handleNewMessage(dynamic data) {
+//     print('📨 New message received: $data');
+    
+//     try {
+//       final message = Message.fromJson(data);
+      
+//       if (message.chatRoomId == roomId) {
+//         messages.insert(0, message);
+        
+//         final chatModel = ChatModel(
+//           msg: message.content,
+//           time: message.getFormattedTime(),
+//           isme: message.isFromMe(currentUserId.value),
+//           img: message.senderId.photoURL ?? '',
+//           name: message.senderId.name,
+//           messageType: message.messageType,
+//           mediaURL: message.mediaURL,
+//         );
+        
+//         msgs.insert(0, chatModel);
+        
+//         if (message.senderId.id != currentUserId.value) {
+//           // Mark message as read - uncomment if method exists in SocketService
+//           // socketService.markMessageAsRead(message.id, roomId);
+//         }
+        
+//         _scrollToBottom();
+//       }
+//     } catch (e) {
+//       print('❌ Error handling new message: $e');
+//     }
+//   }
+
+//   void _handleMessageEdited(dynamic data) {
+//     print('✏️ Message edited: $data');
+//     try {
+//       final editedMessage = Message.fromJson(data);
+//       final index = messages.indexWhere((m) => m.id == editedMessage.id);
+//       if (index != -1) {
+//         messages[index] = editedMessage;
+//         msgs[index] = ChatModel(
+//           msg: editedMessage.content,
+//           time: editedMessage.getFormattedTime(),
+//           isme: editedMessage.isFromMe(currentUserId.value),
+//           img: editedMessage.senderId.photoURL ?? '',
+//           name: editedMessage.senderId.name,
+//           messageType: editedMessage.messageType,
+//           mediaURL: editedMessage.mediaURL,
+//         );
+//       }
+//     } catch (e) {
+//       print('❌ Error handling edited message: $e');
+//     }
+//   }
+
+//   void _handleMessageDeleted(dynamic data) {
+//     print('🗑️ Message deleted: $data');
+//     try {
+//       final messageId = data['messageId'] as String;
+//       final chatRoomId = data['chatRoomId'] as String;
+      
+//       if (chatRoomId == roomId) {
+//         final index = messages.indexWhere((m) => m.id == messageId);
+//         if (index != -1) {
+//           final deletedMsg = messages[index];
+//           msgs[index] = ChatModel(
+//             msg: 'This message was deleted',
+//             time: deletedMsg.getFormattedTime(),
+//             isme: deletedMsg.isFromMe(currentUserId.value),
+//             img: deletedMsg.senderId.photoURL ?? '',
+//             name: deletedMsg.senderId.name,
+//             messageType: 'text',
+//             mediaURL: null,
+//           );
+//         }
+//       }
+//     } catch (e) {
+//       print('❌ Error handling deleted message: $e');
+//     }
+//   }
+
+//   void _handleUserTyping(dynamic data) {
+//     try {
+//       final userId = data['userId'] as String;
+//       final typing = data['isTyping'] as bool;
+      
+//       if (userId != currentUserId.value) {
+//         otherUserTyping.value = typing;
+//       }
+//     } catch (e) {
+//       print('❌ Error handling typing: $e');
+//     }
+//   }
+
+//   void _handleMessageRead(dynamic data) {
+//     try {
+//       final messageId = data['messageId'] as String;
+//       final userId = data['userId'] as String;
+      
+//       final index = messages.indexWhere((m) => m.id == messageId);
+//       if (index != -1 && !messages[index].readBy.contains(userId)) {
+//         messages[index].readBy.add(userId);
+//         messages.refresh();
+//       }
+//     } catch (e) {
+//       print('❌ Error handling message read: $e');
+//     }
+//   }
+
+//   // Fetch messages from API
+//   Future<void> fetchMessages() async {
+//     final storage = GetStorage();
+//     final token = storage.read('token');
+    
+//     try {
+//       isLoading.value = true;
+      
+//       final response = await http.get(
+//         Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages/$roomId?page=1&limit=50'),
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Authorization': token,
+//         },
+//       );
+
+//       print('Messages Response: ${response.statusCode}');
+
+//       if (response.statusCode == 200) {
+//         final jsonData = json.decode(response.body);
+        
+//         if (jsonData['success'] == true && jsonData['data'] != null) {
+//           final messagesList = (jsonData['data']['messages'] as List)
+//               .map((msg) => Message.fromJson(msg))
+//               .toList()
+//               .reversed
+//               .toList();
+          
+//           messages.value = messagesList;
+          
+//           msgs.value = messages.map((message) {
+//             return ChatModel(
+//               msg: message.content,
+//               time: message.getFormattedTime(),
+//               isme: message.isFromMe(currentUserId.value),
+//               img: message.senderId.photoURL ?? '',
+//               name: message.senderId.name,
+//               messageType: message.messageType,
+//               mediaURL: message.mediaURL,
+//             );
+//           }).toList();
+          
+//           print('✅ Messages loaded: ${msgs.length}');
+//         }
+//       }
+//     } catch (e) {
+//       print('❌ Error fetching messages: $e');
+//       Get.snackbar('Error', 'Failed to load messages', snackPosition: SnackPosition.BOTTOM);
+//     } finally {
+//       isLoading.value = false;
+//     }
+//   }
+
+//   // Handle input change for typing indicator
+//   void handleInputChange(String text) {
+//     if (text.isNotEmpty && !isTyping.value) {
+//       socketService.sendTyping(roomId, true);
+//       isTyping.value = true;
+//     }
+    
+//     _typingTimer?.cancel();
+//     _typingTimer = Timer(Duration(seconds: 2), () {
+//       if (isTyping.value) {
+//         socketService.sendTyping(roomId, false);
+//         isTyping.value = false;
+//       }
+//     });
+//   }
+
+//   // Send text message
+//   Future<void> sendMessage() async {
+//     final content = messageController.text.trim();
+//     if (content.isEmpty) return;
+    
+//     final storage = GetStorage();
+//     final token = storage.read('token');
+    
+//     try {
+//       isSending.value = true;
+//       messageController.clear();
+      
+//       if (isTyping.value) {
+//         socketService.sendTyping(roomId, false);
+//         isTyping.value = false;
+//       }
+      
+//       final response = await http.post(
+//         Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+//         headers: {
+//           'Content-Type': 'application/json',
+//           'Authorization': token,
+//         },
+//         body: json.encode({
+//           'chatRoomId': roomId,
+//           'messageType': 'text',
+//           'content': content,
+//         }),
+//       );
+
+//       if (response.statusCode == 200 || response.statusCode == 201) {
+//         print('✅ Message sent');
+//       } else {
+//         throw Exception('Failed to send message');
+//       }
+//     } catch (e) {
+//       print('❌ Error sending message: $e');
+//       Get.snackbar('Error', 'Failed to send message', snackPosition: SnackPosition.BOTTOM);
+//       messageController.text = content;
+//     } finally {
+//       isSending.value = false;
+//     }
+//   }
+
+//   // Pick and send image
+//   Future<void> pickAndSendImage(ImageSource source) async {
+//     try {
+//       final XFile? image = await _imagePicker.pickImage(source: source);
+//       if (image == null) return;
+
+//       await _uploadAndSendMedia(File(image.path), 'image');
+//     } catch (e) {
+//       print('❌ Error picking image: $e');
+//       Get.snackbar('Error', 'Failed to pick image', snackPosition: SnackPosition.BOTTOM);
+//     }
+//   }
+
+//   // Start audio recording
+//   Future<void> startRecording() async {
+//     try {
+//       if (await Permission.microphone.request().isGranted) {
+//         final tempDir = await getTemporaryDirectory();
+//         _audioPath = '${tempDir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.m4a';
+        
+//         await _audioRecorder.start(
+//           const RecordConfig(),
+//           path: _audioPath!,
+//         );
+        
+//         isRecording.value = true;
+//         print('🎤 Recording started');
+//       } else {
+//         Get.snackbar('Permission Denied', 'Microphone permission is required', snackPosition: SnackPosition.BOTTOM);
+//       }
+//     } catch (e) {
+//       print('❌ Error starting recording: $e');
+//       Get.snackbar('Error', 'Failed to start recording', snackPosition: SnackPosition.BOTTOM);
+//     }
+//   }
+
+//   // Stop audio recording and send
+//   Future<void> stopRecordingAndSend() async {
+//     try {
+//       final path = await _audioRecorder.stop();
+//       isRecording.value = false;
+      
+//       if (path != null) {
+//         print('🎤 Recording stopped: $path');
+//         await _uploadAndSendMedia(File(path), 'audio');
+//       }
+//     } catch (e) {
+//       print('❌ Error stopping recording: $e');
+//       Get.snackbar('Error', 'Failed to stop recording', snackPosition: SnackPosition.BOTTOM);
+//     }
+//   }
+
+//   // Cancel recording
+//   Future<void> cancelRecording() async {
+//     try {
+//       await _audioRecorder.stop();
+//       isRecording.value = false;
+//       print('🎤 Recording cancelled');
+//     } catch (e) {
+//       print('❌ Error cancelling recording: $e');
+//     }
+//   }
+
+//   // Upload media and send message
+//   Future<void> _uploadAndSendMedia(File file, String type) async {
+//     final storage = GetStorage();
+//     final token = storage.read('token');
+    
+//     try {
+//       isSending.value = true;
+      
+//       // Upload file
+//       var request = http.MultipartRequest(
+//         'POST',
+//         Uri.parse('https://server.momentumactivity.com/api/v1/upload'),
+//       );
+      
+//       request.headers['Authorization'] = token;
+//       request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      
+//       var uploadResponse = await request.send();
+//       var responseData = await http.Response.fromStream(uploadResponse);
+      
+//       if (uploadResponse.statusCode == 200) {
+//         final uploadJson = json.decode(responseData.body);
+//         final mediaURL = uploadJson['data']['url'];
+        
+//         // Send message with media URL
+//         final messageResponse = await http.post(
+//           Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': token,
+//           },
+//           body: json.encode({
+//             'chatRoomId': roomId,
+//             'messageType': type,
+//             'content': type == 'image' ? 'Image' : 'Audio',
+//             'mediaURL': mediaURL,
+//           }),
+//         );
+
+//         if (messageResponse.statusCode == 200 || messageResponse.statusCode == 201) {
+//           print('✅ $type sent successfully');
+//         }
+//       } else {
+//         throw Exception('Failed to upload $type');
+//       }
+//     } catch (e) {
+//       print('❌ Error uploading $type: $e');
+//       Get.snackbar('Error', 'Failed to send $type', snackPosition: SnackPosition.BOTTOM);
+//     } finally {
+//       isSending.value = false;
+//     }
+//   }
+
+//   // Show options for image source
+//   void showImageSourceOptions() {
+//     Get.bottomSheet(
+//       Container(
+//         color: Colors.white,
+//         child: Wrap(
+//           children: [
+//             ListTile(
+//               leading: Icon(Icons.camera_alt),
+//               title: Text('Camera'),
+//               onTap: () {
+//                 Get.back();
+//                 pickAndSendImage(ImageSource.camera);
+//               },
+//             ),
+//             ListTile(
+//               leading: Icon(Icons.photo_library),
+//               title: Text('Gallery'),
+//               onTap: () {
+//                 Get.back();
+//                 pickAndSendImage(ImageSource.gallery);
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   void _scrollToBottom() {
+//     Future.delayed(Duration(milliseconds: 100), () {
+//       if (scrollController.hasClients) {
+//         scrollController.animateTo(
+//           0,
+//           duration: Duration(milliseconds: 300),
+//           curve: Curves.easeOut,
+//         );
+//       }
+//     });
+//   }
+
+//   Future<void> refreshMessages() async {
+//     await fetchMessages();
+//   }
+// }
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'dart:async';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
+import 'package:flutter_sound/flutter_sound.dart';
+import 'package:mementum/modules/chat_details/chat_details_model.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:mementum/modules/chat_details/chat_model.dart';
+import 'package:mementum/services/socket_service.dart';
 
 class ChatDetailsController extends GetxController {
   late String img;
   late String name;
+  late String roomId;
+  late String roomType;
+  
+  var msgs = <ChatModel>[].obs;
+  var messages = <Message>[].obs;
+  var isLoading = false.obs;
+  var isSending = false.obs;
+  var isRecording = false.obs;
+  var isTyping = false.obs;
+  var otherUserTyping = false.obs;
+  var currentUserId = ''.obs;
+  
+  final TextEditingController messageController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
+  final ImagePicker _imagePicker = ImagePicker();
+  final FlutterSoundRecorder _audioRecorder = FlutterSoundRecorder();
+  
+  bool _isRecorderInitialized = false;
+  Timer? _typingTimer;
+  String? _audioPath;
+
   @override
   void onInit() {
     super.onInit();
     var args = Get.arguments;
-    img = args['image'];
-    name = args['name'];
+    img = args['image'] ?? '';
+    name = args['name'] ?? '';
+    roomId = args['roomId'] ?? '';
+    roomType = args['roomType'] ?? 'direct';
+    
+    currentUserId.value = GetStorage().read('id');
+    
+    _initializeChat();
   }
 
-  var msgs = [
-  ChatModel(msg: "Alright see you then.Bye....", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "Of course.It's gonna be the best.", time: '2:30 AM', isme: true, img: '', name: ''),
-  ChatModel(msg: "Same here.Hope to spend the best hangout tonight", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "Sure.I will be there.Can't wait to catch up with you.", time: '2:30 AM', isme: true, img: '', name: ''),
-  ChatModel(msg: "Tonight sharp 9:00 PM.Don't be late!", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "Why not ?", time: '2:30 AM', isme: true, img: '', name: ''),
-  ChatModel(msg: "All good .Wonna go for a drink?", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "Everything is fine.What about you?", time: '2:30 AM', isme: true, img: '', name: ''),
-  ChatModel(msg: "How is it been going ", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "How are you", time: '2:30 AM', isme: true, img: '', name: ''),
-  ChatModel(msg: "Hello", time: '2:30 AM', isme: false, img: '', name: 'Spidy'),
-  ChatModel(msg: "Hi", time: '2:30 AM', isme: true, img: '', name: ''),
-];
+  @override
+  void onClose() {
+    messageController.dispose();
+    scrollController.dispose();
+    _typingTimer?.cancel();
+    if (_isRecorderInitialized) {
+      _audioRecorder.closeRecorder();
+    }
+    _cleanupSocketListeners();
+    socketService.leaveChatRoom(roomId);
+    super.onClose();
+  }
+
+  Future<void> _initializeChat() async {
+    try {
+      // Initialize audio recorder
+      await _initRecorder();
+      
+      // Connect socket if not connected
+      if (!socketService.isConnected) {
+        await socketService.connect();
+      }
+      
+      socketService.joinChatRoom(roomId);
+      _setupSocketListeners();
+      await fetchMessages();
+      
+    } catch (e) {
+      print('❌ Error initializing chat: $e');
+      Get.snackbar('Error', 'Failed to initialize chat', snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> _initRecorder() async {
+    try {
+      await _audioRecorder.openRecorder();
+      _isRecorderInitialized = true;
+      print('✅ Audio recorder initialized');
+    } catch (e) {
+      print('❌ Failed to initialize recorder: $e');
+    }
+  }
+
+  void _setupSocketListeners() {
+    socketService.on('new_message', _handleNewMessage);
+    socketService.on('message_edited', _handleMessageEdited);
+    socketService.on('message_deleted', _handleMessageDeleted);
+    socketService.on('user_typing', _handleUserTyping);
+    socketService.on('message_read', _handleMessageRead);
+  }
+
+  void _cleanupSocketListeners() {
+    socketService.off('new_message');
+    socketService.off('message_edited');
+    socketService.off('message_deleted');
+    socketService.off('user_typing');
+    socketService.off('message_read');
+  }
+
+  void _handleNewMessage(dynamic data) {
+    print('📨 New message received: $data');
+    
+    try {
+      final message = Message.fromJson(data);
+      
+      if (message.chatRoomId == roomId) {
+        messages.insert(0, message);
+        
+        final chatModel = ChatModel(
+          msg: message.content,
+          time: message.getFormattedTime(),
+          isme: message.isFromMe(currentUserId.value),
+          img: message.senderId.photoURL ?? '',
+          name: message.senderId.name,
+          messageType: message.messageType,
+          mediaURL: message.mediaURL,
+        );
+        
+        msgs.insert(0, chatModel);
+        
+        if (message.senderId.id != currentUserId.value) {
+          socketService.markMessageAsRead(message.id, roomId);
+        }
+        
+        _scrollToBottom();
+      }
+    } catch (e) {
+      print('❌ Error handling new message: $e');
+    }
+  }
+
+  void _handleMessageEdited(dynamic data) {
+    print('✏️ Message edited: $data');
+    try {
+      final editedMessage = Message.fromJson(data);
+      final index = messages.indexWhere((m) => m.id == editedMessage.id);
+      if (index != -1) {
+        messages[index] = editedMessage;
+        msgs[index] = ChatModel(
+          msg: editedMessage.content,
+          time: editedMessage.getFormattedTime(),
+          isme: editedMessage.isFromMe(currentUserId.value),
+          img: editedMessage.senderId.photoURL ?? '',
+          name: editedMessage.senderId.name,
+          messageType: editedMessage.messageType,
+          mediaURL: editedMessage.mediaURL,
+        );
+      }
+    } catch (e) {
+      print('❌ Error handling edited message: $e');
+    }
+  }
+
+  void _handleMessageDeleted(dynamic data) {
+    print('🗑️ Message deleted: $data');
+    try {
+      final messageId = data['messageId'] as String;
+      final chatRoomId = data['chatRoomId'] as String;
+      
+      if (chatRoomId == roomId) {
+        final index = messages.indexWhere((m) => m.id == messageId);
+        if (index != -1) {
+          final deletedMsg = messages[index];
+          msgs[index] = ChatModel(
+            msg: 'This message was deleted',
+            time: deletedMsg.getFormattedTime(),
+            isme: deletedMsg.isFromMe(currentUserId.value),
+            img: deletedMsg.senderId.photoURL ?? '',
+            name: deletedMsg.senderId.name,
+            messageType: 'text',
+            mediaURL: null,
+          );
+        }
+      }
+    } catch (e) {
+      print('❌ Error handling deleted message: $e');
+    }
+  }
+
+  void _handleUserTyping(dynamic data) {
+    try {
+      final userId = data['userId'] as String;
+      final typing = data['isTyping'] as bool;
+      
+      if (userId != currentUserId.value) {
+        otherUserTyping.value = typing;
+      }
+    } catch (e) {
+      print('❌ Error handling typing: $e');
+    }
+  }
+
+  void _handleMessageRead(dynamic data) {
+    try {
+      final messageId = data['messageId'] as String;
+      final userId = data['userId'] as String;
+      
+      final index = messages.indexWhere((m) => m.id == messageId);
+      if (index != -1 && !messages[index].readBy.contains(userId)) {
+        messages[index].readBy.add(userId);
+        messages.refresh();
+      }
+    } catch (e) {
+      print('❌ Error handling message read: $e');
+    }
+  }
+
+  Future<void> fetchMessages() async {
+    final storage = GetStorage();
+    final token = storage.read('token');
+    
+    try {
+      isLoading.value = true;
+      
+      final response = await http.get(
+        Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages/$roomId?page=1&limit=50'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+        },
+      );
+
+      print('Messages Response: ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        final jsonData = json.decode(response.body);
+        
+        if (jsonData['success'] == true && jsonData['data'] != null) {
+          final messagesList = (jsonData['data']['messages'] as List)
+              .map((msg) => Message.fromJson(msg))
+              .toList()
+              .reversed
+              .toList();
+          
+          messages.value = messagesList;
+          
+          msgs.value = messages.map((message) {
+            return ChatModel(
+              msg: message.content,
+              time: message.getFormattedTime(),
+              isme: message.isFromMe(currentUserId.value),
+              img: message.senderId.photoURL ?? '',
+              name: message.senderId.name,
+              messageType: message.messageType,
+              mediaURL: message.mediaURL,
+            );
+          }).toList();
+          
+          print('✅ Messages loaded: ${msgs.length}');
+        }
+      }
+    } catch (e) {
+      print('❌ Error fetching messages: $e');
+      Get.snackbar('Error', 'Failed to load messages', snackPosition: SnackPosition.BOTTOM);
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void handleInputChange(String text) {
+    if (text.isNotEmpty && !isTyping.value) {
+      socketService.sendTyping(roomId, true);
+      isTyping.value = true;
+    }
+    
+    _typingTimer?.cancel();
+    _typingTimer = Timer(Duration(seconds: 2), () {
+      if (isTyping.value) {
+        socketService.sendTyping(roomId, false);
+        isTyping.value = false;
+      }
+    });
+  }
+
+  Future<void> sendMessage() async {
+    final content = messageController.text.trim();
+    if (content.isEmpty) return;
+    
+    final storage = GetStorage();
+    final token = storage.read('token');
+    
+    try {
+      isSending.value = true;
+      messageController.clear();
+      
+      if (isTyping.value) {
+        socketService.sendTyping(roomId, false);
+        isTyping.value = false;
+      }
+      
+      final response = await http.post(
+        Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+        },
+        body: json.encode({
+          'chatRoomId': roomId,
+          'messageType': 'text',
+          'content': content,
+        }),
+      );
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print('✅ Message sent');
+      } else {
+        throw Exception('Failed to send message');
+      }
+    } catch (e) {
+      print('❌ Error sending message: $e');
+      Get.snackbar('Error', 'Failed to send message', snackPosition: SnackPosition.BOTTOM);
+      messageController.text = content;
+    } finally {
+      isSending.value = false;
+    }
+  }
+
+  Future<void> pickAndSendImage(ImageSource source) async {
+    try {
+      final XFile? image = await _imagePicker.pickImage(
+        source: source,
+        imageQuality: 80,
+      );
+      if (image == null) return;
+
+      await _uploadAndSendMedia(File(image.path), 'image');
+    } catch (e) {
+      print('❌ Error picking image: $e');
+      Get.snackbar('Error', 'Failed to pick image', snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> startRecording() async {
+    try {
+      if (await Permission.microphone.request().isGranted) {
+        if (!_isRecorderInitialized) {
+          await _initRecorder();
+        }
+        
+        final tempDir = await getTemporaryDirectory();
+        _audioPath = '${tempDir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.aac';
+        
+        await _audioRecorder.startRecorder(
+          toFile: _audioPath,
+          codec: Codec.aacADTS,
+        );
+        
+        isRecording.value = true;
+        print('🎤 Recording started');
+      } else {
+        Get.snackbar(
+          'Permission Denied',
+          'Microphone permission is required',
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      }
+    } catch (e) {
+      print('❌ Error starting recording: $e');
+      Get.snackbar('Error', 'Failed to start recording', snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> stopRecordingAndSend() async {
+    try {
+      final path = await _audioRecorder.stopRecorder();
+      isRecording.value = false;
+      
+      if (path != null && File(path).existsSync()) {
+        print('🎤 Recording stopped: $path');
+        await _uploadAndSendMedia(File(path), 'audio');
+      }
+    } catch (e) {
+      print('❌ Error stopping recording: $e');
+      Get.snackbar('Error', 'Failed to stop recording', snackPosition: SnackPosition.BOTTOM);
+    }
+  }
+
+  Future<void> cancelRecording() async {
+    try {
+      await _audioRecorder.stopRecorder();
+      isRecording.value = false;
+      print('🎤 Recording cancelled');
+    } catch (e) {
+      print('❌ Error cancelling recording: $e');
+    }
+  }
+
+  Future<void> _uploadAndSendMedia(File file, String type) async {
+    final storage = GetStorage();
+    final token = storage.read('token');
+    
+    try {
+      isSending.value = true;
+      
+      var request = http.MultipartRequest(
+        'POST',
+        Uri.parse('https://server.momentumactivity.com/api/v1/upload'),
+      );
+      
+      request.headers['Authorization'] = token;
+      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+      
+      var uploadResponse = await request.send();
+      var responseData = await http.Response.fromStream(uploadResponse);
+      
+      if (uploadResponse.statusCode == 200) {
+        final uploadJson = json.decode(responseData.body);
+        final mediaURL = uploadJson['data']['url'];
+        
+        final messageResponse = await http.post(
+          Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+          },
+          body: json.encode({
+            'chatRoomId': roomId,
+            'messageType': type,
+            'content': type == 'image' ? 'Image' : 'Audio',
+            'mediaURL': mediaURL,
+          }),
+        );
+
+        if (messageResponse.statusCode == 200 || messageResponse.statusCode == 201) {
+          print('✅ $type sent successfully');
+        }
+      } else {
+        throw Exception('Failed to upload $type');
+      }
+    } catch (e) {
+      print('❌ Error uploading $type: $e');
+      Get.snackbar('Error', 'Failed to send $type', snackPosition: SnackPosition.BOTTOM);
+    } finally {
+      isSending.value = false;
+    }
+  }
+
+  void showImageSourceOptions() {
+    Get.bottomSheet(
+      Container(
+        color: Colors.white,
+        padding: EdgeInsets.symmetric(vertical: 20),
+        child: Wrap(
+          children: [
+            ListTile(
+              leading: Icon(Icons.camera_alt, color: Colors.blue),
+              title: Text('Camera'),
+              onTap: () {
+                Get.back();
+                pickAndSendImage(ImageSource.camera);
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.photo_library, color: Colors.green),
+              title: Text('Gallery'),
+              onTap: () {
+                Get.back();
+                pickAndSendImage(ImageSource.gallery);
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _scrollToBottom() {
+    Future.delayed(Duration(milliseconds: 100), () {
+      if (scrollController.hasClients) {
+        scrollController.animateTo(
+          0,
+          duration: Duration(milliseconds: 300),
+          curve: Curves.easeOut,
+        );
+      }
+    });
+  }
+
+  Future<void> refreshMessages() async {
+    await fetchMessages();
+  }
 }

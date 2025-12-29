@@ -1,5 +1,5 @@
- # Uncomment this line to define a global platform for your project
-  platform :ios, '14.0'
+# Uncomment this line to define a global platform for your project
+platform :ios, '14.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -39,5 +39,16 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+    
+    # --- PERMISSION HANDLER START ---
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= [
+        '$(inherited)',
+        'PERMISSION_MICROPHONE=1', # For flutter_sound
+        'PERMISSION_CAMERA=1',     # For image_picker
+        'PERMISSION_PHOTOS=1',     # For image_picker gallery
+      ]
+    end
+    # --- PERMISSION HANDLER END ---
   end
 end
