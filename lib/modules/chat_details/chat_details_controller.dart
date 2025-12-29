@@ -776,7 +776,7 @@ class ChatDetailsController extends GetxController {
     
     try {
       isSending.value = true;
-      //messageController.clear();
+      messageController.clear();
       
       if (isTyping.value) {
         socketService.sendTyping(roomId, false);
