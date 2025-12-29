@@ -707,7 +707,7 @@ class ChatDetailsController extends GetxController {
       isLoading.value = true;
       
       final response = await http.get(
-        Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages/$roomId?page=1&limit=50'),
+        Uri.parse('https://server.momentumactivity.com/api/v1/chat/$roomId/messages'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token,
@@ -715,6 +715,7 @@ class ChatDetailsController extends GetxController {
       );
 
       print('Messages Response: ${response.statusCode}');
+      print('Messages Response ${response.body}');
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
@@ -798,7 +799,7 @@ class ChatDetailsController extends GetxController {
       if (response.statusCode == 200 || response.statusCode == 201) {
         print('✅ Message sent');
       } else {
-        throw Exception('Failed to send message');
+        throw Exception ('Failed to send message ${response.body}');
       }
     } catch (e) {
       print('❌ Error sending message: $e');
