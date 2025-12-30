@@ -890,7 +890,7 @@ class ChatDetailsController extends GetxController {
       
       var request = http.MultipartRequest(
         'POST',
-        Uri.parse('https://server.momentumactivity.com/api/v1/upload'),
+        Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
       );
       
       request.headers['Authorization'] = token;
@@ -931,6 +931,109 @@ class ChatDetailsController extends GetxController {
     }
   }
 
+
+//   Future<void> _uploadAndSendMedia(File file, String type) async {
+//   final storage = GetStorage();
+//   final token = storage.read('token');
+
+//   try {
+//     isSending.value = true;
+
+//     // 1. Create the Multipart Request
+//     var request = http.MultipartRequest(
+//       'POST',
+//       Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
+//     );
+
+//     // 2. Add Headers
+//     request.headers['Authorization'] = token;
+
+//     // 3. Add Fields (Metadata)
+//     // Ensure these keys match exactly what your working text API expects
+//     request.fields['chatRoomId'] = roomId;
+//     request.fields['contentType'] = type; // 'image' or 'audio'
+//     request.fields['content'] = type == 'image' ? 'Image Sent' : 'Audio Sent';
+
+//     // 4. Add the File
+//     // Check if your server expects 'file', 'image', or 'media' as the key here
+//     var multipartFile = await http.MultipartFile.fromPath('file', file.path);
+//     request.files.add(multipartFile);
+
+//     print('⏳ Uploading $type...');
+
+//     // 5. Send and Receive Response
+//     var streamResponse = await request.send();
+//     var response = await http.Response.fromStream(streamResponse);
+
+//     // --- 👇 PRINTING THE RESPONSE BODY ALWAYS 👇 ---
+//     print('📩 Server Response Body: ${response.body}');
+//     // -----------------------------------------------
+
+//     if (response.statusCode == 200 || response.statusCode == 201) {
+//       print('✅ $type sent successfully');
+//     } else {
+//       throw Exception('Failed with status ${response.statusCode}: ${response.body}');
+//     }
+//   } catch (e) {
+//     print('❌ Error sending $type: $e');
+//     Get.snackbar(
+//       'Error', 
+//       'Failed to send $type. Check console for details.', 
+//       snackPosition: SnackPosition.BOTTOM
+//     );
+//   } finally {
+//     isSending.value = false;
+//   }
+// }
+// Future<void> _uploadAndSendMedia(File file, String type) async {
+//   final storage = GetStorage();
+//   final token = storage.read('token');
+
+//   try {
+//     isSending.value = true;
+
+//     var request = http.MultipartRequest(
+//       'POST',
+//       Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
+//     );
+
+//     request.headers['Authorization'] = token;
+
+//     // --- 👇 FIX IS HERE 👇 ---
+//     // The server error explicitly asked for 'messageType'
+//     request.fields['messageType'] = type; // e.g., 'image' or 'audio'
+    
+//     // Keeping these standard fields just in case
+//     request.fields['chatRoomId'] = roomId;
+//     request.fields['content'] = type == 'image' ? 'Image Sent' : 'Audio Sent';
+
+//     // Add the file
+//     var multipartFile = await http.MultipartFile.fromPath('file', file.path);
+//     request.files.add(multipartFile);
+
+//     print('⏳ Uploading $type with messageType: $type...');
+
+//     var streamResponse = await request.send();
+//     var response = await http.Response.fromStream(streamResponse);
+
+//     print('📩 Server Response Body: ${response.body}');
+
+//     if (response.statusCode == 200 || response.statusCode == 201) {
+//       print('✅ $type sent successfully');
+//     } else {
+//       throw Exception('Failed with status ${response.statusCode}: ${response.body}');
+//     }
+//   } catch (e) {
+//     print('❌ Error sending $type: $e');
+//     Get.snackbar(
+//       'Error', 
+//       'Failed to send $type: ${e.toString()}', 
+//       snackPosition: SnackPosition.BOTTOM
+//     );
+//   } finally {
+//     isSending.value = false;
+//   }
+// }
   void showImageSourceOptions() {
     Get.bottomSheet(
       Container(
