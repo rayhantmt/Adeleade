@@ -904,7 +904,7 @@ class ChatDetailsController extends GetxController {
         final mediaURL = uploadJson['data']['url'];
         
         final messageResponse = await http.post(
-          Uri.parse('https://server.momentumactivity.com/api/v1/chat/messages'),
+          Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
           headers: {
             'Content-Type': 'application/json',
             'Authorization': token,
@@ -912,7 +912,7 @@ class ChatDetailsController extends GetxController {
           body: json.encode({
             'chatRoomId': roomId,
             'messageType': type,
-            'content': type == 'image' ? 'Image' : 'Audio',
+            'content': type == 'image' ? 'Image' : 'audio',
             'mediaURL': mediaURL,
           }),
         );
@@ -921,11 +921,11 @@ class ChatDetailsController extends GetxController {
           print('✅ $type sent successfully');
         }
       } else {
-        throw Exception('Failed to upload $type');
+        throw Exception('Failed to upload ${responseData.body}');
       }
     } catch (e) {
       print('❌ Error uploading $type: $e');
-      Get.snackbar('Error', 'Failed to send $type', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Error', 'Failed to send $e', snackPosition: SnackPosition.BOTTOM);
     } finally {
       isSending.value = false;
     }
