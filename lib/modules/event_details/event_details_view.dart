@@ -133,7 +133,7 @@ class EventDetails extends GetView<EventDetailsController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            controller.location,
+                            'Location',
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
@@ -145,12 +145,17 @@ class EventDetails extends GetView<EventDetailsController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(
-                            controller.location.toString(),
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 16,
-                              color: Color(0xff898989),
+                          Expanded(
+                            child: Text(
+                              controller.location.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w400,
+                                fontSize: 16,
+                                color: Color(0xff898989),
+                                
+                              ),
                             ),
                           ),
                         ],
@@ -177,13 +182,17 @@ class EventDetails extends GetView<EventDetailsController> {
                           ),
                         ],
                       ),
-                      Text(
-                        controller.details.toString(),
-                        style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 16,
-                          color: Color(0xff898989),
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            controller.details.toUpperCase(),
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16,
+                              color: Color(0xff898989),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
