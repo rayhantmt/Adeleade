@@ -305,20 +305,23 @@ class EventDetails extends GetView<EventDetailsController> {
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      Container(
-                        height: Get.height * 0.07,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.primarycolor,
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Join',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff1E1E1E),
+                      GestureDetector(
+                        onTap: () => controller.joinEvent(),
+                        child: Container(
+                          height: Get.height * 0.07,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(99),
+                            color: AppColors.primarycolor,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Join',
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff1E1E1E),
+                              ),
                             ),
                           ),
                         ),

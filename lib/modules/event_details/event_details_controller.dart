@@ -1,4 +1,9 @@
+// import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/modules/home/home_model.dart';
 
 class EventDetailsController extends GetxController {
@@ -27,17 +32,34 @@ class EventDetailsController extends GetxController {
     joinedPeople = arg['joinedpeople'];
     maxpeople = arg['maxpeople'];
     id = arg['id'];
-    ppl=arg['perticanpants'];
+    ppl = arg['perticanpants'];
   }
 
-  // var isLoading = false.obs;
-  // Future<void> joinevent() async {
-  //   isLoading.value = true;
-  //   try{
+  
+  RxBool isLoading = false.obs;
+  Future<void> joinEvent() async {
+    final uri = Uri.parse('https://server.momentumactivity.com/api/v1/event/$id/join');
+    final storage = GetStorage();
+    final token = storage.read('token');
+    isLoading.value = true;
+    try {
+      final response = await http.post(
+        uri,
+        headers: {'Authorization':token},
+        body: {}
+      );
+      print(uri.toString());
       
-  //   }
-  //   on AppException catch (e){
-  //     Get.snackbar('Error', e.toString());
-  //   } 
-  // }
+      print(response.statusCode);
+      print(response.body);
+    } 
+    
+    
+    on AppException catch (e) {
+      print(e);
+      Get.snackbar('Error', 'Failed to join event $e');
+    } finally {
+      isLoading.value = false;
+    }
+  }
 }

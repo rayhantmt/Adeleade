@@ -479,8 +479,9 @@
 //     await fetchMessages();
 //   }
 // }
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -793,6 +794,7 @@ class ChatDetailsController extends GetxController {
           'chatRoomId': roomId,
           'contentType': 'text',
           'content': content,
+          'messageType':'text'
 
         }),
       );
@@ -881,55 +883,55 @@ class ChatDetailsController extends GetxController {
     }
   }
 
-  Future<void> _uploadAndSendMedia(File file, String type) async {
-    final storage = GetStorage();
-    final token = storage.read('token');
+  // Future<void> _uploadAndSendMedia(File file, String type) async {
+  //   final storage = GetStorage();
+  //   final token = storage.read('token');
     
-    try {
-      isSending.value = true;
+  //   try {
+  //     isSending.value = true;
       
-      var request = http.MultipartRequest(
-        'POST',
-        Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
-      );
+  //     var request = http.MultipartRequest(
+  //       'POST',
+  //       Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
+  //     );
       
-      request.headers['Authorization'] = token;
-      request.files.add(await http.MultipartFile.fromPath('file', file.path));
+  //     request.headers['Authorization'] = token;
+  //     request.files.add(await http.MultipartFile.fromPath('file', file.path));
       
-      var uploadResponse = await request.send();
-      var responseData = await http.Response.fromStream(uploadResponse);
+  //     var uploadResponse = await request.send();
+  //     var responseData = await http.Response.fromStream(uploadResponse);
       
-      if (uploadResponse.statusCode == 200) {
-        final uploadJson = json.decode(responseData.body);
-        final mediaURL = uploadJson['data']['url'];
+  //     if (uploadResponse.statusCode == 200) {
+  //       final uploadJson = json.decode(responseData.body);
+  //       final mediaURL = uploadJson['data']['url'];
         
-        final messageResponse = await http.post(
-          Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token,
-          },
-          body: json.encode({
-            'chatRoomId': roomId,
-            'messageType': type,
-            'content': type == 'image' ? 'Image' : 'audio',
-            'mediaURL': mediaURL,
-          }),
-        );
+  //       final messageResponse = await http.post(
+  //         Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
+  //         headers: {
+  //           'Content-Type': 'application/json',
+  //           'Authorization': token,
+  //         },
+  //         body: json.encode({
+  //           'chatRoomId': roomId,
+  //           'messageType': 'audio',
+  //           'content': type == 'image' ? 'Image' : 'audio',
+  //           'mediaURL': mediaURL,
+  //         }),
+  //       );
 
-        if (messageResponse.statusCode == 200 || messageResponse.statusCode == 201) {
-          print('✅ $type sent successfully');
-        }
-      } else {
-        throw Exception('Failed to upload ${responseData.body}');
-      }
-    } catch (e) {
-      print('❌ Error uploading $type: $e');
-      Get.snackbar('Error', 'Failed to send $e', snackPosition: SnackPosition.BOTTOM);
-    } finally {
-      isSending.value = false;
-    }
-  }
+  //       if (messageResponse.statusCode == 200 || messageResponse.statusCode == 201) {
+  //         print('✅ $type sent successfully');
+  //       }
+  //     } else {
+  //       throw Exception('Failed to upload ${responseData.body}');
+  //     }
+  //   } catch (e) {
+  //     print('❌ Error uploading $type: $e');
+  //     Get.snackbar('Error', 'Failed to send $e', snackPosition: SnackPosition.BOTTOM);
+  //   } finally {
+  //     isSending.value = false;
+  //   }
+  // }
 
 
 //   Future<void> _uploadAndSendMedia(File file, String type) async {
@@ -1034,6 +1036,123 @@ class ChatDetailsController extends GetxController {
 //     isSending.value = false;
 //   }
 // }
+
+// Future<void> _uploadAndSendMedia(File file, String type) async {
+//   final storage = GetStorage();
+//   final token = storage.read('token');
+  
+//   try {
+//     isSending.value = true;
+    
+//     // Create multipart request to SEND endpoint (not upload)
+//     var request = http.MultipartRequest(
+//       'POST',
+//       Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
+//     );
+    
+//     // Add authorization header
+//     request.headers['Authorization'] = token;
+    
+//     // Add form fields (same as your text message)
+//     request.fields['chatRoomId'] = roomId;
+//     request.fields['messageType'] = type; // 'image' or 'audio'
+//     request.fields['contentType'] = type; // Add this too, just in case
+//     request.fields['content'] = type == 'image' ? 'Image' : 'Audio';
+    
+//     // Add the file with key 'file'
+//     request.files.add(
+//       await http.MultipartFile.fromPath('file', file.path)
+//     );
+    
+//     print('⏳ Sending $type to server...');
+//     print('📝 Fields: ${request.fields}');
+    
+//     // Send request
+//     var streamResponse = await request.send();
+//     var response = await http.Response.fromStream(streamResponse);
+    
+//     print('📨 Response Status: ${response.statusCode}');
+//     print('📨 Response Body: ${response.body}');
+    
+//     if (response.statusCode == 200 || response.statusCode == 201) {
+//       print('✅ $type sent successfully');
+//       // Message will appear via WebSocket
+//     } else {
+//       throw Exception('Failed to send $type: ${response.body}');
+//     }
+//   } catch (e) {
+//     print('❌ Error sending $type: $e');
+//     Get.snackbar(
+//       'Error',
+//       'Failed to send $type: ${e.toString()}',
+//       snackPosition: SnackPosition.BOTTOM,
+//       duration: Duration(seconds: 3),
+//     );
+//   } finally {
+//     isSending.value = false;
+//   }
+// }
+
+Future<void> _uploadAndSendMedia(File file, String type) async {
+  final storage = GetStorage();
+  final token = storage.read('token');
+  
+  try {
+    isSending.value = true;
+    
+    // Create Dio instance
+    final dio = Dio();
+    
+    // Create FormData
+    FormData formData = FormData.fromMap({
+      'chatRoomId': roomId,
+      'messageType': type, // 'image' or 'audio'
+      'content': file, //== 'image' ? 'Image' : 'Audio',
+      // 'file': await MultipartFile.fromFile(
+      //   file.path,
+      //   filename: file.path.split('/').last,
+      // ),
+    });
+    
+    print('⏳ Sending $type');
+    print('📝 chatRoomId: $roomId');
+    print('📝 messageType: $type');
+    
+    // Send request
+    final response = await dio.post(
+      'https://server.momentumactivity.com/api/v1/chat/send',
+      data: formData,
+      options: Options(
+        headers: {
+          'Authorization': token,
+        },
+      ),
+    );
+    
+    print('📨 Status: ${response.statusCode}');
+    print('📨 Body: ${response.data}');
+    
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print('✅ $type sent successfully');
+    } else {
+      throw Exception('Failed: ${response.data}');
+    }
+  } catch (e) {
+    print('❌ Error: $e');
+    if (e is DioException) {
+      print('❌ Dio Error Response: ${e.response?.data}');
+    }
+    Get.snackbar(
+      'Error',
+      'Failed to send $type',
+      snackPosition: SnackPosition.BOTTOM,
+      duration: Duration(seconds: 3),
+    );
+  } finally {
+    isSending.value = false;
+  }
+}
+
   void showImageSourceOptions() {
     Get.bottomSheet(
       Container(
