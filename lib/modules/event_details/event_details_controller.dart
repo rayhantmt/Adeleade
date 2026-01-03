@@ -1,5 +1,7 @@
 // import 'dart:io';
 
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -53,7 +55,17 @@ class EventDetailsController extends GetxController {
       
       print(response.statusCode);
       print(response.body);
-      Get.snackbar('Success', response.body);
+      //Get.snackbar('Success', response.body);
+      final decodedData = jsonDecode(response.body);
+
+    // 2. Check the 'success' flag to determine the title (Success vs Error)
+    //    and show ONLY the 'message' field in the snackbar.
+    if (decodedData['success'] == true) {
+      Get.snackbar('Success', decodedData['message']);
+    } else {
+      // If success is false (like "You have already joined"), show it as an Alert/Error
+      Get.snackbar('Alert', '${decodedData['message']} ');
+    }
     } 
     
     
