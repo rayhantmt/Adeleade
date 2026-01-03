@@ -25,6 +25,7 @@ class MainScreen extends GetView<MainScreenController> {
       bottomNavigationBar: Obx(() {
         int currentIndex = controller.currentIndex.value;
         return BottomNavigationBar(
+          
           type: BottomNavigationBarType.fixed,
           onTap: controller.changeTab,
           currentIndex: currentIndex,

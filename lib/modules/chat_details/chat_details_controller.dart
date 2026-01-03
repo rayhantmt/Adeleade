@@ -484,11 +484,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart' hide MultipartFile;
+import 'package:http/http.dart' as _client show post;
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_sound/flutter_sound.dart';
+import 'package:mementum/api/dio_client.dart';
 import 'package:mementum/modules/chat_details/chat_details_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
@@ -1092,6 +1095,7 @@ class ChatDetailsController extends GetxController {
 //     isSending.value = false;
 //   }
 // }
+final DioClient _client = DioClient();
 
 Future<void> _uploadAndSendMedia(File file, String type) async {
   final storage = GetStorage();
@@ -1104,14 +1108,19 @@ Future<void> _uploadAndSendMedia(File file, String type) async {
     final dio = Dio();
     
     // Create FormData
-    FormData formData = FormData.fromMap({
+    final formData = FormData.fromMap({
       'chatRoomId': roomId,
       'messageType': type, // 'image' or 'audio'
-      'content': file, //== 'image' ? 'Image' : 'Audio',
+      //'file': file, //== 'image' ? 'Image' : 'Audio',
       // 'file': await MultipartFile.fromFile(
-      //   file.path,
-      //   filename: file.path.split('/').last,
+      //   file.path
+        
       // ),
+      'file': await MultipartFile.fromFile(
+       file.path,
+        filename: 'nothing',
+        contentType: MediaType('image', 'png'),
+      ),
     });
     
     print('⏳ Sending $type');
@@ -1120,15 +1129,16 @@ Future<void> _uploadAndSendMedia(File file, String type) async {
     
     // Send request
     final response = await dio.post(
+       options: Options(headers: {
+          'Authorization': token,
+         // 'Content-Type': 'application/json',
+        } ),
       'https://server.momentumactivity.com/api/v1/chat/send',
       data: formData,
-      options: Options(
-        headers: {
-          'Authorization': token,
-        },
-      ),
+
+      
     );
-    
+    print(formData);
     print('📨 Status: ${response.statusCode}');
     print('📨 Body: ${response.data}');
     
