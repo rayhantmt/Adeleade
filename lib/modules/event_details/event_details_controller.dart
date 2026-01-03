@@ -1,5 +1,7 @@
 // import 'dart:io';
 
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
@@ -48,10 +50,22 @@ class EventDetailsController extends GetxController {
         headers: {'Authorization':token},
         body: {}
       );
+      final Map<String, dynamic> data = response is String 
+        ? json.decode(response as String) 
+        : response;
+
+    if (data['success'] == true) {
+      Get.snackbar('Success', data['message'] ?? 'Joined successfully');
+    } else {
+      // This picks "You have already joined this event" from your response
+      String errorMessage = data['message'] ?? 'Something went wrong';
+      Get.snackbar('Alert', errorMessage, snackPosition: SnackPosition.BOTTOM);
+    }
       print(uri.toString());
       
       print(response.statusCode);
       print(response.body);
+      //Get.snackbar('Success', response.body);
     } 
     
     

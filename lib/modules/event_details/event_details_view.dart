@@ -315,13 +315,15 @@ class EventDetails extends GetView<EventDetailsController> {
                             color: AppColors.primarycolor,
                           ),
                           child: Center(
-                            child: Text(
+                            child: Obx(() => controller.isLoading.value?CircularProgressIndicator(
+                              color: Colors.black,
+                            ):Text(
                               'Join',
                               style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,
                                 color: Color(0xff1E1E1E),
-                              ),
+                              ),)
                             ),
                           ),
                         ),
