@@ -1118,8 +1118,8 @@ Future<void> _uploadAndSendMedia(File file, String type) async {
       // ),
       'file': await MultipartFile.fromFile(
        file.path,
-        filename: 'nothing',
-        contentType: MediaType('image', 'png'),
+       // filename: 'nothing',
+        //contentType: MediaType('image', 'png'),
       ),
     });
     
@@ -1139,6 +1139,7 @@ Future<void> _uploadAndSendMedia(File file, String type) async {
       
     );
     print(formData);
+    print(file.path);
     print('📨 Status: ${response.statusCode}');
     print('📨 Body: ${response.data}');
     

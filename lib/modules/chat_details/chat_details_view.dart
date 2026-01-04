@@ -428,9 +428,9 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
   Widget _buildMessageContent(message) {
     switch (message.messageType) {
       case 'image':
-        return message.mediaURL != null
+        return message.msg != null
             ? CachedNetworkImage(
-                imageUrl: message.mediaURL!,
+                imageUrl: message.msg!,
                 width: Get.width * 0.6,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Container(
@@ -451,8 +451,8 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
               );
             
       case 'audio':
-        return message.mediaURL != null
-            ? _AudioPlayer(audioUrl: message.mediaURL!)
+        return message.msg != null
+            ? _AudioPlayer(audioUrl: message.msg!)
             : Text(
                 message.msg,
                 style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12),
