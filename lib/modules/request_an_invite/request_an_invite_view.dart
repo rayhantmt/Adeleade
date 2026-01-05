@@ -135,7 +135,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                             arguments: {
                               'name': controller.namecontroller.text,
                               'email': controller.emailcontroller.text,
-                              'gender': controller.gendercontroller.text,
+                              'gender': controller.gendercontroller.text.toLowerCase(),
                               'age': controller.agecontroller.text,
                               'profession': controller.professioncontroller.text,
                               'nationality':
