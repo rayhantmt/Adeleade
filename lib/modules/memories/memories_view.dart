@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/date_picking_field.dart';
+import 'package:mementum/common_widgets/update_info_dropdown.dart';
 import 'package:mementum/common_widgets/update_info_field.dart';
 import 'package:mementum/modules/memories/memories_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
@@ -139,6 +140,10 @@ class MemoriesView extends GetView<MemoriesController> {
 
 Widget _createEvent() {
   final controller = MemoriesController();
+  final List<String> categories = [
+  "Sports", "Music", "Art", "Technology", "Food", 
+  "Education", "Business", "Health", "Travel", "Social", "Other"
+];
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,11 +174,21 @@ Widget _createEvent() {
         // ),
         DatePickerField(tittle: 'Activity Date', hint: 'Select Activity Date',textcontroller:controller.eventdatecontroller,),
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(
-          textcontroller: controller.cetegorycontroller,
-          tittle: "Activity Category",
-          hint: 'Enter Activity category name',
-        ),
+        // UpdateInfoField(
+        //   textcontroller: controller.cetegorycontroller,
+        //   tittle: "Activity Category",
+        //   hint: 'Enter Activity category name',
+        // ),
+        // 1. Define your categories list
+
+
+// 2. Use the new widget
+UpdateInfoDropdown(
+  textcontroller: controller.cetegorycontroller,
+  tittle: "Activity Category",
+  hint: 'Select Category',
+  items: categories, // Pass the list here
+),
         SizedBox(height: Get.height * 0.02),
         Text(
           'Image',
