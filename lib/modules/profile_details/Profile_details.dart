@@ -305,7 +305,7 @@ class ProfileDetails extends GetView<ProfileController> {
                             ),
                             Center(
                               child: Text(
-                                'Profile',
+                                user.name.toUpperCase(),
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 18,
@@ -364,26 +364,26 @@ class ProfileDetails extends GetView<ProfileController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Age',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff898989),
-                                ),
-                              ),
-                              Text(
-                                controller.calculateAge().toString(),
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff1E1E1E),
-                                ),
-                              ),
-                            ],
-                          ),
+                          // Column(
+                          //   children: [
+                          //     Text(
+                          //       'Age',
+                          //       style: GoogleFonts.inter(
+                          //         fontWeight: FontWeight.w500,
+                          //         fontSize: 16,
+                          //         color: Color(0xff898989),
+                          //       ),
+                          //     ),
+                          //     Text(
+                          //       controller.calculateAge().toString(),
+                          //       style: GoogleFonts.inter(
+                          //         fontWeight: FontWeight.w500,
+                          //         fontSize: 16,
+                          //         color: Color(0xff1E1E1E),
+                          //       ),
+                          //     ),
+                          //   ],
+                          // ),
                           Column(
                             children: [
                               Text(

@@ -45,8 +45,6 @@ class ProfileController extends GetxController {
   Rx<User?> userData = Rx<User?>(null);
   RxList<Event> createdEvents = <Event>[].obs;
 
-  //final ApiService _apiService = ApiService(); // Assuming you have ApiService
-
   @override
   void onInit() {
     var arg = Get.arguments;
