@@ -482,7 +482,7 @@ class ProfileDetails extends GetView<ProfileController> {
                           ),
                           Text(
                             user.bio.isNotEmpty
-                                ? user.bio
+                                ? user.bio.toUpperCase()
                                 : 'No bio available',
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w400,
