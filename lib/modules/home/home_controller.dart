@@ -11,12 +11,17 @@ class HomeController extends GetxController{
 
   var ctgry=[
 Category(categories: 'All',),
-Category(categories: 'Teavelling'),
+Category(categories: 'Sports'),
 Category(categories: 'Music'),
-Category(categories: 'Mountain'),
-Category(categories: 'Sea'),
-Category(categories: 'Lake'),
-Category(categories: 'Spritual')
+Category(categories: 'Art'),
+Category(categories: 'Technology'),
+Category(categories: 'Food'),
+Category(categories: 'Education'),
+Category(categories: 'Business'),
+Category(categories: 'Health'),
+Category(categories: 'Travel'),
+Category(categories: 'Social'),
+Category(categories: 'Other')
   ].obs;
   // Add this variable
 var selectedCategoryIndex = 0.obs;
