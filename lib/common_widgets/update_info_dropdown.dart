@@ -45,6 +45,7 @@ class UpdateInfoDropdown extends StatelessWidget {
               controller: textcontroller,
               readOnly: true, // Prevents manual typing, forces selection
               //enabled: false,
+              //enableInteractiveSelection: false,
               style: GoogleFonts.inter(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
