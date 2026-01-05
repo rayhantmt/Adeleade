@@ -268,8 +268,8 @@ UpdateInfoDropdown(
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
-           // onTap: controller.createEvent,
-           onTap: () => print(controller.cetegorycontroller.text.toString()),
+           onTap: controller.createEvent,
+           //onTap: () => print(controller.cetegorycontroller.text.toString()),
             child: Container(
               height: Get.height * 0.07,
               width: double.infinity,
