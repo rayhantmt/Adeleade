@@ -107,7 +107,7 @@ class ProfileDetails extends GetView<ProfileController> {
                               ),
                             ),
                             Text(
-                              'Male',
+                              controller.id.toString(),
                               style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 16,

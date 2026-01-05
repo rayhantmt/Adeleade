@@ -8,4 +8,14 @@ class ProfileController extends GetxController{
      ProfileModel(image: AppImages.event2,),
       ProfileModel(image: AppImages.event3,),
   ];
+  late  String id;
+  
+
+  @override
+  void onInit() {
+   var arg=Get.arguments;
+  
+  id=arg['id'];
+    super.onInit();
+  }
 }
