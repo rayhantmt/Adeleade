@@ -112,19 +112,19 @@ class MemoriesController extends GetxController {
       );
 
       if (response['success'] == true) {
-        final List<dynamic> eventsJson = response['data']['joinedEvents'];
-        myevents.value = eventsJson
-            .map((json) => Event.fromJson(json))
-            .toList();
+        // final List<dynamic> eventsJson = response['data']['joinedEvents'];
+        // myevents.value = eventsJson
+        //     .map((json) => Event.fromJson(json))
+        //     .toList();
 
-      //   final List<dynamic> joinedJson = response['data']['joinedEvents'] ?? [];
-      // final List<dynamic> createdJson = response['data']['createdEvents'] ?? [];
+        final List<dynamic> joinedJson = response['data']['joinedEvents'] ?? [];
+      final List<dynamic> createdJson = response['data']['createdEvents'] ?? [];
 
-      // // 2. Combine the lists using the spread operator
-      // final List<dynamic> combinedEvents = [...joinedJson, ...createdJson];
+      // 2. Combine the lists using the spread operator
+      final List<dynamic> combinedEvents = [...joinedJson, ...createdJson];
 
-      // // 3. Map the combined list to your Event model
-      // myevents.value = combinedEvents.map((json) => Event.fromJson(json)).toList();
+      // 3. Map the combined list to your Event model
+      myevents.value = combinedEvents.map((json) => Event.fromJson(json)).toList();
 
         Get.snackbar(
           'Success',
