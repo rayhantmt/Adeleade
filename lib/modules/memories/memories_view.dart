@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/common_widgets/date_picking_field.dart';
 import 'package:mementum/common_widgets/update_info_field.dart';
 import 'package:mementum/modules/memories/memories_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
@@ -161,11 +162,12 @@ Widget _createEvent() {
           hint: 'Enter Activity Location',
         ),
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(
-          tittle: "Activity Date",
-          hint: 'Enter Activity Date',
-          textcontroller: controller.eventdatecontroller,
-        ),
+        // UpdateInfoField(
+        //   tittle: "Activity Date",
+        //   hint: 'Enter Activity Date',
+        //   textcontroller: controller.eventdatecontroller,
+        // ),
+        DatePickerField(tittle: 'Activity Date', hint: 'Select Activity Date',textcontroller:controller.eventdatecontroller,),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(
           textcontroller: controller.cetegorycontroller,
@@ -251,7 +253,8 @@ Widget _createEvent() {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
-            onTap: controller.createEvent,
+           // onTap: controller.createEvent,
+           onTap: () => print(controller.eventdatecontroller.text.toString()),
             child: Container(
               height: Get.height * 0.07,
               width: double.infinity,
