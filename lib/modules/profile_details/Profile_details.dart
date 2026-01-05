@@ -395,7 +395,7 @@ class ProfileDetails extends GetView<ProfileController> {
                                 ),
                               ),
                               Text(
-                                user.gender,
+                                user.gender.toUpperCase(),
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
@@ -415,7 +415,7 @@ class ProfileDetails extends GetView<ProfileController> {
                                 ),
                               ),
                               Text(
-                                user.nationality,
+                                user.nationality.toUpperCase(),
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
