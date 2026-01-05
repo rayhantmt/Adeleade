@@ -16,6 +16,7 @@ class ProfileController extends GetxController{
    var arg=Get.arguments;
   
   id=arg['id'];
+  print(id);
     super.onInit();
   }
 }
