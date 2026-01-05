@@ -62,14 +62,14 @@ class MemoriesController extends GetxController {
         'category': cetegorycontroller.text.toString(),
         'details': detailscontroller.text.toString(),
         'maxParticipants': maxParticipantscontroller.text.toString(),
-        'geoLocation':'23.7272,90.4106',
+        'geoLocation': '23.7272,90.4106',
         'eventImage': await MultipartFile.fromFile(
           eventImage.value!.path,
           filename: eventImage.value!.name,
           contentType: MediaType('image', 'png'),
         ),
       });
-     // print('Bearer ${token}');
+      // print('Bearer ${token}');
       // 4. API Call
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/v1/event/create',
@@ -103,20 +103,29 @@ class MemoriesController extends GetxController {
 
   Future<void> fetchmmyEvents() async {
     final storage = GetStorage();
-  final token = storage.read('token'); 
+    final token = storage.read('token');
     isLoading.value = true;
     try {
       final response = await ApiService.get(
         endpoint: ApiConfig.getmyevents,
-        headers: {
-          'Authorization':token
-        }
+        headers: {'Authorization': token},
       );
 
       if (response['success'] == true) {
         final List<dynamic> eventsJson = response['data']['joinedEvents'];
-        myevents.value = eventsJson.map((json) => Event.fromJson(json)).toList();
-        
+        myevents.value = eventsJson
+            .map((json) => Event.fromJson(json))
+            .toList();
+
+      //   final List<dynamic> joinedJson = response['data']['joinedEvents'] ?? [];
+      // final List<dynamic> createdJson = response['data']['createdEvents'] ?? [];
+
+      // // 2. Combine the lists using the spread operator
+      // final List<dynamic> combinedEvents = [...joinedJson, ...createdJson];
+
+      // // 3. Map the combined list to your Event model
+      // myevents.value = combinedEvents.map((json) => Event.fromJson(json)).toList();
+
         Get.snackbar(
           'Success',
           response['message'] ?? 'Events loaded successfully',
@@ -126,11 +135,7 @@ class MemoriesController extends GetxController {
         throw Exception('Failed to load events');
       }
     } on BadRequestException catch (e) {
-      Get.snackbar(
-        'Error',
-        e.message,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Error', e.message, snackPosition: SnackPosition.BOTTOM);
     } on UnauthorizedException catch (e) {
       Get.snackbar(
         'Unauthorized',
@@ -138,11 +143,7 @@ class MemoriesController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } on NotFoundException catch (e) {
-      Get.snackbar(
-        'Not Found',
-        e.message,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Not Found', e.message, snackPosition: SnackPosition.BOTTOM);
     } on InternalServerException catch (e) {
       Get.snackbar(
         'Server Error',
@@ -156,20 +157,16 @@ class MemoriesController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
-      Get.snackbar(
-        'Error',
-        e.toString(),
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
       print(e.toString());
     } finally {
       isLoading.value = false;
     }
   }
+
   @override
   void onInit() {
     fetchmmyEvents();
     super.onInit();
   }
-
 }
