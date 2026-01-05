@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
-//import 'package:http/http.dart' hide MultipartFile;
-//import 'package:http/http.dart' as _client show post;
 import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
