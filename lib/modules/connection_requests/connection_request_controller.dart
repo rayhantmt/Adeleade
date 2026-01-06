@@ -64,6 +64,7 @@ class ConnectionRequestController extends GetxController {
         body: {"connectionId": id},
         headers: {'Authorization': tokena},
       );
+      print(id);
       print(connectionresponse);
     } on BadRequestException catch (e) {
       Get.snackbar('Error', e.message, snackPosition: SnackPosition.BOTTOM);
