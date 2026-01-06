@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:mementum/modules/chat_details/chat_details_binding.dart';
 import 'package:mementum/modules/chat_details/chat_details_view.dart';
+import 'package:mementum/modules/connection_requests/connection_request_binding.dart';
+import 'package:mementum/modules/connection_requests/connection_requests_view.dart';
 import 'package:mementum/modules/edit_profile/edit_profile.dart';
 import 'package:mementum/modules/event_details/event_details_view.dart';
 import 'package:mementum/modules/event_details/event_details_binding.dart';
@@ -49,6 +51,7 @@ class AppRoutes {
     GetPage(name: AppPages.eventhistory, page: () => EventHistory()),
     GetPage(name: AppPages.eventdetails, page: () => EventDetails(),binding: EventDetailsBinding()),
     GetPage(name: AppPages.chatdetails, page: () => ChatDetailsView(),binding: ChatDetailsBinding()),
-    GetPage(name: AppPages.profile_details, page: () => ProfileDetails(),binding: ProfileBinding())
+    GetPage(name: AppPages.profile_details, page: () => ProfileDetails(),binding: ProfileBinding()),
+    GetPage(name: AppPages.coonectionRequest, page:  () => ConnectionRequestsView(),binding: ConnectionRequestBinding())
   ];
 }
