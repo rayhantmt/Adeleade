@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
@@ -9,9 +10,13 @@ class ConnectionRequestController extends GetxController {
   RxBool isLoading=false.obs;
   Future<void> fetchConnectionRequests() async {
     isLoading.value=true;
+    final token=GetStorage().read('token');
     try {
       final response = await ApiService.get(
         endpoint: ApiConfig.getrecievedRequests,
+        headers: {
+          'Authorization':token
+        }
       ); // adjust endpoint
 
       if (response != null && response['success'] == true) {
@@ -22,11 +27,7 @@ class ConnectionRequestController extends GetxController {
         final count = connectionResponse.data.count;
         print(response.toString());
         // Use in your UI
-        for (var request in requests) {
-          print(request.userId.name); // "igi", "rakib", "Super Tester"
-          print(request.userId.photoURL); // Photo URL
-          print(request.status); // "pending"
-        }
+        
       } else {
         throw Exception('Failed to load events');
       }
