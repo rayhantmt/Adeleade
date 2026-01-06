@@ -9,7 +9,7 @@ class ConnectionRequestController extends GetxController {
   // In your controller
   RxBool isLoading=false.obs;
    List<ConnectionRequest> requests = RxList<ConnectionRequest>();
-  Future<void> fetchConnectionRequests() async {
+  Future<void> fetchConnectionRequests( String name) async {
     isLoading.value=true;
     final token=GetStorage().read('token');
     try {

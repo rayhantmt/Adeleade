@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/connection_requests/connection_request_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -10,7 +11,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchConnectionRequests();
+    controller.fetchConnectionRequests('rayhantmt@gmail.com');
     return Scaffold(
       body: Stack(
         children: [
@@ -53,7 +54,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                       ],
                     ),
                   ),
-                 // SizedBox(height: Get.height * 0.05),
+                  // SizedBox(height: Get.height * 0.05),
                   Obx(
                     () => controller.isLoading.value
                         ? CircularProgressIndicator(color: Colors.red)
@@ -66,14 +67,19 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                   width: double.infinity,
                                   child: Row(
                                     children: [
-                                      Image.network(
-                                        controller
-                                            .requests[index]
-                                            .userId
-                                            .photoURL,
-                                        height: Get.height * 0.07,
-                                        width: Get.width * 0.2,
-                                        fit: BoxFit.cover,
+                                      GestureDetector(
+                                        onTap: () => Get.toNamed(AppPages.profile_details,arguments:{
+                                          'id': controller.requests[index].userId.id
+                                        }),
+                                        child: Image.network(
+                                          controller
+                                              .requests[index]
+                                              .userId
+                                              .photoURL,
+                                          height: Get.height * 0.07,
+                                          width: Get.width * 0.2,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                       SizedBox(width: Get.width * 0.05),
                                       Column(
@@ -106,17 +112,19 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                       BorderRadius.circular(24),
                                                 ),
                                                 child: Center(
-                                                  child: Text('Accept',
-                                                  style: GoogleFonts.inter( 
-                                                    color: Colors.black,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 14,
-                                                  ),
+                                                  child: Text(
+                                                    'Accept',
+                                                    style: GoogleFonts.inter(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 14,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
                                               SizedBox(width: Get.width * 0.05),
-                                               Container(
+                                              Container(
                                                 height: Get.height * 0.03,
                                                 width: Get.width * 0.2,
                                                 decoration: BoxDecoration(
@@ -125,12 +133,14 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                       BorderRadius.circular(24),
                                                 ),
                                                 child: Center(
-                                                  child: Text('Decline',
-                                                  style: GoogleFonts.inter( 
-                                                    color: Colors.red,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 14,
-                                                  ),
+                                                  child: Text(
+                                                    'Decline',
+                                                    style: GoogleFonts.inter(
+                                                      color: Colors.red,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      fontSize: 14,
+                                                    ),
                                                   ),
                                                 ),
                                               ),
