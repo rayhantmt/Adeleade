@@ -68,9 +68,22 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                 width: Get.width * 0.2,
                                 fit: BoxFit.cover,
                               ),
-                              Text(
-                                controller.requests[index].userId.name
-                                    .toString(),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    controller.requests[index].userId.name
+                                        .toString(),
+                                  ),
+                                  Row(
+                                    
+                                    children: [
+                                      Text('Accept'),
+                                    Text('Decline')
+                                    ],
+                                  )
+                                ],
                               ),
                             ],
                           ),
