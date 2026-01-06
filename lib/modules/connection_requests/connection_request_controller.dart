@@ -8,6 +8,7 @@ import 'package:mementum/modules/connection_requests/connection_request_model.da
 class ConnectionRequestController extends GetxController {
   // In your controller
   RxBool isLoading=false.obs;
+   List<ConnectionRequest> requests = RxList<ConnectionRequest>();
   Future<void> fetchConnectionRequests() async {
     isLoading.value=true;
     final token=GetStorage().read('token');
@@ -23,7 +24,7 @@ class ConnectionRequestController extends GetxController {
         final connectionResponse = ConnectionRequestResponse.fromJson(response);
 
         // Access the data
-        final requests = connectionResponse.data.requests;
+        requests = connectionResponse.data.requests;
         final count = connectionResponse.data.count;
         print(response.toString());
         // Use in your UI

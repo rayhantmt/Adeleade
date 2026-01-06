@@ -52,8 +52,30 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                       ],
                     ),
                   ),
-                  SizedBox(height: Get.height*0.5,),
-                 
+                  SizedBox(height: Get.height*0.05,),
+                 Expanded(
+                   child: ListView.builder(
+                    itemCount: controller.requests.length,
+                    itemBuilder: (context, index) {
+                     return Container(
+                   height: 30,
+                   width: 30,
+                   child: Column(
+                     children: [
+                       Row(
+                         children: [
+                          Image.network(controller.requests[index].userId.photoURL,
+                          height: 30,
+                          width: 30,
+                          ),
+                           Text(controller.requests[index].userId.name.toString()),
+                         ],
+                       ),
+                     ],
+                   ),
+                     );
+                   },),
+                 )
                 ],
               ),
             ),
