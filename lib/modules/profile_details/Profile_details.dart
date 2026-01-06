@@ -430,22 +430,29 @@ class ProfileDetails extends GetView<ProfileController> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Container(
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(99),
-                              color: AppColors.primarycolor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Connect',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
-                              ),
+                          GestureDetector(
+                            onTap: () => controller.sendconnectionrequest(),
+                            child: Obx(
+                              () => controller.isConnecting.value
+                                  ? CircularProgressIndicator()
+                                  : Container(
+                                      height: Get.height * 0.05,
+                                      width: Get.width * 0.4,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(99),
+                                        color: AppColors.primarycolor,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'Connect',
+                                          style: GoogleFonts.inter(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14,
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                             ),
                           ),
                           Container(
@@ -527,9 +534,9 @@ class ProfileDetails extends GetView<ProfileController> {
                                                 fit: BoxFit.cover,
                                                 placeholder: (context, url) =>
                                                     Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
+                                                      child:
+                                                          CircularProgressIndicator(),
+                                                    ),
                                                 errorWidget:
                                                     (context, url, error) =>
                                                         Icon(Icons.error),
