@@ -53,7 +53,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                       ],
                     ),
                   ),
-                  SizedBox(height: Get.height * 0.05),
+                 // SizedBox(height: Get.height * 0.05),
                   Obx(
                     () => controller.isLoading.value
                         ? CircularProgressIndicator(color: Colors.red)
@@ -100,13 +100,40 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                               Container(
                                                 height: Get.height * 0.03,
                                                 width: Get.width * 0.2,
-                                                color: AppColors.primarycolor,
+                                                decoration: BoxDecoration(
+                                                  color: AppColors.primarycolor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(24),
+                                                ),
                                                 child: Center(
-                                                  child: Text('Accept'),
+                                                  child: Text('Accept',
+                                                  style: GoogleFonts.inter( 
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                  ),
+                                                  ),
                                                 ),
                                               ),
                                               SizedBox(width: Get.width * 0.05),
-                                              Text('Decline'),
+                                               Container(
+                                                height: Get.height * 0.03,
+                                                width: Get.width * 0.2,
+                                                decoration: BoxDecoration(
+                                                  color: AppColors.primarycolor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(24),
+                                                ),
+                                                child: Center(
+                                                  child: Text('Decline',
+                                                  style: GoogleFonts.inter( 
+                                                    color: Colors.red,
+                                                    fontWeight: FontWeight.w400,
+                                                    fontSize: 14,
+                                                  ),
+                                                  ),
+                                                ),
+                                              ),
                                             ],
                                           ),
                                         ],
