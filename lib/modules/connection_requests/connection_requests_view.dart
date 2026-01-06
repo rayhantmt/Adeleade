@@ -9,7 +9,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
 
   @override
   Widget build(BuildContext context) {
-    controller.fetchConnectionRequests;
+    controller.fetchConnectionRequests();
     return Scaffold(
       body: Stack(
         children: [
@@ -52,17 +52,8 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                       ],
                     ),
                   ),
-                  SizedBox(height: Get.height*0.1,),
-                  GestureDetector
-                  (onTap: () => controller.fetchConnectionRequests(),
-                    child: Text('Get requests',
-                    style: GoogleFonts.inter( 
-                      fontWeight: FontWeight.w600,
-                      fontSize: 20,
-                      color: Colors.black
-                    ),
-                    ),
-                  )
+                  SizedBox(height: Get.height*0.5,),
+                 
                 ],
               ),
             ),
