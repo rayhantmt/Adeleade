@@ -12,5 +12,6 @@ class ApiConfig {
   static const String eventsEndpoint='/api/v1/event?page=1&limit=10000';
   static const String getmyevents='/api/v1/event/my/events';
   static const String getrecievedRequests='/api/v1/connection/pending-requests';
+  static const String acceptConnection='/api/v1/connection/accept/';
 
 }

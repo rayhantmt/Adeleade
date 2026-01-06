@@ -103,7 +103,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                           ),
                                           Row(
                                             children: [
-                                              Container(
+                                             Obx(() => controller.isConnecting.value?CircularProgressIndicator(): Container(
                                                 height: Get.height * 0.03,
                                                 width: Get.width * 0.2,
                                                 decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                     ),
                                                   ),
                                                 ),
-                                              ),
+                                              ),),
                                               SizedBox(width: Get.width * 0.05),
                                               Container(
                                                 height: Get.height * 0.03,

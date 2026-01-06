@@ -7,17 +7,15 @@ import 'package:mementum/modules/connection_requests/connection_request_model.da
 
 class ConnectionRequestController extends GetxController {
   // In your controller
-  RxBool isLoading=false.obs;
-   List<ConnectionRequest> requests = RxList<ConnectionRequest>();
-  Future<void> fetchConnectionRequests( String name) async {
-    isLoading.value=true;
-    final token=GetStorage().read('token');
+  RxBool isLoading = false.obs;
+  List<ConnectionRequest> requests = RxList<ConnectionRequest>();
+  Future<void> fetchConnectionRequests(String name) async {
+    isLoading.value = true;
+    final token = GetStorage().read('token');
     try {
       final response = await ApiService.get(
         endpoint: ApiConfig.getrecievedRequests,
-        headers: {
-          'Authorization':token
-        }
+        headers: {'Authorization': token},
       ); // adjust endpoint
 
       if (response != null && response['success'] == true) {
@@ -25,10 +23,9 @@ class ConnectionRequestController extends GetxController {
 
         // Access the data
         requests = connectionResponse.data.requests;
-       // final count = connectionResponse.data.count;
-       // print(response.toString());
+        // final count = connectionResponse.data.count;
+        // print(response.toString());
         // Use in your UI
-        
       } else {
         throw Exception('Failed to load events');
       }
@@ -49,16 +46,47 @@ class ConnectionRequestController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     } on FetchDataException catch (e) {
-      Get.snackbar(
-        'Error',
-        '$e',
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Error', '$e', snackPosition: SnackPosition.BOTTOM);
     } catch (e) {
       print('Error: $e');
+    } finally {
+      isLoading.value = false;
     }
-    finally{
-      isLoading.value=false;
+  }
+
+  RxBool isConnecting = false.obs;
+  Future<void> acceptConnection(id) async {
+    final tokena = GetStorage().read('token');
+    isConnecting.value = true;
+    try {
+      final connectionresponse = await ApiService.patch(
+        endpoint: '/api/v1/connection/accept/$id',
+        body: {"connectionId": id},
+        headers: {'Authorization': tokena},
+      );
+      print(connectionresponse);
+    } on BadRequestException catch (e) {
+      Get.snackbar('Error', e.message, snackPosition: SnackPosition.BOTTOM);
+    } on UnauthorizedException catch (e) {
+      Get.snackbar(
+        'Unauthorized',
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on NotFoundException catch (e) {
+      Get.snackbar('Not Found', e.message, snackPosition: SnackPosition.BOTTOM);
+    } on InternalServerException catch (e) {
+      Get.snackbar(
+        'Server Error',
+        '$e Please try again later.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on FetchDataException catch (e) {
+      Get.snackbar('Error', '$e', snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      isConnecting.value = false;
     }
   }
 }
