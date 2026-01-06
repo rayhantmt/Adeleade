@@ -25,8 +25,8 @@ class ConnectionRequestController extends GetxController {
 
         // Access the data
         requests = connectionResponse.data.requests;
-        final count = connectionResponse.data.count;
-        print(response.toString());
+       // final count = connectionResponse.data.count;
+       // print(response.toString());
         // Use in your UI
         
       } else {
