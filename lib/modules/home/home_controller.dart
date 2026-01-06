@@ -6,36 +6,36 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/modules/home/home_model.dart';
 import 'package:mementum/services/socket_service.dart';
 
-class HomeController extends GetxController{
-
-
-  var ctgry=[
-Category(categories: 'All',),
-Category(categories: 'Sports'),
-Category(categories: 'Music'),
-Category(categories: 'Art'),
-Category(categories: 'Technology'),
-Category(categories: 'Food'),
-Category(categories: 'Education'),
-Category(categories: 'Business'),
-Category(categories: 'Health'),
-Category(categories: 'Travel'),
-Category(categories: 'Social'),
-Category(categories: 'Other')
+class HomeController extends GetxController {
+  var ctgry = [
+    Category(categories: 'All'),
+    Category(categories: 'Sports'),
+    Category(categories: 'Music'),
+    Category(categories: 'Art'),
+    Category(categories: 'Technology'),
+    Category(categories: 'Food'),
+    Category(categories: 'Education'),
+    Category(categories: 'Business'),
+    Category(categories: 'Health'),
+    Category(categories: 'Travel'),
+    Category(categories: 'Social'),
+    Category(categories: 'Other'),
   ].obs;
   // Add this variable
-var selectedCategoryIndex = 0.obs;
+  var selectedCategoryIndex = 0.obs;
 
-// Add this function
-void selectCategory(int index) {
-  selectedCategoryIndex.value = index;
-}
-void printToken() {
-  final storage = GetStorage();
-  final token = storage.read('token'); // read the saved token
-  print('Saved Token: $token'); // prints it
-}
-var isLoading = false.obs;
+  // Add this function
+  void selectCategory(int index) {
+    selectedCategoryIndex.value = index;
+  }
+
+  void printToken() {
+    final storage = GetStorage();
+    final token = storage.read('token'); // read the saved token
+    print('Saved Token: $token'); // prints it
+  }
+
+  var isLoading = false.obs;
   var events = <Event>[].obs;
 
   @override
@@ -46,23 +46,21 @@ var isLoading = false.obs;
 
   Future<void> fetchEvents() async {
     await socketService.connect();
-final userId = GetStorage().read('id');
-socketService.joinUserRoom(userId);
+    final userId = GetStorage().read('id');
+    socketService.joinUserRoom(userId);
     final storage = GetStorage();
-  final token = storage.read('token'); 
+    final token = storage.read('token');
     isLoading.value = true;
     try {
       final response = await ApiService.get(
         endpoint: ApiConfig.eventsEndpoint,
-        headers: {
-          'Authorization':token
-        }
+        headers: {'Authorization': token},
       );
 
       if (response['success'] == true) {
         final List<dynamic> eventsJson = response['data']['events'];
         events.value = eventsJson.map((json) => Event.fromJson(json)).toList();
-        
+
         Get.snackbar(
           'Success',
           response['message'] ?? 'Events loaded successfully',
@@ -72,11 +70,7 @@ socketService.joinUserRoom(userId);
         throw Exception('Failed to load events');
       }
     } on BadRequestException catch (e) {
-      Get.snackbar(
-        'Error',
-        e.message,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Error', e.message, snackPosition: SnackPosition.BOTTOM);
     } on UnauthorizedException catch (e) {
       Get.snackbar(
         'Unauthorized',
@@ -84,11 +78,7 @@ socketService.joinUserRoom(userId);
         snackPosition: SnackPosition.BOTTOM,
       );
     } on NotFoundException catch (e) {
-      Get.snackbar(
-        'Not Found',
-        e.message,
-        snackPosition: SnackPosition.BOTTOM,
-      );
+      Get.snackbar('Not Found', e.message, snackPosition: SnackPosition.BOTTOM);
     } on InternalServerException catch (e) {
       Get.snackbar(
         'Server Error',
@@ -116,7 +106,4 @@ socketService.joinUserRoom(userId);
   Future<void> refreshEvents() async {
     await fetchEvents();
   }
-
-
-
 }

@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mementum/modules/connection_requests/connection_request_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class ConnectionRequestsView extends StatelessWidget {
+class ConnectionRequestsView extends GetView<ConnectionRequestController> {
   const ConnectionRequestsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    controller.fetchConnectionRequests;
     return Scaffold(
       body: Stack(
         children: [
@@ -50,6 +52,17 @@ class ConnectionRequestsView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(height: Get.height*0.1,),
+                  GestureDetector
+                  (onTap: () => controller.fetchConnectionRequests(),
+                    child: Text('Get requests',
+                    style: GoogleFonts.inter( 
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20,
+                      color: Colors.black
+                    ),
+                    ),
+                  )
                 ],
               ),
             ),
