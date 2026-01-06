@@ -1,5 +1,7 @@
 
 
+import 'package:flutter/material.dart';
+
 class ApiConfig {
   static const String baseUrl = 'https://server.momentumactivity.com';
 
@@ -13,5 +15,6 @@ class ApiConfig {
   static const String getmyevents='/api/v1/event/my/events';
   static const String getrecievedRequests='/api/v1/connection/pending-requests';
   static const String acceptConnection='/api/v1/connection/accept/';
+  static const String sendconnectionrequest='/api/v1/connection/send';
 
 }
