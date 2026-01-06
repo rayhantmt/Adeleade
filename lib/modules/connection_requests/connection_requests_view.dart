@@ -58,15 +58,16 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                     itemCount: controller.requests.length,
                     itemBuilder: (context, index) {
                      return Container(
-                   height: 30,
-                   width: 30,
+                   height: Get.height*0.08,
+                   width: double.infinity,
                    child: Column(
                      children: [
                        Row(
                          children: [
                           Image.network(controller.requests[index].userId.photoURL,
-                          height: 30,
-                          width: 30,
+                          height: Get.height*0.07,
+                   width: Get.width*0.2,
+                   fit: BoxFit.cover,
                           ),
                            Text(controller.requests[index].userId.name.toString()),
                          ],
