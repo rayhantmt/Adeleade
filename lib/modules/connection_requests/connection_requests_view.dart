@@ -94,17 +94,29 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            controller
+                                          GestureDetector
+                                          (
+                                             onTap: () => Get.toNamed(
+                                          AppPages.profile_details,
+                                          arguments: {
+                                            'id': controller
                                                 .requests[index]
                                                 .userId
-                                                .name
-                                                .toString()
-                                                .toUpperCase(),
-                                            style: GoogleFonts.inter(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16,
-                                              color: Colors.black,
+                                                .id,
+                                          },
+                                        ),
+                                            child: Text(
+                                              controller
+                                                  .requests[index]
+                                                  .userId
+                                                  .name
+                                                  .toString()
+                                                  .toUpperCase(),
+                                              style: GoogleFonts.inter(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 16,
+                                                color: Colors.black,
+                                              ),
                                             ),
                                           ),
                                           Row(
