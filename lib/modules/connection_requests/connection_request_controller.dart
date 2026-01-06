@@ -43,13 +43,13 @@ class ConnectionRequestController extends GetxController {
     } on InternalServerException catch (e) {
       Get.snackbar(
         'Server Error',
-        'Something went wrong. $e Please try again later.',
+        '$e Please try again later.',
         snackPosition: SnackPosition.BOTTOM,
       );
     } on FetchDataException catch (e) {
       Get.snackbar(
-        'Network Error',
-        'Please check your internet connection $e',
+        'Error',
+        '$e',
         snackPosition: SnackPosition.BOTTOM,
       );
     } catch (e) {
