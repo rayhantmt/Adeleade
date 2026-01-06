@@ -114,7 +114,11 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.015),
-              ProfileContainer(tittle: 'Connection Requests', image: AppImages.subscriptionicon),
+              GestureDetector
+            
+              (
+                onTap: () => Get.toNamed(AppPages.coonectionRequest),
+                child: ProfileContainer(tittle: 'Connection Requests', image: AppImages.subscriptionicon)),
               // GestureDetector(
               //   onTap: () => Get.toNamed(AppPages.notification),
               //   child: ProfileContainer(
