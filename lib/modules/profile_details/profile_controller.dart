@@ -84,10 +84,10 @@ class ProfileController extends GetxController {
       isLoading.value = false;
     }
   }
-
-  int calculateAge() {
-    // You can implement age calculation based on createdAt or add a DOB field
-    // For now, returning a default value
-    return 25;
-  }
+  
+  // int calculateAge() {
+  //   // You can implement age calculation based on createdAt or add a DOB field
+  //   // For now, returning a default value
+  //   return 25;
+  // }
 }
