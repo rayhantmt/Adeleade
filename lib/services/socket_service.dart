@@ -50,7 +50,6 @@ class SocketService {
 
       _setupSocketListeners();
       _socket?.connect();
-
     } catch (error) {
       print('❌ Socket connection error: $error');
       _isConnecting = false;
@@ -120,10 +119,7 @@ class SocketService {
   void sendTyping(String chatRoomId, bool isTyping) {
     if (!(_socket?.connected ?? false)) return;
 
-    _socket?.emit('typing', {
-      'chatRoomId': chatRoomId,
-      'isTyping': isTyping,
-    });
+    _socket?.emit('typing', {'chatRoomId': chatRoomId, 'isTyping': isTyping});
   }
 
   void markMessageAsRead(String messageId, String chatRoomId) {
