@@ -52,31 +52,32 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                       ],
                     ),
                   ),
-                  SizedBox(height: Get.height*0.05,),
-                 Expanded(
-                   child: ListView.builder(
-                    itemCount: controller.requests.length,
-                    itemBuilder: (context, index) {
-                     return Container(
-                   height: Get.height*0.08,
-                   width: double.infinity,
-                   child: Column(
-                     children: [
-                       Row(
-                         children: [
-                          Image.network(controller.requests[index].userId.photoURL,
-                          height: Get.height*0.07,
-                   width: Get.width*0.2,
-                   fit: BoxFit.cover,
+                  SizedBox(height: Get.height * 0.05),
+                  Obx(() => controller.isLoading.value?CircularProgressIndicator(color: Colors.red,):Expanded(
+                    child: ListView.builder(
+                      itemCount: controller.requests.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: Get.height * 0.08,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Image.network(
+                                controller.requests[index].userId.photoURL ,
+                                height: Get.height * 0.07,
+                                width: Get.width * 0.2,
+                                fit: BoxFit.cover,
+                              ),
+                              Text(
+                                controller.requests[index].userId.name
+                                    .toString(),
+                              ),
+                            ],
                           ),
-                           Text(controller.requests[index].userId.name.toString()),
-                         ],
-                       ),
-                     ],
-                   ),
-                     );
-                   },),
-                 )
+                        );
+                      },
+                    ),
+                  ),)
                 ],
               ),
             ),
