@@ -94,17 +94,16 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          GestureDetector
-                                          (
-                                             onTap: () => Get.toNamed(
-                                          AppPages.profile_details,
-                                          arguments: {
-                                            'id': controller
-                                                .requests[index]
-                                                .userId
-                                                .id,
-                                          },
-                                        ),
+                                          GestureDetector(
+                                            onTap: () => Get.toNamed(
+                                              AppPages.profile_details,
+                                              arguments: {
+                                                'id': controller
+                                                    .requests[index]
+                                                    .userId
+                                                    .id,
+                                              },
+                                            ),
                                             child: Text(
                                               controller
                                                   .requests[index]
@@ -128,11 +127,17 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                         .value
                                                     ? CircularProgressIndicator()
                                                     : GestureDetector(
-                                                      onTap:  () =>  controller.acceptConnection(controller.requests[index].id),
-                                                      child: Container(
+                                                        onTap: () => controller
+                                                            .acceptConnection(
+                                                              controller
+                                                                  .requests[index]
+                                                                  .id,
+                                                            ),
+                                                        child: Container(
                                                           height:
                                                               Get.height * 0.03,
-                                                          width: Get.width * 0.2,
+                                                          width:
+                                                              Get.width * 0.2,
                                                           decoration: BoxDecoration(
                                                             color: AppColors
                                                                 .primarycolor,
@@ -144,19 +149,18 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                           child: Center(
                                                             child: Text(
                                                               'Accept',
-                                                              style:
-                                                                  GoogleFonts.inter(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    fontSize: 14,
-                                                                  ),
+                                                              style: GoogleFonts.inter(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w400,
+                                                                fontSize: 14,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                    ),
+                                                      ),
                                               ),
                                               SizedBox(width: Get.width * 0.05),
                                               Container(
