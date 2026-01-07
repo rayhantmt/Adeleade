@@ -120,48 +120,41 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                           ),
                                           Row(
                                             children: [
-                                              Obx(
-                                                () =>
-                                                    controller
-                                                        .isConnecting
-                                                        .value
-                                                    ? CircularProgressIndicator()
-                                                    : GestureDetector(
-                                                        onTap: () => controller
+                                             InkWell(
+                                              onTap: () => controller
                                                             .acceptConnection(
                                                               controller
                                                                   .requests[index]
                                                                   .id,
                                                             ),
-                                                        child: Container(
-                                                          height:
-                                                              Get.height * 0.03,
-                                                          width:
-                                                              Get.width * 0.2,
-                                                          decoration: BoxDecoration(
-                                                            color: AppColors
-                                                                .primarycolor,
-                                                            borderRadius:
-                                                                BorderRadius.circular(
-                                                                  24,
-                                                                ),
-                                                          ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'Accept',
-                                                              style: GoogleFonts.inter(
-                                                                color: Colors
-                                                                    .black,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                fontSize: 14,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
+                                              child: Container(
+                                                height:
+                                                    Get.height * 0.03,
+                                                width:
+                                                    Get.width * 0.2,
+                                                decoration: BoxDecoration(
+                                                  color: AppColors
+                                                      .primarycolor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        24,
                                                       ),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    'Accept',
+                                                    style: GoogleFonts.inter(
+                                                      color: Colors
+                                                          .black,
+                                                      fontWeight:
+                                                          FontWeight
+                                                              .w400,
+                                                      fontSize: 14,
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
+                                             ),
                                               SizedBox(width: Get.width * 0.05),
                                               Container(
                                                 height: Get.height * 0.03,
