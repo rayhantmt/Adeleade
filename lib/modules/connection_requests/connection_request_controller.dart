@@ -62,7 +62,9 @@ class ConnectionRequestController extends GetxController {
       final connectionresponse = await ApiService.patch(
         endpoint: '/api/v1/connection/accept/$id',
         body: {"connectionId": id},
-        headers: {'Authorization': tokena},
+        headers: {'Authorization': tokena,
+        'Content-type':'application/json'
+        },
       );
       print(id);
       print(connectionresponse);

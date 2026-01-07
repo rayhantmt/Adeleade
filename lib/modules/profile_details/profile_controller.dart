@@ -98,7 +98,9 @@ class ProfileController extends GetxController {
     try {
       final connectionrequestresponse = await ApiService.post(
         endpoint: ApiConfig.sendconnectionrequest,
-        headers: {'Authorization': 'Bearer $token'},
+        headers: {'Authorization': 'Bearer $token',
+        'Content-type': 'application/json'
+        },
         body: {"connectionId": id},
       );
       print(connectionrequestresponse);

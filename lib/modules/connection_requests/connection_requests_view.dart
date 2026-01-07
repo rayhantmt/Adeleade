@@ -128,7 +128,7 @@ class ConnectionRequestsView extends GetView<ConnectionRequestController> {
                                                         .value
                                                     ? CircularProgressIndicator()
                                                     : GestureDetector(
-                                                      onTap:  () =>  controller.acceptConnection(controller.requests[index].connectionId),
+                                                      onTap:  () =>  controller.acceptConnection(controller.requests[index].id),
                                                       child: Container(
                                                           height:
                                                               Get.height * 0.03,
