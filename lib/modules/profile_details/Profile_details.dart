@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/profile_details/profile_controller.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_colors.dart';
 import 'package:mementum/utils/app_images.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -216,20 +217,33 @@ class ProfileDetails extends GetView<ProfileController> {
                                     ),
                             ),
                           ),
-                          Container(
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(99),
-                              color: AppColors.primarycolor,
+                          GestureDetector(
+                            onTap: () => Get.toNamed(
+                              AppPages.chatdetails,
+                              arguments: {
+                                'name': user.name,
+                                'image': user.photoURL,
+                                'roomId': controller.
+                                chatro.first.id,
+                                'roomType':
+                                    controller.chatro.first.roomType,
+                              },
                             ),
-                            child: Center(
-                              child: Text(
-                                'Chat',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: Colors.black,
+                            child: Container(
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.4,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(99),
+                                color: AppColors.primarycolor,
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Chat',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
                             ),

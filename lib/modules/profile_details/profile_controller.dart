@@ -132,7 +132,8 @@ class ProfileController extends GetxController {
     }
   }
 
-  Rx<ChatRoom?> chatRoominfo = Rx<ChatRoom?>(null);
+  //Rx<ChatRoom?> chatRoominfo = Rx<ChatRoom?>(null);
+  RxList<ChatRoom> chatro = <ChatRoom>[].obs;
   Future<void> getchatroomid() async {
     try {
       isLoading.value = true;
@@ -141,9 +142,9 @@ class ProfileController extends GetxController {
         endpoint: '/api/v1/chat/direct/$id',
         headers: {"Authorization": token},
       );
-
+print(response);
       if (response != null) {
-        chatRoominfo.value = ChatRoom.fromJson(response);
+        chatro.value = [ChatRoom.fromJson(response)];
       }
     } catch (e) {
       print('Error fetching profile: $e');
