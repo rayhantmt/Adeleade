@@ -141,9 +141,18 @@ class MemoriesView extends GetView<MemoriesController> {
 Widget _createEvent() {
   final controller = MemoriesController();
   final List<String> categories = [
-  "Sports", "Music", "Art", "Technology", "Food", 
-  "Education", "Business", "Health", "Travel", "Social", "Other"
-];
+    "Sports",
+    "Music",
+    "Art",
+    "Technology",
+    "Food",
+    "Education",
+    "Business",
+    "Health",
+    "Travel",
+    "Social",
+    "Other",
+  ];
   return SingleChildScrollView(
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -172,7 +181,11 @@ Widget _createEvent() {
         //   hint: 'Enter Activity Date',
         //   textcontroller: controller.eventdatecontroller,
         // ),
-        DatePickerField(tittle: 'Activity Date', hint: 'Select Activity Date',textcontroller:controller.eventdatecontroller,),
+        DatePickerField(
+          tittle: 'Activity Date',
+          hint: 'Select Activity Date',
+          textcontroller: controller.eventdatecontroller,
+        ),
         SizedBox(height: Get.height * 0.02),
         // UpdateInfoField(
         //   textcontroller: controller.cetegorycontroller,
@@ -181,14 +194,13 @@ Widget _createEvent() {
         // ),
         // 1. Define your categories list
 
-
-// 2. Use the new widget
-UpdateInfoDropdown(
-  textcontroller: controller.cetegorycontroller,
-  tittle: "Activity Category",
-  hint: 'Select Category',
-  items: categories, // Pass the list here
-),
+        // 2. Use the new widget
+        UpdateInfoDropdown(
+          textcontroller: controller.cetegorycontroller,
+          tittle: "Activity Category",
+          hint: 'Select Category',
+          items: categories, // Pass the list here
+        ),
         SizedBox(height: Get.height * 0.02),
         Text(
           'Image',
@@ -268,8 +280,8 @@ UpdateInfoDropdown(
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
-           onTap: controller.createEvent,
-           //onTap: () => print(controller.cetegorycontroller.text.toString()),
+            onTap: controller.createEvent,
+            //onTap: () => print(controller.cetegorycontroller.text.toString()),
             child: Container(
               height: Get.height * 0.07,
               width: double.infinity,
@@ -305,7 +317,7 @@ Widget _plannedevent() {
               crossAxisCount: 2,
             ),
             itemCount: controller.myevents.length,
-      
+
             itemBuilder: (context, index) {
               final data = controller.myevents[index];
               return Padding(
@@ -323,8 +335,8 @@ Widget _plannedevent() {
                       'hostedby': data.organizerName,
                       'hostphotourl': data.organizerPhoto,
                       'maxpeople': data.maxPeople,
-                      'id':data.id,
-                      'perticanpants':data.participants
+                      'id': data.id,
+                      'perticanpants': data.participants,
                     },
                   ),
                   child: Container(
@@ -359,7 +371,7 @@ Widget _plannedevent() {
                                       Padding(
                                         padding: const EdgeInsets.only(
                                           right: 5,
-      
+
                                           top: 5,
                                         ),
                                         child: Container(
@@ -397,7 +409,7 @@ Widget _plannedevent() {
                             ],
                           ),
                         ),
-      
+
                         Padding(
                           padding: const EdgeInsets.only(left: 7),
                           child: Text(
@@ -462,7 +474,7 @@ Widget _plannedevent() {
 }
 
 Widget _memories() {
-  final controller=Get.find<MemoriesController>();
+  final controller = Get.find<MemoriesController>();
   return Column(
     children: [
       Text(
@@ -478,31 +490,33 @@ Widget _memories() {
         child: ListView.builder(
           itemCount: controller.connections.length,
           itemBuilder: (context, index) => GestureDetector(
-          onTap: () => Get.toNamed(AppPages.profile_details,arguments: {
-            'id':controller.connections[index].user.id
-          }),
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(99),
-                child: Image.network(
-                  controller.connections[index].user.photoURL,
-                  height: Get.height * 0.1,
-                  width: Get.width * 0.25,
-                  fit: BoxFit.cover,
+            onTap: () => Get.toNamed(
+              AppPages.profile_details,
+              arguments: {'id': controller.connections[index].user.id},
+            ),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(99),
+                  child: Image.network(
+                    controller.connections[index].user.photoURL,
+                    height: Get.height * 0.1,
+                    width: Get.width * 0.25,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              SizedBox(width: Get.width * 0.05),
-              Text(
-                controller.connections[index].user.name.toUpperCase(),
-                style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 22,
+                SizedBox(width: Get.width * 0.05),
+                Text(
+                  controller.connections[index].user.name.toUpperCase(),
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),)
+        ),
       ),
     ],
   );
