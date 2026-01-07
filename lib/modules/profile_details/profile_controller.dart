@@ -30,6 +30,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/modules/chat_room/chat_room_model.dart';
 import 'package:mementum/modules/profile_details/profile_model.dart';
 import 'package:mementum/utils/app_images.dart'; // Adjust the import path based on your project
 
@@ -98,8 +99,9 @@ class ProfileController extends GetxController {
     try {
       final connectionrequestresponse = await ApiService.post(
         endpoint: ApiConfig.sendconnectionrequest,
-        headers: {'Authorization': 'Bearer $token',
-        'Content-type': 'application/json'
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-type': 'application/json',
         },
         body: {"connectionId": id},
       );
@@ -127,6 +129,27 @@ class ProfileController extends GetxController {
       print('Error: $e');
     } finally {
       isConnecting.value = false;
+    }
+  }
+
+  Rx<ChatRoom?> chatRoominfo = Rx<ChatRoom?>(null);
+  Future<void> getchatroomid() async {
+    try {
+      isLoading.value = true;
+
+      final response = await ApiService.get(
+        endpoint: '/api/v1/chat/direct/$id',
+        headers: {"Authorization": token},
+      );
+
+      if (response != null) {
+        chatRoominfo.value = ChatRoom.fromJson(response);
+      }
+    } catch (e) {
+      print('Error fetching profile: $e');
+      Get.snackbar('Error', 'Failed to load profile data');
+    } finally {
+      isLoading.value = false;
     }
   }
 }

@@ -11,6 +11,7 @@ class ProfileDetails extends GetView<ProfileController> {
 
   @override
   Widget build(BuildContext context) {
+    controller.getchatroomid();
     return Scaffold(
       body: Stack(
         children: [
