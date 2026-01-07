@@ -494,7 +494,7 @@ Widget _memories() {
               ),
               SizedBox(width: Get.width * 0.05),
               Text(
-                controller.connections[index].user.name,
+                controller.connections[index].user.name.toUpperCase(),
                 style: GoogleFonts.inter(
                   fontWeight: FontWeight.w600,
                   fontSize: 22,
