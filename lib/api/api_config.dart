@@ -12,5 +12,6 @@ class ApiConfig {
   static const String getrecievedRequests='/api/v1/connection/pending-requests';
   static const String acceptConnection='/api/v1/connection/accept/';
   static const String sendconnectionrequest='/api/v1/connection/send';
+  static const String getmyconnection='/api/v1/connection/my-connections';
 
 }

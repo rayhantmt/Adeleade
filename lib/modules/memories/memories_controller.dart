@@ -9,6 +9,7 @@ import 'package:mementum/api/dio_client.dart';
 import 'package:mementum/core/exceptions.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:mementum/modules/home/home_model.dart';
+import 'package:mementum/modules/memories/connections_model.dart';
 
 class MemoriesController extends GetxController {
   var memorytype = 0.obs;
@@ -162,6 +163,44 @@ class MemoriesController extends GetxController {
   @override
   void onInit() {
     fetchmmyEvents();
+    fetchConnections();
     super.onInit();
+  }
+
+  var isLoading5 = true.obs;
+  RxList<Connection> connections = <Connection>[].obs;
+  var totalCount = 0.obs;
+
+  Future<void> fetchConnections() async {
+    final tokena = GetStorage().read('token');
+    try {
+      isLoading.value = true;
+
+      final response = await ApiService.get(
+        endpoint: ApiConfig.getmyconnection,
+        headers: {"Authorization": tokena},
+      ); // Adjust endpoint
+      print(response);
+      if (response != null && response['success'] == true) {
+        final connectionsResponse = ConnectionsResponse.fromJson(response);
+        connections.value = connectionsResponse.data.connections;
+        totalCount.value = connectionsResponse.data.count;
+      }
+    } catch (e) {
+      print('Error fetching connections: $e');
+      Get.snackbar('Error', 'Failed to load connections');
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  // Navigate to profile details
+  // void navigateToProfile(String userId) {
+  //   Get.toNamed(AppPages.profile_details, arguments: {'id': userId});
+  // }
+
+  // Refresh connections
+  Future<void> refreshConnections() async {
+    await fetchConnections();
   }
 }

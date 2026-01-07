@@ -462,6 +462,7 @@ Widget _plannedevent() {
 }
 
 Widget _memories() {
+  final controller=Get.find<MemoriesController>();
   return Column(
     children: [
       Text(
@@ -472,30 +473,36 @@ Widget _memories() {
           color: Colors.black,
         ),
       ),
-      SizedBox(height: Get.height * 0.2),
-      GestureDetector(
-        onTap: () => Get.toNamed(AppPages.profile_details),
-        child: Row(
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadiusGeometry.circular(99),
-              child: Image.asset(
-                AppImages.profilephoto,
-                height: Get.height * 0.1,
-                width: Get.width * 0.25,
-                fit: BoxFit.cover,
+      SizedBox(height: Get.height * 0.05),
+      Expanded(
+        child: ListView.builder(
+          itemCount: controller.connections.length,
+          itemBuilder: (context, index) => GestureDetector(
+          onTap: () => Get.toNamed(AppPages.profile_details,arguments: {
+            'id':controller.connections[index].user.id
+          }),
+          child: Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(99),
+                child: Image.network(
+                  controller.connections[index].user.photoURL,
+                  height: Get.height * 0.1,
+                  width: Get.width * 0.25,
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            SizedBox(width: Get.width * 0.05),
-            Text(
-              'Tony Stark',
-              style: GoogleFonts.inter(
-                fontWeight: FontWeight.w600,
-                fontSize: 22,
+              SizedBox(width: Get.width * 0.05),
+              Text(
+                controller.connections[index].user.name,
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 22,
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          ),
+        ),)
       ),
     ],
   );
