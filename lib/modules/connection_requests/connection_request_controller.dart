@@ -90,4 +90,41 @@ class ConnectionRequestController extends GetxController {
       isConnecting.value = false;
     }
   }
+
+  RxBool isRemoving = false.obs;
+  Future<void> removeconnection(id) async {
+    final tokena = GetStorage().read('token');
+    isRemoving.value = true;
+    try {
+      final connectionresponse = await ApiService.delete(
+        endpoint: '/api/v1/connection/remove/$id',
+        body: {"connectionId": id},
+        headers: {'Authorization': tokena, 'Content-type': 'application/json'},
+      );
+      print(id);
+      print(connectionresponse);
+    } on BadRequestException catch (e) {
+      Get.snackbar('Error', e.message, snackPosition: SnackPosition.BOTTOM);
+    } on UnauthorizedException catch (e) {
+      Get.snackbar(
+        'Unauthorized',
+        e.message,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on NotFoundException catch (e) {
+      Get.snackbar('Not Found', e.message, snackPosition: SnackPosition.BOTTOM);
+    } on InternalServerException catch (e) {
+      Get.snackbar(
+        'Server Error',
+        '$e Please try again later.',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    } on FetchDataException catch (e) {
+      Get.snackbar('Error', '$e', snackPosition: SnackPosition.BOTTOM);
+    } catch (e) {
+      print('Error: $e');
+    } finally {
+      isRemoving.value = false;
+    }
+  }
 }

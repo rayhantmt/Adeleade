@@ -164,6 +164,7 @@ class ApiService {
   static Future<dynamic> delete({
     required String endpoint,
     Map<String, String>? headers,
+    Map<String, dynamic>? body,
   }) async {
     final uri = Uri.parse('${ApiConfig.baseUrl}$endpoint');
 
@@ -171,6 +172,7 @@ class ApiService {
       final response = await http.delete(
         uri,
         headers: headers ?? {'Content-Type': 'application/json'},
+        body: jsonEncode(body)
       );
       print('🗑️ [DELETE] $uri');
       print('Status Code: ${response.statusCode}');

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/chat_box/chat_view.dart';
 import 'package:mementum/modules/home/home_view.dart';
 import 'package:mementum/modules/main_screen/main_screen_controller.dart';
+import 'package:mementum/modules/maps/maps_view.dart';
 import 'package:mementum/modules/memories/memories_view.dart';
 import 'package:mementum/modules/profile/profile_view.dart';
 import 'package:mementum/utils/app_colors.dart';
@@ -15,7 +16,7 @@ class MainScreen extends GetView<MainScreenController> {
   Widget build(BuildContext context) {
     final List<Widget> screens = [
       HomeView(),
-      //MapsView(),
+      MapsView(),
       MemoriesView(),
       ChatView(),
       ProfileView(),
@@ -48,10 +49,10 @@ class MainScreen extends GetView<MainScreenController> {
               label: 'Home',
               backgroundColor: Color(0xffF9F7F1),
             ),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.location_on_outlined, size: 30),
-            //   label: 'Maps',
-            // ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.location_on_outlined, size: 30),
+              label: 'Maps',
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.add_circle_outline_outlined, size: 30),
               label: 'Memories',

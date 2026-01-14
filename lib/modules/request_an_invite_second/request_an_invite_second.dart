@@ -20,15 +20,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
     controller.profession = args['profession'];
     controller.nationality = args['nationality'];
     controller.instagram = args['instagram'];
-    print(controller.name);
-    print(controller.email);
-    print(controller.gender);
-    print(controller.age);
-    print(controller.profession);
-    print(controller.nationality);
-    print(controller.instagram);
-
-    return Scaffold(
+return Scaffold(
       body: Stack(
         children: [
           Image.asset(
