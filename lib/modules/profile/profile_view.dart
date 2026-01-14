@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -50,18 +51,38 @@ class ProfileView extends StatelessWidget {
 
               Row(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadiusGeometry.all(
-                      Radius.circular(100),
-                    ),
-                    child: Image.network(
-                      profilephoto??"https://via.placeholder.com/150",
-                      height: 100,
+                  // ClipRRect(
+                  //   borderRadius: BorderRadiusGeometry.all(
+                  //     Radius.circular(100),
+                  //   ),
+                  //   child: Image.network(
+                  //     profilephoto??"https://via.placeholder.com/150",
+                  //     height: 100,
 
-                      width: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                  //     width: 100,
+                  //     fit: BoxFit.cover,
+                  //   ),
+                  // ),
+                  
+
+// ... inside your build method
+ClipRRect(
+  borderRadius: const BorderRadius.all(
+    Radius.circular(100),
+  ),
+  child: CachedNetworkImage(
+    imageUrl: profilephoto ?? "https://via.placeholder.com/150",
+    height: 100,
+    width: 100,
+    fit: BoxFit.cover,
+    // This shows the spinner while the image is loading
+    placeholder: (context, url) => const Center(
+      child: CircularProgressIndicator(),
+    ),
+    // This handles cases where the link is broken
+    errorWidget: (context, url, error) => const Icon(Icons.error),
+  ),
+),
 
                   SizedBox(width: 20),
                   Text(

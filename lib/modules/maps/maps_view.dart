@@ -39,7 +39,7 @@ class _MapsViewState extends State<MapsView> {
                     color: Colors.black,
                   ),
                 ),
-                // Text('Events Happening Near you',textAlign: TextAlign.center,),
+                
                 Expanded(
                   child: GoogleMap(
                     onMapCreated: (GoogleMapController controller) {
