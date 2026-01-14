@@ -12,9 +12,9 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final storage=GetStorage();
-    final profilename=storage.read('name');//.toString().toUpperCase();
-    final profilephoto=storage.read('photoURL');
+    final storage = GetStorage();
+    final profilename = storage.read('name'); //.toString().toUpperCase();
+    final profilephoto = storage.read('photoURL');
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -63,30 +63,30 @@ class ProfileView extends StatelessWidget {
                   //     fit: BoxFit.cover,
                   //   ),
                   // ),
-                  
 
-// ... inside your build method
-ClipRRect(
-  borderRadius: const BorderRadius.all(
-    Radius.circular(100),
-  ),
-  child: CachedNetworkImage(
-    imageUrl: profilephoto ?? "https://via.placeholder.com/150",
-    height: 100,
-    width: 100,
-    fit: BoxFit.cover,
-    // This shows the spinner while the image is loading
-    placeholder: (context, url) => const Center(
-      child: CircularProgressIndicator(),
-    ),
-    // This handles cases where the link is broken
-    errorWidget: (context, url, error) => const Icon(Icons.error),
-  ),
-),
+                  // ... inside your build method
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(100)),
+                    child: CachedNetworkImage(
+                      imageUrl:
+                          profilephoto ?? "https://via.placeholder.com/150",
+                      height: 100,
+                      width: 100,
+                      fit: BoxFit.cover,
+                      // This shows the spinner while the image is loading
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      // This handles cases where the link is broken
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+                  ),
 
                   SizedBox(width: 20),
                   Text(
-                   (profilename ??'Error loading name' ).toString().toUpperCase(),
+                    (profilename ?? 'Error loading name')
+                        .toString()
+                        .toUpperCase(),
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
                       fontSize: 20,
@@ -135,11 +135,13 @@ ClipRRect(
                 ),
               ),
               SizedBox(height: Get.height * 0.015),
-              GestureDetector
-            
-              (
+              GestureDetector(
                 onTap: () => Get.toNamed(AppPages.coonectionRequest),
-                child: ProfileContainer(tittle: 'Connection Requests', image: AppImages.subscriptionicon)),
+                child: ProfileContainer(
+                  tittle: 'Connection Requests',
+                  image: AppImages.subscriptionicon,
+                ),
+              ),
               // GestureDetector(
               //   onTap: () => Get.toNamed(AppPages.notification),
               //   child: ProfileContainer(
@@ -180,59 +182,67 @@ ClipRRect(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Image.asset(AppImages.logoutprofile,
-                          height: 60,
-                          width: 60,
+                          Image.asset(
+                            AppImages.logoutprofile,
+                            height: 60,
+                            width: 60,
                           ),
-                          Text('Are you sure you want to log out of your account?',
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                            color: Color(0xff6B7280)
-                          ),
+                          Text(
+                            'Are you sure you want to log out of your account?',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xff6B7280),
+                            ),
                           ),
                           GestureDetector(
                             //onTap: () => Get.offAllNamed(AppPages.login),
                             onTap: () {
-                              final storage=GetStorage();
+                              final storage = GetStorage();
                               storage.erase();
                               Get.offAllNamed(AppPages.login);
                             },
                             child: Container(
-                              height: Get.height*0.05,
-                              width: Get.width*0.6,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.6,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xffDC143C)
+                                color: Color(0xffDC143C),
                               ),
-                              child: Center(child: Text('Confirm Log Out',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: Colors.white
+                              child: Center(
+                                child: Text(
+                                  'Confirm Log Out',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
                               ),
-                              )),
                             ),
                           ),
                           GestureDetector(
                             onTap: () => Navigator.pop(context),
                             child: Container(
-                              height: Get.height*0.05,
-                              width: Get.width*0.6,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.6,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(12),
-                                color: Color(0xffF3F4F6)
+                                color: Color(0xffF3F4F6),
                               ),
-                              child: Center(child: Text('Cancel',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16,
-                                color: Color(0xff727272)
+                              child: Center(
+                                child: Text(
+                                  'Cancel',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    color: Color(0xff727272),
+                                  ),
+                                ),
                               ),
-                              )),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -242,7 +252,6 @@ ClipRRect(
                   tittle: "Log Out",
                   image: AppImages.logouticon,
                 ),
-                
               ),
             ],
           ),
