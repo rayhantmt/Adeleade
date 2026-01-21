@@ -62,7 +62,7 @@ class LogInView extends GetView<LogInController> {
                       ),
                       Commontextfield(
                         textcontroller: controller.emailcontroller,
-                        tittle: 'Rayhantmt@gmail.com',
+                        tittle: 'Enter your email',
                         obsecuretext: false,
                       ),
                       SizedBox(height: Get.height * 0.02),
