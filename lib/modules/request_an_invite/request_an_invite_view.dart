@@ -62,7 +62,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           child: Row(children: [Text('Name')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhan',
+                          tittle: 'Enter your name',
                           obsecuretext: false,
                           textcontroller: controller.namecontroller,
                         ),
@@ -73,7 +73,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           child: Row(children: [Text('Email')]),
                         ),
                         Commontextfield(
-                          tittle: 'Rayhantmt@gmail.com',
+                          tittle: 'Enter your email',
                           obsecuretext: false,
                           textcontroller: controller.emailcontroller,
                         ),
