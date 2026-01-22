@@ -74,30 +74,30 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                             color: Color(0xff6C7278),
                           ),
                         ),
-                        SizedBox(height: Get.height * 0.02),
-                        GestureDetector(
-                          onTap: controller.pickCoverImage,
-                          child: Obx(
-                            () => controller.coverImage.value != null
-                                ? Image.file(
-                                    height: Get.height * 0.03,
-                                    width: Get.width * 0.7,
-                                    File(controller.coverImage.value!.path),
-                                  )
-                                : Container(
-                                    height: Get.height * 0.03,
-                                    width: Get.width * 0.7,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1,
-                                        color: Colors.black,
-                                      ),
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Text('Select Cover Image'),
-                                  ),
-                          ),
-                        ),
+                        // SizedBox(height: Get.height * 0.02),
+                        // GestureDetector(
+                        //   onTap: controller.pickCoverImage,
+                        //   child: Obx(
+                        //     () => controller.coverImage.value != null
+                        //         ? Image.file(
+                        //             height: Get.height * 0.03,
+                        //             width: Get.width * 0.7,
+                        //             File(controller.coverImage.value!.path),
+                        //           )
+                        //         : Container(
+                        //             height: Get.height * 0.03,
+                        //             width: Get.width * 0.7,
+                        //             decoration: BoxDecoration(
+                        //               border: Border.all(
+                        //                 width: 1,
+                        //                 color: Colors.black,
+                        //               ),
+                        //               borderRadius: BorderRadius.circular(12),
+                        //             ),
+                        //             child: Text('Select Cover Image'),
+                        //           ),
+                        //   ),
+                        // ),
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: controller.pickProfileImage,

@@ -54,7 +54,8 @@ RxBool isLoading=false.obs;
         selectedImages.assignAll(images.take(5).toList());
         Get.snackbar(
           'Images selected',
-          selectedImages.map((e) => e.path).toList().toString(),
+          //selectedImages.map((e) => e.path).toList().toString(),
+          ''
         );
       }
     } catch (e) {
