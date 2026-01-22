@@ -10,6 +10,7 @@ class RequestAnInviteController extends GetxController{
   final professioncontroller=TextEditingController();
   final nationalitycontroller=TextEditingController();
   final instagramcontroller=TextEditingController();
+  final linkedincontroller=TextEditingController();
   void toggleObscureText() {
     isObscured.value = !isObscured.value;
   }

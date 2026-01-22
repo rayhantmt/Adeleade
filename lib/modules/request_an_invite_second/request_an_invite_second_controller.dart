@@ -20,6 +20,7 @@ RxBool isLoading=false.obs;
   late String? profession = '';
   late String? nationality = '';
   late String? instagram = '';
+  late String? linkedin='';
 
   final biocontroller = TextEditingController();
   final linkedincontroller = TextEditingController();
@@ -160,7 +161,7 @@ Future<void> createUser() async {
       'bio': biocontroller.text,
       'nationality': nationality,
       'profession': profession,
-      'linkedIn': linkedincontroller.text,
+      'linkedIn': linkedin,
       'instagram': instagram,
       // Safe access using ! because we checked for nulls at the top
       'avatar': await MultipartFile.fromFile(

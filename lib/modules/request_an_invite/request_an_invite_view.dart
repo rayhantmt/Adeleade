@@ -140,7 +140,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         Commontextfield(
                           tittle: 'Link of your LinkedIn profile',
                           obsecuretext: false,
-                          textcontroller: controller.instagramcontroller,
+                          textcontroller: controller.linkedincontroller,
                         ),
                         SizedBox(height: Get.height * 0.015),
 
@@ -158,6 +158,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                               'nationality':
                                   controller.nationalitycontroller.text,
                               'instagram': controller.instagramcontroller.text,
+                              'linkedin':controller.linkedincontroller.text
                             },
                           ),
                           child: Container(

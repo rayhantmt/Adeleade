@@ -20,6 +20,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
     controller.profession = args['profession'];
     controller.nationality = args['nationality'];
     controller.instagram = args['instagram'];
+    controller.linkedin=args['linkedin'];
     return Scaffold(
       body: Stack(
         children: [
@@ -123,15 +124,15 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                                   ),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('LinkedIn')]),
-                        ),
-                        Commontextfield(
-                          tittle: 'Link of your LinkedIn profile',
-                          obsecuretext: false,
-                          textcontroller: controller.linkedincontroller,
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: Get.width * 0.1),
+                        //   child: Row(children: [Text('LinkedIn')]),
+                        // ),
+                        // Commontextfield(
+                        //   tittle: 'Link of your LinkedIn profile',
+                        //   obsecuretext: false,
+                        //   textcontroller: controller.linkedincontroller,
+                        // ),
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
