@@ -199,15 +199,95 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           textcontroller: controller.professioncontroller,
                         ),
                         SizedBox(height: Get.height * 0.02),
+                        // Country Dropdown Widget
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
                           child: Row(children: [Text('Nationality')]),
                         ),
-                        Commontextfield(
-                          tittle: 'Enter your nationality',
-                          obsecuretext: false,
-                          textcontroller: controller.nationalitycontroller,
+                        Obx(
+                          () => Container(
+                            height: Get.height * 0.05,
+                            width: Get.width * 0.7,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 1,
+                                color: Color(0xffEDF1F3),
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<String>(
+                                hint: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Select your country',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xff1A1C1E),
+                                    ),
+                                  ),
+                                ),
+                                value: controller.selectedCountry.value.isEmpty
+                                    ? null
+                                    : controller.selectedCountry.value,
+                                isExpanded: true,
+                                icon: Padding(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_down,
+                                    color: Color(0xff1A1C1E),
+                                  ),
+                                ),
+                                padding: EdgeInsets.only(left: 10),
+                                items: controller.countries
+                                    .map(
+                                      (country) => DropdownMenuItem<String>(
+                                        value: country,
+                                        child: Text(
+                                          country,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14,
+                                            color: Color(0xff1A1C1E),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    controller.selectedCountry.value = value;
+                                  }
+                                },
+                                selectedItemBuilder: (BuildContext context) {
+                                  return controller.countries.map((country) {
+                                    return Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        country,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: Color(0xff1A1C1E),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList();
+                                },
+                              ),
+                            ),
+                          ),
                         ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: Get.width * 0.1),
+                        //   child: Row(children: [Text('Nationality')]),
+                        // ),
+                        // Commontextfield(
+                        //   tittle: 'Enter your nationality',
+                        //   obsecuretext: false,
+                        //   textcontroller: controller.nationalitycontroller,
+                        // ),
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -242,7 +322,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                               'profession':
                                   controller.professioncontroller.text,
                               'nationality':
-                                  controller.nationalitycontroller.text,
+                                  controller.selectedCountry.toString(),
                               'instagram': controller.instagramcontroller.text,
                               'linkedin': controller.linkedincontroller.text,
                             },
