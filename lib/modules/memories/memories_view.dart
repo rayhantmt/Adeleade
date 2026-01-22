@@ -164,10 +164,85 @@ Widget _createEvent() {
           textcontroller: controller.namecontroller,
         ),
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(
-          textcontroller: controller.maxParticipantscontroller,
-          tittle: "Participants",
-          hint: 'Enter number of participants',
+        // UpdateInfoField(
+        //   textcontroller: controller.maxParticipantscontroller,
+        //   tittle: "Participants",
+        //   hint: 'Enter number of participants',
+        // ),
+        Obx(
+          () => Container(
+            height: Get.height * 0.05,
+            width: Get.width * 0.7,
+            decoration: BoxDecoration(
+              border: Border.all(width: 1, color: Color(0xffEDF1F3)),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: DropdownButtonHideUnderline(
+              child: DropdownButton<int>(
+                hint: Padding(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(
+                    'Enter number of participants',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Color(0xff1A1C1E),
+                    ),
+                  ),
+                ),
+                value: controller.selectedParticipants.value == 0
+                    ? null
+                    : controller.selectedParticipants.value,
+                isExpanded: true,
+                icon: Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Icon(
+                    Icons.keyboard_arrow_down,
+                    color: Color(0xff1A1C1E),
+                  ),
+                ),
+                padding: EdgeInsets.only(left: 10),
+                items: controller.participantsList
+                    .map(
+                      (participants) => DropdownMenuItem<int>(
+                        
+                        value: participants,
+                        child: Text(
+                          participants.toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xff1A1C1E),
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  if (value != null) {
+                    controller.selectedParticipants.value = value;
+                    controller.maxParticipantscontroller.text = value
+                        .toString();
+                  }
+                },
+                selectedItemBuilder: (BuildContext context) {
+                  return controller.participantsList.map((participants) {
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        participants.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: Color(0xff1A1C1E),
+                        ),
+                      ),
+                    );
+                  }).toList();
+                },
+              ),
+            ),
+          ),
         ),
         SizedBox(height: Get.height * 0.02),
         UpdateInfoField(

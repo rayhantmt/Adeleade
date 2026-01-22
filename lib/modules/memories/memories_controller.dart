@@ -13,6 +13,9 @@ import 'package:mementum/modules/memories/connections_model.dart';
 
 class MemoriesController extends GetxController {
   var memorytype = 0.obs;
+  RxInt selectedParticipants = 0.obs;
+  final List<int> participantsList = [2, 4, 6, 8, 10, 15, 20, 30];
+
   Rxn<XFile> eventImage = Rxn<XFile>();
   void setDepositType(int type) {
     memorytype.value = type;
@@ -62,7 +65,8 @@ class MemoriesController extends GetxController {
         'location': locationcontroller.text.toString(),
         'category': cetegorycontroller.text.toString(),
         'details': detailscontroller.text.toString(),
-        'maxParticipants': maxParticipantscontroller.text.toString(),
+        //'maxParticipants': maxParticipantscontroller.text.toString(),
+        'maxParticipants': selectedParticipants.toString(),
         'geoLocation': '23.7272,90.4106',
         'eventImage': await MultipartFile.fromFile(
           eventImage.value!.path,
