@@ -19,6 +19,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
             width: double.infinity,
             fit: BoxFit.cover,
           ),
+
           SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
@@ -26,7 +27,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: Get.height*0.1,),
+                  SizedBox(height: Get.height * 0.1),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
@@ -38,6 +39,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        Icon(Icons.arrow_back, color: AppColors.primarycolor),
                         SizedBox(height: Get.height * 0.02),
                         Text(
                           'Request an invite',
@@ -66,7 +68,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           obsecuretext: false,
                           textcontroller: controller.namecontroller,
                         ),
-            
+
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
@@ -128,16 +130,18 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           textcontroller: controller.instagramcontroller,
                         ),
                         SizedBox(height: Get.height * 0.015),
-            
+
                         GestureDetector(
                           onTap: () => Get.toNamed(
                             AppPages.signupsecond,
                             arguments: {
                               'name': controller.namecontroller.text,
                               'email': controller.emailcontroller.text,
-                              'gender': controller.gendercontroller.text.toLowerCase(),
+                              'gender': controller.gendercontroller.text
+                                  .toLowerCase(),
                               'age': controller.agecontroller.text,
-                              'profession': controller.professioncontroller.text,
+                              'profession':
+                                  controller.professioncontroller.text,
                               'nationality':
                                   controller.nationalitycontroller.text,
                               'instagram': controller.instagramcontroller.text,
