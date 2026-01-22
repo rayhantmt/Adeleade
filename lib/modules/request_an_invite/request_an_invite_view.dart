@@ -33,7 +33,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
-                    height: Get.height * 0.85,
+                    height: Get.height * 0.9,
                     width: Get.width * 0.9,
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
@@ -125,10 +125,20 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Instagram')]),
+                          child: Row(children: [Text('Instagram/Facebook')]),
                         ),
                         Commontextfield(
-                          tittle: 'Link of your instagram profile',
+                          tittle: 'Link of your instagram/facebook profile',
+                          obsecuretext: false,
+                          textcontroller: controller.instagramcontroller,
+                        ),
+                         SizedBox(height: Get.height * 0.02),
+                        Padding(
+                          padding: EdgeInsets.only(left: Get.width * 0.1),
+                          child: Row(children: [Text('LinkedIn')]),
+                        ),
+                        Commontextfield(
+                          tittle: 'Link of your LinkedIn profile',
                           obsecuretext: false,
                           textcontroller: controller.instagramcontroller,
                         ),
