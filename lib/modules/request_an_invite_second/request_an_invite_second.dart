@@ -20,7 +20,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
     controller.profession = args['profession'];
     controller.nationality = args['nationality'];
     controller.instagram = args['instagram'];
-return Scaffold(
+    return Scaffold(
       body: Stack(
         children: [
           Image.asset(
@@ -49,9 +49,13 @@ return Scaffold(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: Get.height * 0.02),
- GestureDetector(
-  onTap: () => Get.back(),
-  child: Icon(Icons.arrow_back, color: AppColors.primarycolor)),
+                        GestureDetector(
+                          onTap: () => Get.back(),
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: AppColors.primarycolor,
+                          ),
+                        ),
                         Text(
                           'Request an invite',
                           style: TextStyle(
@@ -72,32 +76,52 @@ return Scaffold(
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: controller.pickCoverImage,
-                          child: Obx(() => controller.coverImage.value!=null?Image.file(
-                            height: Get.height * 0.03,
-                            width: Get.width * 0.7,
-                            File(controller.coverImage.value!.path)):Container(
-                            height: Get.height * 0.03,
-                            width: Get.width * 0.7,
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.black),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text('Select Cover Image'),
-                          ),)
+                          child: Obx(
+                            () => controller.coverImage.value != null
+                                ? Image.file(
+                                    height: Get.height * 0.03,
+                                    width: Get.width * 0.7,
+                                    File(controller.coverImage.value!.path),
+                                  )
+                                : Container(
+                                    height: Get.height * 0.03,
+                                    width: Get.width * 0.7,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Text('Select Cover Image'),
+                                  ),
+                          ),
                         ),
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: controller.pickProfileImage,
-                          child: Obx(() => controller.profileImage.value!= null?Image.file(height: Get.height * 0.03,
-                            width: Get.width * 0.7,File(controller.profileImage.value!.path)):Container(
-                            height: Get.height * 0.03,
-                            width: Get.width * 0.7,
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.black),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                            child: Text('Select profile image'),
-                          ),)
+                          child: Obx(
+                            () => controller.profileImage.value != null
+                                ? Image.file(
+                                    height: Get.height * 0.08,
+                                    width: Get.width * 0.7,
+                                    File(controller.profileImage.value!.path),
+                                  )
+                                : Container(
+                                    height: Get.height * 0.06,
+                                    width: Get.width * 0.7,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Colors.black,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                    child: Center(
+                                      child: Text('Select profile image'),
+                                    ),
+                                  ),
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
