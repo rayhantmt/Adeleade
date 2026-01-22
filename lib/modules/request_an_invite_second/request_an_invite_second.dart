@@ -42,7 +42,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
-                    height: Get.height * 0.8,
+                    height: Get.height * 0.9,
                     width: Get.width * 0.9,
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
@@ -149,13 +149,39 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         ),
                         GestureDetector(
                           onTap: controller.pickImages,
-                          child: Container(
-                            height: Get.height * 0.05,
-                            width: Get.width * 0.7,
-                            decoration: BoxDecoration(
-                              border: Border.all(width: 1, color: Colors.red),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
+                          child: Obx(
+                            () => controller.selectedImages.isNotEmpty
+                                ? Container(
+                                    height: Get.height * 0.07,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount:
+                                          controller.selectedImages.length,
+                                      itemBuilder: (context, index) {
+                                        final img =
+                                            controller.selectedImages[index];
+                                        return Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Image.file(
+                                            File(img.path),
+                                            height: Get.height * 0.1,
+                                            // width: Get.width*0.01,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  )
+                                : Container(
+                                    height: Get.height * 0.05,
+                                    width: Get.width * 0.7,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        width: 1,
+                                        color: Colors.red,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12),
+                                    ),
+                                  ),
                           ),
                         ),
                         SizedBox(height: Get.height * 0.02),
