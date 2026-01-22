@@ -39,11 +39,14 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       // mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                       
                         SizedBox(height: Get.height * 0.02),
-                         GestureDetector(
+                        GestureDetector(
                           onTap: () => Get.back(),
-                          child: Icon(Icons.arrow_back, color: AppColors.primarycolor)),
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: AppColors.primarycolor,
+                          ),
+                        ),
                         Text(
                           'Request an invite',
                           style: TextStyle(
@@ -93,14 +96,97 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           textcontroller: controller.gendercontroller,
                         ),
                         SizedBox(height: Get.height * 0.02),
+                        // Padding(
+                        //   padding: EdgeInsets.only(left: Get.width * 0.1),
+                        //   child: Row(children: [Text('Age')]),
+                        // ),
+                        // Commontextfield(
+                        //   tittle: 'Enter your age',
+                        //   obsecuretext: false,
+                        //   textcontroller: controller.agecontroller,
+                        // ),
+                        // Age Dropdown Widget
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
                           child: Row(children: [Text('Age')]),
                         ),
-                        Commontextfield(
-                          tittle: 'Enter your age',
-                          obsecuretext: false,
-                          textcontroller: controller.agecontroller,
+                        Obx(
+                          () => Container(
+                            height: Get.height * 0.05,
+                            width: Get.width * 0.7,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 1,
+                                color: Color(0xffEDF1F3),
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: DropdownButtonHideUnderline(
+                              child: DropdownButton<int>(
+                                hint: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text(
+                                    'Select your age',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xff1A1C1E),
+                                    ),
+                                  ),
+                                ),
+                                value: controller.selectedAge.value == 0
+                                    ? null
+                                    : controller.selectedAge.value,
+                                isExpanded: true,
+                                icon: Padding(
+                                  padding: EdgeInsets.only(right: 10),
+                                  child: Icon(
+                                    Icons.keyboard_arrow_down,
+                                    color: Color(0xff1A1C1E),
+                                  ),
+                                ),
+                                padding: EdgeInsets.only(left: 10),
+                                items: List.generate(90, (index) => index + 10)
+                                    .map(
+                                      (age) => DropdownMenuItem<int>(
+                                        value: age,
+                                        child: Text(
+                                          age.toString(),
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14,
+                                            color: Color(0xff1A1C1E),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                    .toList(),
+                                onChanged: (value) {
+                                  if (value != null) {
+                                    controller.selectedAge.value = value;
+                                  }
+                                },
+                                selectedItemBuilder: (BuildContext context) {
+                                  return List.generate(
+                                    90,
+                                    (index) => index + 10,
+                                  ).map((age) {
+                                    return Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        age.toString(),
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          color: Color(0xff1A1C1E),
+                                        ),
+                                      ),
+                                    );
+                                  }).toList();
+                                },
+                              ),
+                            ),
+                          ),
                         ),
                         SizedBox(height: Get.height * 0.02),
                         Padding(
@@ -132,7 +218,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           obsecuretext: false,
                           textcontroller: controller.instagramcontroller,
                         ),
-                         SizedBox(height: Get.height * 0.02),
+                        SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
                           child: Row(children: [Text('LinkedIn')]),
@@ -152,13 +238,13 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                               'email': controller.emailcontroller.text,
                               'gender': controller.gendercontroller.text
                                   .toLowerCase(),
-                              'age': controller.agecontroller.text,
+                              'age': controller.selectedAge.toString(),
                               'profession':
                                   controller.professioncontroller.text,
                               'nationality':
                                   controller.nationalitycontroller.text,
                               'instagram': controller.instagramcontroller.text,
-                              'linkedin':controller.linkedincontroller.text
+                              'linkedin': controller.linkedincontroller.text,
                             },
                           ),
                           child: Container(

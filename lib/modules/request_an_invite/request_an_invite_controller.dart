@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class RequestAnInviteController extends GetxController{
   RxBool isObscured = false.obs;
+  RxInt selectedAge = 0.obs;
   final namecontroller=TextEditingController();
   final emailcontroller=TextEditingController();
   final gendercontroller=TextEditingController();
