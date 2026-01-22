@@ -20,7 +20,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
     controller.profession = args['profession'];
     controller.nationality = args['nationality'];
     controller.instagram = args['instagram'];
-    controller.linkedin=args['linkedin'];
+    controller.linkedin = args['linkedin'];
     return Scaffold(
       body: Stack(
         children: [
