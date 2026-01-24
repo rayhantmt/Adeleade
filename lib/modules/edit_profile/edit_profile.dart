@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/edit_profile_info.dart';
+import 'package:mementum/modules/edit_profile/edit_profile_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends GetView<EditProfileController> {
   const EditProfile({super.key});
 
   @override
@@ -89,7 +90,7 @@ class EditProfile extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               // Handle cover photo edit
-                              print('Edit cover photo');
+                             controller.pickProfileImage();
                             },
                             child: Container(
                               padding: EdgeInsets.all(8),
