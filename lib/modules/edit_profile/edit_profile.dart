@@ -12,16 +12,16 @@ class EditProfile extends GetView<EditProfileController> {
 
   @override
   Widget build(BuildContext context) {
-    final storage=GetStorage();
-    final profilename=storage.read('name');//.toString().toUpperCase();
-    final profilephoto=storage.read('photoURL');
-    final coverphoto =storage.read('coverPhotoURL');
-    final email=storage.read('email');
-    final gender=storage.read('gender');
-    final nationality=storage.read('nationality');
-    final instagram=storage.read('instagram');
-    final linkedin=storage.read('linkedIn');
-    final bio=storage.read('bio');
+    final storage = GetStorage();
+    final profilename = storage.read('name'); //.toString().toUpperCase();
+    final profilephoto = storage.read('photoURL');
+    final coverphoto = storage.read('coverPhotoURL');
+    final email = storage.read('email');
+    final gender = storage.read('gender');
+    final nationality = storage.read('nationality');
+    final instagram = storage.read('instagram');
+    final linkedin = storage.read('linkedIn');
+    final bio = storage.read('bio');
     return Scaffold(
       body: Stack(
         children: [
@@ -90,7 +90,7 @@ class EditProfile extends GetView<EditProfileController> {
                           child: GestureDetector(
                             onTap: () {
                               // Handle cover photo edit
-                             controller.pickProfileImage();
+                              controller.pickProfileImage();
                             },
                             child: Container(
                               padding: EdgeInsets.all(8),
@@ -117,16 +117,30 @@ class EditProfile extends GetView<EditProfileController> {
                         Positioned(
                           bottom: -Get.height * 0.07,
                           left: Get.width * 0.5 - Get.height * 0.1,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 4),
-                            ),
-                            child: CircleAvatar(
-                              radius: Get.height * 0.07,
-                              backgroundColor: Colors.white,
-                              backgroundImage: NetworkImage(profilephoto?? "https://via.placeholder.com/150"),
-                            ),
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: Colors.white, width: 4),
+                                ),
+                                child: CircleAvatar(
+                                  radius: Get.height * 0.07,
+                                  backgroundColor: Colors.white,
+                                  backgroundImage: NetworkImage(
+                                    profilephoto ??
+                                        "https://via.placeholder.com/150",
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 0,
+                                right: 0,
+                                child: GestureDetector(
+                                  
+                                  
+                                  child: Icon(Icons.camera_alt)))
+                            ],
                           ),
                         ),
                       ],
@@ -149,7 +163,9 @@ class EditProfile extends GetView<EditProfileController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          (profilename??"Error loading name").toString().toUpperCase(),
+                          (profilename ?? "Error loading name")
+                              .toString()
+                              .toUpperCase(),
                           style: GoogleFonts.inter(
                             fontWeight: FontWeight.w600,
                             fontSize: 24,
@@ -157,33 +173,52 @@ class EditProfile extends GetView<EditProfileController> {
                         ),
                       ],
                     ),
-                    EditProfileInfo(tittle: 'Name', info: (profilename??'Error loading name').toString().toUpperCase()),
+                    EditProfileInfo(
+                      tittle: 'Name',
+                      info: (profilename ?? 'Error loading name')
+                          .toString()
+                          .toUpperCase(),
+                    ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Email',
-                      info: (email??"Error loading email").toString().toLowerCase(),
+                      info: (email ?? "Error loading email")
+                          .toString()
+                          .toLowerCase(),
                     ),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Gender', info: (gender??"Error loading gender").toString().toUpperCase()),
+                    EditProfileInfo(
+                      tittle: 'Gender',
+                      info: (gender ?? "Error loading gender")
+                          .toString()
+                          .toUpperCase(),
+                    ),
                     // SizedBox(height: Get.height * 0.01),
                     // EditProfileInfo(tittle: 'Age', info: (age??"Error loading age")),
                     SizedBox(height: Get.height * 0.01),
-                    EditProfileInfo(tittle: 'Nationality', info: (nationality?? "Error loading nationality").toString().toUpperCase()),
+                    EditProfileInfo(
+                      tittle: 'Nationality',
+                      info: (nationality ?? "Error loading nationality")
+                          .toString()
+                          .toUpperCase(),
+                    ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Instagram',
-                      info: (instagram?? "Error loading instagram link").toString(),
+                      info: (instagram ?? "Error loading instagram link")
+                          .toString(),
                     ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Linkedin',
-                      info: linkedin??"Error loading instagram link",
+                      info: linkedin ?? "Error loading instagram link",
                     ),
                     SizedBox(height: Get.height * 0.01),
                     EditProfileInfo(
                       tittle: 'Bio',
-                      info:
-                          (bio?? "Error loading bio").toString().toUpperCase(),
+                      info: (bio ?? "Error loading bio")
+                          .toString()
+                          .toUpperCase(),
                     ),
                   ],
                 ),
