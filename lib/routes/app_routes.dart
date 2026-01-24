@@ -4,6 +4,7 @@ import 'package:mementum/modules/chat_details/chat_details_view.dart';
 import 'package:mementum/modules/connection_requests/connection_request_binding.dart';
 import 'package:mementum/modules/connection_requests/connection_requests_view.dart';
 import 'package:mementum/modules/edit_profile/edit_profile.dart';
+import 'package:mementum/modules/edit_profile/edit_profile_bining.dart';
 import 'package:mementum/modules/event_details/event_details_view.dart';
 import 'package:mementum/modules/event_details/event_details_binding.dart';
 import 'package:mementum/modules/event_history/event_history.dart';
@@ -33,25 +34,83 @@ import 'package:mementum/modules/update_password_successful/update_password_succ
 import 'package:mementum/routes/app_pages.dart';
 
 class AppRoutes {
-  static final pages=[
-    GetPage(name: AppPages.login, page: () => LogInView(),binding: LogInBinding()),
-    GetPage(name: AppPages.signup, page: () => RequestAnInviteView(),binding: RequesstAnInviteBinding()),
-    GetPage(name: AppPages.signupsecond, page: () => RequestAnInviteSecond(),binding: RequestAnInviteSecondBinding()),
-    GetPage(name: AppPages.forgotpassword, page: ()=>ForgotPasswordView(),binding: ForgotPasswordBinding()),
-    GetPage(name: AppPages.otppage, page: () => OtpPageView(),binding: OtpPageBinding()),
-    GetPage(name: AppPages.updatepassword, page: () => UpdatePasswordView(),binding: UpdatePasswordBinding()),
-    GetPage(name: AppPages.updatePasswordSuccessfull, page: () => UpdatePasswordSuccessfull(),),
-    GetPage(name: AppPages.mainscreen, page: () => MainScreen(),binding: MainScreenBinding()),
-    GetPage(name: AppPages.unlockmomentum, page: () => UnlockMomentumView(),),
-    GetPage(name: AppPages.editprofile, page: () => EditProfile(),),
-    GetPage(name: AppPages.updateinfo, page: () => UpdateInfoView(),binding: UpdateInfoBinding()),
-    GetPage(name: AppPages.notification, page: () => NotificationView(),),
-    GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionScreenView(),),
-    GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView(),),
+  static final pages = [
+    GetPage(
+      name: AppPages.login,
+      page: () => LogInView(),
+      binding: LogInBinding(),
+    ),
+    GetPage(
+      name: AppPages.signup,
+      page: () => RequestAnInviteView(),
+      binding: RequesstAnInviteBinding(),
+    ),
+    GetPage(
+      name: AppPages.signupsecond,
+      page: () => RequestAnInviteSecond(),
+      binding: RequestAnInviteSecondBinding(),
+    ),
+    GetPage(
+      name: AppPages.forgotpassword,
+      page: () => ForgotPasswordView(),
+      binding: ForgotPasswordBinding(),
+    ),
+    GetPage(
+      name: AppPages.otppage,
+      page: () => OtpPageView(),
+      binding: OtpPageBinding(),
+    ),
+    GetPage(
+      name: AppPages.updatepassword,
+      page: () => UpdatePasswordView(),
+      binding: UpdatePasswordBinding(),
+    ),
+    GetPage(
+      name: AppPages.updatePasswordSuccessfull,
+      page: () => UpdatePasswordSuccessfull(),
+    ),
+    GetPage(
+      name: AppPages.mainscreen,
+      page: () => MainScreen(),
+      binding: MainScreenBinding(),
+    ),
+    GetPage(name: AppPages.unlockmomentum, page: () => UnlockMomentumView()),
+    GetPage(
+      name: AppPages.editprofile,
+      page: () => EditProfile(),
+      binding: EditProfileBining(),
+    ),
+    GetPage(
+      name: AppPages.updateinfo,
+      page: () => UpdateInfoView(),
+      binding: UpdateInfoBinding(),
+    ),
+    GetPage(name: AppPages.notification, page: () => NotificationView()),
+    GetPage(
+      name: AppPages.subscriptionicon,
+      page: () => SubscriptionScreenView(),
+    ),
+    GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView()),
     GetPage(name: AppPages.eventhistory, page: () => EventHistory()),
-    GetPage(name: AppPages.eventdetails, page: () => EventDetails(),binding: EventDetailsBinding()),
-    GetPage(name: AppPages.chatdetails, page: () => ChatDetailsView(),binding: ChatDetailsBinding()),
-    GetPage(name: AppPages.profile_details, page: () => ProfileDetails(),binding: ProfileBinding()),
-    GetPage(name: AppPages.coonectionRequest, page:  () => ConnectionRequestsView(),binding: ConnectionRequestBinding())
+    GetPage(
+      name: AppPages.eventdetails,
+      page: () => EventDetails(),
+      binding: EventDetailsBinding(),
+    ),
+    GetPage(
+      name: AppPages.chatdetails,
+      page: () => ChatDetailsView(),
+      binding: ChatDetailsBinding(),
+    ),
+    GetPage(
+      name: AppPages.profile_details,
+      page: () => ProfileDetails(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: AppPages.coonectionRequest,
+      page: () => ConnectionRequestsView(),
+      binding: ConnectionRequestBinding(),
+    ),
   ];
 }
