@@ -169,6 +169,7 @@ Widget _createEvent() {
         //   tittle: "Participants",
         //   hint: 'Enter number of participants',
         // ),
+        Text('Participants'),
         Obx(
           () => Container(
             height: Get.height * 0.05,

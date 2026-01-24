@@ -14,6 +14,23 @@ class MapsView extends StatefulWidget {
 class _MapsViewState extends State<MapsView> {
   late GoogleMapController mapController;
   final LatLng _center = const LatLng(23.7940, 90.3870);
+    final Set<Marker> _markers = {
+    const Marker(
+      markerId: MarkerId('water_garden'),
+      position: LatLng(23.7962, 90.3878),
+      infoWindow: InfoWindow(title: 'Water Garden Restaurant', snippet: 'Event Venue'),
+    ),
+    const Marker(
+      markerId: MarkerId('dine_hill'),
+      position: LatLng(23.7943, 90.3876),
+      infoWindow: InfoWindow(title: 'The Dine Hill Restaurant', snippet: 'Party Center'),
+    ),
+    const Marker(
+      markerId: MarkerId('food_place'),
+      position: LatLng(23.7962, 90.3874),
+      infoWindow: InfoWindow(title: 'FoodPlace Restaurant', snippet: 'Local Eatery'),
+    ),
+  };
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +66,7 @@ class _MapsViewState extends State<MapsView> {
                       target: _center,
                       zoom: 15.0,
                     ),
-                    // markers: _markers,
+                     markers: _markers,
                   ),
                 ),
               ],
