@@ -90,7 +90,7 @@ class EditProfile extends GetView<EditProfileController> {
                           child: GestureDetector(
                             onTap: () {
                               // Handle cover photo edit
-                              controller.pickProfileImage();
+                              controller.pickCoverImage();
                             },
                             child: Container(
                               padding: EdgeInsets.all(8),
@@ -122,7 +122,10 @@ class EditProfile extends GetView<EditProfileController> {
                               Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: Colors.white, width: 4),
+                                  border: Border.all(
+                                    color: Colors.white,
+                                    width: 4,
+                                  ),
                                 ),
                                 child: CircleAvatar(
                                   radius: Get.height * 0.07,
@@ -134,12 +137,21 @@ class EditProfile extends GetView<EditProfileController> {
                                 ),
                               ),
                               Positioned(
-                                bottom: 0,
+                                top: 0,
                                 right: 0,
                                 child: GestureDetector(
-                                  
-                                  
-                                  child: Icon(Icons.camera_alt)))
+                                  onTap: () {
+                                    controller.pickprofileImage();
+                                   // print('dudu');
+                                  },
+                                  child: Container(
+                                    color: Colors.black,
+                                    child: Icon(Icons.camera_alt, size: 25,
+                                    color: Colors.white
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
