@@ -82,7 +82,7 @@ class ProfileController extends GetxController {
       }
     } catch (e) {
       print('Error fetching profile: $e');
-      Get.snackbar('Error', 'Failed to load profile data');
+      //Get.snackbar('Error', 'Failed to load profile data');
     } finally {
       isLoading.value = false;
     }
@@ -142,7 +142,7 @@ class ProfileController extends GetxController {
         endpoint: '/api/v1/chat/direct/$id',
         headers: {"Authorization": token},
       );
-print(response);
+      print(response);
       if (response != null) {
         chatro.value = [ChatRoom.fromJson(response)];
       }

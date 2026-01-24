@@ -156,12 +156,12 @@ class HomeView extends GetView<HomeController> {
                                 'location': data.location,
                                 'time': data.formattedDate,
                                 'joinedpeople': data.joinedPeople,
-                                'eventDeatils':data.details,
-                                'hostedby':data.organizerName,
-                                'hostphotourl':data.organizerPhoto,
-                                'maxpeople':data.maxPeople,
-                                'id':data.id,
-                                'perticanpants':data.participants
+                                'eventDeatils': data.details,
+                                'hostedby': data.organizerName,
+                                'hostphotourl': data.organizerPhoto,
+                                'maxpeople': data.maxPeople,
+                                'id': data.id,
+                                'perticanpants': data.participants,
                               },
                             ),
                             child: Container(
@@ -181,11 +181,34 @@ class HomeView extends GetView<HomeController> {
                                     ),
                                     child: Stack(
                                       children: [
+                                        // Image.network(
+                                        //   data.image,
+                                        //   height: Get.height * 0.1,
+                                        //   width: double.infinity,
+                                        //   fit: BoxFit.cover,
+                                        // ),
                                         Image.network(
                                           data.image,
                                           height: Get.height * 0.1,
                                           width: double.infinity,
                                           fit: BoxFit.cover,
+                                          loadingBuilder:
+                                              (
+                                                context,
+                                                child,
+                                                loadingProgress,
+                                              ) {
+                                                if (loadingProgress == null)
+                                                  return child;
+                                                return Container(
+                                                  height: Get.height * 0.1,
+                                                  width: double.infinity,
+                                                  child: Center(
+                                                    child:
+                                                        CircularProgressIndicator(),
+                                                  ),
+                                                );
+                                              },
                                         ),
                                         Column(
                                           mainAxisAlignment:

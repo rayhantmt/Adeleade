@@ -27,11 +27,25 @@ class EventDetails extends GetView<EventDetailsController> {
               children: [
                 Stack(
                   children: [
+                    // Image.network(
+                    //   controller.image,
+                    //   height: Get.height * 0.35,
+                    //   width: double.infinity,
+                    //   fit: BoxFit.cover,
+                    // ),
                     Image.network(
                       controller.image,
                       height: Get.height * 0.35,
                       width: double.infinity,
                       fit: BoxFit.cover,
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          height: Get.height * 0.35,
+                          width: double.infinity,
+                          child: Center(child: CircularProgressIndicator()),
+                        );
+                      },
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -149,12 +163,11 @@ class EventDetails extends GetView<EventDetailsController> {
                             child: Text(
                               controller.location.toString(),
                               overflow: TextOverflow.ellipsis,
-                              
+
                               style: GoogleFonts.inter(
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16,
                                 color: Color(0xff898989),
-                                
                               ),
                             ),
                           ),
@@ -230,11 +243,28 @@ class EventDetails extends GetView<EventDetailsController> {
                             width: Get.width * 0.2,
                             child: ClipRRect(
                               borderRadius: BorderRadiusGeometry.circular(200),
+                              // child: Image.network(
+                              //   controller.hostphoto.toString(),
+                              //   fit: BoxFit.cover,
+                              //   height: Get.height * 0.1,
+                              //   width: Get.width * 0.2,
+                              // ),
                               child: Image.network(
                                 controller.hostphoto.toString(),
                                 fit: BoxFit.cover,
                                 height: Get.height * 0.1,
                                 width: Get.width * 0.2,
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
+                                      if (loadingProgress == null) return child;
+                                      return Container(
+                                        height: Get.height * 0.1,
+                                        width: Get.width * 0.2,
+                                        child: Center(
+                                          child: CircularProgressIndicator(),
+                                        ),
+                                      );
+                                    },
                               ),
                             ),
                           ),
@@ -289,15 +319,33 @@ class EventDetails extends GetView<EventDetailsController> {
                             child: ClipRRect(
                               borderRadius: BorderRadiusGeometry.circular(200),
                               child: GestureDetector(
-                                onTap: () =>
-                                    Get.toNamed(AppPages.profile_details,arguments: {
-                                      'id':data[index].id
-                                    }),
+                                onTap: () => Get.toNamed(
+                                  AppPages.profile_details,
+                                  arguments: {'id': data[index].id},
+                                ),
+                                // child: Image.network(
+                                //   data[index].photoURL,
+                                //   fit: BoxFit.cover,
+                                //   height: Get.height * 0.1,
+                                //   width: Get.width * 0.2,
+                                // ),
                                 child: Image.network(
                                   data[index].photoURL,
                                   fit: BoxFit.cover,
                                   height: Get.height * 0.1,
                                   width: Get.width * 0.2,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                        if (loadingProgress == null)
+                                          return child;
+                                        return Container(
+                                          height: Get.height * 0.1,
+                                          width: Get.width * 0.2,
+                                          child: Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                        );
+                                      },
                                 ),
                               ),
                             ),
@@ -315,15 +363,19 @@ class EventDetails extends GetView<EventDetailsController> {
                             color: AppColors.primarycolor,
                           ),
                           child: Center(
-                            child: Obx(() => controller.isLoading.value?CircularProgressIndicator(
-                              color: Colors.black,
-                            ):Text(
-                              'Join',
-                              style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 16,
-                                color: Color(0xff1E1E1E),
-                              ),)
+                            child: Obx(
+                              () => controller.isLoading.value
+                                  ? CircularProgressIndicator(
+                                      color: Colors.black,
+                                    )
+                                  : Text(
+                                      'Join',
+                                      style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16,
+                                        color: Color(0xff1E1E1E),
+                                      ),
+                                    ),
                             ),
                           ),
                         ),
