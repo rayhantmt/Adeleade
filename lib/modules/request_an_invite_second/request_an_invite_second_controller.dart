@@ -125,10 +125,10 @@ Future<void> createUser() async {
     Get.snackbar('Error', 'Please select a profile image');
     return;
   }
-  if (coverImage.value == null) {
-    Get.snackbar('Error', 'Please select a cover image');
-    return;
-  }
+  // if (coverImage.value == null) {
+  //   Get.snackbar('Error', 'Please select a cover image');
+  //   return;
+  // }
   if (selectedImages.isEmpty) {
     Get.snackbar('Error', 'Please select at least one gallery image');
     return;
@@ -170,11 +170,11 @@ Future<void> createUser() async {
         filename: profileImage.value!.name,
         contentType: MediaType('image', 'png'),
       ),
-      'cover': await MultipartFile.fromFile(
-        coverImage.value!.path,
-        filename: coverImage.value!.name,
-        contentType: MediaType('image', 'png'),
-      ),
+      // 'cover': await MultipartFile.fromFile(
+      //   coverImage.value!.path,
+      //   filename: coverImage.value!.name,
+      //   contentType: MediaType('image', 'png'),
+      // ),
       'galleryPhotos': galleryFiles, // Pass the List directly
     });
 
