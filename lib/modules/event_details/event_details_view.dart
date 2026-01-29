@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/modules/event_details/event_details_controller.dart';
@@ -14,6 +13,10 @@ class EventDetails extends GetView<EventDetailsController> {
   Widget build(BuildContext context) {
     final data = controller.ppl;
     return Scaffold(
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text(''),
+      // ),
       body: Stack(
         children: [
           Image.asset(
@@ -27,12 +30,6 @@ class EventDetails extends GetView<EventDetailsController> {
               children: [
                 Stack(
                   children: [
-                    // Image.network(
-                    //   controller.image,
-                    //   height: Get.height * 0.35,
-                    //   width: double.infinity,
-                    //   fit: BoxFit.cover,
-                    // ),
                     Image.network(
                       controller.image,
                       height: Get.height * 0.35,
@@ -52,8 +49,19 @@ class EventDetails extends GetView<EventDetailsController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20,top: 40),
+                              child: GestureDetector(
+                                onTap: () => Get.back(),
+                                child: Icon(Icons.arrow_back,
+                                size: 35,
+                                color: AppColors.primarycolor,
+                                ),
+                              ),
+                            ),
+                            Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(
                                 right: 20,
@@ -87,6 +95,8 @@ class EventDetails extends GetView<EventDetailsController> {
                             ),
                           ],
                         ),
+
+                        
                         SizedBox(height: Get.height * 0.22),
                       ],
                     ),
@@ -102,6 +112,7 @@ class EventDetails extends GetView<EventDetailsController> {
                         style: GoogleFonts.inter(
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
+                          fontSize: 28,
                         ),
                       ),
                     ],
@@ -119,9 +130,9 @@ class EventDetails extends GetView<EventDetailsController> {
                           Text(
                             'Date and time                                         ',
                             style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff898989),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                              color: Color(0xff1E1E1E),
                             ),
                           ),
                           Text(
@@ -188,8 +199,8 @@ class EventDetails extends GetView<EventDetailsController> {
                           Text(
                             'About this activity',
                             style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
                               color: Color(0xff1E1E1E),
                             ),
                           ),
@@ -240,20 +251,15 @@ class EventDetails extends GetView<EventDetailsController> {
                         children: [
                           Container(
                             height: Get.height * 0.1,
-                            width: Get.width * 0.2,
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(200),
-                              // child: Image.network(
-                              //   controller.hostphoto.toString(),
-                              //   fit: BoxFit.cover,
-                              //   height: Get.height * 0.1,
-                              //   width: Get.width * 0.2,
-                              // ),
+                            width: Get.width * 0.21,
+                            child: ClipOval(
+                              //borderRadius: BorderRadiusGeometry.circular(200),
+                             
                               child: Image.network(
                                 controller.hostphoto.toString(),
                                 fit: BoxFit.cover,
                                 height: Get.height * 0.1,
-                                width: Get.width * 0.2,
+                                width: Get.width * 0.1,
                                 loadingBuilder:
                                     (context, child, loadingProgress) {
                                       if (loadingProgress == null) return child;
@@ -270,7 +276,7 @@ class EventDetails extends GetView<EventDetailsController> {
                           ),
                           SizedBox(width: Get.width * 0.05),
                           Text(
-                            controller.host.toString(),
+                            controller.host.toString().toUpperCase(),
                             style: GoogleFonts.inter(
                               fontWeight: FontWeight.w500,
                               fontSize: 16,
@@ -314,26 +320,21 @@ class EventDetails extends GetView<EventDetailsController> {
                           scrollDirection: Axis.horizontal,
                           itemCount: data.length,
                           itemBuilder: (context, index) => Container(
-                            height: Get.height * 0.1,
+                            height: Get.height * 0.2,
                             width: Get.width * 0.2,
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(200),
+                            child: ClipOval(
+                              
                               child: GestureDetector(
                                 onTap: () => Get.toNamed(
                                   AppPages.profile_details,
                                   arguments: {'id': data[index].id},
                                 ),
-                                // child: Image.network(
-                                //   data[index].photoURL,
-                                //   fit: BoxFit.cover,
-                                //   height: Get.height * 0.1,
-                                //   width: Get.width * 0.2,
-                                // ),
                                 child: Image.network(
                                   data[index].photoURL,
+
                                   fit: BoxFit.cover,
                                   height: Get.height * 0.1,
-                                  width: Get.width * 0.2,
+                                  width: Get.width * 0.21,
                                   loadingBuilder:
                                       (context, child, loadingProgress) {
                                         if (loadingProgress == null)

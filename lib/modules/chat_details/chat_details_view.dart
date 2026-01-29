@@ -252,23 +252,21 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
       appBar: AppBar(
         title: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(999),
-              child: Image.network(
-                controller.img,
-                height: Get.height * 0.1,
-                width: Get.width * 0.1,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    height: Get.height * 0.1,
-                    width: Get.width * 0.1,
-                    color: Colors.grey[300],
-                    child: Icon(Icons.person, color: Colors.grey),
-                  );
-                },
-              ),
-            ),
+           SizedBox(
+  height: Get.width * 0.1,
+  width: Get.width * 0.1,
+  child: CircleAvatar(
+    backgroundColor: Colors.grey[300],
+    backgroundImage: controller.img.isNotEmpty
+        ? NetworkImage(controller.img)
+        : null,
+    onBackgroundImageError: (_, __) {},
+    child: controller.img.isEmpty
+        ? const Icon(Icons.person, color: Colors.grey)
+        : null,
+  ),
+),
+
             SizedBox(width: Get.width * 0.04),
             Text(controller.name.toUpperCase()),
           ],

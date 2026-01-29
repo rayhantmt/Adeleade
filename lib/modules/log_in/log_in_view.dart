@@ -38,9 +38,9 @@ class LogInView extends GetView<LogInController> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(height: Get.height * 0.02),
-                       GestureDetector(
-                        onTap: () => Get.back(),
-                        child: Icon(Icons.arrow_back, color: AppColors.primarycolor)),
+                      //  GestureDetector(
+                      //   onTap: () => Get.back(),
+                      //   child: Icon(Icons.arrow_back, color: AppColors.primarycolor)),
                       Text(
                         'Log In',
                         style: TextStyle(

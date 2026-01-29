@@ -146,7 +146,7 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         SizedBox(height: Get.height * 0.02),
                         Padding(
                           padding: EdgeInsets.only(left: Get.width * 0.1),
-                          child: Row(children: [Text('Upload 5 images')]),
+                          child: Row(children: [Text('Upload 5 images that best describes you')]),
                         ),
                         GestureDetector(
                           onTap: controller.pickImages,
