@@ -570,26 +570,29 @@ Widget _memories() {
               AppPages.profile_details,
               arguments: {'id': controller.connections[index].user.id},
             ),
-            child: Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(99),
-                  child: Image.network(
-                    controller.connections[index].user.photoURL,
-                    height: Get.height * 0.1,
-                    width: Get.width * 0.25,
-                    fit: BoxFit.cover,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: [
+                  ClipOval(
+                    //borderRadius: BorderRadiusGeometry.circular(99),
+                    child: Image.network(
+                      controller.connections[index].user.photoURL,
+                      height: Get.height * 0.1,
+                      width: Get.width * 0.215,
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                ),
-                SizedBox(width: Get.width * 0.05),
-                Text(
-                  controller.connections[index].user.name.toUpperCase(),
-                  style: GoogleFonts.inter(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 22,
+                  SizedBox(width: Get.width * 0.02),
+                  Text(
+                    controller.connections[index].user.name.toUpperCase(),
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
