@@ -23,15 +23,15 @@ class SplashScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(width: double.infinity),
-              Image.asset(AppImages.logo),
-              Text(
-                "Momentum",
-                style: GoogleFonts.robotoSlab(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 32,
-                  color: Color(0xff1E1E1E),
-                ),
-              ),
+             
+              // Text(
+              //   "Momentum",
+              //   style: GoogleFonts.robotoSlab(
+              //     fontWeight: FontWeight.w700,
+              //     fontSize: 32,
+              //     color: Color(0xff1E1E1E),
+              //   ),
+              // ),
               SizedBox(height: Get.height*0.2),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.signup),
@@ -47,7 +47,7 @@ class SplashScreen extends StatelessWidget {
                       'Request an invite',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 22,
                         color: Colors.black,
                       ),
                     ),
@@ -69,7 +69,7 @@ class SplashScreen extends StatelessWidget {
                       'Log In',
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 22,
                         color: Colors.black,
                       ),
                     ),
