@@ -127,7 +127,7 @@ class ProfileView extends StatelessWidget {
                 onTap: () => Get.toNamed(AppPages.profile_details,arguments: {
                   'id':idi
                 }),
-                child: ProfileContainer(tittle: "My Profile", image: AppImages.historyicon)),
+                child: ProfileContainer(tittle: "My Profile", image: AppImages.personlogo)),
               SizedBox(height: Get.height * 0.05),
               Text(
                 'Sequrity and Policy',
