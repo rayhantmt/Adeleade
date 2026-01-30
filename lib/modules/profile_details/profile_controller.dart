@@ -88,11 +88,11 @@ class ProfileController extends GetxController {
     }
   }
 
-  // int calculateAge() {
-  //   // You can implement age calculation based on createdAt or add a DOB field
-  //   // For now, returning a default value
-  //   return 25;
-  // }
+  int calculateAge() {
+    // You can implement age calculation based on createdAt or add a DOB field
+    // For now, returning a default value
+    return 25;
+  }
   RxBool isConnecting = false.obs;
   Future<void> sendconnectionrequest() async {
     isConnecting.value = true;

@@ -15,6 +15,7 @@ class ProfileView extends StatelessWidget {
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
     final profilephoto = storage.read('photoURL');
+    final idi=storage.read('id');
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -122,9 +123,11 @@ class ProfileView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: Get.height * 0.01),
-              // GestureDetector(
-              //   onTap: () => Get.toNamed(AppPages.eventhistory),
-              //   child: ProfileContainer(tittle: "History", image: AppImages.historyicon)),
+              GestureDetector(
+                onTap: () => Get.toNamed(AppPages.profile_details,arguments: {
+                  'id':idi
+                }),
+                child: ProfileContainer(tittle: "My Profile", image: AppImages.historyicon)),
               SizedBox(height: Get.height * 0.05),
               Text(
                 'Sequrity and Policy',

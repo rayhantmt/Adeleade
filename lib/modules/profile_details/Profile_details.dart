@@ -124,67 +124,80 @@ class ProfileDetails extends GetView<ProfileController> {
                         ],
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          // Column(
-                          //   children: [
-                          //     Text(
-                          //       'Age',
-                          //       style: GoogleFonts.inter(
-                          //         fontWeight: FontWeight.w500,
-                          //         fontSize: 16,
-                          //         color: Color(0xff898989),
-                          //       ),
-                          //     ),
-                          //     Text(
-                          //       controller.calculateAge().toString(),
-                          //       style: GoogleFonts.inter(
-                          //         fontWeight: FontWeight.w500,
-                          //         fontSize: 16,
-                          //         color: Color(0xff1E1E1E),
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-                          Column(
-                            children: [
-                              Text(
-                                'Gender',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff898989),
+                          Container(
+                            width: Get.width * 0.25,
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Age',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff898989),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                user.gender.toUpperCase(),
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff1E1E1E),
+                                Text(
+                                  controller.calculateAge().toString(),
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff1E1E1E),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          Column(
-                            children: [
-                              Text(
-                                'Nationality',
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff898989),
+                          Container(
+                            width: Get.width * 0.25,
+                            child: Column(
+                              //crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Gender',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff898989),
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                user.nationality.toUpperCase(),
-                                style: GoogleFonts.inter(
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16,
-                                  color: Color(0xff1E1E1E),
+                                Text(
+                                  user.gender.toUpperCase(),
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff1E1E1E),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ),
+                          Container(
+                            width: Get.width * 0.29,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  'Nationality',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff898989),
+                                  ),
+                                ),
+                                Text(
+                                  user.nationality.toUpperCase(),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16,
+                                    color: Color(0xff1E1E1E),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -223,10 +236,8 @@ class ProfileDetails extends GetView<ProfileController> {
                               arguments: {
                                 'name': user.name,
                                 'image': user.photoURL,
-                                'roomId': controller.
-                                chatro.first.id,
-                                'roomType':
-                                    controller.chatro.first.roomType,
+                                'roomId': controller.chatro.first.id,
+                                'roomType': controller.chatro.first.roomType,
                               },
                             ),
                             child: Container(
