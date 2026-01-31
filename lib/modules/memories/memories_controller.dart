@@ -68,7 +68,7 @@ class MemoriesController extends GetxController {
         'details': detailscontroller.text.toString(),
         //'maxParticipants': maxParticipantscontroller.text.toString(),
         'maxParticipants': selectedParticipants.toString(),
-        'geoLocation': '23.7272,90.4106',
+        'geoLocation': '$latitude,$longitude',
         'eventImage': await MultipartFile.fromFile(
           eventImage.value!.path,
           filename: eventImage.value!.name,

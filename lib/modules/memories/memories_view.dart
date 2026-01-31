@@ -206,7 +206,6 @@ Widget _createEvent() {
                 items: controller.participantsList
                     .map(
                       (participants) => DropdownMenuItem<int>(
-                        
                         value: participants,
                         child: Text(
                           participants.toString(),
@@ -323,14 +322,7 @@ Widget _createEvent() {
           ),
         ),
         SizedBox(height: Get.height * 0.02),
-        GestureDetector(
-          onTap: () {
-            controller.getCurrentLocation();
-            print(controller.latitude);
-            print(controller.longitude);
 
-          },
-          child: Icon(Icons.location_city)),
         Container(
           height: Get.height * 0.11,
           width: double.infinity,
@@ -360,7 +352,30 @@ Widget _createEvent() {
             ),
           ),
         ),
-        SizedBox(height: Get.height * 0.05),
+        SizedBox(height: Get.height * 0.03),
+        GestureDetector(
+          onTap: () {
+            controller.getCurrentLocation();
+            print(controller.latitude);
+            print(controller.longitude);
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Tap here to upload your location info',
+
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16,
+                  color: Colors.black,
+                ),
+              ),
+              Icon(Icons.location_city),
+            ],
+          ),
+        ),
+        SizedBox(height: Get.height * 0.02),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
