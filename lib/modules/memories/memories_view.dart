@@ -323,6 +323,14 @@ Widget _createEvent() {
           ),
         ),
         SizedBox(height: Get.height * 0.02),
+        GestureDetector(
+          onTap: () {
+            controller.getCurrentLocation();
+            print(controller.latitude);
+            print(controller.longitude);
+
+          },
+          child: Icon(Icons.location_city)),
         Container(
           height: Get.height * 0.11,
           width: double.infinity,
