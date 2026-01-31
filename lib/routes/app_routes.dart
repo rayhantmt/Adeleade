@@ -24,6 +24,7 @@ import 'package:mementum/modules/request_an_invite/requesst_an_invite_binding.da
 import 'package:mementum/modules/request_an_invite/request_an_invite_view.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second_binding.dart';
+import 'package:mementum/modules/subscription/subscription_binding.dart';
 import 'package:mementum/modules/subscriptions_screen/subscription_screen_view.dart';
 import 'package:mementum/modules/unlock_momentum/unlock_momentum_view.dart';
 import 'package:mementum/modules/update_info/update_info.dart';
@@ -111,6 +112,11 @@ class AppRoutes {
       name: AppPages.coonectionRequest,
       page: () => ConnectionRequestsView(),
       binding: ConnectionRequestBinding(),
+    ),
+    GetPage(
+      name: AppPages.subscription,
+      page: () => SubscriptionScreenView(),
+      binding: SubscriptionBinding(),
     ),
   ];
 }

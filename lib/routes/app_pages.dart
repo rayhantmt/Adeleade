@@ -20,4 +20,5 @@ class AppPages {
   static const String chatdetails='/chatdetails';
   static const String profile_details='/profile_details';
   static const String coonectionRequest='/connectionRequest';
+  static const String subscription='/subscription';
 }
