@@ -1,211 +1,211 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mementum/utils/app_colors.dart';
-import 'package:mementum/utils/app_images.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:google_fonts/google_fonts.dart';
+// import 'package:mementum/utils/app_colors.dart';
+// import 'package:mementum/utils/app_images.dart';
 
-class SubscriptionScreenView extends StatelessWidget {
-  const SubscriptionScreenView({super.key});
+// class SubscriptionScreenView extends StatelessWidget {
+//   const SubscriptionScreenView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Image.asset(
-            AppImages.background,
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: Get.height * 0.07,
-                    child: Stack(
-                      children: [
-                        Align(
-                          alignment: AlignmentGeometry.centerLeft,
-                          child: GestureDetector(
-                            onTap: () => Get.back(),
-                            child: Image.asset(
-                              AppImages.back_icon,
-                              height: Get.height * 0.07,
-                              width: Get.height * 0.07,
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Text(
-                            'Subscription',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height * 0.07),
-                  Row(
-                    children: [
-                      SizedBox(width: Get.width * 0.15),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Upgrade To Premium',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 24,
-                              color: Colors.black,
-                            ),
-                          ),
-                          SizedBox(height: Get.height*0.012,),
-                          Row(
-                            children: [
-                              Image.asset(
-                                AppImages.subscription_screen_img,
-                                height: Get.height * 0.03,
-                                width: Get.height * 0.03,
-                              ),
-                              SizedBox(width: Get.width * 0.01),
-                              Text('Unlimited Memories Created'),
-                            ],
-                          ),
-                          SizedBox(height: Get.height*0.008,),
-                          Row(
-                            children: [
-                              Image.asset(
-                                AppImages.subscription_screen_img,
-                                height: Get.height * 0.03,
-                                width: Get.height * 0.03,
-                              ),
-                              SizedBox(width: Get.width * 0.01),
-                              Text('Exclusive Members'),
-                            ],
-                          ),
-                          SizedBox(height: Get.height * 0.02),
-                        ],
-                      ),
-                    ],
-                  ),
-                  Container(
-                    height: Get.height * 0.1,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Monthly',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
-                            color: Color(0xff1E1E1E),
-                          ),
-                        ),
-                        Text(
-                          '49/Month',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height*0.02,),
-                  Container(
-                    height: Get.height * 0.1,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          '6 Months',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
-                            color: Color(0xff1E1E1E),
-                          ),
-                        ),
-                        Text(
-                          '32/Month',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height*0.02,),
-                  Container(
-                    height: Get.height * 0.1,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(width: 1, color: Color(0xffDACBA4)),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text(
-                          'Yearly',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 22,
-                            color: Color(0xff1E1E1E),
-                          ),
-                        ),
-                        Text(
-                          '28/Month',
-                          style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height*0.07,),
-                  Container(
-                    height: Get.height*0.07,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(99),
-                      color: AppColors.primarycolor,
-                    ),
-                    child: Center(
-                      child: Text('Contine',
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Color(0xff1E1E1E)
-                      ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Stack(
+//         children: [
+//           Image.asset(
+//             AppImages.background,
+//             height: double.infinity,
+//             width: double.infinity,
+//             fit: BoxFit.cover,
+//           ),
+//           SafeArea(
+//             child: Padding(
+//               padding: const EdgeInsets.symmetric(horizontal: 20),
+//               child: Column(
+//                 children: [
+//                   SizedBox(
+//                     height: Get.height * 0.07,
+//                     child: Stack(
+//                       children: [
+//                         Align(
+//                           alignment: AlignmentGeometry.centerLeft,
+//                           child: GestureDetector(
+//                             onTap: () => Get.back(),
+//                             child: Image.asset(
+//                               AppImages.back_icon,
+//                               height: Get.height * 0.07,
+//                               width: Get.height * 0.07,
+//                             ),
+//                           ),
+//                         ),
+//                         Center(
+//                           child: Text(
+//                             'Subscription',
+//                             style: GoogleFonts.inter(
+//                               fontWeight: FontWeight.w500,
+//                               fontSize: 18,
+//                               color: Colors.black,
+//                             ),
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(height: Get.height * 0.07),
+//                   Row(
+//                     children: [
+//                       SizedBox(width: Get.width * 0.15),
+//                       Column(
+//                         mainAxisAlignment: MainAxisAlignment.start,
+//                         crossAxisAlignment: CrossAxisAlignment.start,
+//                         children: [
+//                           Text(
+//                             'Upgrade To Premium',
+//                             style: GoogleFonts.inter(
+//                               fontWeight: FontWeight.w500,
+//                               fontSize: 24,
+//                               color: Colors.black,
+//                             ),
+//                           ),
+//                           SizedBox(height: Get.height*0.012,),
+//                           Row(
+//                             children: [
+//                               Image.asset(
+//                                 AppImages.subscription_screen_img,
+//                                 height: Get.height * 0.03,
+//                                 width: Get.height * 0.03,
+//                               ),
+//                               SizedBox(width: Get.width * 0.01),
+//                               Text('Unlimited Memories Created'),
+//                             ],
+//                           ),
+//                           SizedBox(height: Get.height*0.008,),
+//                           Row(
+//                             children: [
+//                               Image.asset(
+//                                 AppImages.subscription_screen_img,
+//                                 height: Get.height * 0.03,
+//                                 width: Get.height * 0.03,
+//                               ),
+//                               SizedBox(width: Get.width * 0.01),
+//                               Text('Exclusive Members'),
+//                             ],
+//                           ),
+//                           SizedBox(height: Get.height * 0.02),
+//                         ],
+//                       ),
+//                     ],
+//                   ),
+//                   Container(
+//                     height: Get.height * 0.1,
+//                     width: double.infinity,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(8),
+//                       border: Border.all(width: 1, color: Color(0xffDACBA4)),
+//                     ),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+//                         Text(
+//                           'Monthly',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 22,
+//                             color: Color(0xff1E1E1E),
+//                           ),
+//                         ),
+//                         Text(
+//                           '49/Month',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 20,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(height: Get.height*0.02,),
+//                   Container(
+//                     height: Get.height * 0.1,
+//                     width: double.infinity,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(8),
+//                       border: Border.all(width: 1, color: Color(0xffDACBA4)),
+//                     ),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+//                         Text(
+//                           '6 Months',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 22,
+//                             color: Color(0xff1E1E1E),
+//                           ),
+//                         ),
+//                         Text(
+//                           '32/Month',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 20,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(height: Get.height*0.02,),
+//                   Container(
+//                     height: Get.height * 0.1,
+//                     width: double.infinity,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(8),
+//                       border: Border.all(width: 1, color: Color(0xffDACBA4)),
+//                     ),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                       children: [
+//                         Text(
+//                           'Yearly',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 22,
+//                             color: Color(0xff1E1E1E),
+//                           ),
+//                         ),
+//                         Text(
+//                           '28/Month',
+//                           style: GoogleFonts.inter(
+//                             fontWeight: FontWeight.w500,
+//                             fontSize: 20,
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(height: Get.height*0.07,),
+//                   Container(
+//                     height: Get.height*0.07,
+//                     width: double.infinity,
+//                     decoration: BoxDecoration(
+//                       borderRadius: BorderRadius.circular(99),
+//                       color: AppColors.primarycolor,
+//                     ),
+//                     child: Center(
+//                       child: Text('Contine',
+//                       style: GoogleFonts.inter(
+//                         fontWeight: FontWeight.w600,
+//                         fontSize: 18,
+//                         color: Color(0xff1E1E1E)
+//                       ),
+//                       ),
+//                     ),
+//                   )
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }

@@ -25,7 +25,7 @@ import 'package:mementum/modules/request_an_invite/request_an_invite_view.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second.dart';
 import 'package:mementum/modules/request_an_invite_second/request_an_invite_second_binding.dart';
 import 'package:mementum/modules/subscription/subscription_binding.dart';
-import 'package:mementum/modules/subscriptions_screen/subscription_screen_view.dart';
+import 'package:mementum/modules/subscription/subscription_view.dart';
 import 'package:mementum/modules/unlock_momentum/unlock_momentum_view.dart';
 import 'package:mementum/modules/update_info/update_info.dart';
 import 'package:mementum/modules/update_info/update_info_binding.dart';
@@ -87,10 +87,7 @@ class AppRoutes {
       binding: UpdateInfoBinding(),
     ),
     GetPage(name: AppPages.notification, page: () => NotificationView()),
-    GetPage(
-      name: AppPages.subscriptionicon,
-      page: () => SubscriptionScreenView(),
-    ),
+    GetPage(name: AppPages.subscriptionicon, page: () => SubscriptionView()),
     GetPage(name: AppPages.privacypolicy, page: () => PrivacyAndPolicyView()),
     GetPage(name: AppPages.eventhistory, page: () => EventHistory()),
     GetPage(
@@ -115,7 +112,7 @@ class AppRoutes {
     ),
     GetPage(
       name: AppPages.subscription,
-      page: () => SubscriptionScreenView(),
+      page: () => SubscriptionView(),
       binding: SubscriptionBinding(),
     ),
   ];

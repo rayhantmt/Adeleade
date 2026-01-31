@@ -321,8 +321,8 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                               'age': controller.selectedAge.toString(),
                               'profession':
                                   controller.professioncontroller.text,
-                              'nationality':
-                                  controller.selectedCountry.toString(),
+                              'nationality': controller.selectedCountry
+                                  .toString(),
                               'instagram': controller.instagramcontroller.text,
                               'linkedin': controller.linkedincontroller.text,
                             },
@@ -337,6 +337,28 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                             child: Center(
                               child: Text(
                                 'Next',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: Get.height * 0.02),
+                        GestureDetector(
+                          onTap: () => Get.back(),
+                          child: Container(
+                            height: Get.height * 0.03,
+                            width: Get.width * 0.4,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(99),
+                              color: AppColors.primarycolor,
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Back',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,

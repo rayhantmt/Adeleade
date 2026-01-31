@@ -6,6 +6,7 @@ import 'package:mementum/api/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/routes/app_pages.dart';
 
 class RequestAnInviteSecondController extends GetxController {
   RxBool isObscured = false.obs;
@@ -186,6 +187,7 @@ Future<void> createUser() async {
 
     print('✅ User Created: ${response.data}');
     Get.snackbar('Success', 'User Created Successfully');
+    Get.toNamed(AppPages.subscription);
     
   } on BadRequestException catch (e) {
     // Caught by our custom DioClient logic
