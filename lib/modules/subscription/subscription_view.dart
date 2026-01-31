@@ -38,6 +38,14 @@ class SubscriptionView extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       fontSize: 26
                     ),
+                    ),
+                    SizedBox(height: Get.height*0.04,),
+                    Text("Join Momentum's founding circle\n         of exceptional people",
+                    
+                    style: GoogleFonts.inter( 
+                      fontWeight: FontWeight.w400,
+                      fontSize: 16
+                    ),
                     )
                   ],
                 ),
