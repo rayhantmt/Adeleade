@@ -167,6 +167,7 @@ class _MapsViewState extends State<MapsView> {
       markerId: MarkerId('food_place'),
       position: LatLng(23.7962, 90.3874),
       infoWindow: InfoWindow(title: 'FoodPlace Restaurant', snippet: 'Local Eatery'),
+      
     ),
   };
 
