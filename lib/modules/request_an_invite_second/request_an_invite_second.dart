@@ -52,9 +52,16 @@ class RequestAnInviteSecond extends GetView<RequestAnInviteSecondController> {
                         SizedBox(height: Get.height * 0.02),
                         GestureDetector(
                           onTap: () => Get.back(),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: AppColors.primarycolor,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_back,
+                                  color: AppColors.primarycolor,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         Text(
