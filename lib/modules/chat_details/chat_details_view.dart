@@ -55,7 +55,7 @@
 //                 itemCount: controller.msgs.length,
 //                 itemBuilder: (context, index) {
 //                   final message = controller.msgs[index];
-                  
+
 //                   return Padding(
 //                     padding: const EdgeInsets.only(left: 20, right: 20),
 //                     child: Column(
@@ -101,7 +101,7 @@
 //                       width: Get.width * 0.1,
 //                     ),
 //                   ),
-                  
+
 //                   // Text Input
 //                   Container(
 //                     height: Get.height * 0.1,
@@ -120,7 +120,7 @@
 //                       ),
 //                     ),
 //                   ),
-                  
+
 //                   // Camera Button
 //                   GestureDetector(
 //                     onTap: () => controller.pickAndSendImage(ImageSource.camera),
@@ -130,12 +130,12 @@
 //                       width: Get.width * 0.08,
 //                     ),
 //                   ),
-                  
+
 //                   // Microphone Button (Press and Hold)
 //                   Obx(() => GestureDetector(
 //                     onLongPressStart: (_) => controller.startRecording(),
 //                     onLongPressEnd: (_) => controller.stopRecordingAndSend(),
-//                     onTap: controller.isRecording.value 
+//                     onTap: controller.isRecording.value
 //                         ? controller.cancelRecording
 //                         : controller.sendMessage,
 //                     child: controller.isSending.value
@@ -174,12 +174,12 @@
 //                 errorWidget: (context, url, error) => Icon(Icons.error),
 //               )
 //             : Text(message.msg, style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12));
-            
+
 //       case 'audio':
 //         return message.mediaURL != null
 //             ? _AudioPlayer(audioUrl: message.mediaURL!)
 //             : Text(message.msg, style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12));
-            
+
 //       default:
 //         return Text(
 //           message.msg,
@@ -192,7 +192,7 @@
 // // Simple Audio Player Widget
 // class _AudioPlayer extends StatefulWidget {
 //   final String audioUrl;
-  
+
 //   const _AudioPlayer({required this.audioUrl});
 
 //   @override
@@ -252,20 +252,20 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
       appBar: AppBar(
         title: Row(
           children: [
-           SizedBox(
-  height: Get.width * 0.1,
-  width: Get.width * 0.1,
-  child: CircleAvatar(
-    backgroundColor: Colors.grey[300],
-    backgroundImage: controller.img.isNotEmpty
-        ? NetworkImage(controller.img)
-        : null,
-    onBackgroundImageError: (_, __) {},
-    child: controller.img.isEmpty
-        ? const Icon(Icons.person, color: Colors.grey)
-        : null,
-  ),
-),
+            SizedBox(
+              height: Get.width * 0.1,
+              width: Get.width * 0.1,
+              child: CircleAvatar(
+                backgroundColor: Colors.grey[300],
+                backgroundImage: controller.img.isNotEmpty
+                    ? NetworkImage(controller.img)
+                    : null,
+                onBackgroundImageError: (_, __) {},
+                child: controller.img.isEmpty
+                    ? const Icon(Icons.person, color: Colors.grey)
+                    : null,
+              ),
+            ),
 
             SizedBox(width: Get.width * 0.04),
             Text(controller.name.toUpperCase()),
@@ -297,9 +297,13 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                 itemCount: controller.msgs.length,
                 itemBuilder: (context, index) {
                   final message = controller.msgs[index];
-                  
+
                   return Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                    padding: const EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                      bottom: 10,
+                    ),
                     child: Column(
                       crossAxisAlignment: message.isme == false
                           ? CrossAxisAlignment.start
@@ -308,9 +312,9 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                         Text(
                           message.name,
                           style: GoogleFonts.inter(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                            color: Color(0xff000E08),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            color: Colors.black,
                           ),
                         ),
                         Padding(
@@ -333,17 +337,18 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
             child: Padding(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   // Attach File Button
-                  GestureDetector(
-                    onTap: controller.showImageSourceOptions,
-                    child: Image.asset(
-                      AppImages.attachfile_logo,
-                      height: Get.height * 0.05,
-                      width: Get.width * 0.1,
-                    ),
-                  ),
-                  
+                  // GestureDetector(
+                  //   onTap: controller.showImageSourceOptions,
+                  //   child: Image.asset(
+                  //     AppImages.attachfile_logo,
+                  //     height: Get.height * 0.05,
+                  //     width: Get.width * 0.1,
+                  //   ),
+                  // ),
+
                   // Text Input
                   Container(
                     height: Get.height * 0.1,
@@ -352,8 +357,9 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                       controller: controller.messageController,
                       onChanged: controller.handleInputChange,
                       decoration: InputDecoration(
+                        hint: Center(child: Text('Write your message')),
                         border: InputBorder.none,
-                        hintText: 'Write your message',
+                        //hintText: 'Write your message',
                         // suffixIcon: Image.asset(
                         //   AppImages.message_input_logo,
                         //   height: Get.height * 0.03,
@@ -362,57 +368,77 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
                       ),
                     ),
                   ),
-                  
-                  // Camera Button
-                  GestureDetector(
-                    onTap: () => controller.pickAndSendImage(ImageSource.gallery),
-                    child: Image.asset(
-                      AppImages.cameralogo,
-                      height: Get.height * 0.05,
-                      width: Get.width * 0.08,
-                    ),
-                  ),
 
-                  // Audio/Microphone Button (Long Press to Record)
-                  Obx(() => GestureDetector(
-                    onLongPress: controller.startRecording,
-                    onLongPressUp: controller.stopRecordingAndSend,
-                    child: Image.asset(
-                      AppImages.microphone_logo,
-                      height: Get.height * 0.035,
-                      width: Get.width * 0.08,
-                      color: controller.isRecording.value ? Colors.red : null,
-                    ),
-                  )),
-                  
-                  // Send Button
-                  Obx(() => GestureDetector(
-                    onTap: () {
-                      if (controller.messageController.text.trim().isNotEmpty) {
-                        controller.sendMessage();
-                      }
-                    },
-                    child: Container(
-                      height: Get.height * 0.04,
-                      width: Get.width * 0.09,
-                      decoration: BoxDecoration(
-                        color: AppColors.primarycolor,
-                        borderRadius: BorderRadius.circular(8),
+                  // Camera Button
+                  Row(
+                    children: [
+                      GestureDetector(
+                        onTap: () =>
+                            controller.pickAndSendImage(ImageSource.gallery),
+                        child: Image.asset(
+                          AppImages.cameralogo,
+                          height: Get.height * 0.05,
+                          width: Get.width * 0.08,
+                        ),
                       ),
-                      child: controller.isSending.value
-                          ? Center(
-                              child: SizedBox(
-                                height: Get.height * 0.025,
-                                width: Get.width * 0.05,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                ),
-                              ),
-                            )
-                          : Icon(Icons.send, color: Colors.white, size: 18),
-                    ),
-                  )),
+
+                      // Audio/Microphone Button (Long Press to Record)
+                      Obx(
+                        () => GestureDetector(
+                          onLongPress: controller.startRecording,
+                          onLongPressUp: controller.stopRecordingAndSend,
+                          child: Image.asset(
+                            AppImages.microphone_logo,
+                            height: Get.height * 0.035,
+                            width: Get.width * 0.08,
+                            color: controller.isRecording.value
+                                ? Colors.red
+                                : null,
+                          ),
+                        ),
+                      ),
+
+                      // Send Button
+                      Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            if (controller.messageController.text
+                                .trim()
+                                .isNotEmpty) {
+                              controller.sendMessage();
+                            }
+                          },
+                          child: Container(
+                            height: Get.height * 0.04,
+                            width: Get.width * 0.09,
+                            decoration: BoxDecoration(
+                              color: AppColors.primarycolor,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: controller.isSending.value
+                                ? Center(
+                                    child: SizedBox(
+                                      height: Get.height * 0.025,
+                                      width: Get.width * 0.05,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                              Colors.white,
+                                            ),
+                                      ),
+                                    ),
+                                  )
+                                : Icon(
+                                    Icons.send,
+                                    color: Colors.white,
+                                    size: 18,
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -445,21 +471,34 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
               )
             : Text(
                 message.msg,
-                style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12),
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                ),
               );
-            
+
       case 'audio':
         return message.msg != null
             ? _AudioPlayer(audioUrl: message.msg!)
             : Text(
                 message.msg,
-                style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12),
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 12,
+                ),
               );
-            
+
       default:
-        return Text(
-          message.msg,
-          style: GoogleFonts.inter(fontWeight: FontWeight.w400, fontSize: 12),
+        return Container(
+          height: Get.height * 0.035,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(14),
+            color: Colors.blueGrey.shade100.withOpacity(0.7),
+          ),
+          child: Text(
+            message.msg,
+            style: GoogleFonts.inter(fontWeight: FontWeight.w500, fontSize: 18),
+          ),
         );
     }
   }
@@ -468,7 +507,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
 // Audio Player Widget
 class _AudioPlayer extends StatefulWidget {
   final String audioUrl;
-  
+
   const _AudioPlayer({required this.audioUrl});
 
   @override
@@ -525,7 +564,11 @@ class _AudioPlayerState extends State<_AudioPlayer> {
       }
     } catch (e) {
       print('Error playing audio: $e');
-      Get.snackbar('Error', 'Failed to play audio', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to play audio',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
