@@ -40,13 +40,20 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(height: Get.height * 0.02),
-                        // GestureDetector(
-                        //   onTap: () => Get.back(),
-                        //   child: Icon(
-                        //     Icons.arrow_back,
-                        //     color: AppColors.primarycolor,
-                        //   ),
-                        // ),
+                        GestureDetector(
+                          onTap: () => Get.back(),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.arrow_back,
+                                  color: AppColors.primarycolor,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                         Text(
                           'Request an invite',
                           style: TextStyle(
@@ -347,27 +354,27 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                           ),
                         ),
                         SizedBox(height: Get.height * 0.02),
-                        GestureDetector(
-                          onTap: () => Get.back(),
-                          child: Container(
-                            height: Get.height * 0.03,
-                            width: Get.width * 0.4,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(99),
-                              color: AppColors.primarycolor,
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Back',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () => Get.back(),
+                        //   child: Container(
+                        //     height: Get.height * 0.03,
+                        //     width: Get.width * 0.4,
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(99),
+                        //       color: AppColors.primarycolor,
+                        //     ),
+                        //     child: Center(
+                        //       child: Text(
+                        //         'Back',
+                        //         style: TextStyle(
+                        //           fontWeight: FontWeight.w600,
+                        //           fontSize: 14,
+                        //           color: Colors.black,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

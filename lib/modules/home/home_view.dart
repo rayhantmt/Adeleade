@@ -42,10 +42,10 @@ class HomeView extends GetView<HomeController> {
                     ),
                     Text(
                       'Momentum',
-                      style: GoogleFonts.portLligatSans(
+                      style: GoogleFonts.passionOne(
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
-                        fontSize: 24,
+                        fontSize: 28,
                       ),
                     ),
                     GestureDetector(
