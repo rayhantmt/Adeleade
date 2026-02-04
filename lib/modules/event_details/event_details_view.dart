@@ -254,8 +254,8 @@ class EventDetails extends GetView<EventDetailsController> {
                         child: Row(
                           children: [
                             Container(
-                              height: Get.height * 0.1,
-                              width: Get.width * 0.21,
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.11,
                               child: ClipOval(
                                 //borderRadius: BorderRadiusGeometry.circular(200),
                                
@@ -320,15 +320,17 @@ class EventDetails extends GetView<EventDetailsController> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: Get.height * 0.1,
+                        height: Get.height * 0.07,
+                        //this height to adjust the circle size
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: data.length,
                           itemBuilder: (context, index) => Container(
-                            height: Get.height * 0.2,
-                            width: Get.width * 0.2,
+                            //height: Get.height * 0.01,
+                            //this width to adjust the circle size
+                            width: Get.width * 0.15,
                             child: ClipOval(
-                              
+                            
                               child: GestureDetector(
                                 onTap: () => Get.toNamed(
                                   AppPages.profile_details,
@@ -338,8 +340,8 @@ class EventDetails extends GetView<EventDetailsController> {
                                   data[index].photoURL,
 
                                   fit: BoxFit.cover,
-                                  height: Get.height * 0.1,
-                                  width: Get.width * 0.21,
+                                  // height: Get.height * 0.05,
+                                  // width: Get.width * 0.11,
                                   loadingBuilder:
                                       (context, child, loadingProgress) {
                                         if (loadingProgress == null)
