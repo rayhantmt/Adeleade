@@ -19,6 +19,7 @@ class EventDetailsController extends GetxController {
   late String maxpeople;
   late String joinedPeople;
   late String id;
+  late String hostid;
   late List<Participant> ppl;
   @override
   void onInit() {
@@ -35,6 +36,7 @@ class EventDetailsController extends GetxController {
     maxpeople = arg['maxpeople'];
     id = arg['id'];
     ppl = arg['perticanpants'];
+    hostid=arg['hostid'];
   }
 
   

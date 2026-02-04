@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
                     ),
                     Text(
                       'Momentum',
-                      style: GoogleFonts.robotoSlab(
+                      style: GoogleFonts.portLligatSans(
                         fontWeight: FontWeight.w700,
                         color: Colors.black,
                         fontSize: 24,
@@ -162,6 +162,7 @@ class HomeView extends GetView<HomeController> {
                                 'maxpeople': data.maxPeople,
                                 'id': data.id,
                                 'perticanpants': data.participants,
+                                'hostid':data.organizerId,
                               },
                             ),
                             child: Container(

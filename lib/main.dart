@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      //home: SplashScreen(),
-      home: SubscriptionView(),
+      home: SplashScreen(),
+      //home: SubscriptionView(),
       getPages: AppRoutes.pages,
     );
   }

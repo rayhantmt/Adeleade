@@ -247,43 +247,48 @@ class EventDetails extends GetView<EventDetailsController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: Get.height * 0.1,
-                            width: Get.width * 0.21,
-                            child: ClipOval(
-                              //borderRadius: BorderRadiusGeometry.circular(200),
-                             
-                              child: Image.network(
-                                controller.hostphoto.toString(),
-                                fit: BoxFit.cover,
-                                height: Get.height * 0.1,
-                                width: Get.width * 0.1,
-                                loadingBuilder:
-                                    (context, child, loadingProgress) {
-                                      if (loadingProgress == null) return child;
-                                      return Container(
-                                        height: Get.height * 0.1,
-                                        width: Get.width * 0.2,
-                                        child: Center(
-                                          child: CircularProgressIndicator(),
-                                        ),
-                                      );
-                                    },
+                      GestureDetector(
+                        onTap: () =>  Get.toNamed(AppPages.profile_details,arguments: {
+                          'id':controller.hostid
+                        }),
+                        child: Row(
+                          children: [
+                            Container(
+                              height: Get.height * 0.1,
+                              width: Get.width * 0.21,
+                              child: ClipOval(
+                                //borderRadius: BorderRadiusGeometry.circular(200),
+                               
+                                child: Image.network(
+                                  controller.hostphoto.toString(),
+                                  fit: BoxFit.cover,
+                                  height: Get.height * 0.1,
+                                  width: Get.width * 0.1,
+                                  loadingBuilder:
+                                      (context, child, loadingProgress) {
+                                        if (loadingProgress == null) return child;
+                                        return Container(
+                                          height: Get.height * 0.1,
+                                          width: Get.width * 0.2,
+                                          child: Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                        );
+                                      },
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(width: Get.width * 0.05),
-                          Text(
-                            controller.host.toString().toUpperCase(),
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Color(0xff1E1E1E),
+                            SizedBox(width: Get.width * 0.05),
+                            Text(
+                              controller.host.toString().toUpperCase(),
+                              style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Color(0xff1E1E1E),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ],
                   ),
