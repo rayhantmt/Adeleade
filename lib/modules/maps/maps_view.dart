@@ -138,6 +138,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:mementum/modules/maps/maps_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
 class MapsView extends StatefulWidget {
@@ -145,12 +146,16 @@ class MapsView extends StatefulWidget {
 
   @override
   State<MapsView> createState() => _MapsViewState();
-}
+}  final locatecontroller=Get.find<MapsController>();
+
 
 class _MapsViewState extends State<MapsView> {
+  
+
   late GoogleMapController mapController;
-  LatLng _center = const LatLng(23.7947, 90.3870); // Default center
-  bool _isLoading = true;
+  
+  LatLng _center =  LatLng(locatecontroller.latitude, locatecontroller.longitude); // Default center
+  bool _isLoading = false;
   
   final Set<Marker> _markers = {
     const Marker(
@@ -167,14 +172,15 @@ class _MapsViewState extends State<MapsView> {
       markerId: MarkerId('food_place'),
       position: LatLng(23.7962, 90.3874),
       infoWindow: InfoWindow(title: 'FoodPlace Restaurant', snippet: 'Local Eatery'),
-      
+
     ),
   };
 
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    //_getCurrentLocation();
+    locatecontroller.getCurrentLocation();
   }
 
   Future<void> _getCurrentLocation() async {
