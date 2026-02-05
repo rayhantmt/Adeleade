@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -56,9 +55,18 @@ class HomeController extends GetxController {
     markers.value = events.map((event) {
       // 1. Parse your geoLocation string "lat,long" or whatever your format is
       // Assuming geoLocation is "26.0247, 88.4702"
-      List<String> coords = event.geoLocation.split(',');
-      double lat = double.tryParse(coords[0].trim()) ?? 0.0;
-      double lng = double.tryParse(coords[1].trim()) ?? 0.0;
+      final coords = event.geoLocation.split(',');
+
+      // Using tryParse with a fallback ensures NO error ever crashes this loop
+      final double lat = coords.length > 0
+          ? double.tryParse(coords[0]) ?? 0.0
+          : 0.0;
+      final double lng = coords.length > 1
+          ? double.tryParse(coords[1]) ?? 0.0
+          : 0.0;
+      print(lat);
+      print(event.title);
+      print(lng);
 
       return Marker(
         markerId: MarkerId(event.id), // Use the unique API ID
@@ -92,6 +100,7 @@ class HomeController extends GetxController {
                     ),
                     Image.network(
                       event.image,
+                      height: Get.height*0.3,
                       // This manages the loading state
                       loadingBuilder:
                           (
@@ -146,7 +155,9 @@ class HomeController extends GetxController {
                       ),
                       child: Text(
                         'Details',
+                        
                         style: TextStyle(
+                          decoration: TextDecoration.underline,
                           fontWeight: FontWeight.w600,
                           fontSize: 18,
                         ),
@@ -224,5 +235,6 @@ class HomeController extends GetxController {
   // Refresh events
   Future<void> refreshEvents() async {
     await fetchEvents();
+    updateMarkers();
   }
 }
