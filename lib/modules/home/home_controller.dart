@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -7,6 +9,7 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/modules/home/home_model.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/services/socket_service.dart';
+import 'package:mementum/utils/app_colors.dart';
 
 class HomeController extends GetxController {
   var ctgry = [
@@ -45,47 +48,120 @@ class HomeController extends GetxController {
     super.onInit();
     fetchEvents();
   }
-// Inside your Controller (e.g., HomeController)
-final RxSet<Marker> markers = <Marker>{}.obs;
 
-void updateMarkers() {
-  markers.value = events.map((event) {
-    // 1. Parse your geoLocation string "lat,long" or whatever your format is
-    // Assuming geoLocation is "26.0247, 88.4702"
-    List<String> coords = event.geoLocation.split(',');
-    double lat = double.tryParse(coords[0].trim()) ?? 0.0;
-    double lng = double.tryParse(coords[1].trim()) ?? 0.0;
+  // Inside your Controller (e.g., HomeController)
+  final RxSet<Marker> markers = <Marker>{}.obs;
 
-    return Marker(
-      markerId: MarkerId(event.id), // Use the unique API ID
-      position: LatLng(lat, lng),
-      infoWindow: InfoWindow(
-        title: event.title,
-        snippet: '${event.joinedPeople}/${event.maxPeople} joined',
-        onTap: () {
-          // 2. Navigation logic identical to your ListView
-          Get.toNamed(
-            AppPages.eventdetails,
-            arguments: {
-              'image': event.image,
-              'tittle': event.title,
-              'location': event.location,
-              'time': event.formattedDate,
-              'joinedpeople': event.joinedPeople,
-              'eventDeatils': event.details,
-              'hostedby': event.organizerName,
-              'hostphotourl': event.organizerPhoto,
-              'maxpeople': event.maxPeople,
-              'id': event.id,
-              'perticanpants': event.participants,
-              'hostid': event.organizerId,
-            },
-          );
-        },
-      ),
-    );
-  }).toSet();
-}
+  void updateMarkers() {
+    markers.value = events.map((event) {
+      // 1. Parse your geoLocation string "lat,long" or whatever your format is
+      // Assuming geoLocation is "26.0247, 88.4702"
+      List<String> coords = event.geoLocation.split(',');
+      double lat = double.tryParse(coords[0].trim()) ?? 0.0;
+      double lng = double.tryParse(coords[1].trim()) ?? 0.0;
+
+      return Marker(
+        markerId: MarkerId(event.id), // Use the unique API ID
+        position: LatLng(lat, lng),
+        infoWindow: InfoWindow(
+          title: event.title,
+          snippet: '${event.joinedPeople}/${event.maxPeople} joined',
+          onTap: () {
+            // 2. Navigation logic identical to your ListView
+            Get.bottomSheet(
+              Container(
+                width: double.infinity,
+                height: Get.height * 0.45,
+                color: AppColors.primarycolor,
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      event.title,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22,
+                      ),
+                    ),
+                    Text(
+                      event.details,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                      ),
+                    ),
+                    Image.network(
+                      event.image,
+                      // This manages the loading state
+                      loadingBuilder:
+                          (
+                            BuildContext context,
+                            Widget child,
+                            ImageChunkEvent? loadingProgress,
+                          ) {
+                            if (loadingProgress == null) {
+                              // Image is fully loaded, return the image widget
+                              return child;
+                            }
+                            return Center(
+                              child: CircularProgressIndicator(
+                                // Optional: Show actual download percentage
+                                value:
+                                    loadingProgress.expectedTotalBytes != null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                          loadingProgress.expectedTotalBytes!
+                                    : null,
+                              ),
+                            );
+                          },
+                      // Handle broken URLs or network errors
+                      errorBuilder: (context, error, stackTrace) {
+                        return const Center(
+                          child: Icon(
+                            Icons.broken_image,
+                            color: Colors.grey,
+                            size: 40,
+                          ),
+                        );
+                      },
+                      fit: BoxFit.cover,
+                    ),
+                    GestureDetector(
+                      onTap: () => Get.toNamed(
+                        AppPages.eventdetails,
+                        arguments: {
+                          'image': event.image,
+                          'tittle': event.title,
+                          'location': event.location,
+                          'time': event.formattedDate,
+                          'joinedpeople': event.joinedPeople,
+                          'eventDeatils': event.details,
+                          'hostedby': event.organizerName,
+                          'hostphotourl': event.organizerPhoto,
+                          'maxpeople': event.maxPeople,
+                          'id': event.id,
+                          'perticanpants': event.participants,
+                          'hostid': event.organizerId,
+                        },
+                      ),
+                      child: Text(
+                        'Details',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }).toSet();
+  }
+
   Future<void> fetchEvents() async {
     await socketService.connect();
     final userId = GetStorage().read('id');
@@ -102,7 +178,7 @@ void updateMarkers() {
       if (response['success'] == true) {
         final List<dynamic> eventsJson = response['data']['events'];
         events.value = eventsJson.map((json) => Event.fromJson(json)).toList();
-updateMarkers();
+        updateMarkers();
         Get.snackbar(
           'Success',
           response['message'] ?? 'Events loaded successfully',
