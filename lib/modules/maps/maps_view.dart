@@ -137,7 +137,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:mementum/modules/maps/maps_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -183,70 +182,70 @@ class _MapsViewState extends State<MapsView> {
     locatecontroller.getCurrentLocation();
   }
 
-  Future<void> _getCurrentLocation() async {
-    try {
-      // Check if location services are enabled
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        setState(() => _isLoading = false);
-        Get.snackbar(
-          'Location Services Disabled',
-          'Please enable location services',
-          snackPosition: SnackPosition.BOTTOM,
-        );
-        return;
-      }
+  // Future<void> _getCurrentLocation() async {
+  //   try {
+  //     // Check if location services are enabled
+  //     bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  //     if (!serviceEnabled) {
+  //       setState(() => _isLoading = false);
+  //       Get.snackbar(
+  //         'Location Services Disabled',
+  //         'Please enable location services',
+  //         snackPosition: SnackPosition.BOTTOM,
+  //       );
+  //       return;
+  //     }
 
-      // Check location permissions
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          setState(() => _isLoading = false);
-          Get.snackbar(
-            'Permission Denied',
-            'Location permission is required',
-            snackPosition: SnackPosition.BOTTOM,
-          );
-          return;
-        }
-      }
+  //     // Check location permissions
+  //     LocationPermission permission = await Geolocator.checkPermission();
+  //     if (permission == LocationPermission.denied) {
+  //       permission = await Geolocator.requestPermission();
+  //       if (permission == LocationPermission.denied) {
+  //         setState(() => _isLoading = false);
+  //         Get.snackbar(
+  //           'Permission Denied',
+  //           'Location permission is required',
+  //           snackPosition: SnackPosition.BOTTOM,
+  //         );
+  //         return;
+  //       }
+  //     }
 
-      if (permission == LocationPermission.deniedForever) {
-        setState(() => _isLoading = false);
-        Get.snackbar(
-          'Permission Denied',
-          'Location permissions are permanently denied',
-          snackPosition: SnackPosition.BOTTOM,
-        );
-        return;
-      }
+  //     if (permission == LocationPermission.deniedForever) {
+  //       setState(() => _isLoading = false);
+  //       Get.snackbar(
+  //         'Permission Denied',
+  //         'Location permissions are permanently denied',
+  //         snackPosition: SnackPosition.BOTTOM,
+  //       );
+  //       return;
+  //     }
 
-      // Get current position
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
+  //     // Get current position
+  //     Position position = await Geolocator.getCurrentPosition(
+  //       desiredAccuracy: LocationAccuracy.high,
+  //     );
 
-      setState(() {
-        _center = LatLng(position.latitude, position.longitude);
-        _isLoading = false;
-      });
+  //     setState(() {
+  //       _center = LatLng(position.latitude, position.longitude);
+  //       _isLoading = false;
+  //     });
 
-      // Move camera to current location
-      if (mapController != null) {
-        mapController.animateCamera(
-          CameraUpdate.newLatLng(_center),
-        );
-      }
-    } catch (e) {
-      setState(() => _isLoading = false);
-      Get.snackbar(
-        'Error',
-        'Failed to get location: $e',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
+  //     // Move camera to current location
+  //     if (mapController != null) {
+  //       mapController.animateCamera(
+  //         CameraUpdate.newLatLng(_center),
+  //       );
+  //     }
+  //   } catch (e) {
+  //     setState(() => _isLoading = false);
+  //     Get.snackbar(
+  //       'Error',
+  //       'Failed to get location: $e',
+  //       snackPosition: SnackPosition.BOTTOM,
+  //     );
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
