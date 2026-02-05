@@ -56,7 +56,7 @@
 //                     color: Colors.black,
 //                   ),
 //                 ),
-                
+
 //                 Expanded(
 //                   child: GoogleMap(
 //                     onMapCreated: (GoogleMapController controller) {
@@ -126,7 +126,7 @@
 // //         initialCameraPosition: CameraPosition(
 // //           target: _center,
 // //           zoom: 15.0,
-         
+
 // //         ),
 // //         markers: _markers,
 // //       ),
@@ -137,6 +137,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:mementum/modules/home/home_controller.dart';
 import 'package:mementum/modules/maps/maps_controller.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -145,35 +146,47 @@ class MapsView extends StatefulWidget {
 
   @override
   State<MapsView> createState() => _MapsViewState();
-}  final locatecontroller=Get.find<MapsController>();
+}
 
+final locatecontroller = Get.find<MapsController>();
+final eventcontroller = Get.find<HomeController>();
 
 class _MapsViewState extends State<MapsView> {
-  
-
   late GoogleMapController mapController;
-  
-  LatLng _center =  LatLng(locatecontroller.latitude, locatecontroller.longitude); // Default center
-  bool _isLoading = false;
-  
-  final Set<Marker> _markers = {
-    const Marker(
-      markerId: MarkerId('water_garden'),
-      position: LatLng(23.8675, 90.3878),
-      infoWindow: InfoWindow(title: 'Water Garden Restaurant', snippet: 'Event Venue'),
-    ),
-    const Marker(
-      markerId: MarkerId('dine_hill'),
-      position: LatLng(23.7943, 90.3876),
-      infoWindow: InfoWindow(title: 'The Dine Hill Restaurant', snippet: 'Party Center'),
-    ),
-    const Marker(
-      markerId: MarkerId('food_place'),
-      position: LatLng(23.7962, 90.3874),
-      infoWindow: InfoWindow(title: 'FoodPlace Restaurant', snippet: 'Local Eatery'),
 
-    ),
-  };
+  LatLng _center = LatLng(
+    locatecontroller.latitude,
+    locatecontroller.longitude,
+  ); // Default center
+  bool _isLoading = false;
+
+  // final Set<Marker> _markers = {
+  //   const Marker(
+  //     markerId: MarkerId('water_garden'),
+
+  //     position: LatLng(26.024797278890443, 88.47026746720076),
+  //     infoWindow: InfoWindow(
+  //       title: 'Water Garden Restaurant',
+  //       snippet: 'Event Venue',
+  //     ),
+  //   ),
+  //   const Marker(
+  //     markerId: MarkerId('dine_hill'),
+  //     position: LatLng(26.024797278890443, 88.47026746720076),
+  //     infoWindow: InfoWindow(
+  //       title: 'The Dine Hill Restaurant',
+  //       snippet: 'Party Center',
+  //     ),
+  //   ),
+  //   const Marker(
+  //     markerId: MarkerId('food_place'),
+  //     position: LatLng(226.024797278890443, 88.47026746720076),
+  //     infoWindow: InfoWindow(
+  //       title: 'FoodPlace Restaurant',
+  //       snippet: 'Local Eatery',
+  //     ),
+  //   ),
+  // };
 
   @override
   void initState() {
@@ -282,7 +295,7 @@ class _MapsViewState extends State<MapsView> {
                             target: _center,
                             zoom: 15.0,
                           ),
-                          markers: _markers,
+                          markers: eventcontroller.markers,
                           myLocationEnabled: true,
                           myLocationButtonEnabled: true,
                         ),

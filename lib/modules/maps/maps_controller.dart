@@ -2,8 +2,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class MapsController extends GetxController {
-  late double latitude=5.5;
-  late double longitude=5.5;
+  late double latitude=26.024797278890443;
+  late double longitude=88.47026746720076;
 
   Future<void> getCurrentLocation() async {
     try {
