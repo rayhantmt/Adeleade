@@ -85,7 +85,7 @@ class ProfileDetails extends GetView<ProfileController> {
                                 imageUrl: user.photoURL,
                                 fit: BoxFit.cover,
                                 placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
+                                    Center(child: CircularProgressIndicator()),
                                 errorWidget: (context, url, error) =>
                                     Image.asset(AppImages.profilephoto),
                               )
@@ -321,7 +321,7 @@ class ProfileDetails extends GetView<ProfileController> {
                                                 placeholder: (context, url) =>
                                                     Center(
                                                       child:
-                                                          CircularProgressIndicator(),
+                                                          Center(child: CircularProgressIndicator()),
                                                     ),
                                                 errorWidget:
                                                     (context, url, error) =>
