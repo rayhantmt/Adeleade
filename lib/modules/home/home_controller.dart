@@ -33,11 +33,11 @@ class HomeController extends GetxController {
     selectedCategoryIndex.value = index;
   }
 
-  void printToken() {
-    final storage = GetStorage();
-    final token = storage.read('token'); // read the saved token
-    print('Saved Token: $token'); // prints it
-  }
+  // void printToken() {
+  //   final storage = GetStorage();
+  //   final token = storage.read('token'); // read the saved token
+  //   print('Saved Token: $token'); // prints it
+  // }
 
   var isLoading = false.obs;
   var events = <Event>[].obs;
@@ -64,9 +64,9 @@ class HomeController extends GetxController {
       final double lng = coords.length > 1
           ? double.tryParse(coords[1]) ?? 0.0
           : 0.0;
-      print(lat);
-      print(event.title);
-      print(lng);
+      // print(lat);
+      // print(event.title);
+      // print(lng);
 
       return Marker(
         markerId: MarkerId(event.id), // Use the unique API ID
