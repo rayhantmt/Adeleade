@@ -53,11 +53,11 @@ RxBool isLoading=false.obs;
       final List<XFile>? images = await _picker.pickMultiImage();
       if (images != null && images.isNotEmpty) {
         selectedImages.assignAll(images.take(5).toList());
-        Get.snackbar(
-          'Images selected',
-          //selectedImages.map((e) => e.path).toList().toString(),
-          ''
-        );
+        // Get.snackbar(
+        //   'Images selected',
+        //   //selectedImages.map((e) => e.path).toList().toString(),
+        //   ''
+        // );
       }
     } catch (e) {
       print('Error picking images: $e');
