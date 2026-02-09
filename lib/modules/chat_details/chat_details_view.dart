@@ -495,9 +495,12 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
             borderRadius: BorderRadius.circular(14),
             color: Colors.blueGrey.shade100.withOpacity(0.7),
           ),
-          child: Text(
-            message.msg,
-            style: GoogleFonts.inter(fontWeight: FontWeight.w500, fontSize: 18),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: Text(
+              message.msg,
+              style: GoogleFonts.inter(fontWeight: FontWeight.w500, fontSize: 18),
+            ),
           ),
         );
     }

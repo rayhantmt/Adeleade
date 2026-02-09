@@ -9,8 +9,8 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/routes/app_pages.dart';
 
 class RequestAnInviteSecondController extends GetxController {
-  RxBool isObscured = false.obs;
-  RxBool isObscured1 = false.obs;
+  RxBool isObscured = true.obs;
+  RxBool isObscured1 = true.obs;
 
 RxBool isLoading=false.obs;
   final passwordcontroller = TextEditingController();
@@ -73,8 +73,8 @@ RxBool isLoading=false.obs;
       );
       if (picked != null) {
         profileImage.value = picked;
-        print('Profile picked: ${picked.path}');
-        Get.snackbar('Profile image', picked.path);
+        // print('Profile picked: ${picked.path}');
+        // Get.snackbar('Profile image', picked.path);
       } else {
         print('Profile pick cancelled');
       }
@@ -165,6 +165,7 @@ Future<void> createUser() async {
       'profession': profession,
       'linkedIn': linkedin,
       'instagram': instagram,
+      'age':age.toString(),
       // Safe access using ! because we checked for nulls at the top
       'avatar': await MultipartFile.fromFile(
         profileImage.value!.path,

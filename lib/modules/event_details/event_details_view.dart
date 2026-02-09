@@ -254,8 +254,8 @@ class EventDetails extends GetView<EventDetailsController> {
                         child: Row(
                           children: [
                             Container(
-                              height: Get.height * 0.05,
-                              width: Get.width * 0.11,
+                              height: Get.height * 0.07,
+                              width: Get.width * 0.15,
                               child: ClipOval(
                                 //borderRadius: BorderRadiusGeometry.circular(200),
                                

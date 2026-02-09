@@ -7,7 +7,7 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:mementum/routes/app_pages.dart';
 
 class LogInController extends GetxController {
-  RxBool isObscured = false.obs;
+  RxBool isObscured = true.obs;
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
 
