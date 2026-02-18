@@ -188,7 +188,7 @@ Future<void> createUser() async {
 
     print('✅ User Created: ${response.data}');
     Get.snackbar('Success', 'User Created Successfully');
-    Get.toNamed(AppPages.subscription);
+    Get.toNamed(AppPages.login);
     
   } on BadRequestException catch (e) {
     // Caught by our custom DioClient logic

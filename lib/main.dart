@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mementum/modules/splash/splash_screen.dart';
+import 'package:mementum/modules/unlock_momentum/unlock_momentum_view.dart';
 import 'package:mementum/routes/app_routes.dart';
 
 void main() async {

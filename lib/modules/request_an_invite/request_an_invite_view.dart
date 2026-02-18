@@ -33,7 +33,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
-                    height: Get.height * 0.95,
+                    height: Get.height * 0.97,
                     width: Get.width * 0.9,
                     child: Column(
                       // mainAxisAlignment: MainAxisAlignment.start,
