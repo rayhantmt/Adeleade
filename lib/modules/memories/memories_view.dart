@@ -141,17 +141,11 @@ class MemoriesView extends GetView<MemoriesController> {
 Widget _createEvent() {
   final controller = MemoriesController();
   final List<String> categories = [
+    "Socializing",
+    "Outdoors",
+    "Networking",
+    "Traveling",
     "Sports",
-    "Music",
-    "Art",
-    "Technology",
-    "Food",
-    "Education",
-    "Business",
-    "Health",
-    "Travel",
-    "Social",
-    "Other",
   ];
   return SingleChildScrollView(
     child: Column(

@@ -51,13 +51,9 @@ RxBool isLoading=false.obs;
   Future<void> pickImages() async {
     try {
       final List<XFile>? images = await _picker.pickMultiImage();
+      
       if (images != null && images.isNotEmpty) {
         selectedImages.assignAll(images.take(5).toList());
-        // Get.snackbar(
-        //   'Images selected',
-        //   //selectedImages.map((e) => e.path).toList().toString(),
-        //   ''
-        // );
       }
     } catch (e) {
       print('Error picking images: $e');
@@ -126,10 +122,6 @@ Future<void> createUser() async {
     Get.snackbar('Error', 'Please select a profile image');
     return;
   }
-  // if (coverImage.value == null) {
-  //   Get.snackbar('Error', 'Please select a cover image');
-  //   return;
-  // }
   if (selectedImages.isEmpty) {
     Get.snackbar('Error', 'Please select at least one gallery image');
     return;
@@ -166,17 +158,11 @@ Future<void> createUser() async {
       'linkedIn': linkedin,
       'instagram': instagram,
       'age':age.toString(),
-      // Safe access using ! because we checked for nulls at the top
       'avatar': await MultipartFile.fromFile(
         profileImage.value!.path,
         filename: profileImage.value!.name,
         contentType: MediaType('image', 'png'),
       ),
-      // 'cover': await MultipartFile.fromFile(
-      //   coverImage.value!.path,
-      //   filename: coverImage.value!.name,
-      //   contentType: MediaType('image', 'png'),
-      // ),
       'galleryPhotos': galleryFiles, // Pass the List directly
     });
 

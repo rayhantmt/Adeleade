@@ -153,7 +153,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                                   ),
                                 ),
                                 padding: EdgeInsets.only(left: 10),
-                                items: List.generate(90, (index) => index + 10)
+                                items: List.generate(90, (index) => index + 18)
                                     .map(
                                       (age) => DropdownMenuItem<int>(
                                         value: age,

@@ -31,7 +31,7 @@ class SplashScreen extends StatelessWidget {
               //     color: Color(0xff1E1E1E),
               //   ),
               // ),
-              SizedBox(height: Get.height*0.2),
+              SizedBox(height: Get.height*0.7),
               GestureDetector(
                 onTap: () => Get.toNamed(AppPages.signup),
                 child: Container(

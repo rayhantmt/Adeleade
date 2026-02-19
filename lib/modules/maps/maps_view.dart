@@ -277,13 +277,14 @@ class _MapsViewState extends State<MapsView> {
               children: [
                 SizedBox(height: Get.height * 0.02, width: double.infinity),
                 Text(
-                  'Memories Happening near you',
+                  'Memories near you',
                   style: GoogleFonts.inter(
                     fontWeight: FontWeight.w500,
                     fontSize: 18,
                     color: Colors.black,
                   ),
                 ),
+                SizedBox(height: Get.height*0.021,),
                 Expanded(
                   child: _isLoading
                       ? const Center(child: CircularProgressIndicator())

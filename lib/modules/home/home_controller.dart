@@ -12,18 +12,11 @@ import 'package:mementum/utils/app_colors.dart';
 
 class HomeController extends GetxController {
   var ctgry = [
-    Category(categories: 'All'),
-    Category(categories: 'Sports'),
-    Category(categories: 'Music'),
-    Category(categories: 'Art'),
-    Category(categories: 'Technology'),
-    Category(categories: 'Food'),
-    Category(categories: 'Education'),
-    Category(categories: 'Business'),
-    Category(categories: 'Health'),
-    Category(categories: 'Travel'),
-    Category(categories: 'Social'),
-    Category(categories: 'Other'),
+    Category(categories: 'Socializing'),
+    Category(categories: 'Outdoors'),
+    Category(categories: 'Networking'),
+    Category(categories: 'Traveling'),
+    Category(categories: 'Sports')
   ].obs;
   // Add this variable
   var selectedCategoryIndex = 0.obs;
