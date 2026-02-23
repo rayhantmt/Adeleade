@@ -70,22 +70,26 @@ class ChatDetailsController extends GetxController {
   }
 
   Future<void> fetchEventAndNavigate(String eventId) async {
-    final token=GetStorage().read('token');
+    bool isEvent = roomType == 'event';
+
+  // 2. If it's NOT an event, stop here and don't navigate to event details
+  if (!isEvent) {
+    print("Room type is direct. Skipping event detail fetch.");
+    // You could navigate to a profile page or chat settings here if needed
+    return; 
+  }
+    final token = GetStorage().read('token');
+
     try {
       // 1. Show loading overlay
       Get.dialog(
-        const Center(child: CircularProgressIndicator()),
-        barrierDismissible: false,
-      );
+      const Center(child: CircularProgressIndicator()),
+      barrierDismissible: false,
+    );
 
       final response = await http.get(
-        Uri.parse(
-          'https://server.momentumactivity.com/api/v1/event/$eventId',
-          
-        ),
-        headers: {
-          "Authorization":token
-        } // Replace with your actual endpoint
+        Uri.parse('https://server.momentumactivity.com/api/v1/event/$eventId'),
+        headers: {"Authorization": token}, // Replace with your actual endpoint
       );
       print(response.body);
       if (response.statusCode == 200) {
@@ -94,8 +98,9 @@ class ChatDetailsController extends GetxController {
         // 2. Parse the 'data' object using your existing Factory
         final event = Event.fromJson(decodedData['data']);
 
-        // 3. Close loading dialog
-        //Get.back();
+        if (Get.isDialogOpen!) {
+          Get.back();
+        }
 
         // 4. Navigate using the arguments your DetailController.onInit expects
         Get.toNamed(

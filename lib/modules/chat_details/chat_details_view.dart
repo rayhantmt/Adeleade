@@ -248,7 +248,7 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    print('This is event id ${controller.eventId}');
+    print('This is room type ${controller.roomType}');
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
