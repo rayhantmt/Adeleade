@@ -374,7 +374,7 @@ Widget _createEvent() {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
             onTap: controller.createEvent,
-            //onTap: () => print(controller.cetegorycontroller.text.toString()),
+           
             child: Container(
               height: Get.height * 0.07,
               width: double.infinity,
@@ -430,6 +430,7 @@ Widget _plannedevent() {
                       'maxpeople': data.maxPeople,
                       'id': data.id,
                       'perticanpants': data.participants,
+                      'hostid':data.organizerId
                     },
                   ),
                   child: Container(

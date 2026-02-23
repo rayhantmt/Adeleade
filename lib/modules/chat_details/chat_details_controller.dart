@@ -1,4 +1,3 @@
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
@@ -10,6 +9,8 @@ import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_sound/flutter_sound.dart';
 import 'package:mementum/modules/chat_details/chat_details_model.dart';
+import 'package:mementum/modules/home/home_model.dart';
+import 'package:mementum/routes/app_pages.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:mementum/modules/chat_details/chat_model.dart';
@@ -20,7 +21,8 @@ class ChatDetailsController extends GetxController {
   late String name;
   late String roomId;
   late String roomType;
-  
+  late String eventId;
+
   var msgs = <ChatModel>[].obs;
   var messages = <Message>[].obs;
   var isLoading = false.obs;
@@ -29,12 +31,12 @@ class ChatDetailsController extends GetxController {
   var isTyping = false.obs;
   var otherUserTyping = false.obs;
   var currentUserId = ''.obs;
-  
+
   final TextEditingController messageController = TextEditingController();
   final ScrollController scrollController = ScrollController();
   final ImagePicker _imagePicker = ImagePicker();
   final FlutterSoundRecorder _audioRecorder = FlutterSoundRecorder();
-  
+
   bool _isRecorderInitialized = false;
   Timer? _typingTimer;
   String? _audioPath;
@@ -47,9 +49,10 @@ class ChatDetailsController extends GetxController {
     name = args['name'] ?? '';
     roomId = args['roomId'] ?? '';
     roomType = args['roomType'] ?? 'direct';
-    
+    eventId = args['eventId'] ?? "noeveentId";
+
     currentUserId.value = GetStorage().read('id');
-    
+
     _initializeChat();
   }
 
@@ -66,23 +69,83 @@ class ChatDetailsController extends GetxController {
     super.onClose();
   }
 
+  Future<void> fetchEventAndNavigate(String eventId) async {
+    final token=GetStorage().read('token');
+    try {
+      // 1. Show loading overlay
+      Get.dialog(
+        const Center(child: CircularProgressIndicator()),
+        barrierDismissible: false,
+      );
+
+      final response = await http.get(
+        Uri.parse(
+          'https://server.momentumactivity.com/api/v1/event/$eventId',
+          
+        ),
+        headers: {
+          "Authorization":token
+        } // Replace with your actual endpoint
+      );
+      print(response.body);
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> decodedData = json.decode(response.body);
+
+        // 2. Parse the 'data' object using your existing Factory
+        final event = Event.fromJson(decodedData['data']);
+
+        // 3. Close loading dialog
+        //Get.back();
+
+        // 4. Navigate using the arguments your DetailController.onInit expects
+        Get.toNamed(
+          AppPages.eventdetails,
+          arguments: {
+            'image': event.image,
+            'tittle': event.title,
+            'time': event.dateTime,
+            'location': event.location,
+            'eventDeatils': event.details, // Matches your 'details' in model
+            'hostedby': event.organizerName,
+            'hostphotourl': event.organizerPhoto,
+            'joinedpeople': event.joinedPeople,
+            'maxpeople': event.maxPeople,
+            'id': event.id,
+            'perticanpants': event.participants, // Pass the List<Participant>
+            'hostid': event.organizerId,
+          },
+        );
+      } else {
+        Get.back();
+        Get.snackbar("Error", "Could not fetch event details");
+      }
+    } catch (e) {
+      Get.back();
+      print("Error fetching event: $e");
+      Get.snackbar("Error", "Something went wrong");
+    }
+  }
+
   Future<void> _initializeChat() async {
     try {
       // Initialize audio recorder
       await _initRecorder();
-      
+
       // Connect socket if not connected
       if (!socketService.isConnected) {
         await socketService.connect();
       }
-      
+
       socketService.joinChatRoom(roomId);
       _setupSocketListeners();
       await fetchMessages();
-      
     } catch (e) {
       print('❌ Error initializing chat: $e');
-      Get.snackbar('Error', 'Failed to initialize chat', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to initialize chat',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -114,13 +177,13 @@ class ChatDetailsController extends GetxController {
 
   void _handleNewMessage(dynamic data) {
     print('📨 New message received: $data');
-    
+
     try {
       final message = Message.fromJson(data);
-      
+
       if (message.chatRoomId == roomId) {
         messages.insert(0, message);
-        
+
         final chatModel = ChatModel(
           msg: message.content,
           time: message.getFormattedTime(),
@@ -130,13 +193,13 @@ class ChatDetailsController extends GetxController {
           messageType: message.messageType,
           mediaURL: message.mediaURL,
         );
-        
+
         msgs.insert(0, chatModel);
-        
+
         if (message.senderId.id != currentUserId.value) {
           socketService.markMessageAsRead(message.id, roomId);
         }
-        
+
         _scrollToBottom();
       }
     } catch (e) {
@@ -171,7 +234,7 @@ class ChatDetailsController extends GetxController {
     try {
       final messageId = data['messageId'] as String;
       final chatRoomId = data['chatRoomId'] as String;
-      
+
       if (chatRoomId == roomId) {
         final index = messages.indexWhere((m) => m.id == messageId);
         if (index != -1) {
@@ -196,7 +259,7 @@ class ChatDetailsController extends GetxController {
     try {
       final userId = data['userId'] as String;
       final typing = data['isTyping'] as bool;
-      
+
       if (userId != currentUserId.value) {
         otherUserTyping.value = typing;
       }
@@ -209,7 +272,7 @@ class ChatDetailsController extends GetxController {
     try {
       final messageId = data['messageId'] as String;
       final userId = data['userId'] as String;
-      
+
       final index = messages.indexWhere((m) => m.id == messageId);
       if (index != -1 && !messages[index].readBy.contains(userId)) {
         messages[index].readBy.add(userId);
@@ -223,16 +286,15 @@ class ChatDetailsController extends GetxController {
   Future<void> fetchMessages() async {
     final storage = GetStorage();
     final token = storage.read('token');
-    
+
     try {
       isLoading.value = true;
-      
+
       final response = await http.get(
-        Uri.parse('https://server.momentumactivity.com/api/v1/chat/$roomId/messages'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token,
-        },
+        Uri.parse(
+          'https://server.momentumactivity.com/api/v1/chat/$roomId/messages',
+        ),
+        headers: {'Content-Type': 'application/json', 'Authorization': token},
       );
 
       print('Messages Response: ${response.statusCode}');
@@ -240,16 +302,16 @@ class ChatDetailsController extends GetxController {
 
       if (response.statusCode == 200) {
         final jsonData = json.decode(response.body);
-        
+
         if (jsonData['success'] == true && jsonData['data'] != null) {
           final messagesList = (jsonData['data']['messages'] as List)
               .map((msg) => Message.fromJson(msg))
               .toList()
               .reversed
               .toList();
-          
+
           messages.value = messagesList;
-          
+
           msgs.value = messages.map((message) {
             return ChatModel(
               msg: message.content,
@@ -261,13 +323,17 @@ class ChatDetailsController extends GetxController {
               mediaURL: message.mediaURL,
             );
           }).toList();
-          
+
           print('✅ Messages loaded: ${msgs.length}');
         }
       }
     } catch (e) {
       print('❌ Error fetching messages: $e');
-      Get.snackbar('Error', 'Failed to load messages', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to load messages',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } finally {
       isLoading.value = false;
     }
@@ -278,7 +344,7 @@ class ChatDetailsController extends GetxController {
       socketService.sendTyping(roomId, true);
       isTyping.value = true;
     }
-    
+
     _typingTimer?.cancel();
     _typingTimer = Timer(Duration(seconds: 2), () {
       if (isTyping.value) {
@@ -291,42 +357,43 @@ class ChatDetailsController extends GetxController {
   Future<void> sendMessage() async {
     final content = messageController.text.trim();
     if (content.isEmpty) return;
-    
+
     final storage = GetStorage();
     final token = storage.read('token');
-    
+
     try {
       isSending.value = true;
       messageController.clear();
-      
+
       if (isTyping.value) {
         socketService.sendTyping(roomId, false);
         isTyping.value = false;
       }
-      
+
       final response = await http.post(
         Uri.parse('https://server.momentumactivity.com/api/v1/chat/send'),
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token,
-        },
+        headers: {'Content-Type': 'application/json', 'Authorization': token},
         body: json.encode({
           'chatRoomId': roomId,
           'contentType': 'text',
           'content': content,
-          'messageType':'text'
-
+          'messageType': 'text',
         }),
       );
 
       if (response.statusCode == 200 || response.statusCode == 201) {
         print('✅ Message sent');
       } else {
-        throw Exception ('Failed to send message ${response.body}');
+        throw Exception('Failed to send message ${response.body}');
       }
     } catch (e) {
       print('❌ Error sending message: $e');
-      Get.snackbar('Error', 'Failed to send message $e', snackPosition: SnackPosition.TOP,duration: Duration(seconds: 5));
+      Get.snackbar(
+        'Error',
+        'Failed to send message $e',
+        snackPosition: SnackPosition.TOP,
+        duration: Duration(seconds: 5),
+      );
       messageController.text = content;
     } finally {
       isSending.value = false;
@@ -344,7 +411,11 @@ class ChatDetailsController extends GetxController {
       await _uploadAndSendMedia(File(image.path), 'image');
     } catch (e) {
       print('❌ Error picking image: $e');
-      Get.snackbar('Error', 'Failed to pick image', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to pick image',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -354,15 +425,16 @@ class ChatDetailsController extends GetxController {
         if (!_isRecorderInitialized) {
           await _initRecorder();
         }
-        
+
         final tempDir = await getTemporaryDirectory();
-        _audioPath = '${tempDir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.aac';
-        
+        _audioPath =
+            '${tempDir.path}/audio_${DateTime.now().millisecondsSinceEpoch}.aac';
+
         await _audioRecorder.startRecorder(
           toFile: _audioPath,
           codec: Codec.aacADTS,
         );
-        
+
         isRecording.value = true;
         print('🎤 Recording started');
       } else {
@@ -374,7 +446,11 @@ class ChatDetailsController extends GetxController {
       }
     } catch (e) {
       print('❌ Error starting recording: $e');
-      Get.snackbar('Error', 'Failed to start recording', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to start recording',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -382,14 +458,18 @@ class ChatDetailsController extends GetxController {
     try {
       final path = await _audioRecorder.stopRecorder();
       isRecording.value = false;
-      
+
       if (path != null && File(path).existsSync()) {
         print('🎤 Recording stopped: $path');
         await _uploadAndSendMedia(File(path), 'audio');
       }
     } catch (e) {
       print('❌ Error stopping recording: $e');
-      Get.snackbar('Error', 'Failed to stop recording', snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'Failed to stop recording',
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -403,73 +483,72 @@ class ChatDetailsController extends GetxController {
     }
   }
 
+  Future<void> _uploadAndSendMedia(File file, String type) async {
+    final storage = GetStorage();
+    final token = storage.read('token');
 
-Future<void> _uploadAndSendMedia(File file, String type) async {
-  final storage = GetStorage();
-  final token = storage.read('token');
-  
-  try {
-    isSending.value = true;
-    
-    // Create Dio instance
-    final dio = Dio();
-    
-    // Create FormData
-    final formData = FormData.fromMap({
-      'chatRoomId': roomId,
-      'messageType': type, // 'image' or 'audio'
-      //'file': file, //== 'image' ? 'Image' : 'Audio',
-      // 'file': await MultipartFile.fromFile(
-      //   file.path
-        
-      // ),
-      'file': await MultipartFile.fromFile(
-       file.path,
-       // filename: 'nothing',
-        //contentType: MediaType('image', 'png'),
-      ),
-    });
-    
-    print('⏳ Sending $type');
-    print('📝 chatRoomId: $roomId');
-    print('📝 messageType: $type');
-    
-    // Send request
-    final response = await dio.post(
-       options: Options(headers: {
-          'Authorization': token,
-         // 'Content-Type': 'application/json',
-        } ),
-      'https://server.momentumactivity.com/api/v1/chat/send',
-      data: formData,
+    try {
+      isSending.value = true;
 
-      
-    );
-    print(formData);
-    print(file.path);
-    print('📨 Status: ${response.statusCode}');
-    print('📨 Body: ${response.data}');
-    
-    if (response.statusCode == 200 || response.statusCode == 201) {
-      print('✅ $type sent successfully');
-    } else {
-      throw Exception('Failed: ${response.data}');
+      // Create Dio instance
+      final dio = Dio();
+
+      // Create FormData
+      final formData = FormData.fromMap({
+        'chatRoomId': roomId,
+        'messageType': type, // 'image' or 'audio'
+        //'file': file, //== 'image' ? 'Image' : 'Audio',
+        // 'file': await MultipartFile.fromFile(
+        //   file.path
+
+        // ),
+        'file': await MultipartFile.fromFile(
+          file.path,
+          // filename: 'nothing',
+          //contentType: MediaType('image', 'png'),
+        ),
+      });
+
+      print('⏳ Sending $type');
+      print('📝 chatRoomId: $roomId');
+      print('📝 messageType: $type');
+
+      // Send request
+      final response = await dio.post(
+        options: Options(
+          headers: {
+            'Authorization': token,
+            // 'Content-Type': 'application/json',
+          },
+        ),
+        'https://server.momentumactivity.com/api/v1/chat/send',
+        data: formData,
+      );
+      print(formData);
+      print(file.path);
+      print('📨 Status: ${response.statusCode}');
+      print('📨 Body: ${response.data}');
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        print('✅ $type sent successfully');
+      } else {
+        throw Exception('Failed: ${response.data}');
+      }
+    } catch (e) {
+      print('❌ Error: $e');
+      if (e is DioException) {
+        print('❌ Dio Error Response: ${e.response?.data}');
+      }
+      Get.snackbar(
+        'Error',
+        'Failed to send $type',
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 3),
+      );
+    } finally {
+      isSending.value = false;
     }
-  } catch (e) {
-    print('❌ Error: $e');
-    if (e is DioException) {
-      print('❌ Dio Error Response: ${e.response?.data}');
-    }
-    Get.snackbar(
-      'Error',
-      'Failed to send $type',
-      snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 3),
-    );
-  } finally {
-    isSending.value = false;
   }
-}
 
   void showImageSourceOptions() {
     Get.bottomSheet(

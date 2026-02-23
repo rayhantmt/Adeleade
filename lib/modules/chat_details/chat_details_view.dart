@@ -248,28 +248,32 @@ class ChatDetailsView extends GetView<ChatDetailsController> {
 
   @override
   Widget build(BuildContext context) {
+    print('This is event id ${controller.eventId}');
     return Scaffold(
       appBar: AppBar(
-        title: Row(
-          children: [
-            SizedBox(
-              height: Get.width * 0.1,
-              width: Get.width * 0.1,
-              child: CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                backgroundImage: controller.img.isNotEmpty
-                    ? NetworkImage(controller.img)
-                    : null,
-                onBackgroundImageError: (_, __) {},
-                child: controller.img.isEmpty
-                    ? const Icon(Icons.person, color: Colors.grey)
-                    : null,
+        title: GestureDetector(
+          onTap: () => controller.fetchEventAndNavigate(controller.eventId),
+          child: Row(
+            children: [
+              SizedBox(
+                height: Get.width * 0.1,
+                width: Get.width * 0.1,
+                child: CircleAvatar(
+                  backgroundColor: Colors.grey[300],
+                  backgroundImage: controller.img.isNotEmpty
+                      ? NetworkImage(controller.img)
+                      : null,
+                  onBackgroundImageError: (_, __) {},
+                  child: controller.img.isEmpty
+                      ? const Icon(Icons.person, color: Colors.grey)
+                      : null,
+                ),
               ),
-            ),
-
-            SizedBox(width: Get.width * 0.04),
-            Text(controller.name.toUpperCase()),
-          ],
+          
+              SizedBox(width: Get.width * 0.04),
+              Text(controller.name.toUpperCase()),
+            ],
+          ),
         ),
         centerTitle: true,
       ),
