@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_places_autocomplete_text_field/google_places_autocomplete_text_field.dart';
 import 'package:mementum/common_widgets/date_picking_field.dart';
 import 'package:mementum/common_widgets/update_info_dropdown.dart';
 import 'package:mementum/common_widgets/update_info_field.dart';
@@ -239,10 +240,49 @@ Widget _createEvent() {
           ),
         ),
         SizedBox(height: Get.height * 0.02),
-        UpdateInfoField(
-          textcontroller: controller.locationcontroller,
-          tittle: "Activity Location",
-          hint: 'Enter Activity Location',
+
+        // UpdateInfoField(
+        //   textcontroller: controller.locationcontroller,
+        //   tittle: "Activity Location",
+        //   hint: 'Enter Activity Location',
+        // ),
+        GooglePlacesAutoCompleteTextFormField(
+          textEditingController: controller.locationcontroller,
+          // This is the config part you were missing:
+          config: GoogleApiConfig(
+            apiKey: "AIzaSyAuU8JsSFgooHg6dXYg81Cuqff3RR0rFCY",
+            //language: "en", // Optional
+            //countries: ["us"], // Optional: limit to specific countries
+            fetchPlaceDetailsWithCoordinates: true
+          ),
+
+          // Other standard TextFormField properties
+          decoration: InputDecoration(
+            hintText: "Search Location",
+            border: OutlineInputBorder(),
+          ),
+
+          // The magic for Lat/Long:
+          //fetchCoordinates: true, // Tell the config you want Lat/Lng
+          onSuggestionClicked: (Prediction prediction) {
+            controller.locationcontroller.text = prediction.description ?? "";
+            controller.locationcontroller.selection =
+                TextSelection.fromPosition(
+                  TextPosition(offset: prediction.description?.length ?? 0),
+                );
+          },
+
+          onPredictionWithCoordinatesReceived: (Prediction prediction) {
+            // THIS IS YOUR GOAL:
+            // This callback triggers only when coordinates are fetched.
+            controller.latitude = double.tryParse(prediction.lat ?? "");
+  controller.longitude = double.tryParse(prediction.lng ?? "");
+            print("Address: ${prediction.description}");
+            print("Lat: ${prediction.lat}");
+            print("Lng: ${prediction.lng}");
+
+            // Call your API here with prediction.lat and prediction.lng
+          },
         ),
         SizedBox(height: Get.height * 0.02),
         // UpdateInfoField(
@@ -347,34 +387,34 @@ Widget _createEvent() {
           ),
         ),
         SizedBox(height: Get.height * 0.03),
-        GestureDetector(
-          onTap: () {
-            controller.getCurrentLocation();
-            print(controller.latitude);
-            print(controller.longitude);
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Tap here to upload your location info',
+        // GestureDetector(
+        //   onTap: () {
+        //     controller.getCurrentLocation();
+        //     print(controller.latitude);
+        //     print(controller.longitude);
+        //   },
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Text(
+        //         'Tap here to upload your location info',
 
-                style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-              Icon(Icons.location_city),
-            ],
-          ),
-        ),
+        //         style: GoogleFonts.inter(
+        //           fontWeight: FontWeight.w500,
+        //           fontSize: 16,
+        //           color: Colors.black,
+        //         ),
+        //       ),
+        //       Icon(Icons.location_city),
+        //     ],
+        //   ),
+        // ),
         SizedBox(height: Get.height * 0.02),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: GestureDetector(
             onTap: controller.createEvent,
-           
+
             child: Container(
               height: Get.height * 0.07,
               width: double.infinity,
@@ -430,7 +470,7 @@ Widget _plannedevent() {
                       'maxpeople': data.maxPeople,
                       'id': data.id,
                       'perticanpants': data.participants,
-                      'hostid':data.organizerId
+                      'hostid': data.organizerId,
                     },
                   ),
                   child: Container(

@@ -32,7 +32,7 @@ class MemoriesController extends GetxController {
         eventImage.value = picked;
         eventImage.refresh();
         print('Event Image picked: ${picked.path}');
-        Get.snackbar('Event image', picked.path);
+        Get.snackbar('Success', 'Event Image Picked Successfully');
       } else {
         print('Cover pick cancelled');
       }
@@ -75,8 +75,7 @@ class MemoriesController extends GetxController {
           contentType: MediaType('image', 'png'),
         ),
       });
-      // print('Bearer ${token}');
-      // 4. API Call
+      print(formData.fields.toSet().toString());
       final response = await _client.postFormData(
         url: '${ApiConfig.baseUrl}/api/v1/event/create',
         data: formData,
@@ -211,60 +210,61 @@ class MemoriesController extends GetxController {
 
   double? latitude;
   double? longitude;
+  String? loactions;
 
-  Future<void> getCurrentLocation() async {
-    try {
-      // Check if location services are enabled
-      bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        Get.snackbar(
-          'Location Services Disabled',
-          'Please enable location services',
-          snackPosition: SnackPosition.TOP,
-        );
-        Geolocator.openLocationSettings();
-        return;
-      }
+//   Future<void> getCurrentLocation() async {
+//     try {
+//       // Check if location services are enabled
+//       bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
+//       if (!serviceEnabled) {
+//         Get.snackbar(
+//           'Location Services Disabled',
+//           'Please enable location services',
+//           snackPosition: SnackPosition.TOP,
+//         );
+//         Geolocator.openLocationSettings();
+//         return;
+//       }
 
-      // Check location permissions
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          Get.snackbar(
-            'Permission Denied',
-            'Location permission is required',
-            snackPosition: SnackPosition.TOP,
-          );
-          Geolocator.openLocationSettings();
-          return;
-        }
-      }
+//       // Check location permissions
+//       LocationPermission permission = await Geolocator.checkPermission();
+//       if (permission == LocationPermission.denied) {
+//         permission = await Geolocator.requestPermission();
+//         if (permission == LocationPermission.denied) {
+//           Get.snackbar(
+//             'Permission Denied',
+//             'Location permission is required',
+//             snackPosition: SnackPosition.TOP,
+//           );
+//           Geolocator.openLocationSettings();
+//           return;
+//         }
+//       }
 
-      if (permission == LocationPermission.deniedForever) {
-        Get.snackbar(
-          'Permission Denied',
-          'Location permissions are permanently denied',
-          snackPosition: SnackPosition.BOTTOM,
-        );
-        return;
-      }
+//       if (permission == LocationPermission.deniedForever) {
+//         Get.snackbar(
+//           'Permission Denied',
+//           'Location permissions are permanently denied',
+//           snackPosition: SnackPosition.BOTTOM,
+//         );
+//         return;
+//       }
 
-      // Get current position
-      Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high,
-      );
+//       // Get current position
+//       Position position = await Geolocator.getCurrentPosition(
+//         desiredAccuracy: LocationAccuracy.high,
+//       );
 
-      latitude = position.latitude;
-      longitude = position.longitude;
-Get.snackbar('Success','Your location fetched successfully');
-      print('Latitude: $latitude, Longitude: $longitude');
-    } catch (e) {
-      Get.snackbar(
-        'Error',
-        'Failed to get location: $e',
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
+//       latitude = position.latitude;
+//       longitude = position.longitude;
+// //Get.snackbar('Success','Your location fetched successfully');
+//       print('Latitude: $latitude, Longitude: $longitude');
+//     } catch (e) {
+//       Get.snackbar(
+//         'Error',
+//         'Failed to get location: $e',
+//         snackPosition: SnackPosition.BOTTOM,
+//       );
+//     }
+//   }
 }
