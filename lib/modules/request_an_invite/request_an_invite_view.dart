@@ -176,7 +176,7 @@ class RequestAnInviteView extends GetView<RequestAnInviteController> {
                                 selectedItemBuilder: (BuildContext context) {
                                   return List.generate(
                                     90,
-                                    (index) => index + 10,
+                                    (index) => index + 18,
                                   ).map((age) {
                                     return Align(
                                       alignment: Alignment.centerLeft,

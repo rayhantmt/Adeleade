@@ -15,13 +15,24 @@ class EditProfile extends GetView<EditProfileController> {
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
     final profilephoto = storage.read('photoURL');
-    final coverphoto = storage.read('coverPhotoURL');
+    final coverphoto =
+        storage.read('coverPhotoURL') ?? 'Please upload a cover photo';
     final email = storage.read('email');
     final gender = storage.read('gender');
     final nationality = storage.read('nationality');
     final instagram = storage.read('instagram');
     final linkedin = storage.read('linkedIn');
     final bio = storage.read('bio');
+    print(profilephoto);
+    print(profilename);
+    print(coverphoto);
+    print(email);
+    print(gender);
+    print(nationality);
+    print(instagram);
+    print(linkedin);
+    print(bio);
+
     return Scaffold(
       body: Stack(
         children: [
@@ -76,11 +87,46 @@ class EditProfile extends GetView<EditProfileController> {
                           aspectRatio: 16 / 9,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(6),
-                            child: Image.network(
-                              coverphoto,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
+                            child: coverphoto.startsWith('http')
+                                ? Image.network(
+                                    coverphoto,
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                    // Handle cases where the URL exists but is broken
+                                    errorBuilder:
+                                        (context, error, stackTrace) =>
+                                            Container(
+                                              color: Colors.grey[200],
+                                              child: const Center(
+                                                child: Text(
+                                                  "Error loading image",
+                                                ),
+                                              ),
+                                            ),
+                                  )
+                                : Container(
+                                    color: Colors
+                                        .grey[200], // Background for the "empty" state
+                                    alignment: Alignment.center,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.add_a_photo_outlined,
+                                          color: Colors.grey[600],
+                                        ),
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          coverphoto, // This will display 'Please upload a cover photo'
+                                          style: TextStyle(
+                                            color: Colors.grey[700],
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                           ),
                         ),
                         // ✅ Edit Icon for COVER PHOTO (Top Right)
@@ -142,12 +188,14 @@ class EditProfile extends GetView<EditProfileController> {
                                 child: GestureDetector(
                                   onTap: () {
                                     controller.pickprofileImage();
-                                   // print('dudu');
+                                    // print('dudu');
                                   },
                                   child: Container(
                                     color: Colors.black,
-                                    child: Icon(Icons.camera_alt, size: 25,
-                                    color: Colors.white
+                                    child: Icon(
+                                      Icons.camera_alt,
+                                      size: 25,
+                                      color: Colors.white,
                                     ),
                                   ),
                                 ),

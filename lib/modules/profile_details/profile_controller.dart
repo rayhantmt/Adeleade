@@ -148,7 +148,7 @@ class ProfileController extends GetxController {
       }
     } catch (e) {
       print('Error fetching profile: $e');
-      Get.snackbar('Error', 'Failed to load profile data');
+      //Get.snackbar('Error', 'Failed to load profile data');
     } finally {
       isLoading.value = false;
     }

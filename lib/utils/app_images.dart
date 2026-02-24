@@ -42,6 +42,7 @@ class AppImages {
   static const gallery3='assets/gallery_2.png';
   static const instagram_logo='assets/instagram_logo.png';
   static const linked_in_logo='assets/linked_in_logo.png';
+  static const deleteIcon='assets/delete.jpg';
   
 
 

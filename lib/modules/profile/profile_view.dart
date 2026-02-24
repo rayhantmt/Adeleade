@@ -15,7 +15,7 @@ class ProfileView extends StatelessWidget {
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
     final profilephoto = storage.read('photoURL');
-    final idi=storage.read('id');
+    final idi = storage.read('id');
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),
       body: SafeArea(
@@ -124,10 +124,15 @@ class ProfileView extends StatelessWidget {
               // ),
               SizedBox(height: Get.height * 0.01),
               GestureDetector(
-                onTap: () => Get.toNamed(AppPages.profile_details,arguments: {
-                  'id':idi
-                }),
-                child: ProfileContainer(tittle: "My Profile", image: AppImages.personlogo)),
+                onTap: () => Get.toNamed(
+                  AppPages.profile_details,
+                  arguments: {'id': idi},
+                ),
+                child: ProfileContainer(
+                  tittle: "My Profile",
+                  image: AppImages.personlogo,
+                ),
+              ),
               SizedBox(height: Get.height * 0.05),
               Text(
                 'Sequrity and Policy',
@@ -254,6 +259,92 @@ class ProfileView extends StatelessWidget {
                 child: ProfileContainer(
                   tittle: "Log Out",
                   image: AppImages.logouticon,
+                ),
+              ),
+              SizedBox(height: Get.height * 0.015),
+                GestureDetector(
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) => Dialog(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+
+                      height: Get.height * 0.35,
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            AppImages.deleteIcon,
+                            height: 60,
+                            width: 60,
+                          ),
+                          Text(
+                            'Are you sure you want to delete your account?',
+                            textAlign: TextAlign.center,
+                            style: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                              color: Color(0xff6B7280),
+                            ),
+                          ),
+                          GestureDetector(
+                            //onTap: () => Get.offAllNamed(AppPages.login),
+                            onTap: () {
+                              
+                            },
+                            child: Container(
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xffDC143C),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Confirm Delete Account',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: Container(
+                              height: Get.height * 0.05,
+                              width: Get.width * 0.6,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Color(0xffF3F4F6),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Cancel',
+                                  style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    color: Color(0xff727272),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                child: ProfileContainer(
+                  tittle: "Delete Account",
+                  image: AppImages.deleteIcon,
                 ),
               ),
             ],

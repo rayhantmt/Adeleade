@@ -11,6 +11,7 @@ import 'package:mementum/core/exceptions.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:mementum/modules/home/home_model.dart';
 import 'package:mementum/modules/memories/connections_model.dart';
+import 'package:mementum/routes/app_pages.dart';
 
 class MemoriesController extends GetxController {
   var memorytype = 0.obs;
@@ -87,6 +88,8 @@ class MemoriesController extends GetxController {
 
       print('✅ event Created: ${response.data}');
       Get.snackbar('Success', 'Event Created Successfully');
+      Get.toNamed(AppPages.eventhistory
+      );
     } on BadRequestException catch (e) {
       // Caught by our custom DioClient logic
       Get.snackbar('Registration Failed', e.toString());
