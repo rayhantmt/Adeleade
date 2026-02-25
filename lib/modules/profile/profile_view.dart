@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/profile_container.dart';
+import 'package:mementum/modules/main_screen/main_screen_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
 
@@ -12,6 +13,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller=Get.find<MainScreenController>();
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
     final profilephoto = storage.read('photoURL');
@@ -295,7 +297,10 @@ class ProfileView extends StatelessWidget {
                           GestureDetector(
                             //onTap: () => Get.offAllNamed(AppPages.login),
                             onTap: () {
-                              
+                              controller.Deleteuser();
+                              final storage = GetStorage();
+                              storage.erase();
+                              Get.offAllNamed(AppPages.login);
                             },
                             child: Container(
                               height: Get.height * 0.05,
@@ -305,7 +310,9 @@ class ProfileView extends StatelessWidget {
                                 color: Color(0xffDC143C),
                               ),
                               child: Center(
-                                child: Text(
+                                child: controller.isloading.value?CircularProgressIndicator(
+                                  color: Colors.white,
+                                ):Text(
                                   'Confirm Delete Account',
                                   style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w600,

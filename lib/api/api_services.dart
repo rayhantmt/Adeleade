@@ -172,7 +172,7 @@ class ApiService {
       final response = await http.delete(
         uri,
         headers: headers ?? {'Content-Type': 'application/json'},
-        body: jsonEncode(body)
+        body: jsonEncode(body),
       );
       print('🗑️ [DELETE] $uri');
       print('Status Code: ${response.statusCode}');

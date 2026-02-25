@@ -13,5 +13,6 @@ class ApiConfig {
   static const String acceptConnection='/api/v1/connection/accept/';
   static const String sendconnectionrequest='/api/v1/connection/send';
   static const String getmyconnection='/api/v1/connection/my-connections';
+  static const String deleteaccount='/api/v1/admin/users/';
 
 }
