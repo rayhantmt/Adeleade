@@ -33,11 +33,11 @@ class LogInController extends GetxController {
 
     try {
       final response = await ApiService.post(
-        endpoint: ApiConfig.loginEndpoint, // Change if your endpoint differs
+        endpoint: ApiConfig.loginEndpoint, 
         body: body,
       );
       final storage = GetStorage();
-      final accessToken = response['data']['token']; // <- from your response
+      final accessToken = response['data']['token']; 
       final user = response['data']['user'];
       storage.write('name', user['name']);
       storage.write('email', user['email']);
@@ -54,7 +54,6 @@ class LogInController extends GetxController {
       storage.write('id', user['id']);
       storage.write('token', accessToken);
       Get.offAllNamed(AppPages.mainscreen);
-      // Handle success (e.g., token saving, navigating)
       print("Login success: $response");
       print(accessToken);
     } on AppException catch (e) {
@@ -64,10 +63,4 @@ class LogInController extends GetxController {
     }
   }
 
-  @override
-  void onClose() {
-    emailcontroller.dispose();
-    passwordcontroller.dispose();
-    super.onClose();
-  }
 }

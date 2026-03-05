@@ -22,7 +22,7 @@ class MainScreenController extends GetxController {
         endpoint: '${ApiConfig.deleteaccount + id}',
         headers: {'Authorization': token},
       );
-      
+      print(response);
     } on AppException catch (e) {
       Get.snackbar('Error', e.toString());
       print(e.toString());
