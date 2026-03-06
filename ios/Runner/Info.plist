@@ -34,6 +34,12 @@
 	<string>We need access to your photo library to allow you to upload images.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
     <string>This app needs access to your location to show nearby events</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access to your location to show nearby events</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Momentum needs your location to provide personalized event recommendations even when the app is in the background.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Momentum needs your location to provide personalized event recommendations.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
