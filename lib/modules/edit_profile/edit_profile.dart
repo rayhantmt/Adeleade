@@ -184,7 +184,6 @@ final profilename = ss.name.value;
                                 child: GestureDetector(
                                   onTap: () {
                                     controller.pickprofileImage();
-                                    // print('dudu');
                                   },
                                   child: Container(
                                     color: Colors.black,
