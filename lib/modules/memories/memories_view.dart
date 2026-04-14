@@ -373,7 +373,7 @@ Widget _createEvent() {
                 border: InputBorder.none,
                 hint: Center(
                   child: Text(
-                    'Write a short and detailed description of the event',
+                    'Write detailed description of the event',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.inter(
                       fontWeight: FontWeight.w500,
