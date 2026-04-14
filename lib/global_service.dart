@@ -2,6 +2,11 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class GlobalService extends GetxController {
+  @override
+  void onInit() {
+readfromstorage();
+    super.onInit();
+  }
   var name = ''.obs;
   var bio = ''.obs;
   var profession = ''.obs;
