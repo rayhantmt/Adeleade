@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class GlobalService extends GetxController {
   var name = ''.obs;
@@ -21,5 +22,17 @@ class GlobalService extends GetxController {
     nationality.value = upnationality;
     instagram.value = updatedinstagram;
     linkedin.value = updatedlinkedin;
+  }
+
+  void readfromstorage() {
+    final storage = GetStorage();
+    name.value = storage.read('name');
+
+    profession.value = storage.read('profession');
+    bio.value = storage.read('bio');
+
+    nationality.value = storage.read('nationality');
+    linkedin.value = storage.read('linkedIn');
+    instagram.value = storage.read('instagram');
   }
 }
