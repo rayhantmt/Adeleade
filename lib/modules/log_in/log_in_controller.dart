@@ -33,11 +33,11 @@ class LogInController extends GetxController {
 
     try {
       final response = await ApiService.post(
-        endpoint: ApiConfig.loginEndpoint, 
+        endpoint: ApiConfig.loginEndpoint,
         body: body,
       );
       final storage = GetStorage();
-      final accessToken = response['data']['token']; 
+      final accessToken = response['data']['token'];
       final user = response['data']['user'];
       storage.write('name', user['name']);
       storage.write('email', user['email']);
@@ -62,5 +62,4 @@ class LogInController extends GetxController {
       isLoading.value = false;
     }
   }
-
 }
