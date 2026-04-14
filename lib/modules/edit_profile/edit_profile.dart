@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/edit_profile_info.dart';
+import 'package:mementum/global_service.dart';
 import 'package:mementum/modules/edit_profile/edit_profile_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
@@ -13,26 +14,21 @@ class EditProfile extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     final storage = GetStorage();
-    final profilename = storage.read('name'); //.toString().toUpperCase();
+     //.toString().toUpperCase();
+      final ss=Get.find<GlobalService>();
     final profilephoto = storage.read('photoURL');
     final coverphoto =
         storage.read('coverPhotoURL') ?? 'Please upload a cover photo';
     final email = storage.read('email');
     final gender = storage.read('gender');
-    final nationality = storage.read('nationality');
-    final instagram = storage.read('instagram');
-    final linkedin = storage.read('linkedIn');
-    final bio = storage.read('bio');
-    print(profilephoto);
-    print(profilename);
-    print(coverphoto);
-    print(email);
-    print(gender);
-    print(nationality);
-    print(instagram);
-    print(linkedin);
-    print(bio);
+    final nationality = ss.nationality.value;
+    final instagram = ss.instagram.value;
+    final linkedin = ss.linkedin.value;
+    final bio = ss.bio.value;
 
+ 
+ 
+final profilename = ss.name.value;
     return Scaffold(
       body: Stack(
         children: [
