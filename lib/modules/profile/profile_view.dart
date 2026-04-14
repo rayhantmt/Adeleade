@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mementum/common_widgets/profile_container.dart';
+import 'package:mementum/global_service.dart';
 import 'package:mementum/modules/main_screen/main_screen_controller.dart';
 import 'package:mementum/routes/app_pages.dart';
 import 'package:mementum/utils/app_images.dart';
@@ -13,6 +14,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final service=Get.find<GlobalService>();
     final controller=Get.find<MainScreenController>();
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
@@ -87,7 +89,7 @@ class ProfileView extends StatelessWidget {
 
                   SizedBox(width: 20),
                   Text(
-                    (profilename ?? 'Error loading name')
+                    (service.name.value ?? 'Error loading name')
                         .toString()
                         .toUpperCase(),
                     style: GoogleFonts.inter(

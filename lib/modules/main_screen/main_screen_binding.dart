@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:mementum/global_service.dart';
 import 'package:mementum/modules/chat_box/chat_controller.dart';
 import 'package:mementum/modules/home/home_controller.dart';
 import 'package:mementum/modules/main_screen/main_screen_controller.dart';
@@ -13,5 +14,6 @@ class MainScreenBinding extends Bindings {
     Get.lazyPut<MemoriesController>(() => MemoriesController());
     Get.lazyPut<ChatController>(() => ChatController());
     Get.lazyPut<MapsController>(() => MapsController(),);
+    Get.put<GlobalService>(GlobalService());
   }
 }
