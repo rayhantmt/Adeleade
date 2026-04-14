@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:mementum/api/api_config.dart';
 import 'package:mementum/api/api_services.dart';
 import 'package:mementum/core/exceptions.dart';
+import 'package:mementum/global_service.dart';
 
 class UpdateInfoController extends GetxController {
   final namecontroller=TextEditingController();
@@ -16,6 +19,7 @@ class UpdateInfoController extends GetxController {
   RxBool isloadin = false.obs;
   
   Future<void> updateprofile() async {
+    final ss=Get.find<GlobalService>();
     final storage = GetStorage();
   final token= storage.read('token');
     isloadin.value = true;
@@ -39,6 +43,7 @@ class UpdateInfoController extends GetxController {
       );
       print(body);
       print('response $response');
+ss.updaedinfo(namecontroller.text, biocontroller.text, professioncontroller.text, nationalitycontroller.text, instagramcontroller.text, linkedincontroller.text);
       Get.snackbar('Success', 'Congratulations profile updated successfully\n Log out from the app and log in again to see the profile changes');
     } on AppException catch (e) {
       Get.snackbar('Updating profile failed ', e.toString());
