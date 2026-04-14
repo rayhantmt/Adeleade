@@ -20,7 +20,7 @@ class EditProfileController extends GetxController {
       } else {
         Get.snackbar('Error', "Please select your cover image");
       }
-      _uploadAndSendMedia(File(coverImage.value!.path), 'update-cover-photo');
+      _uploadAndSendMedia(File(coverImage.value!.path), 'update-cover-photo','cover');
     } catch (e) {
       Get.snackbar('Error', e.toString());
       print(e.toString());
@@ -40,6 +40,7 @@ class EditProfileController extends GetxController {
       _uploadAndSendMedia(
         File(profileImage.value!.path),
         'update-profile-photo',
+        'avatar'
       );
     } catch (e) {
       Get.snackbar('Error', e.toString());
@@ -47,12 +48,12 @@ class EditProfileController extends GetxController {
     }
   }
 
-  Future<void> _uploadAndSendMedia(File file, String url) async {
+  Future<void> _uploadAndSendMedia(File file, String url,String imgtyp) async {
     try {
       final dio = Dio();
       final token = GetStorage().read('token');
       final formdata = FormData.fromMap({
-        'cover': await MultipartFile.fromFile(file.path),
+        imgtyp: await MultipartFile.fromFile(file.path),
       });
       final response = await dio.patch(
         options: Options(headers: {'Authorization': "Bearer $token"}),
