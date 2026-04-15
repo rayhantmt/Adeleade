@@ -5,6 +5,7 @@ import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mementum/global_service.dart';
+import 'package:mementum/routes/app_pages.dart';
 
 class EditProfileController extends GetxController {
   final globalcontroller = Get.find<GlobalService>();
@@ -77,6 +78,7 @@ class EditProfileController extends GetxController {
         globalcontroller.profileimage.value = updateimgurl;
         print(response);
         print(response.data.toString());
+        Get.toNamed(AppPages.mainscreen);
       } else {
         throw Get.snackbar('Error', response.data);
       }
@@ -112,6 +114,7 @@ class EditProfileController extends GetxController {
         globalcontroller.coverimage.value = updateimgurl;
         print(response);
         print(response.data.toString());
+        Get.toNamed(AppPages.mainscreen);
       } else {
         throw Get.snackbar('Error', response.data);
       }
