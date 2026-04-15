@@ -18,7 +18,7 @@ class ProfileView extends StatelessWidget {
     final controller=Get.find<MainScreenController>();
     final storage = GetStorage();
     final profilename = storage.read('name'); //.toString().toUpperCase();
-    final profilephoto = storage.read('photoURL');
+    final profilephoto = service.profileimage.value;
     final idi = storage.read('id');
     return Scaffold(
       backgroundColor: Color(0xffF9F7F1),

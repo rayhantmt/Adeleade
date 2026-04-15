@@ -14,11 +14,10 @@ class EditProfile extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     final storage = GetStorage();
-     //.toString().toUpperCase();
-      final ss=Get.find<GlobalService>();
-    final profilephoto = storage.read('photoURL');
-    final coverphoto =
-        storage.read('coverPhotoURL') ?? 'Please upload a cover photo';
+    //.toString().toUpperCase();
+    final ss = Get.find<GlobalService>();
+    final profilephoto = ss.profileimage.value;
+    final coverphoto = ss.coverimage.value;
     final email = storage.read('email');
     final gender = storage.read('gender');
     final nationality = ss.nationality.value;
@@ -26,9 +25,7 @@ class EditProfile extends GetView<EditProfileController> {
     final linkedin = ss.linkedin.value;
     final bio = ss.bio.value;
 
- 
- 
-final profilename = ss.name.value;
+    final profilename = ss.name.value;
     return Scaffold(
       body: Stack(
         children: [
@@ -79,50 +76,52 @@ final profilename = ss.name.value;
                       clipBehavior: Clip.none,
                       children: [
                         // Cover Photo
-                        AspectRatio(
-                          aspectRatio: 16 / 9,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(6),
-                            child: coverphoto.startsWith('http')
-                                ? Image.network(
-                                    coverphoto,
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                    // Handle cases where the URL exists but is broken
-                                    errorBuilder:
-                                        (context, error, stackTrace) =>
-                                            Container(
-                                              color: Colors.grey[200],
-                                              child: const Center(
-                                                child: Text(
-                                                  "Error loading image",
+                        Obx(
+                          () => controller.coverimageloading.value?Center(child: CircularProgressIndicator()):AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(6),
+                              child: coverphoto.startsWith('http')
+                                  ? Image.network(
+                                      coverphoto,
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      // Handle cases where the URL exists but is broken
+                                      errorBuilder:
+                                          (context, error, stackTrace) =>
+                                              Container(
+                                                color: Colors.grey[200],
+                                                child: const Center(
+                                                  child: Text(
+                                                    "Error loading image",
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                  )
-                                : Container(
-                                    color: Colors
-                                        .grey[200], // Background for the "empty" state
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(
-                                          Icons.add_a_photo_outlined,
-                                          color: Colors.grey[600],
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          coverphoto, // This will display 'Please upload a cover photo'
-                                          style: TextStyle(
-                                            color: Colors.grey[700],
-                                            fontSize: 14,
+                                    )
+                                  : Container(
+                                      color: Colors
+                                          .grey[200], // Background for the "empty" state
+                                      alignment: Alignment.center,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.add_a_photo_outlined,
+                                            color: Colors.grey[600],
                                           ),
-                                        ),
-                                      ],
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            coverphoto, // This will display 'Please upload a cover photo'
+                                            style: TextStyle(
+                                              color: Colors.grey[700],
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                            ),
                           ),
                         ),
                         // ✅ Edit Icon for COVER PHOTO (Top Right)
@@ -161,7 +160,7 @@ final profilename = ss.name.value;
                           left: Get.width * 0.5 - Get.height * 0.1,
                           child: Stack(
                             children: [
-                              Container(
+                             Obx( () => controller.profileimgloading.value?Center(child: CircularProgressIndicator()): Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
@@ -177,7 +176,7 @@ final profilename = ss.name.value;
                                         "https://via.placeholder.com/150",
                                   ),
                                 ),
-                              ),
+                              )),
                               Positioned(
                                 top: 0,
                                 right: 0,

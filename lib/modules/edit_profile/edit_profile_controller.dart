@@ -4,10 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide FormData, MultipartFile;
 import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:mementum/global_service.dart';
 
 class EditProfileController extends GetxController {
+  final globalcontroller = Get.find<GlobalService>();
   final ImagePicker picker = ImagePicker();
-  final ImagePicker picker2=ImagePicker();
+  final ImagePicker picker2 = ImagePicker();
   Rxn<XFile> coverImage = Rxn<XFile>();
   Rxn<XFile> profileImage = Rxn<XFile>();
   Future<void> pickCoverImage() async {
@@ -20,7 +22,11 @@ class EditProfileController extends GetxController {
       } else {
         Get.snackbar('Error', "Please select your cover image");
       }
-      _uploadAndSendMedia(File(coverImage.value!.path), 'update-cover-photo','cover');
+      _uploadAndSendMedia2(
+        File(coverImage.value!.path),
+        'update-cover-photo',
+        'cover',
+      );
     } catch (e) {
       Get.snackbar('Error', e.toString());
       print(e.toString());
@@ -40,7 +46,7 @@ class EditProfileController extends GetxController {
       _uploadAndSendMedia(
         File(profileImage.value!.path),
         'update-profile-photo',
-        'avatar'
+        'avatar',
       );
     } catch (e) {
       Get.snackbar('Error', e.toString());
@@ -48,8 +54,12 @@ class EditProfileController extends GetxController {
     }
   }
 
-  Future<void> _uploadAndSendMedia(File file, String url,String imgtyp) async {
+  var profileimgloading = false.obs;
+  var coverimageloading = false.obs;
+
+  Future<void> _uploadAndSendMedia(File file, String url, String imgtyp) async {
     try {
+      profileimgloading.value = true;
       final dio = Dio();
       final token = GetStorage().read('token');
       final formdata = FormData.fromMap({
@@ -61,10 +71,11 @@ class EditProfileController extends GetxController {
         'https://server.momentumactivity.com/api/v1/user/$url',
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
-        Get.snackbar(
-          'Success',
-          "Image updated log in to account again to see the updates",
-        );
+        Get.snackbar('Success', "Profile Image Updated Successfully");
+        final updateimgurl = response.data['data']['photoURL'];
+        print('This is updated profile image$updateimgurl');
+        globalcontroller.profileimage.value = updateimgurl;
+        print(response);
         print(response.data.toString());
       } else {
         throw Get.snackbar('Error', response.data);
@@ -72,6 +83,44 @@ class EditProfileController extends GetxController {
     } catch (e) {
       Get.snackbar('Error', e.toString());
       print(e.toString());
+    } finally {
+      profileimgloading.value = false;
+    }
+  }
+
+  Future<void> _uploadAndSendMedia2(
+    File file,
+    String url,
+    String imgtyp,
+  ) async {
+    try {
+      coverimageloading.value=true;
+      final dio = Dio();
+      final token = GetStorage().read('token');
+      final formdata = FormData.fromMap({
+        imgtyp: await MultipartFile.fromFile(file.path),
+      });
+      final response = await dio.patch(
+        options: Options(headers: {'Authorization': "Bearer $token"}),
+        data: formdata,
+        'https://server.momentumactivity.com/api/v1/user/$url',
+      );
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        Get.snackbar('Success', "Profile Image Updated Successfully");
+        final updateimgurl = response.data['data']['coverPhotoURL'];
+        print('This is updated cover image$updateimgurl');
+        globalcontroller.coverimage.value = updateimgurl;
+        print(response);
+        print(response.data.toString());
+      } else {
+        throw Get.snackbar('Error', response.data);
+      }
+    } catch (e) {
+      Get.snackbar('Error', e.toString());
+      print(e.toString());
+    }
+    finally{
+      coverimageloading.value=false;
     }
   }
 }
